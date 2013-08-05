@@ -29,10 +29,23 @@ J. Praks. A.Kestilä, M. Hallikainen, H. Saari, J. Antila, P. Janhunen, V. Rami.
 \newblock In Geoscience and Remote Symposium (IGARS). IEEE International, 2011.
 
 \bibitem[Näsila et al. (2011)]{AALTO1b}
-A Näsila, A. Hakkarainen, J. Praks, A. Kestilä, K. Nordling, R. Modrzewski, H. Saari, J. Antila, R. Mannila, P. Janhunen, R. Vainio, M. Hallikainen.
+A. Näsila, A. Hakkarainen, J. Praks, A. Kestilä, K. Nordling, R. Modrzewski, H. Saari, J. Antila, R. Mannila, P. Janhunen, R. Vainio, M. Hallikainen.
 \newblock \emph{Aalto-1 - A Hyperspectral Earth Observing Nanosatellite}.
 \newblock 2011.
 
+
+\bibitem[Fortescue (2003)]{SSEng}
+P. Fortescue, J. Startk, G. Swinerd. 
+\newblock \emph{Spacecraft Systems Engineering}.
+\newblock Wiley, third edition. United Kingdom, 2003.
+\newblock ISBN 0-470-85102-3
+
+
+\bibitem[Sellers (2005)]{IntAstr}
+Jerry J. Sellers 
+\newblock \emph{Understanding Space, An Introduction to Astronautics}.
+\newblock McGraw-Hill, third edition. United States, 2005.
+\newblock ISBN 978-0-07-340775-3.
 
 
 
