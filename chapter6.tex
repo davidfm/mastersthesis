@@ -1,0 +1,1301 @@
+
+\chapter{Protocol specification}
+
+In this chapter, the OpenWeather protocol specifications are explained. 
+
+\section{Definitions}
+
+The following subsections summarized the role of the elements involved in the protocol. Some of the definitions are widely used in other protocols.
+
+\subsubsection{OpenWeather network}
+
+The nodes used in OpenWeather protocol conform to OpenWeather network standards. Inside of this network a node is able to interact with other nodes, requesting and delivering services to other nodes. These services are oriented to provide weather data. Because OpenWeather is based in a \gls{P2P} architecture, its topology is decentralized. This topology makes the nodes independent of central nodes in order to interact between them.
+
+\subsubsection{OpenWeather node}
+
+A node is an active or passive element connected to OpenWeather network. One node can offer none to multiple services. An element is considered a node when it has a working implementation of OpenWeather protocol and is connected to the network.
+
+\subsubsection{Peer}
+
+Every node is considered a peer of OpenWeather network. All nodes in OpenWeather network are able to be clients and servers at the same time. This is establishing the basis of the \gls{P2P} architecture used in OpenWeather. A peer must be able to offer services to others peers, however it is not mandatory to offer a service\footnote{Doing reference here to high-level services related with the data delivery, de facto, a peer is always offering a minimum amount of services integrated within the protocol, needed to interact in the network.} in order to be connected to OpenWeather's network.
+
+\subsubsection{Weather data}
+
+The purpose of OpenWeather is to create a network in which the data exchange comes from the weather data sources. To obtain this data the nodes can be connected to an \gls{AWS} or other system of weather data collection. OpenWeather does not differentiate between the original source of the instrument's brand, because data normalization\footnote{As it was explained in chapter 3 and chapter 4, this step is required because it is not possible to modify \gls{AWS}'s \gls{OS} without the vendor's collaboration.} is required in order to make the data network available.
+
+\section{Architecture}
+
+As it is mentioned in section \ref{5.2.1}, the architecture used in OpenWeather matches the requirements mentioned in the \gls{RFC} 5694 \cite{rfc5694}, with OpenWeather containing nodes offering and requesting services between them.
+
+The technical reasons why a \gls{P2P} architecture is a better network solution for a topology as define by default by the \gls{AWS}, are supported in the following points:
+
+\begin{itemize}
+\item	An \gls{AWS} is an individual entity being part of a bigger network that does not need a centralized model except for data processing.
+\item	The process executed over the weather data in order to extract meaningful  conclusions does not posses a technical requirement to be linked to the network layer.
+\item	The collection point model forces the node to depend exclusively on one node in the network, adding unnecessary risks to the data flow.
+\item	The common architecture used in the weather data flow, is forced by the legacy of the protocols used within it.
+\end{itemize}
+
+The \gls{P2P} architecture  is chosen by OpenWeather because it brings autonomy and robustness to the nodes. In addition, it provides the network the capability to scale and to share resources without single dependencies. Moreover, the geographical situation of the nodes, is suitable for developing models in which the nodes can collaborate to distribute the data. Finally, the \gls{P2P} architecture provides the capability to retrieve data directly from the node, without going through a common point that can be collapsed or not available.
+
+\subsection{Standards used for data units}
+
+OpenWeather does not provide the  weather date measurement units. The protocol is designed to deliver weather data formatted according to the data units specified in \gls{ISO} 80000 \cite{ISO80000} family and the \emph{Guide to Meteorological Instruments and Methods of Observation} \cite{GMIMO}.
+
+Table \ref{t6.4} provides the data units used in the prototype:
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{ | l | l | l | l |}
+    \hline
+    \textbf{Data field} & \textbf{Data unit} & \textbf{Acronym} \\ \hline
+    Air-Temperature & Celsius & C\\ \hline
+    Relative-Humidity & Percentage& \% RH\\ \hline
+    Air-Pressure & Hectopascals & hPa\\ \hline
+    Wind direction & Degress & degrees \\ \hline
+    Wind speed & Meters per second	& $m \over s$ \\ \hline
+    Rain accumulation & Millimeters & mm\\ \hline
+    Rain duration & Seconds & s \\ \hline
+    Rain intensity & Millimeters per hour & $mm \over h$\\ \hline
+    Rain peak &  Millimeters per hour & $mm \over h$ \\ \hline
+    Hail accumulation & Hits per square centimeter & $Hits \over cm^2$\\ \hline
+    Hail duration & Seconds & s \\ \hline
+    Hail intensity & Hits per square centimeter per hour & $Hits \over cm^2 h$ \\ \hline
+    Hail peak &  Hits per square centimeter per hour & $Hits \over cm^2 h$ \\ \hline
+    \end{tabular}
+  \caption{Data units implicit on the data fields.}
+  \label{t6.4}
+\end{table}
+
+Since the data units have a known standard, the author considers that it is not necessary to increase data messages sizes and data fields, but only to provide the data units. Instead, it is more pragmatic and efficient to assume that weather data will be supplied with appropriate data units. It is necessary to highlight that despite the absence of network protocol for weather data, the vendors maintain a strict control of data units used in the \gls{AWS}, facilitating this the implementation of OpenWeather across vendors.
+
+
+\subsection{Nodes}
+
+A node connected to a OpenWeather network behaves as a deterministic finite automaton, not executing without a clear definition operations or a definite result. All the operations performed by the nodes are identified by codes placed in the MetaInfo data field. Any data message delivered in OpenWeather protocol contains all information\footnote{Through the protocol code.} required to identify the type of operation to be performed by the software when the data message is received / delivered.
+
+Any data requested or delivered by a node using OpenWeather is based on a request and a confirmation of it. With this mechanism the nodes are notified of status of the operations of execution in the application layer are successful or not. This same mechanism is implemented in protocols as \gls{HTTP}\cite{rfc2616} in order to control the status of retrieval and delivery operations.
+
+A node is able to interact with multiple nodes, being only limited by the bandwidth and system resources availability. OpenWeather does not define a minimum or maximum of connections needed, however a node requires a \textbf{>=1} number of peers on its internal list in order to interact with OpenWeather network.
+
+\subsubsection{Automatic Weather Stations as individual nodes}
+
+The section \ref{3.1.2} explains how the \gls{AWS} are categorized as embedded systems. By the definition, an embedded system has certain limitations in data processing and data delivery. Nevertheless the \gls{AWS} are still able to do some networking operations and data processing when the size of them is small. OpenWeather has been designed to work around these limitations.
+
+Taking this as a basis, OpenWeather transforms the centralized model currently used by the industry, to a decentralized model taking advantage of a \gls{P2P} architecture. OpenWeather considers every \gls{AWS} as a node using \gls{SOA}. Because the \gls{AWS} are under constant connection and deliver data to collection points, the only modification needed in the equipment is to change the network protocols used to deliver this data\footnote{An adaption of the \gls{AWS}'s \gls{OS} will be required in order to integrate the OpenWeather's stack inside of the \gls{AWS}.}.
+
+Instead of using an architecture in which the \gls{AWS} plainly sends the data over the network without any further interaction, OpenWeather provides the mechanisms to convert the \gls{AWS} to an entity able to respond to the data requests made by the user in real-time. Although all of this process can be handled through the centralized model, the independence of nodes from the collection point  is mandatory in order to achieve scalability and data accessibility. For instance, a user located outside of a specific network of \gls{AWS}, can not access the data produced by them without the need to go through the collection point\footnote{If the \gls{AWS} work but the collection point is down, the data will not be accessible.}, this use case avoids any possibility to combine data in real-time from different \gls{AWS} in different geographical locations, restricting any possibility to interact directly with the \gls{AWS}.
+
+Enabling the \gls{AWS} to behave as a nodes, the protocol provides the basis to take advantage of the real-time data and at the same time fix the issues exposed in chapter four. Though this thesis sets an ambitious goal: the transition from a centralized model to a decentralized model, it has to be noted that the industry has been using the same technologies for decades, not taking advantage of the improvements made in the networking technologies, concerning data delivery and acquisition. The decentralized models have a proven successful track, offering scalability and robustness.
+
+As any other network protocol, OpenWeather has a defined set of operations. These operations provide the core principles to deliver and retrieve data from nodes. However, these principles do not need to contain the whole data flow.
+
+
+\subsubsection{Super-nodes}
+ 
+OpenWeather refers to super-nodes to those nodes with static \gls{IP} / hostname, which are always available to exchange peer lists. Unlike other \gls{P2P} applications, an OpenWeather super-node does not have any other extra property, except its bandwidth availability \footnote{It must be higher than average so that it may process higher network traffic.} and an updated list of peers, to deliver to the other nodes. The role of a super-node is to be always available and to provide updated peer lists to those nodes without one. This is enough to guarantee that the nodes will be able to connect to it if they can not find other nodes available.
+
+\subsubsection{Peer list calculation algorithm}
+
+One of the biggest challenges of the \gls{P2P} architecture is to identify which peers are superior to others. This issue is mostly found in those architectures in which the purpose of the network is to transfer data based on user reputation\footnote{Meaning the amount of data shared and uploaded to other peers.}. Since all nodes are consider peers containing unique data, OpenWeather does not make distinction amount them.
+
+Even so, for practical reasons, it is necessary to develop an algorithm to calculate which peers are better than others in terms of connectivity and bandwidth availability, to provide a list to the nodes to guarantee the connection to OpenWeather network. 
+
+The author considers that due to the nature of the data and the main factor of its importance is availability. Thus, the algorithm shall be a node bandwidth, network latency and geographical location.
+
+Bandwidth and latency are two obvious and common used factors in other \gls{P2P} architectures. However in this case is important to note that most of these nodes are going to have better network visibility with nodes are located in proximity. The geographical location of the node, available in the MetaInfo data field through the "Location" data field, can be used to calculate the closest peers.
+
+The algorithm to calculate the best peers to keep on the internal list, is too a vast and complex topic to be analyzed in this thesis. In the prototype created, the author used random peers in order to verify the protocol specifications. It is necessary to highlight that the peer list calculation must be analyzed deeply in order to implement OpenWeather in production scenario.
+
+\subsubsection{Node identification}
+
+In section \ref{5.2.1} is mentioned that a node \textbf{has a unique ID}. This ID is used to identify the node and at the same time by the user/software to recognize which node is currently active. The value of this ID is based on \gls{SHA}-256\cite{SHA}. Nevertheless, the length of it and its alphanumeric composition make it really difficult to remember the node ID, even when using some mnemonic techniques. However, it can be easily fixed with a proper algorithm, based on a standardized \gls{AWS} system for identification and use of the \gls{RFC} 3986 \emph{\gls{URI}: Generic Syntax} \cite{rfc3986}. 
+
+As example, the \gls{CWOP} uses different parameters\cite{CWOPID} to identify the \gls{AWS}; some of them are:
+
+\begin{itemize}
+
+\item Block number 2 digits representing the WMO-assigned block
+
+\item Station number 3 digits representing the WMO-assigned station
+
+\item Place name: common name of station location
+
+\item Country name: country name is \gls{ISO} short English form
+
+\end{itemize}
+
+The block number refers to the geographical region\footnote{Extracted from station index numbers database, \gls{CWOP} Meteorological Station Location Information \cite{CWOPID}.} of the \gls{AWS}, and the station number is assigned base on \emph{the nearest 10 degree meridian which is numerically lower than the station longitude}\cite{CWOPID}. The place name and country name are values assigned based on the geographical location of the \gls{AWS}. Although \gls{CWOP} also provides the latitude and the longitude, their introduction in \gls{URL} generation, will cause greater complexity.
+
+\begin{table}[H]
+\centering
+02;974;EFHK;Helsinki-Vantaa;;Finland;6;60-19N;024-58E;60-19N;024-58E;51;56;P
+\caption{Example of \protect \gls{CWOP}'s \protect \gls{AWS} identification.}
+\label{CWOPNOTA}
+\end{table}
+
+The table \ref{CWOPNOTA} shows all data used by \gls{CWOP} to identify an \gls{AWS}, the  the following syntax is used to generate the \gls{URL}:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\textbf{owp}://Country Name/Place Name/Block number + Station number \\
+\hline
+\end{tabular}
+\caption{ID partially based on \protect \gls{CWOP} notation.}
+\label{t6.1}
+\end{table}
+
+Based on the data used in the table \ref{CWOPNOTA} the output will be:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\textbf{owp}://finland/helsinki-vantaa/02974\\
+\hline
+\end{tabular}
+\caption{ID's partially based in \protect \gls{CWOP}'s identification system.}
+\end{table}
+
+The scheme is denominated as \textbf{owp} (OpenWeather Protocol), the authority field is used for country name, the absolute path is based on the place name and the station number assigned by the \gls{WMO}. This combination is enough to guarantee the uniqueness of the node accessed through the \gls{URL}.
+
+The value of the ID used in the OpenWeather data message will be the resulting hash of the data "02;974;Helsinki-Vantaa;;Finland" generated with \gls{SHA}-256.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{15.6cm} |}\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+"ID" :"a88a9b6b4c0381e0509ce36cadb5fd06e5446ab23881020b9f212db24b16ee75",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{IDs based in the \protect \gls{SHA}-256 result of the \protect \gls{CWOP} notation.}
+\end{table}
+
+\section{Protocol operations}
+
+The protocol allows the following operations:
+
+\begin{itemize}
+\item Session establishment
+\item Service discovery
+\item Real-time data retrieval
+\item Data on demand
+\end{itemize}
+
+Note that all of these operations have an implicit internal functional workflow, based on the requests and retrievals and their results. The following sections analyze the functioning of these operations.
+
+\subsection{Session establishment - Peer handshake}\label{7.3.1}
+
+The first operation needed for OpenWeather is session establishment. The elements involved in this operation can go from \textbf{2..n} nodes. Thus, a node can execute the operation to establish session with multiple nodes at the same time, nevertheless, the session establishment is always an isolated process between two nodes.
+
+These nodes must offer the basic services integrated in the protocol, as peer exchange information or peers-list exchange. The session establishment between nodes is denominated \textbf{peer handshake}. At this point the nodes exchange their information in order to identify each other, sending a data message with the parameters mentioned in section 6.2.4. This operation is categorized as an internal protocol requirement, using the code \textbf{100} as type of data message.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c7f1.png}}
+\caption{Session establishment sequence diagram.}
+\end{figure}
+
+When the nodes establish a session, two operations are performed
+
+\begin{itemize}
+\item	Peers-list exchange.
+\item Alive verification.
+\end{itemize}
+
+The first operation —peers-list exchange— is performed in order to verify if the nodes can update their internal list of peers available.
+
+The second operation performed is alive verification. The peers send a data message after the exchange of the peer list, in order to verify that the nodes are ready to request weather data\footnote{Note that this check is realized to ensure the availability of the node twice.}. If the alive verification is not successful, the node executing it will close the \gls{TCP} connection with the node that is not responding to it.
+
+\subsection{Service discovery}\label{6.3.2}
+
+OpenWeather assumes that when two nodes establish a session, the purpose of it is to exchange certain data, even if it is just for protocol requirements. As it is explained in section \ref{5.2.2}, OpenWeather is designed according to a service oriented architecture \gls{SOA}. All data sent  or receive by a node goes through services provided in the OpenWeather software implementation.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c7f2.png}}
+\caption{Service discovery sequence diagram.}
+\end{figure}
+
+The nodes involved in the session must exchange the type of data messages, in order to be aware of services available to the nodes. Note that this operation informs the nodes which sensors are available to other nodes and which kind of weather data can be retrieved from them. After the nodes communicate through the services available, other operations as real-time data retrieval or data on demand, can be performed.
+
+\subsection{Real-time data retrieval}\label{7.3.3}
+
+When the nodes establish the session  and service discovery operations is performed successfully, they are consider to be ready to send and receive weather data between them. As it is explained in section \ref{5.2.2}, the data can be real-time data or data on demand. In case of real time data, the node requesting it, must send a type of data message with code \textbf{200}, immediately after, the other node involved in the session, must start to delivery real-time data messages.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c7f3.png}}
+\caption{Real-time data sequence diagram.}
+\end{figure}
+
+The real-time data will be deliver until the node requesting it decides to stop the data stream\footnote{The data streams can be interrupted by other exceptions as connectivity or software issues.}. This data stream provides the real-time data generated in the remote \gls{AWS}. As in any other network solution the delay that the nodes can experience can affect the delivery of the data. Nevertheless, all the data messages are timestamped when the data was assembled within them. Because this timestamp is available, it will be feasible to implement an algorithm on the software side,  applying a correction factor to the timestamp based on the latency of the nodes, to fix this issue.
+
+\subsection{Data on demand}
+
+Apart from the the real-time data, a user can request data on demand. When a user requests data on demand, it creates individual requests with a specific timestamp. Based on these requests, the remote node will deliver an individual data message timestamped with the date and time provided, the requests and the weather data on that time. 
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c7f4.png}}
+\caption{On demand data sequence diagram.}
+\end{figure}
+ 
+OpenWeather does not support the capability to request a range of dates or times on protocol level, meaning that it is not possible to retrieve isolated weather data samples form the node during a certain period of time. Instead, it is possible to implement on the software side the functionality to process a group of data messages with a certain timestamp. The justification of this limitation is based on the bandwidth availability in an \gls{AWS}. In contrast with individual weather data samples, a range of them can have a considerable size and this can cause significant obstacles for the \gls{AWS}: heavy \gls{CPU} load, bandwidth consumption, etc.
+
+
+\section{Data messages}
+
+A data message refers to the data transmitted using the OpenWeather protocol. A data message can contain multiple informational values, referring to weather data or data needed for protocol maintenance.
+
+All data fields contained in an OpenWeather data message are considered to be encapsulated data represented through \gls{JSON} objects using \gls{UTF}-8\cite{UTF}\cite{rfc3629} as character encoding. According with the \gls{RFC} 4627\cite{rfc4627}, the definition of an \gls{JSON}'s object is:
+
+  \emph{[...] An object is an unordered collection of zero or more name/value
+   pairs, where a name is a string and a value is a string, number,
+   boolean, null, object, or array.[...]}
+ 
+Therefore, any data field contained in an OpenWeather data message, is an individual or group of \gls{JSON} objects or values. These objects are optimized according to the data that they contain. For instance, some data fields are \gls{JSON} objects containing other objects at the same time. The data optimization made in the protocol using these data structures, allows data encapsulation which makes enables a fast data the data processing from the network to software levels.
+
+All OpenWeather data messages are formatted using \gls{JSON} syntax. Type of data contained in the data message is insignificant as it is structured in one \gls{JSON} object composed for different sub-objects. These objects are represented as data fields in terms of networking architecture. 
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.6\textwidth]{images/c6f2.png}}
+\caption{OpenWeather data message structure.}
+\end{figure}
+
+The parent object is denominated \textbf{OpenWeatherMessage}; this object \textbf{is present in all the data messages} inside of OpenWeather network. This parent contains two sub-objects; the MetaInfo object and the Data object or Info object. The MetaInfo object is a data field acting as \textbf{the header of the data message in OpenWeather protocol}\footnote{This object is added an individual data field named "Type", explained in the next section.}. Furthermore an OpenWeather data message contains the Data object or the Info object. The Data object is a data field containing all data related to the weather data that the data message transports. The Info object contains the information used internally by the OpenWeather protocol.
+
+
+\subsection{Header}
+
+OpenWeather uses a fixed\footnote{In terms of data fields provided.} header data field in all the data messages, in order to guarantee its functioning. The function of this header is to provide all necessary data parameters needed by the OpenWeather protocol in every data message. Though it requires some data repetition, its insignificant size of this header, compensates the disadvantages of its repetition during transmission.
+
+Table \ref{headertable} shows the fields contained in the header:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+        "Type" : "",
+        "MetaInfo" : {
+            "ID" : "", 
+            "Peer-IP": "", 
+            "Port": "",    
+            "Location": "", 
+            "Update-Interval": "", 
+            "Peers-request":"", 
+            "Keep-Alive":"", 
+            "Bandwidth": "",   
+            "Timestamp" : "", 
+            "Version" : "",
+        },
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\label{headertable}
+\caption{Header field (Header object) in a data message of OpenWeather.}
+\end{table}
+
+As the table \ref{headertable} exposes all data messages start with the term ''OpenWeatherMessage'', building \gls{JSON} parent object of the data message. Any data contained within the data message will belong to this parent object. Although this hierarchy does not impact the data message size, it provides significant assistance to the post processing of the data on the software side. This design is inspired by the same concepts use in \gls{XML} and \gls{XML} Schemas \cite{XML}, concerning the metadata fields. Nevertheless, OpenWeather does not providing any extra fields for metadata definition, meaning that the software utilizing OpenWeather, should recognize the expected format beforehand\footnote{\gls{XML} allows data type provision in the data itself. However, this practice increases the size of the data considerably.}. With this practice speed up and simplifies the parsing compare to \gls{XML}.
+
+\subsection{Types of data messages}\label{types}
+
+The second field contained in an OpenWeather's message is denominated \textbf{Type}. This field indicates which type of data is located within a data message through a numerical code and if it is related with weather data, peers exchange, protocol itself, etc.
+
+Depending on the type of data message it will be in one of the following categories:
+
+\begin{itemize}
+\item Data messages for protocol maintenance only.
+\item Data messages use to transport weather data only.
+	\begin{itemize}
+		\item Real-time data.
+		\item Data on demand.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Protocol codes}
+
+The "Type" field can contain a numerical value from \textbf{1..n}. This numerical value is known as the protocol code associated with the type of messages. The codes used are divided in categories and subcategories:
+
+\begin{itemize}
+\item Codes assigned to data messages used for protocol maintenance.
+	\begin{itemize}
+		\item {Protocol codes (From: 1..1xx)}
+		\begin{itemize}
+			\item {Requests}
+			\item {Retrievals}
+			\item {Status}
+				\begin{itemize}
+					\item {Success}
+					\item {Error}
+				\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	\end{itemize}
+\begin{itemize}
+\item Codes assigned to data messages for weather data exchange between peers:
+	\begin{itemize}
+		\item {Peer codes}
+		\begin{itemize}
+			\item {Requests}
+				\begin{itemize}
+					\item {Real-time data}: 200
+					\item {Data on demand}: 201
+				\end{itemize}
+			\item {Retrievals}
+					\begin{itemize}
+					\item {Real-time data}: 300
+					\item {Data on demand}: 301
+				\end{itemize}
+			\item {Status}
+				\begin{itemize}
+					\item {Success}: 500..599
+					\item {Error}: 600..699
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+\end{itemize}
+
+The numerical value is used by the software in order to recognize the data processing procedure.
+
+All the protocol codes used in the prototype are available \textbf{in the appendix}.
+
+\subsection{MetaInfo data field}\label{header}
+
+The MetaInfo data field (MetaInfo \gls{JSON} object) defines fixed data fields transmitted in every data message. The purpose of these fields is to provide all information needed, in order to identify the peer's ID, its geographical location, \gls{IP} address, among other data. The use of this data throughout all data messages makes allows for easier implementation and extensibility of the \gls{P2P} architecture,  as it enables the software to be aware properties and status of a specific peer at all times.
+
+The MetaInfo field contains the following data fields:
+
+\begin{itemize}
+\item Bandwidth
+\item ID
+\item Keep-Alive
+\item Location
+\item Peer-IP 
+\item Peers-Request
+\item Port
+\item Timestamp 
+\item Update-Interval
+\item Version
+\end{itemize}
+
+The MetaInfo data field is structure as a \gls{JSON} object containing an array of elements\footnote{\textbf{Note:} in the following figures the expression "ARRAY DATA ELEMENTS" is used to refer the MetaInfo data fields.}. These elements are the fields mentioned above. Every element does reference to an specific parameter needed by OpenWeather protocol.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{MetaInfo field in a data message of OpenWeather protocol.}
+\end{table}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\textwidth]{images/c6f1.png}}
+\caption{OpenWeather MetaInfo data field with data array elements.}
+\end{figure}
+
+
+\subsubsection{Bandwidth}
+
+As any other network oriented software, the amount of bandwidth is a critical factor in its proper functionality. Most software solutions using \gls{P2P} architecture offer a dedicated section to control the bandwidth parameters. OpenWeather informs others nodes of the amount of bandwidth that a node has available while giving full control of the amount of bandwidth and connections and remote connections allow. As opposed to mainstream solutions, in which the node is only controls the amount of connections and bandwidth locally, the bandwidth control in OpenWeather can be managed both locally and remotely. To achieve this, the field "Bandwidth" is provided in every data message, informing the nodes what is the capacity of the node whereby are operating.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Bandwidth" : "4", // Correspondency 1 Megabit/s
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Bandwidth field in a data message of OpenWeather}
+\end{table}
+
+The user must provide this parameter to configure its node.  Due to the a big amount of possibilities for bandwidth quality, this data field contains a numeric value that should be translated by the software to bits per second. Nevertheless, if the user considers that its bandwidth does not fit in the categories provided, it is possible to provide an integer number that will be translated by the software to bits per seconds. Thus, if the "Bandwidth" data field contains a numeric value higher than 6, the value will be translated for the software to bits per second. This feature allows the user to use a custom parameter.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ | c | l |}
+\hline
+\textbf{Numeric value} & \textbf{Bandwidth equivalency} \\ \hline
+0 & 56 \gls{KBITS}/s \\ \hline
+1 & 128 \gls{KBITS}/s \\ \hline
+2 & 256 \gls{KBITS}/s \\ \hline
+3 & 512 \gls{KBITS}/s \\ \hline
+4 & 1 \gls{MBITS}/s\\ \hline
+5 & 10 \gls{MBITS}/s \\ \hline
+6 & 100 \gls{MBITS}/s \\ \hline
+\end{tabular}
+\caption{Bandwidths equivalency in Bandwidth data field.}
+\end{table}
+
+\subsubsection{ID}
+
+As explained in sections \ref{5.2.1}, every peer has an unique ID throughout OpenWeather's network. In fact, its properties make it theoretically unique in the world.The ID is generated based in the \gls{AWS} identification. The ID data field is thought to be representation of the \gls{AWS}, such representation is the result of the hash applied over some identification system for \gls{AWS}es\footnote{Several weather organizations provide this identification.}.
+
+If the \gls{AWS} is not part of some identification system, its ID can be generated randomly by the software, however is highly recommended to provide an ID assigned for some organization as the \gls{CWOP} or \gls{NOAA}.\footnote{In the evaluation setup, the author uses a random ID.}.
+
+\begin{table}[H]     
+\centering
+\begin{tabular}{| p{15.6cm} |}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+"ID" :"4f9a67e8496d69b8707858576ec12b8aa3fa5519c23a79ea071dc7dbc0c9b2e3",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{ID's field in a data message of OpenWeather protocol.}
+\end{table}
+
+
+\subsubsection{Keep-Alive}
+
+Due to possible node connection instability, it is necessary to implement a mechanism to identify the current connection status with a specific node is, on the application layer level. OpenWeather implements the field "Keep-Alive". This field provides the amount of time that the software must wait until the connection is close.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Keep-Alive" : "120000",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Keep-Alive field in a data messages of OpenWeather protocol.}
+\end{table}
+
+When a node stops sending data to other node/s, the connection will be closed when the sum of the timestamps of the last data messages received and the "Keep-Alive" value, is less than the current date and time.
+
+The protocol assumes that if the node is not delivering data, is not useful to keep a connection with it. The same principle is applied in a number of network oriented software solutions. The value of this field is expressed in milliseconds, and by the default has a timeout of  \textbf{120000 milliseconds} (2 minutes). Though possible, the customization this parameter is not recommended, as it assumes responsibility between nodes when necessary.
+
+\subsubsection{Location}
+
+The "Location" field does reference to the geographical coordinates of the node, expressed in the \gls{UTM} system. This data field has two different functions:
+
+\begin{itemize}
+\item Identify the geographical location of the node.\footnote{Mandatory due to the nature of the data.}
+\item Provide identificational information to other peers, does providing them with the updated information which store in the node's internal list. \footnote{This is explained deeper in section 7.2.}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Location" : "4597807 269999 30T",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Location field in a data messages of OpenWeather protocol.}
+\end{table}
+
+This field should be filled manually by the user. It is highly recommended to provide this parameter with as much accuracy as possible.
+
+\subsubsection{Peer's IP address \& port}
+
+The MetaInfo's field contains two fields dedicated to \gls{TCP}/\gls{IP}:
+\begin{itemize}
+\item Peer-IP
+\item Port
+\end{itemize}
+
+The field "Peer-IP" contains the \textbf{public} \gls{IP} address assigned to the computer's network interface that is running the software supporting OpenWeather's protocol.This field can be an \gls{IP} address using 32-bit number (\gls{IP}v4) or 128 bit number (\gls{IP}v6). The introduction of this field is based on the requirement of the protocol to possess an updated address of the peer in order to able to connect to it. Though the field is labeled as "Peer-IP" not necessarily must be the numeric address. It is possible to implement the OpenWeather protocol to use hostname resolution based on \gls{DNS} requests\footnote{However as it is implicit in the use of \gls{DNS}, it will be required to have the hostname of the peers recorded in the name servers.}, with a few modifications on the software's side.
+
+The field "Port" contains the port used in the \gls{TCP} to establish a connection with the peer. The default \gls{TCP} port number is \textbf{62535}\footnote{Port number choose according with the range of ports available for dynamic and/or private use published by IANA\cite{IANA}.}\footnote{We assume fixed ports and port forwarding techniques for this. The functioning of OpenWeather behind firewalls or/and \gls{NAT} is out of the scope of this thesis.}nevertheless any port can be used inside of \gls{TCP}'s range always that it does not conflict with other ports.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Peer-IP" : "140.186.70.148",
+            "Port": "62535",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Peer-IP \& Port fields in a data message of OpenWeather protocol.}
+\end{table}
+
+Both fields, "Peer-IP" and "Port", are present in others \gls{P2P} architectures\footnote{Often denominated with different terms and syntax.}, the reason for this is that these fields facilitate a significant part of the software implementation and the network functionality. Adding these fields to all data messages, enables the software to keep the peer list updated and working between nodes and at the same time it facilitates the protocol session establishment.
+
+
+\subsubsection{Peers-Requested}
+
+The "Peers-Requested" field provides the number of peers that the node requests to other nodes in order to fill its internal list of peers. In a \gls{P2P} architecture it is critical to keep an updated list of peers to guarantee successful delivery of the data throughout the network. By default this field is set to \textbf{20}, with a possible range of \textbf{1..100}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Peers-Requested" : "20",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Peers-Requested field in a data messages of OpenWeather protocol.}
+\end{table}
+
+
+
+\subsubsection{Timestamp}
+
+As explained in chapter two, the success of weather prediction depends on different factors. One of the most important variables are the geographical location and the time and date, in which the weather data samples were collected. OpenWeather provides the field "Timestamp" to supply a solution for this condition. Every data message contains the timestamp in which the data was assembled. This provides a feasible mechanism to know when the weather data sample by the data message received was collected.
+
+The data format used by OpenWeather protocol follows the \gls{RFC} 3339 (Date and Time on the Internet: Timestamps)\cite{rfc3339} and it follows the guidelines established by the \gls{ISO} 8601:2004\cite{ISO8601} as well. All data messages are timestamped using the \gls{UTC}.\footnote{The conversion to the original timezone of the data message can be managed through software.}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Timestamp" : "2011-05-29T12:10:23Z",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Timestamp field in a data message of OpenWeather.}
+\end{table}
+
+Note that OpenWeather protocol does not use the timestamp value for any purpose related with protocol operations. This Timestamp field is provided in order to fit the requirements of the weather data. Because the weather data requires precise stamping of the time in which it was acquire, this field is introduced. In addition, as in other real-time data systems, it is recommended to sync the time of the node using protocol such as \gls{NTP}, to guarantee the quality of the data. Such synchronization must be managed independently of OpenWeather.
+
+
+\subsubsection{Update-Interval}
+
+The "Update-Interval" field contains the time value, expressed in \textbf{milliseconds}, that other peers should wait before to requesting protocol information. This field can be used to manage data availability provided absence of network congestion.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Update-Interval" : "120000",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Update-Interval field in a data messages of OpenWeather protocol.}
+\end{table}
+
+By default this field is set to \textbf{120000 milliseconds} (2 minutes), however this parameter that can be customize by the user.
+
+\subsubsection{Protocol versioning}
+
+Following the same principles as \gls{HTTP} and other protocols, OpenWeather uses \textbf{<major>.<minor>} numbering scheme to indicate the versions of the protocol. The versioning is indicated in the "Version" field of the data header, adding the term ''OpenWeather''  and the character '/' before the numbering. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+            ...
+            "Version" : "OpenWeather/1.0",
+            ...
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Version field in a data message of OpenWeather.}
+\end{table}
+
+\subsubsection{MetaInfo data field summary}
+
+The table \ref{t6.13} shows the structure of the MetaInfo data field with all array elements already filled in with data:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{15.6cm} |}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+    "OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+"ID" :"4f9a67e8496d69b8707858576ec12b8aa3fa5519c23a79ea071dc7dbc0c9b2e3",
+            "Peer-IP" : "140.186.70.148",
+            "Port": "62535",
+            "Location" : "4597807 269999 30T",
+            "Update-Interval" : "120000",
+            "Peers-Request" : "20",
+            "Keep-Alive" : "120000",
+            "Bandwidth" : "4",
+            "Timestamp" : "2011-05-29T12:10:23Z",
+            "Version" : "OpenWeather/1.0",
+            },
+            ...
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{MetaInfo data field (MetaInfo object) in a data message of OpenWeather.}
+\label{t6.13}
+\end{table}
+
+All the OpenWeather data messages will contain a header as the shown in the table \ref{t6.13}, fill in with the particular data of the node.
+
+\subsection{Data field}
+
+As part of the MetaInfo data field (MetaInfo object), OpenWeather data messages can contain a field named Data (Data object). 
+This data field is a \gls{JSON} object composed from different sub-objects. The values or sub-objects having this object as a parent, are dedicated to transport weather data.
+
+The Data field is necessary in order to complement the MetaInfo data field. The MetaInfo data field only provides information about the node itself. The data field contains the data that the node retrieves or request from others nodes. The type of data available in this data field can be:
+
+\begin{itemize}
+\item Real-time weather data
+\item Data requested/delivery in demand (non real-time)
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+        	              ARRAY DATA  OBJECTS
+        }
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Data field in a data message of OpenWeather protocol.}
+\end{table}
+
+All phenomena data transmitted in OpenWeather uses the data units, specify in the \emph{Guide to Meteorological Instruments and Methods of Observation}\cite{GMIMO}, published by the \gls{WMO}\cite{WMO}. The author assumes that the protocol must follow this standard, because it is adopted by the major number of countries\footnote{Exceptions: United States, Liberia and Myanmar (Burma).}. Though some countries still keep local units for measurements, OpenWeather protocol does not take in consideration these use cases, nevertheless the implementation of the conversion between units, can easily be done on the software side.
+ 
+All values or sub-objects containing information about weather data \textbf{will always have the Data object as a parent..}
+The following sections explain how these different types of data are assembled in OpenWeather.
+
+\subsubsection{Real-time data messages}
+
+The section \ref{header} introduced the persistent data provided in every data message of OpenWeather. However, this data is provided in order to guarantee the protocol's functioning. A part of the header field, the data messages can contain weather data. This section explains how a real-time message is assembled. Note that the prototype used in the experimental setup \textbf{only supports} data extracted from the following phenomena:
+
+\begin{itemize}
+\item \textbf{PTU -Pressure, Temperature, Humidity}
+	\begin{itemize}
+		\item Air temperature
+		\item Relative humidity
+		\item Air pressure
+\end{itemize}
+
+\item \textbf{Wind}
+	\begin{itemize}
+		\item Direction (minimum, average, maximum)
+		\item Speed (minimum, average, maximum)
+	\end{itemize}
+	
+\item \textbf{Precipitation}
+	\begin{itemize}
+		\item Rain (accumulation, duration, intensity, peak)
+		\item Hail (accumulation, duration, intensity, peak)
+	\end{itemize}
+\end{itemize}
+
+These data have been chosen because it is available in most of the \gls{AWS} of semi-professional / end-user range. In addition, the data used in OpenWeather provides a functional prototype adapted to this thesis. The author highlights that none of these data fields (concerning weather data) are used claiming them to be a standard or a suggestion of it. As mentioned in section \ref{missingstd}, only a process of standardization can provide the correct data fields to use. Nevertheless, the use of these weather data fields is enough to develop a prototype.
+
+Note that some data objects contain values in the data fields such as "minimum", "maximum" or "accumulation" among others, that are representing data collected in time intervals. Depending of the phenomenon these time intervals can be completely different. The recommend intervals of measurement are described in the \emph{"Guide to Meteorological Instruments and Methods of Observation"} \cite{GMIMO}, and theoretically they must be always the same independently of the brand of the weather instrument used.
+
+\subsubsection{Pressure, temperature and humidity data}
+
+The \gls{PTU}, are the most common data available in an \gls{AWS}, due to the close relation between the phenomena and the ease of its acquirability. Any modern \gls{AWS} will is equipped with necessary sensors to measure these phenomena.
+
+The \gls{AWS}es collect this data in real-time, transforming the raw input data from the sensors into digital data. The workflow of this data is described in section \ref{3.1.4}. As other data in OpenWeather, it will be normalized in the layer implemented between the hardware layer and OpenWeather\footnote{Explained in section \ref{5.2}.}.
+
+\begin{table}[hc]
+\centering
+\begin{tabular}{ | l | l | l | l |}
+\hline    
+0r2,Ta=18.7C,Ua=77.4P,Pa=1002.1H\\
+\hline
+\end{tabular}
+\caption{\protect \gls{PTU} real-time data in the raw format used by the \protect \gls{AWS}.}
+\end{table}
+
+When the \gls{PTU} data is transformed to OpenWeather's format, it has the following format:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            "PTU" : {
+                "Air-Temperature" : "", 
+                "Relative-Humidity" : "", 
+                "Air-Pressure":  ""
+            },
+},
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{PTU data field in a data message of OpenWeather protocol.}
+\end{table}
+
+The three data fields contained in the Data object are:
+
+\begin{itemize}
+\item \textbf{Air-Temperature}: expressed in degree Celsius (\textdegree C)
+\item \textbf{Relative-Humidity}: expressed in percentage in base of relative humidity
+\item \textbf{Air-Pressure}: expressed in Hectopascals (hPa)
+\end{itemize}
+
+These data fields are encapsulated as an array of data elements inside of the \gls{JSON} object \gls{PTU}. The table \ref{tptu} shows an example of the \gls{PTU} object filled with real-time data:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+        "Data" : {
+            "PTU" : {
+                "Air-Temperature" : "20.0", // Celsius: ºC
+                "Relative-Humidity" : "59.5", // %RH 
+                "Air-Pressure":  "1002.1" // Hectopascals: hPa
+            },
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{PTU data field with real-time data in a data message of OpenWeather protocol.}
+\label{tptu}
+\end{table}
+
+The frequency of reporting this data will depend on the configuration of the \gls{AWS}. Most of \gls{AWS} offer a time interval between \textbf{1 second} and \textbf{3 seconds}, to generate this data.
+
+\subsubsection{Wind data}
+
+The wind is other of the most popular phenomena to measure in \gls{AWS}es. The wind data contains two sub-objects: direction and speed. 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            ...
+          "WIND" : {
+                "Direction" : {
+                    "min" : "",
+                    "ave" : "",
+                    "max" : ""
+                },
+                "Speed" : { 
+                    "min" : "",
+                    "ave" : "",
+                    "max" : ""
+                }
+            },
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Wind data field in a data message of OpenWeather protocol.}
+\end{table}
+
+At the same time these two objects are composed by three array data elements:
+
+\begin{itemize}
+\item \textbf{Direction}
+	\begin{itemize}
+	\item Minimum  (min): expressed in degrees
+	\item Maximum (max): expressed in degrees
+	\item Average   (avg): expressed in degrees
+	\end{itemize}
+\item \textbf{Speed}
+	\begin{itemize}
+	\item Minimum  (min): expressed in meters per second $m \over s$
+	\item Maximum (max): expressed in meters per second $m \over s$
+	\item Average   (avg): expressed in meters per second $m \over s$
+	\end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            ...
+          "WIND" : {
+                "Direction" : {
+                    "min" : "217", // Degrees
+                    "ave" : "217",// Degrees
+                    "max" : "218"// Degrees
+                },
+                "Speed" : { 
+                    "min" : "4.2",// m/s
+                    "ave" : "4.2",// m/s
+                    "max" : "4.5"// m/s
+                }
+            },
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Wind data field with real-time in a data message of OpenWeather protocol.}
+\end{table}
+
+\subsubsection{Precipitation data}
+
+Precipitation is the last phenomena that typically all the \gls{AWS}es measure. Inside of the concept of precipitations encompasses two different classes, rain and hail. Thus, the precipitation is structure two sub-objects containing an array of four data elements.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            ...
+       "PRECIPITATION" : {
+                "Rain" : {
+                    "accumulation" : ""
+                    "duration" : "", 
+                    "intensity" : "", 
+                    "peak" : "" 
+                },
+                "Hail" : {
+                    "accumulation" : "", 
+                    "duration" : "", 
+                    "intensity" : "",
+                    "peak" : ""
+                }
+            }
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Precipitation data field in a data message of OpenWeather protocol.}
+\end{table}
+
+Both of them are measured with the same data fields:
+
+\begin{itemize}
+\item \textbf{Rain}
+	\begin{itemize}
+	\item Accumulation  (accumulation): expressed in millimeters
+	\item Duration   (duration): expressed in seconds
+	\item Intensity   (intensity): expressed in millimeters per hour
+	\item Peak   (peak): expressed in millimeters per hour
+	\end{itemize}
+\item \textbf{Hail}
+	\begin{itemize}
+	\item Accumulation  (accumulation): expressed in hits per $cm^2$
+	\item Duration   (duration): expressed in seconds
+	\item Intensity   (intensity): expressed in hits per $cm^2$
+	\item Peak   (peak): expressed in hits per $cm^2$
+	\end{itemize}
+\end{itemize}
+
+Compared with the \gls{PTU} or wind, precipitation may be absent in the current weather. It means that the measurement of these phenomena will happen only when it is present. Despite this, OpenWeather always delivers the precipitation data field in the real-time data messages\footnote{A zero value is assigned to the data fields when the phenomena are not present.}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+	              ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            ...
+       "PRECIPITATION" : {
+                "Rain" : {
+                    "accumulation" : "12" // mm
+                    "duration" : "34", // seconds
+                    "intensity" : "12", // mm/h
+                    "peak" : "9" // mm/h
+                },
+                "Hail" : {
+                    "accumulation" : "2", //hits/cm^2
+                    "duration" : "78", //seconds
+                    "intensity" : "1", // hits/cm^2h
+                    "peak" : "1" // hits/cm^2h
+                }
+            }
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Precipitation data field with real-time in a data message of OpenWeather protocol.}
+\end{table}
+
+\subsubsection{Data field overview}
+
+The table \ref{dataoverview} indicates the Data field structure with all objects and their array elements filled with data:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 1,
+        "MetaInfo" : {
+            ARRAY DATA ELEMENTS
+        },
+        "Data" : { 
+            "PTU" : {
+                "Air-Temperature" : "20.0", // Celsius: C 
+                "Relative-Humidity" : "59.5", // %RH 
+                "Air-Pressure": "1002.1" // Hectopascals: hPa
+            },
+            "WIND" : {
+                "Direction" : {
+                    "min" : "217", // Degrees
+                    "ave" : "217",// Degrees
+                    "max" : "218"// Degrees
+                },
+                "Speed" : { 
+                    "min" : "4.2",// m/s
+                    "ave" : "4.2",// m/s
+                    "max" : "4.5"// m/s
+                }
+            },
+            "PRECIPITATION" : {
+                "Rain" : {
+                    "accumulation" : "12" // mm
+                    "duration" : "34", // seconds
+                    "intensity" : "12", // mm/h
+                    "peak" : "9" // mm/h
+                },
+                "Hail" : {
+                    "accumulation" : "2", //hits/cm^2
+                    "duration" : "78", //seconds
+                    "intensity" : "1", // hits/cm^2h
+                    "peak" : "1" // hits/cm^2h
+                }
+            }
+        }
+    }
+}   
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Real-time data message of OpenWeather protocol.}
+\label{dataoverview}
+\end{table}
+
+\subsubsection{Data on demand}
+
+As highlighted in section \ref{5.2.2}, OpenWeather possesses the capability to transport data on demand (not being the data generated in real-time)\footnote{This data can be stored in the \gls{AWS} itself.}. In this use case, this data is only delivered by the nodes when the user requests it. To achieve this operation, OpenWeather uses the object's hierarchy, to know which kind of data the user is requesting. The protocol encodes such data in OpenWeather data header, after that it is interpreted by the software to localize the data requested from the \gls{AWS}.
+
+Note that the levels of hierarchy can be as deep as it is required. Nevertheless, the prototype only offers the possibility to retrieve the same data as in real-time.\footnote{Mark with a different timestamp inside of an\gls{AWS} or datalogger.}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c6f3.png}}
+\caption{OpenWeather's MetaInfo data field with the data array elements.}
+\end{figure}
+
+Through the different levels established in the object's hierarchy, it is easy to find the information that the user expects.
+
+As explained in section \ref{types}, OpenWeather uses numerical codes to identify the types of data messages. In this case the data on demand must be requested by a user (node), thus the protocol's code will be \textbf{201}\footnote{Review the protocol codes reference.}.
+
+The data message will contain a \gls{JSON} object containing an array of data elements. The data field is named "Retrieve", it contains the data requested, indicated by the letter 'D' as a variable to be reference for data objects requested (\gls{PTU}, wind or precipitation). In addition a timestamp\footnote{This variable follows exactly the same standards used in the Timestamp field used in the MetaInfo data field.} is added to the request in order to specify in which sample is interested the user.\footnote{It is possible to change this field value in order to adapt it to request samples from a range of time.}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 201,
+        "MetaInfo" : {
+            ARRAY DATA ELEMENTS
+        },
+        "Data" : {
+            "Retrive" : {
+                ["D":"PTU","D":"WIND","D":"PRECIPITATION"],
+                "Timestamp": "2011-05-29T12:10:23Z"
+            }
+        }
+    }
+}   
+      \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Real-time data message of OpenWeather protocol.}
+\end{table}
+
+This request will return the \gls{PTU}, wind and precipitations recorded in the timestamp provided. The next data message received by the node in response of this will have exactly the same format as a real-time data message, \textbf{except the code and the timestamp in the header}; they will provide referencing to the response for the data on demand in the date and time specified.
+
+\subsection{Internal protocol data}
+
+As any other \gls{P2P} architecture, OpenWeather needs a certain amount of internal data to keep working. Commonly, this data is focused in peer's information as hostnames and ports used by the nodes. OpenWeather uses a mechanism to exchange list of peers between nodes, to guarantee the well-functioning of OpenWeather network. The information provided in these data messages can have different purposes. The author reserves this type of data for future implementations, nevertheless the protocol has been implemented to be able to transfer list of peers and keep updated the nodes with them.
+
+The data messages used for this purpose are categorized as protocol dedicated, as explained in section \ref{types} these data messages can be requests, retrievals  or status information.
+
+Opposed to weather data messages, the internal data messages do not have a Data object, but instead are composed by an Info object. This info object contains the data fields referencing the information required by the protocol.
+
+The type of data message —code \textbf{101}—, notifies to the node that it must return a list of peers. Because this message also contains the MetaInfo object, the receiver is inform of all the information necessary to deliver the best peer list to the node in the same requests.
+
+In the case of a list of peers, the Info object will contain a list of variables composed by an array of data elements with the \gls{IP} address of the nodes, the port and the bandwidth available in it:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{15.6cm} |}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 101,
+        "MetaInfo" : {
+            ARRAY DATA ELEMENTS
+        },
+        "Info": {
+"Peer-ID" : ["Peer-IP":"226.134.231.73","Port": "62535","Bandwidth":"2"],
+"Peer-ID" : ["Peer-IP":"116.234.231.13","Port": "62535","Bandwidth":"1"],
+"Peer-ID" : ["Peer-IP":"186.214.211.53","Port": "62535","Bandwidth":"5"],
+"Peer-ID" : ["Peer-IP":"182.124.221.23","Port": "62535","Bandwidth":"6"],
+"Peer-ID" : ["Peer-IP":"190.144.231.13","Port": "62535","Bandwidth":"1"]
+        }
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Peer's list exchange in OpenWeather protocol.}
+\label{tpeer}
+\end{table}
+
+The table \ref{tpeer} shows the response of the data message, providing a list of peers. Note that the "Peer-ID" will contain the unique ID of the peers. After the requester gets this data message, the software should update the internal list of peers with the new data and to deliver a status data message to the node that provides the list of peers to confirm the correct retrieval of the data.
+
+\subsubsection{Services availability}
+
+OpenWeather offers a mechanism to know which services are available in an \gls{AWS}. A node requesting data from these services, must send a data message with code \textbf{102}, to obtain a response with the services remotely available in the node.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{10cm}|}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 102,
+        "MetaInfo" : {
+            ARRAY DATA ELEMENTS
+        }
+    }
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Services list availability request.}
+\end{table}
+After this data message is received by the remote node, it will reply with another data message, providing the list of the services:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| p{15.6cm} |}
+\hline
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+{
+"OpenWeatherMessage": {
+        "Type" : 101,
+        "MetaInfo" : {
+            ARRAY DATA ELEMENTS
+        },
+        "Info": {
+            "Services" : { "PTU":"RO","WIND": "RO","PRECIPITATION":"RO"}
+        }
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Peer's list exchange in OpenWeather protocol.}
+\end{table}
+
+One array of data is delivered in the reply:
+
+\begin{itemize}
+\item Services array: indicating the type of service and its availability.\footnote{R is equal to "real time data" and O to "data on demand". Both can be present or isolated.}
+\end{itemize}
+
+With this information the software knows which services can be checked on the remote node and which kind of data —real-time or on demand— can be retrieved from them.
+
+\section{Protocol considerations}
+
+The following sections describe some aspects of OpenWeather related with other protocols or future features of it.
+
+\subsubsection{OpenWeather and other protocols}
+
+We can find dozens of protocols available, using \gls{P2P} architectures and/or optimizations in the data delivery. Nevertheless, the author could not find any protocol suitable enough to fit in the characteristic required by the \gls{AWS}es. Protocols as Bittorrent\cite{BITORRENT}, have a proven track delivering large amount of data and scaling their networks properly. FastTrack\cite{FASTRACK} has been successful achieving similar results as Bitorrent. However, almost all the \gls{P2P} protocols are oriented to transfer files or real-time data with a big size (such as video or voice streams). In addition, these protocols are designed focusing in nodes with common computational capabilities (such as desktops or small servers), not considering embedded system inside of their purpose (being difficult to handle the necessary resources to implement these protocols on an embedded system).
+
+Other alternatives as \gls{HTTP}, were considered by the author as solutions for this thesis. Nevertheless, \gls{HTTP} still has a big dependency of the centralized model. At the same time, \gls{HTTP} works under synchronously mode, something that will limit the real-time capabilities needed for the \gls{AWS}es.
+
+Finally, because the use of \gls{FTP} (a generic protocol) is under use for weather instruments, the author considered much more interesting to research a custom solution for the \gls{AWS}es.
+
+Nevertheless, several concepts have been taken from the mentioned protocols. OpenWeather uses the same philosophy as \gls{HTTP}, providing in the header of the data message all the information needed. The same approach as \gls{HTTP} has been chosen to identify the type of data messages. Through protocol codes the data message is identified in a category / purpose, being simple to extend the amount of protocol operations, just creating new identifiers through the codes. Moreover, the protocol uses \gls{JSON} as data format, being text-based as \gls{HTTP}. Concepts such node ID, peers-requested or update-interval have been taken from protocols as Bitorrent\cite{BITORRENT} or FastTrack\cite{FASTRACK} . These properties allow OpenWeather to implement methodologies tested in other \gls{P2P} networks with successful results.
+
+\subsubsection{Aggregation of data between nodes}
+
+As in other \gls{P2P} networks, the scalability of the OpenWeather network can be an issue. Although OpenWeather does not implement an aggregation technique between the nodes, it is ready to be adapted to it. The nodes conforming to OpenWeather protocol could require the capability to request and retrieve data using indirect paths to the end node. These paths could be found using the connections already established with other nodes.
+
+The aggregation of the data will be executed using the same data format as common on OpenWeather protocol, thus, the data messages will use \gls{JSON} format plus the required fields in the data message to provide such functionality. The same operations of the protocol will be available through aggregation. In addition, the protocol will require the implementation of new operations for internal use.
+
+We need to consider the nature of the weather data networks when we chose the aggregation technique. As it is described in section \ref{3.1.2}, the amount of bandwidth is commonly limited in an \gls{AWS}. Several techniques have been developed to aggregate information from different sources having in consideration connectivity and bandwidth availability issues. These techniques are classified based in how they aggregate and route the data \cite{Ogston09peer-to-peeraggregation}. 
+
+In case that the aggregation is required in OpenWeather, it should be a combination of gossiping and tree-based methods, in order to provide a feasible way to aggregate data between nodes. The reason for this combination is that both methodologies have one specified purpose. Gossiping techniques are focused into offer robust communications, meanwhile, tree-based techniques are focused in to have better performance transferring data. Because a weather network needs to guarantee the flow of the data and at the same time the availability of the data as soon as possible, a research combining both techniques must be performed in order to find suitable solutions for such environment.
+
+Notwithstanding, the OpenWeather specification available in this thesis provides the capability to request and retrieve the list of peers of a remote node. The combination of this list of peers and the Keep-Alive value of them, can be used to build a tree-based structure with the nodes that have a established session.
+Through this tree, OpenWeather can be able to find new paths to other nodes. This will require the implementation of a internal operation of the protocol, providing the capability to make queries to other nodes, in order to build new paths. In addition, the tree-based structure will not be enough to guarantee the robustness necessary for the weather data transmission. Hence, it will be required to find the compatibility of this technique with gossiping methodologies, implementing an algorithm inside the protocol that periodically and randomly tries to update  the table of nodes available, and the paths of them.
+
+Finally, we need to highlight that the aggregation of data is a complicated area, not being possible to treat it in this thesis.
+
+\subsubsection{Compatibility with centralized models}
+
+In chapters two and three we introduced the different techniques and topologies used by weather organizations to acquire weather data. The centralized model was explained, showing how the nodes have a strong dependency of one common point. This setup is the current solution chosen by weather organizations, and almost all big weather data networks are builded based on such infrastructure.
+3
+Thus, it is needed to consider the compatibility of OpenWeather with this topology. Although OpenWeather is designed to have the \gls{AWS}es as independent nodes, infrastructures using the centralized model, can provide a node doing a bridge between the collection point and OpenWeather network. It will be required to develop the methods to retrieve the data from the subnet of the collection point. As it was mentioned in section \ref{5.1.2} and the example of \gls{HTTP} and OpenWeather, it is possible to encapsulate data to other protocols with the proper adaption.
+
+Because every weather organization has their own setups and methodologies, an independent study will be required in order to design a bridge from the collection point models to the \gls{P2P} architecture of OpenWeather.
+
+
+\section{Summary}
+
+In this chapter the core architecture of OpenWeather was presented. The definitions establish by the protocol have been explained. 
+The roles of nodes and their identification is presented to justify how OpenWeather can be adapted for future use in a different system for \gls{AWS} identification.
+
+We have explained the architecture of OpenWeather. Justifying the use of the \gls{AWS}es as indivudal nodes conforming a \gls{P2P} network. The protocol functionality is analyzed, explaining how the different operations perform. The main characteristics of OpenWeather have been exposed.
+
+The structure used in OpenWeather data messages has been analyzed, explaining how \gls{JSON} is used as syntax to encapsulate the data. In addition, the application of object hierarchy on data has been explained. All data fields, which compose data messages were defined technically. 
+
+The protocol codes and their categories have been described, justifying their numeration and purposes.
+
+The differences between real-time data messages, data messages on demand and internal data messages, have been justified, putting attention in how the different data messages have a common structure and use. Finally an example of all the types of data messages implemented in the protocol are explained, providing enough information to implement a functional prototype of it.
+
+
+
+\pagebreak

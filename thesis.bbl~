@@ -1,0 +1,35 @@
+\begin{thebibliography}{47}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+
+\bibitem[Welti (2012)]{SBFE}
+C.~Robert Welti.
+\newblock \emph{Satellite Basics for Everyone}.
+\newblock iUniverse, first edition. United States, 2012.
+\newblock ISBN 978-1-4759-2593-7.
+
+\bibitem[Barnhart (2008)]{BARN}
+D.J. Barnhart.
+\newblock \emph{Very Small Satellite Design for Space Sensor Networks}.
+\newblock Ph.D. thesis. Faculty of Engineering and Physical Sciences, University of Surrey. United Kingdom, 2008.
+
+
+\bibitem[CubeSat Design Specification (2009)]{CubeSat}
+\newblock \emph{CubeSat Design Specification}.
+\newblock Revision 12, Cal Poly. United States, 2009.
+
+
+\bibitem[Praks et al. (2011)]{AALTO1a}
+J. Praks. A.Kestilä, M. Hallikainen, H. Saari, J. Antila, P. Janhunen, V. Rami.
+\newblock \emph{Aalto-1 - An experimental nanosatellite for hyperspectral remote sensing}.
+\newblock In Geoscience and Remote Symposium (IGARS). IEEE International, 2011.
+
+
+
+
+
+\end{thebibliography}

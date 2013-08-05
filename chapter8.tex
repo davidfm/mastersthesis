@@ -1,0 +1,46 @@
+
+\chapter{Conclusions}
+
+In this thesis we exposed the basis of weather observation, how different organizations around the world are collecting and studying enormous amounts data of different phenomena. From the very beginning the industry has been building really complex instruments to measure these phenomena. Many people, from individuals to scientists, are spending their time and resources to part take in the worldwide observation of weather. It is a fact that we need to understand the weather in order to better understand our planet and implicitly, to increase our quality of life.
+
+We have analyzed how the instruments used for such purposes and their limits restrict our knowledge expansion. We described how the industry has been improving these instruments in many different  ways. Areas such as the industrial design of the instruments or their internal electronics, have been experiencing tremendous improvements during the last decades, thus allowing the industry to offer weather measure instruments of strong robustness and high accuracy.
+
+Based on the study of these instruments and the scientific discussion of those using them, such the SMEAR project\cite{SMEAR}, we have come to a conclusion that methods used in them can be improved significantly concerning real-time weather data transmission.
+
+Through the analysis of the different architectures used to collect the weather data, we found several points related to technologies used on network level that need to be changed in order to achieve a successful delivery of real-time data.
+
+We explained how the industry have been introducing new digital interfaces in order to adapt the \gls{AWS} to the new standards. Nevertheless, although the digital interfaces have been upgraded, the protocols used to transmit the data through them have certain particularities such the use of vendor data specific formats.
+
+In addition, the analysis performed in different instruments and the network technologies that they use, has indicated that the data format and the protocol standards used are of low compatibility with capabilities such real-time data acquisition or data exchange.
+
+The mainstream methodologies currently used to transmit the weather data, such the \gls{FTP} or the use of \gls{CSV} as data formats, are limiting the possibility to deliver data with frequency and accuracy high enough to consider it real-time data. Nevertheless, these methodologies are currently considered the state of the art and thought to be sufficient for performing in current architectures used to acquire data.
+
+Though some organizations as \gls{NOAA} or \gls{ICAO}, have been creating some data formats for certain purposes (such air navigation or \gls{CWOP}),nowadays , the global standard still not adapted for the weather industry. The \gls{WMO}, conscious of this situation, started a process of standardization for weather data representation in 2002. At the moment, this process still under development without any official standard published.
+
+The absence of a standard data format and a protocol to transmit it, is avoiding the possibility to take advantage of all the capabilities that an \gls{AWS} can offer, more specifically the real-time data acquisition. Although the weather organizations have access to weather data samples updated with small frequencies of time, programs as \gls{GOS} or \gls{GDPFS}, are seeking to establish the basis of future systems for weather observation, providing features as real-time capabilities and compatibility between data formats.
+
+All the issues mentioned previously have been considered during the development of OpenWeather. As solution for the problem statement, OpenWeather aims to provide all the features necessary to take advantage of the weather instruments concerning their capabilities to accomplish weather data transmission in real-time.
+
+Based on the architecture used to collect weather data, we use its topology to adapt it to the \gls{P2P} architecture. Thus, we transform any \gls{AWS} in a node offering services to other nodes. To achieve such behavior, we developed the OpenWeather protocol from scratch, conceiving it will all the necessary properties to make it \gls{P2P} and at the same time, adapting its core functionality to the weather data requirements. Being conscious of the absence of standards in such area, OpenWeather has been designed adopting as much standards as possible into its architecture, such the use of standard measurement units or date-time format.
+
+As a result, OpenWeather provides a new way to transmit weather data and to interact with the \gls{AWS}es. 
+
+The implementation of the protocol in a software prototype and its posteriorly use, verify its feasibility in order to translate the protocol specifications to a functional software implementation to be tested in a more complex scenario.
+
+In the experimental setup we verify that OpenWeather —in its implementation as prototype— works in a scenario using the same technologies that are currently common among weather observation experts. The prototype implemented gives us the possibility to communicate with other nodes, executing the protocol operations designed to achieve the weather data transmission. In addition, the \gls{P2P} functionality of the protocol has been tested, verifying that the \gls{AWS}es can be treated as independent nodes, requesting and offering services at the same time, and still achieving a successful weather data transmission without a centralized collection point.
+
+We identify as requirement the adaption of the intermediary layer developed to other vendor's data formats, in order to make compatible OpenWeather with different weather instruments from different brands.
+
+Although we described how nodes using the OpenWeather protocol could be able to gather data between them, such functionality has not being implemented in the prototype. Hence, future research should be performed in order to evaluate the capabilities of the protocol to scale in large networks. In addition, the implementation of weather data networks using scalable methodologies, should be study together with their connectivity technologies. Thus, the possibility to use other protocols on the \gls{AWS}es to transport data instead of \gls{TCP}, should be considered, looking for protocols more optimized for low bandwidth availability.
+
+Through the execution of the test cases, we analyzed the results of the protocol in the scenario given. These results show how the protocol can fit in the technical specifications of an \gls{AWS}, making possible to use it in future adaptations.
+
+The main goal of this thesis has been to study state of the affairs in weather observation systems, their technologies and methodologies, trying to find ways of their improvement. OpenWeather fits that goal. Through the prototype we can show how the weather data transmission can be improved in several aspects from network topology to data structure use.
+
+This topic suggests deeper research, as it could provide a solid basis for future implementation of a global real-time weather observation with a high capability in data exchange operations. In addition, in this thesis we have not treated security matters related with the weather data transmission. Despite the nature of the weather data, a complete solution has to consider security threats. Thus, an independent study is required to evaluate how the weather data transmission can be protected. Although, it would be possible to use cryptographic protocols such as \gls{TLS} together with OpenWeather, such combination will have an impact on the bandwidth used to transmit weather data. In addition, \gls{ACL} mechanisms could be considered to assure the identity of the nodes and their locations, in order to guarantee their legitimacy. Moreover, weather data networks can be an objective of \gls{DOS} or \gls{DDOS} attacks. Although this should be treated independently of OpenWeather protocol, future adaptions of it should have these threats in consideration to provide methodologies to lead with them.
+
+The involvement of organizations such \gls{WMO} and the vendors,  is critical to make this happen, possibly in cooperation with standardization organizations for communication protocols such the \gls{IETF}.In addition, any adaption of the industry to protocols designed and adapted for a most efficient use of resources available, will provide an improvement in their products, providing new ways to use their instruments to understand the weather phenomena.
+
+Finally the author believes that the understanding of the weather phenomena will be accompanied by open and scalable network technologies. Thus, the OpenWeather protocol could be a first step to make it happen.
+
+\pagebreak

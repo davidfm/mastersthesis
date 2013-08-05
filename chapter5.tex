@@ -1,0 +1,166 @@
+
+
+\chapter{Introduction to OpenWeather}
+
+The previous chapter summarized the issues found by the author in the protocols used for weather data. It has been analyzed how the weather instruments use protocols as \gls{FTP} or \gls{SMB} to transmit data. Nevertheless, these protocols are not designed to be used in a scenario in which the data is generated based on real-time inputs. In addition, the current methodologies provided by the industry, are not efficient enough to interact with the \gls{AWS} without additional effort in performing data normalization or data delivery. This chapter gives a general overview of OpenWeather, the protocol developed by the author, in order to provide a solution to problems that weather instruments encounter during data transmission.
+
+\section{Overview and goals}\label{5.1}
+
+OpenWeather is an application layer protocol based on \gls{TCP}/\gls{IP}. It assumes a reliable transport layer (\gls{TCP}), in order to achieve a successful data delivery, based on such mechanisms as error detection, flow control, congestion control, etc.
+
+The protocol is built assuming three principles:
+
+\begin{itemize}
+\item Every \gls{AWS} is considered to be a node
+\item A node accepts incoming sessions from peering hosts and initiates outgoing sessions to peering hosts as well
+\item	An \gls{AWS} must have the capability to provide and to request services from other nodes.
+\end{itemize}
+
+These principles are supported by assumptions that an \gls{AWS} is an embedded system with networking capabilities, able to interact via TCP/IP to deliver the data produced by its sensors. The sensors' output are considered to be services offered by the \gls{AWS} (node) to other nodes.
+ 
+In addition, the star topology explained in section \ref{3.1.4}, disappears to give way to a decentralized topology based on a peer to peer architecture.
+
+OpenWeather provides the capability to dispense a unique collection point. Instead, all nodes can be collection point and at the same time to be part of other collections points. In addition, the protocol offers a service oriented model (\gls{SOA}), to provide an easy way to interact with the nodes and retrieve or send data to them.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c5f1.png}}
+\caption{Comparison of the currently centralized architecture provided by the industry against OpenWeather architecture.}
+\end{figure}
+
+From the perspective of portability and data delivery, the protocol has been designed to avoid problems with the endianness and data normalization; to achieve this goal, \gls{JSON}\cite{rfc4627} has been chosen as data interchange format between nodes.
+
+\gls{JSON} allows OpenWeather to use data streams based on parsable objects, facilitating the data manipulation and normalizing the data to one common format. Additionally, \gls{JSON} is well supported by several libraries\cite{JSONW}, bringing the possibility to easily create applications based on OpenWeather format.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c5f2.png}}
+\caption{Example of a OpenWeather's JSON object inside of data message.}
+\end{figure}
+
+\subsection{Improvements in the current technology}
+
+OpenWeather provides a new paradigm for weather data collection. Based on a \gls{P2P} architecture, it allows the users to interact between multiple nodes, retrieving and sending information inside of the network independently of the brand's instruments used. At the same time, it brings the possibility to combine the real-time data streams obtained from the nodes, providing a stack to build applications using multiple data sources without requiring extra resources on the data manipulation.
+
+In addition, the protocol is designed to be extensible, adaptable to new types of data, while maintaining compatibility with future formats. Furthermore, the service oriented model (\gls{SOA}) of the nodes, allows the users to develop applications that only want to obtain some specific data from a particular service.
+
+Finally, the protocol brings new opportunities to be operated under distributed models and to provide implementational basis for future standards of the weather data categorization. Because the data interchange format is text-based and human-readable, it provides the capability to combine the protocol with database applications without the need to develop extra \gls{API}s, facilitating even more possibilities to take advantage of the data.
+
+\subsection{The role of OpenWeather and data spreading}\label{5.1.2}
+
+OpenWeather is designed to fix deficiencies in weather data transmission, while helping with the tasks of spreading data to the end users. Though most of the phenomena require scientific analysis to make the data understandable, some phenomena as atmospheric temperature, pressure or wind speed, are simple enough and known to be spread across them directly to the end users without the need of additional processing. OpenWeather allows to connect to an \gls{AWS}\footnote{Through a intermediary layer implemented through software.}, to retrieve this type of data in real-time and —host to host— based, not needing more than a computer with software supporting the OpenWeather protocol and network connectivity.
+
+In addition, the technologies used in OpenWeather can facilitate the creation of new \gls{API}s for web services oriented on weather's forecasts. Some websites offer the possibility for calling \gls{API}s to obtain weather data. However, these \gls{API} calls are completely different between websites, which leads with extra development time of web applications which utilizes different web resources for data extraction. This problem can be easily handled with OpenWeather, creating standard \gls{API} calls according to the protocol specification. This enables the use of such encapsulated protocols methods as \gls{HTTP} for creating for an intermediary bridge between the web application and the end nodes.  
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c5f7.png}}
+\caption{Example of an \protect \gls{API} call through \protect \gls{HTTP} and OpenWeather.}
+\end{figure}
+
+\subsection{Contribution to the current methodologies for weather data acquistion}
+
+Even if OpenWeather is a proof of concept of an adapted protocol for \gls{AWS}, it proves how the problems exposed in chapter four can be resolved. The feasibility of migration of scientific installations for production, will be deemed feasible as the principles applied in OpenWeather, just adopting the \gls{P2P} architecture or the use of a human-readable lightweight format as \gls{JSON}, it will be enough to observe improvements in data delivery and acquisition. In chapter seven is analyzed the results of use OpenWeather.
+
+As it was mentioned in chapter four, the \gls{WMO} has several worldwide projects, such as \gls{GOS}, in which different weather organizations around the world are involved in the process of creation of future basis for weather data processing. As described on \gls{WMO}'s website\cite{WMO}, one of the purposes of the project is: \emph{'The coordinated system of methods and facilities for making meteorological and other environmental observations on a global scale in support of all WMO Programmes''}. OpenWeather, as scalable and extensible protocol, can proven useful in certain areas of projects as \gls{GOS} or SMEAR\cite{SMEAR}, concerning data availability.
+
+\subsection{Impact on weather instrument industry}
+
+As it was analyzed in chapter four, the industry has not started the process of standardization for their instruments. Despite the issues that this practice causes, OpenWeather aims to be the first solution that tries to fix the absence of such protocol and at the same time provides a basis to be adapted for the future data standard format, providing better archiving mechanisms for a more efficient exchange of weather data.
+
+Furthermore, the \gls{P2P} architecture brings such a new industry paradigm, allowing to develop new products in which real-time data retrieval will be put to use.
+
+\section{Basic functionality of OpenWeather}\label{5.2}
+
+Considering any \gls{AWS} a node, the implementation of OpenWeather should be done inside of the \gls{AWS}'s software itself. Nevertheless, the author \textbf{can not implement a fully functional prototype, because it is not available any open source / libre software version of \gls{AWS}'s \gls{OS}}. Instead, an intermediary layer has been created for the evaluation setup, to normalize data from vendor format into OpenWeather format.
+\footnote{The removal of this layer depends on cooperation between vendors in order to implement a protocol inside of the \gls{AWS}'s \gls{OS}.}.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c5f5.png}}
+\caption{Middle-layer for data normalization.}
+\end{figure}
+
+This layer provides the conversion from native vendor format explained in section \ref{4.2}, to an operational format in which OpenWeather can work. When the data is pulled through a digital interface, the middle-layer recognizes the vendor format and converts it according with OpenWeather requirements.
+
+This middle-layer is located between the hardware and the network level, giving as a result formatted data ready to be used in the protocol. With the introduction of this layer, \textbf{the steps mentioned in previous chapters\footnote{Concerning data parsing.} disappear}. The data normalization occurs only once at a time, instead of multiple times along the data workflow.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline    
+\textbf{Original sender \gls{AWS} data}:0r2,Ta=10.6C,Tp=10.8C,Ua=74.6P,Pa=1006.0HKHK\\
+\hline
+\textbf{OpenWeather's format}:  \\
+\begin{minipage}[t]{\linewidth}
+	\begin{verbatim}
+"Data" : { 
+            "PTU" : {
+                "Air-Temperature" : "23.6", 
+                "Relative-Humidity" : "14.2", 
+                "Air-Pressure":  "1026.6" 
+            }
+           \end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Comparison of one vendor format against OpenWeather \protect \gls{JSON} format.}
+\end{table}
+
+When data is normalized by this intermediary layer, the \gls{AWS} is ready to operate inside of OpenWeather network. This intermediary layer will not be needed if the vendors establish a process of standardization.
+
+\subsection{Peer to Peer Architecture}\label{5.2.1}
+
+As mentioned in section \ref{5.1}, OpenWeather is designed based on a \gls{P2P} architecture. The \gls{RFC} 5694 (Peer-to-Peer (P2P) Architecture: Definition, Taxonomies, Examples, and Applicability)\cite{rfc5694}, defines a \gls{P2P} system as the following:
+
+\emph{[...] We consider a system to be P2P if the elements that form the system
+   share their resources in order to provide the service the system has
+   been designed to provide.  The elements in the system both provide
+   services to other elements and request services from other elements. [...]}
+
+OpenWeather is according with the definition established by the \gls{RFC} 5694 \cite{rfc5694}. The protocol is thought to share the resources available in an \gls{AWS} and at the same time request services from others. In order to function properly the OpenWeather network requires a minimum activity that must be performed by the nodes (as peers's list exchange).
+
+Note that user itself is considered to be a node. \textbf{It is not necessary to have an \gls{AWS} in order to be considered a node}. A node is part of OpenWeather network, interacting with other nodes, sending and retrieving data, while time offering services to them\footnote{Thus, a user without an \gls{AWS} can interact with other nodes offering for example peer list exchange.}. 
+
+An OpenWeather node possesses the following properties:
+
+\begin{itemize}
+\item A node has a \textbf{unique ID} within OpenWeather's network
+\item The geographical location of a node \textbf{is essential to its connection in order} to OpenWeather's network
+\item A node of the OpenWeather network can require the use of \gls{NAT}\cite{rfc1631} \footnote{As described in \gls{RFC} 5128 (State of Peer-to-Peer (P2P) Communication across Network Address Translators (NATs)\cite{rfc5128}, will be recommendable to implement the TCP/UDP Hole Punching technique in OpenWeather's software, in order to avoid peer connectivity issues.}
+\end{itemize}
+
+Opposed to other \gls{P2P} networks, OpenWeather does not use the \gls{P2P} architecture to archive a better performance transmitting big amounts of data\footnote{In fact, as explained in section \ref{3.1.2}, the amount of data generated by a node is insignificantly small.}; the justification of use of \gls{P2P} architecture in OpenWeather is based on the distribution of the nodes and for better interaction with them. The centralized model, fails to utilize its ability to use weather data from different collections points without a pre-normalizing data. In addition, the \gls{P2P} architecture enables scaling of the network as well, as giving the advantage of not being restricted by the limitations of a central node.
+
+\subsection{Service Oriented Architecture in nodes}\label{5.2.2}
+
+As explained in section \ref{3.1.2}, an \gls{AWS} produces real-time data collected by its sensors. At the same time some \gls{AWS} are able to store specific data in persistent memory such as averages figures, daily reports, etc. These features provide two data use cases for OpenWeather:
+
+\begin{itemize}
+\item Data becomes available in real-time
+\item Data can be retrieved on demand without the need to be real-time specific
+\end{itemize}
+
+OpenWeather handles these use cases providing an extra layer based on \gls{SOA}. In order to achieve this, OpenWeather provides a mechanism to discover which services being available in a particular node, being possible after the initialization of the session, to interact with these services.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\textwidth]{images/c5f3.png}}
+\caption{OpenWeather stack over TCP/IP.}
+\end{figure}
+
+
+The fundamental reasons of choice of \gls{SOA} for OpenWeather, is to facilitate the accessibility of the data. A user can be both interested in receiving only real-time data or in to retrieving a particular chunk of data. To provide this capability, the protocol must be \gls{SOA} oriented, in order to alleviate data access through these services.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c5f4.png}}
+\caption{Uses cases available in OpenWeather via \protect \gls{SOA}.}
+\end{figure}
+
+Real-time data messages flow is considered to be as a continuos service offered by the \gls{AWS} via OpenWeather. Additionally, the possibility to retrieve saved data in the \gls{AWS} exits. Both real-time data and data on demand, is sent and retrieved through OpenWeather data message system, using \gls{JSON}. Thus, OpenWeather offers the same possibilities as the common methodologies currently used by the vendors explained in chapter four, moreover the chance to get real-time data through a reliable and efficient way.
+
+\section{Summary}
+
+In this chapter we gave an introduction of OpenWeather, highlighting the general guidelines applied in its design. We exposed some of the principles used in OpenWeather nodes we considered some possible examples of future applications using OpenWeather. 
+
+We introduced the areas in which OpenWeather can have a contribution or impact. Projects as \gls{GOS} or SMEAR\cite{SMEAR} seeking for new technologies for data acquisition, could get a positive use of OpenWeather concepts.
+
+In addition, the basic functionality of the protocol, such as its architectural principles or software model implementation have been introduced as well.
+
+\pagebreak
+

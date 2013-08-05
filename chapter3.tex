@@ -1,0 +1,267 @@
+
+\chapter{Infrastructure for the weather data}\label{3}
+
+History is full of attempts to understand the weather. From the very beginning, humans have been focusing their attention in the weather, putting a lot of effort trying to understand and predict it. The first treatise concerning weather observations was \emph{Meteorologica}, written by Aristotle  (340 B.C.). Despite of this, \emph{"the birth of meteorology as a genuine natural science did not take place until the invention of weather instruments, such as the thermometer at the end of the sixteenth century, the barometer (for measuring air pressure) in 1643, and the hygrometer (for measuring humidity) in the late 1700s"}\cite{METO}. It was with the invention of the telegraph, in 1843, when the weather observations started to be useful owing to the capability to transmit the weather reports to different locations. Since this time elapsed, the industry has been developing and improving the weather instruments to achieve better measurements. Furthermore, the networks for weather data collection have been maturing. This chapter introduces the technology that is composing a modern weather instrument, its role in the weather's collection infrastructure and shows us some concepts to understand the conflicts of this setup exposed in chapter four.
+
+\section{A meteorological instrument}
+
+The purpose of a weather instrument is to measure a particular phenomenon under certain conditions, to collect some data that can be processed to obtain some conclusions (in terms of understanding and predictability). The success of the prediction and understanding comes supported by the accuracy that these instruments can provide. The industry has been creating new instruments based on new techniques discovered in Physics, to measure the phenomena; in addition, the advance of the digital technology, is providing to the  physicians a great scenario in which physical principles can be combined easily with digital technology, producing as result modern instruments with the ability to transform the result of these physical principles in digital data.
+
+Despite their size and appearance, the weather instruments are complex artifacts. 
+The materials used to build them are a combination between plastic and metal, this combination provides the necessary robustness to place the weather instruments at isolated places with all kind of degradation conditions. Furthermore, these instruments must have a low power consumption in order to fit the requirements of their locations. That forces the manufacturers to use more tiny and efficient technologies for measuring the phenomena without sacrificing energy and accuracy.
+
+It is not possible to discuss all these instruments in this thesis. For this reason the following subsections of this chapter are focused on automatic weather stations(\gls{AWS}es). The \gls{WMO} defines an \gls{AWS} as: \emph{meteorological station at which observations are made and transmitted automatically}\cite{GMIMO}, at the same time this concept comes with other nuances as \gls{AWOS} and \gls {ASOS}: \emph{a combined system of instruments, interfaces and processing and transmission units is usually called an automated weather observing system \gls {AWOS} or automated surface observing system \gls {ASOS}. It has become common practice to refer to such a system as an \gls{AWS}}.
+
+The focus on the \gls{AWS}es is supported by the popularity of these weather stations as main tools to measure the weather. \textbf{The author considers more useful to focus on this technology because a wide range of \gls{AWS}es is available for the end-non professional user}; meaning this that is possible to experiment with a new protocol using this scenario without affecting the current setups used for scientific purposes. In addition, later migration of the protocol to professional instruments should not be difficult because the manufacturers are using mostly the same technologies in the data transmission interfaces for both brands (professional and end-user).
+
+\subsection{Industrial design}
+
+Depending of the type of phenomenon to measure, the physical principle needed will require an instrument with certain sizes, materials and lifetime. It is rarely possible to measure multiple phenomena with the same instrument, this fact causes the creation of instruments focused only on one phenomenon \footnote{We refer here to high-tech and professional instruments for scientific purposes. It is possible to find several sensors giving an output for different phenomena in one instrument. However, this is not common in the instruments used for scientist observations; at the same time this configuration should be considered as a weather station not  as an "individual" weather instrument.} and even in only one specify and tiny part of it. 
+
+The industrial design of an instrument is one of the keys for the success of the observations; the ability to put available the required technical conditions to perform the measurement through a digital interface, reside on it. To avoid conflicts in the study of the phenomenon, the materials should be chosen very carefully based on a complex equation between: robustness, durability, impact, impact assessment, etc. Furthermore, the shapes and sizes depend on the environment in which the instrument is going to be placed and the requirements needed for the physical principle used.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\textwidth]{images/c3f1.png}}
+\caption{\protect \gls{NOAA} weather buoy \protect \cite{NOAA}, example of a complex an robustness \protect \gls{AWS}.}
+\end{figure}
+
+We can find in the market dozens of instruments for the same purpose, using in some cases the same principles to measure the phenomenon and even with some strong differences concerning the industrial design. Though, the instruments from different manufacturers have similar dimensions and they are build with similar materials, there is non available standard concerning all these characteristics, only some general guidelines are provided by the \gls{WMO}{\cite{WMO} suggesting dimensions and sizes for some instruments, an example of this recommendation is the following:
+
+\emph{Wind-measuring systems can be designed in many different ways; [...]
+The first system consists of an anemometer with a response length of 5 m, a pulse generator that generates pulses at a frequency proportional to the rotation rate of the anemometer (preferably several pulses per rotation), a counting device that counts the pulses at intervals of 0.25 s, and a microprocessor that computes averages and standard deviation over 10 min intervals on the basis of 0.25 s samples.}\cite{GMIMO}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f2.png}}
+\caption{Generic \protect \gls{AWS} with different instruments and materials combination.}
+\label{f3.2}
+\end{figure}
+
+The figure \ref{f3.2} shows a generic schema in which we can see different combinations of materials as plastic and metal, at the same time the instruments are placed in different heights due to technical requirements for the techniques used to perform the measurements. 
+
+Most of the instruments available at the market are the result of the coordination between the requirements requested by the physicists and the possibilities that the technology developed by the industry. Notwithstanding, the instruments industry and their industrial design, is something really big and complex and it is out of the scope of the thesis. Furthermore, we need to be conscious about the industrial design of the instruments, because it is strong-linked to the electronics that they can house, conditioning this the digital interfaces for data transmission that we can install in them.
+
+\subsection{Electronics and data handling}\label{3.1.2}
+
+The electronics of a weather instrument are barely different irrespective of the phenomenon to measure. The industry is producing a wide range of instruments with a complete different set of sensors. Nevertheless, as embedded systems, all these instruments have a common need to conform these type of systems. The \gls{WMO} gives again some general guidelines with respect to electronics and weather instruments.  The following paragraphs summarize them.
+
+ \subsubsection{CPU}\label{cpu}
+ 
+As other electronic device in charge of process data, an \gls{AWS} has a \gls{CPU} running at clock frequency of a few \gls{MHz}. This CPU is microprocessor based with 8-bit wide.\footnote{Nowadays some manufacturers are introducing progressively new microprocessors using 32-bit wide.} Despite the low bit wide of these microprocessors, an \gls{AWS} does not needed more calculation power because the amount of data generated by the sensors will be rarely up of 1 \gls{kB}, meaning this that frequencies oscillating between 8-33 \gls{MHz} will fit perfectly in the requirements to process the data.
+
+\subsubsection{Volatile Memory}
+
+Often 32-64 \gls{kB} is the maximum amount of volatile memory available on an \gls{AWS}, it makes the instrument non capable to keep too much data on a \gls{RAM} at all. Forcing to the manufacturers to design the instruments with fast and reliable mass storages, ready to transfer the data from the volatile memory to the persistent storage.
+
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.7\textwidth]{images/c3f3.png}}
+\caption{Abstracted electronic schema of an \protect \gls{AWS} reading data from one sensor.}
+\label{f3.3}
+\end{figure}
+
+The figure \ref{3.3} shows the workflow data of an abstract sensor. In the first step the sensor generates the data from the phenomenon, based on the observation of some physical principle; the data acquired is processed by the microprocessor in the the second step, placing the data on the volatile memory. When the data is placed on \gls{RAM} the \gls{IO} operations start, transferring the data from the volatile memory to the mass storage (persistent memory). According to the Guide to Meteorological Instruments and Methods of Observation \cite{GMIMO} published by the \gls{WMO}, it is highly recommended to equip the \gls{AWS} with a battery backup dedicated to the volatile memory to avoid data loss due to some power fails. This non common feature in generic computers can be an advantage to have in mind when a protocol is implemented, because it enables the possibility to have some methodology in the protocol to recover the session after one power failure.
+
+\subsubsection{Mass storage}
+
+Typically, an \gls {AWS}, will have mass storage device to save the data collected from the sensors. The storage of data in the \gls{AWS} has been changing in the last years due to the continuously decreasing price of flash memories. It is common to find very different architectures in terms of data storage in the \gls{AWS}.
+
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.7\textwidth]{images/c3f4.png}}
+\caption{Types of storages available in an \protect \gls{AWS}.}
+\end{figure}
+
+The number of sensors and the frequency in which the information is transferred to the data centers, determines the size of available memory in an \gls{AWS}. Based on the market, the mainstream option in terms of memory size for mass storage is around 1 \gls{MB}, that space is more than enough to save thousands of samples in case that the \gls{AWS} has not send the data to the collecting point.
+
+\subsubsection{Sensors}
+
+The sensors are the digital interfaces that make an \gls{AWS} different from other embedded devices. As explained in section \ref{1.1}, a sensor is a digital interface using some physical principle to measure a particular phenomenon. Their principles, implementation and complexity are out of the scope of this thesis. Even so, we need to consider the sampling frequency of them because they are involved in the frequency in which the data is produced.
+
+The sampling frequency of the sensor depends on the data required to understand the phenomenon. A big range of sampling frequencies are used to measure different phenomena. Nevertheless, the author is not assuming this frequencies as a need for the protocol. 
+
+A correct behavior of the sensors requires a high-accurate calibration of them. The manufacturers have been developing several methodologies and mechanisms to calibrate the instruments and verify their correct behavior. These calibrations are not considered as part of the problem statement of this thesis because they are unrelated to the methods of the data transmission.
+
+\subsubsection{Digital interfaces}
+
+As mentioned in the section \ref{1.2}, an \gls{AWS} is equipped with at least one peripheral device to provide data interaction. These interfaces offer the possibility to configure the \gls{AWS} and transfer data from it. The type of device is a serial communication physical interface, and depending on the type and vendor of the instrument, it will be one the following\footnote{Other types of interfaces can be found in the instruments. However, the industry stablished —with non-written agreement— the use of the mentioned interfaces as mainstream.}:
+
+\begin{itemize}
+\item \gls{RS232}
+\item \gls{RS422}
+\item \gls{RS485}
+\item \gls{USB}
+\end{itemize}
+
+These four types are well-known in the industry. They are available in almost all the modern computers, however the relation of them with this thesis is focus mainly in the bandwidth that they offer. 
+The table \ref{Table3.1} shows a comparison between these physical digital interfaces and their bandwidth.
+\begin{table}[h]
+\centering
+    \begin{tabular}{| l | l | r | r |}
+    \hline
+    \textbf{Standard} & \textbf{Bandwidth} & \textbf{Bytes/s}  & \textbf{kB} \\ \hline
+    TIA/EIA-232-F\cite{RS232S} & 116 \gls{KBITS}/s & 14848 & 14.5 \gls{kB}\\ \hline
+    TIA/EIA-422-F\cite{RS422S} & 200 \gls{KBITS}/s & 25600 & 25 \gls{kB}\\ \hline
+    TIA/EIA-485-F\cite{RS485S} & 35  \gls{MBITS}/s & 4587520 & 4.375 \gls{MB}\\ \hline
+    USB\cite{USBS}\protect \footnote{Referencing the USB in low power mode (specification 1.0)} & 1.5  \gls{MBITS}/s & 196680 & 192 \gls{kB}\\ \hline
+\end{tabular}
+  \caption{Comparison between standards and bandwidth offered.}
+  \label{Table3.1}
+\end{table}
+
+Even so, as the table \ref{Table3.1} shows, the minimum bandwidth provided by theses interfaces (\gls{RS232}) should be enough. As described in the sensors section, the total amount of data generated by the sensors of one \gls{AWS} rarely exceeds 1\gls{kB}; fitting perfectly this in the bandwidth offered by the \gls{RS232}.
+
+Due to the constant renovation in digital interfaces that the industry does, we do not consider other old interfaces in the analysis, assuming that the protocol will work with instruments manufactured in the last 10 years\footnote{Those should be equipped with the interfaces mentioned in the Table 3.1.}.
+
+Although the interfaces are not conditioning our protocol implementation, it is necessary to highlight that most of the vendors offer the possibility to re-wire the \gls{AWS} to make it work with different physical interfaces.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f5.png}}
+\caption{Wiring schema showing how to re-wire the \protect \gls{AWS} to use \protect \gls{RS422}.}
+\end{figure}
+
+
+\subsubsection{Datalogger}\label{dataloggersection}
+
+The datalogger is one the most critical parts of an \gls{AWS}. It is in charge of the data logging produced by the sensors and deliver by the operating system. Its main task is to keep track of the data collected by the \gls{AWS}. This component plays an important role in the implementation of the protocol, because of the data of the protocol must be originated in this part.
+
+Depending on the architecture of the \gls{AWS}, the datalogger can be an external embedded system with serial communication capabilities, able to send data through a network and with multi-station capability\footnote{Some dataloggers are able to track and to operate several \gls{AWS} at the same time.}. Small \gls{AWS}es can have datalogging capabilities, keeping the data in a persistent memory for a short period. To have the datalogger implemented internally implies increasing the complexity of the \gls{AWS}, converting it in a more complex embedded system with features as data delivery through a network, long-term data storage, etc.
+
+Often, the architecture chosen for \gls{AWS}es is an external device connected through the physical interface. These devices are equipped with some kind of connectivity such as \gls{GSM}, \gls{GPRS} or \gls{UMTS} modems, using them to deliver the data to the collection point. 
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\textwidth]{images/c3f6.png}}
+\caption{Location of the datalogger in an \protect \gls{AWS}.}
+\end{figure}
+
+\subsection{Software}
+
+As it is common in the embedded systems, an \gls{AWS} has a tiny internal software. The programming languages used to develop this software have no relevance in this topic. We assume that the internal operating system of the \gls{AWS} will offer us the data collected from the sensors, moreover of some set of options to configure and calibrate the \gls{AWS}.  
+
+We need to differentiate between the software embedded in the \gls{AWS} and the software at the end of the peripheral device. 
+
+\subsubsection{AWS's Operating System}
+
+The operating system installed in an \gls{AWS} resides in a \gls{PROM}. Its architecture is based in a real-time clock implemented on the mother board of the \gls{AWS}. The OS provides a limited set of options to interact with the \gls{AWS}, most of these options are focused in data acquisition, calibration and hardware configuration. This software is in charge of the formatted data of the \gls{AWS}, in other words, it gets the data from the sensors, applies the necessary formulas to extract a meaningful result and formats the data in one of the following serial communication protocols\footnote{We need to distinguish between the data format used to communicate with the interface (\gls{ASCII}, NMEA-0183, etc) and the format in which the data is formatted, this is explained the section \ref{4.2}.}:
+
+\begin{itemize}
+\item	RAW \gls{ASCII}
+\item \gls{SDI-12}
+\item \gls{NMEA-0183}
+\end{itemize}
+
+After the data is formatted, it is transmitted through the peripheral device to the the datalogger.
+
+\subsubsection{External software used for datalogging / data distribution}
+
+As explained in \ref{dataloggersection}, an \gls{AWS} needs a datalogger device to track the data collected from the sensors. Irrespective of the type of datalogger, at the end of it, we will find some computer in charge of the data manipulation and storage. The software installed on the computers can be really differently implemented and designed depending of the vendor, but its main task is to understand the data format chosen by the vendor to transmit information and take use of it.
+
+The market offer concerning software for \gls{AWS}es is too big, even some companies not related with the manufacturing of the instruments, are releasing software for datalogging purposes. It is common that the \gls{AWS} is provided from the factory with its own set of software, nevertheless due to the serial communications protocols used by the \gls{AWS}, is simple to implement a software that interprets and takes advantage of the data format chosen by the vendor to implement new capabilities.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f11.png}}
+\caption{Screenshots of some popular desktop applications for \protect \gls{AWS}.}
+\end{figure}
+
+\subsection{Networking}\label{3.1.4}
+
+As mentioned in the datalogger subsection, the connectivity capabilities in an \gls{AWS} resides on it. The industry offers multiple options to provide connectivity in an \gls{AWS}, nevertheless, most of these options are limited for bandwidth, energy and geographical limitations. It is possible to find \gls{AWS}es directly connected to a computer via \gls{USB}, providing this the connectivity, or we can find an isolated \gls{AWS} in the middle of a mountain connected through a radio-link to the closest place. 
+
+The common technologies to provide connectivity to an \gls{AWS} are:
+
+\begin{itemize}
+\item \gls{GSM}
+\item \gls{GPRS}
+\item \gls{UMTS}
+\end{itemize}
+
+In places with better geographical location and energy availability, it is possible to find the following technologies offering connectivity:
+
+\begin{itemize}
+\item Ethernet
+\item \gls{USB}
+\item 802.11b/g
+\end{itemize}
+
+Whatever the connectivity on the \gls{AWS} is, the common pattern is that this connectivity is reliable but offers a rather low bandwidth. 
+
+\section{Meteorological data networks}
+
+The previous section gave a general overview of \gls{AWS}es, the relation between them and this thesis, is how they behave in terms of networking communication, which kind of topologies are used and in which points this communication can be improved.
+
+To understand the workflow of the data in terms of weather data collection, we should see an \gls{AWS} as an individual node without interaction with other nodes, except the collection point.
+
+The collection point is the place in which different data from different \gls{AWS} is received. It is not mandatory that this collection point is the end of the weather data workflow, for instance it is possible to find an intermediate collection point that has been stablished for geographical reasons to improve the connectivity\footnote{Some \gls{AWS} are located at inaccessible places, sometimes this implies to establish a collection point close to them to avoid issues such as lack of connectivity (\gls{GSM}, \gls{GPRS}, \gls{UMTS}).}. Even so, we consider the collection point, the place in which the data has been received and it is ready to be processed.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f7.png}}
+\caption{\protect \gls{AWS}es connectivity schema.}
+\end{figure}
+
+When the data arrives at the collection point, different mechanisms get activated to process it. As described in section \ref{1.2}, rarely, the data received comes from the same brand of instruments, meaning this that the data will be received in different formats and different time frequencies; this fact forces to implement these mechanisms to homogenize the data and make it understandable on the collection point. The collection point is the hop in which to have a standard protocol to communicate with the \gls{AWS} will have a bigger benefit, because it is in this hop in which the most effort is made, it in terms of data parsing, power calculation and data homogenization.
+
+
+
+
+\subsection{Common architectures}
+
+The definition of star topology fits in the methodology used to collect data from different \gls{AWS}es. The nodes have a strong dependency with the collection point, without it, an \gls{AWS} will have a high limited time to save data before it is fetched manually. Furthermore, the meteorological networks are not following the pure definition of star topology because different nodes are transmitting data with different connectivity technologies. Nevertheless, seems the nodes are not interacting between them, the network is not affected by bandwidth limitations. This topology is chosen by weather organizations based in the geographical limitations. However, the possibility to interconnect \gls{AWS}es between them has not been study deeply. The assumption for this is that the utility of the data is based on the availability of it, for this reason the data delivered with big delays is not considered at all in the weather data collection workflow. Interconnect the nodes of the meteorological networks it not feasible with the current technology at all for different factors such as bandwidth, geographical locations or absence of a common protocol.
+
+\begin{figure}[h!]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f8.png}}
+\caption{Comparison between pure star-topology against star-topology and the connectivity technologies used in \protect \gls{AWS}es.}
+\end{figure}
+
+Not only star-topology is used in the meteorological networks, the combination of different instruments can end in different topologies depending of the datalogger configuration. For instance, it is possible to have some local network of sensors connected to a datalogger that is part of a star topology, commonly, this topology will be a combination between bus-topology and star-topology. These combinations will not affect a common protocol in anyway, due to its implementation should happen on the datalogger's side, not mattering the combination of topologies behind it.
+
+\subsubsection{APRS}
+
+\gls{APRS} is using unnumbered \gls{AX.25} frames\cite{AX25}. \gls{AX.25} is a data link layer protocol without  too many capabilities in terms of bandwidth's offer, error correction and data integrity. Though it is used in some weather stations to spread the data, \textbf{it is not a good choice because it is not warranting a constant visibility and connection of the node.} 
+
+The \gls{AWS} using the APRS technology are spreading the data based radio technologies. It is allowing to any node with a radio equipment to receive the information produced in the weather station. Furthermore this topology does not offer any warranty in data delivery because it does not use the collection point model.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.6\textwidth]{images/c3f9.png}}
+\caption{Example of an \protect \gls{AWS} using APRS at Helsinki area\protect \footnotemark.}
+\end{figure}
+
+\footnotetext{Source: http://aprs.fi}
+
+\gls{APRS} has gained popularity inside the radio amateur community and programs as \gls{CWOP} due to the simplicity and technical requirements that it implies. The \emph{Weather Station Siting, Performance, and Data Quality Guide}\cite{CWOPGUIDE} explains how to setup an \gls{AWS} to get integrated in the \gls{CWOP} using \gls{APRS}.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c3f10.png}}
+\caption{Weather data message using \protect \gls{APRS} \protect \cite{APRS}.}
+\end{figure}
+
+Nevertheless, \gls{APRS} is not used in scientific installations. Although it is not possible to re-implement \gls{APRS} to adapt it to OpenWeather, it will be possible to use the same data format as it used in OpenWeather under \gls{AX.25}. Thus, it will offer compatibility between applications using OpenWeather. To provide this capability, will involve modifying the way in which \gls{APRS} is used, one way to do it can be to send the same data beacon with different formats: standard \gls{APRS} messages for weather reports and after it a data message based in OpenWeather format.
+
+Even with these incompatibilities the data provided by the \gls{APRS} data message can be transformed to OpenWeather's data format in a middle point having to modify the \gls{APRS} protocol. 
+
+The author assumes that the \gls{AWS}es will behave as nodes with connectivity to a common point, being able to interact between them, through the collection point or point to point.
+
+\subsection{Data distribution}\label{3.2.2}
+
+Data distribution is the ultimate's reason for weather data collection. We can identify at least fours levels of different data in the process for weather data collection.
+
+\begin{itemize}
+\item \textbf{RAW data}, produced in the sensors'  instruments
+\item \textbf{Network data}, used in the transmission from the instruments to the collection point
+\item \textbf{Operational data}, result of the scientific's practices
+\item \textbf{Informational data}, mainly focus in the general public (forecasts, climate reports, etc)
+\end{itemize}
+
+After the data is collected and processed, the conclusions made by the scientists must be spread to inform the society. It is necessary to highlight that only a few conclusions get to the general public, some of them are known as forecast or climate reports. Most of the data processed  is not useful for non scientists, because the complexity or amount of information on it. At the end of the work flow we have the data in two categories, the data that will be minimized to make it understandable to a general public, known as \textbf{informational data} \footnote{An example of this is the weather forecast shown every day in newspapers, TV, radio, etc.} and the data that must be shared between different international and local governmental organizations, known as \textbf{operational data}.
+
+As part of the problem statement, the data distribution is one of the big efforts that these organizations need to do to make the data that they collect understandable. In 2002 the \gls{WMO} started a standardization process to create a metadata standard to fix part of this problem, however nowadays this standardization process is still on progress without any draft available\cite{WMOMETADA}. A standard protocol to communicate with the \gls{AWS} will help the development of a common data format between organizations because all of them will be fetching the data with the same methods and mechanisms.
+
+\section{Summary}
+
+We have now introduced the elements and process involved in measuring and collecting weather data and the technologies related with them. Some topics have been explained to provide a general understanding of how an \gls{AWS} works.
+
+We have highlighted the limitations the \gls{AWS}es, concerning data storage and \gls{CPU} calculation; at the same time the maximum bandwidth available for the digital interfaces has been analyzed. The role of the datalogger has been exposed and its implications of it in the implementation of OpenWeather's format.
+
+In addition, the connectivity technologies available in an \gls{AWS} have been enumerated, analyzing the bandwidth offered and concluding that only the interruption of the connection and not the bandwidth's offer can be an issue.
+
+Finally, the topologies used in the meteorological networks haven analyzed briefly, clarifying that the \gls{AWS} are behaving as nodes without interaction between them, only sending data to a common point named "collection point" (the node that interacts with all the \gls{AWS}es). The \gls{APRS} protocol and its topology have been explained, taking in consideration the possibility to be compatible with the implementation of OpenWeather.
+
+The next chapter describes the technical issues related with the data transmission in the \gls{AWS}es.
+
+\pagebreak

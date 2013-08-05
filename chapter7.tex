@@ -1,0 +1,614 @@
+
+\chapter{Experimental evaluation setup}
+
+In this  chapter, the experimental setup used to implemented the proof of concept of the OpenWeather protocol is explained. A generic \gls{AWS} has been setup to test the protocol with real-time data. The software architecture implementing the functionality of the protocol is introduced as well.
+The purpose of this chapter is to introduce the general guidelines followed by the implementation of a prototype of OpenWeather protocol and to analyze the tests cases performed using it.
+
+\section{Scenario}
+The \gls{AWS} utilized in the experimental setup is the model WXT520, manufactured by Vaisala Oyj. Along with other \gls{AWS}es sharing these characteristics, it is able to measure the following phenomena:
+
+\begin{itemize}
+\item Liquid Precipitation
+	\begin{itemize}
+	\item Hail
+	\item Rain
+	\end{itemize}
+\item Relative Humidity
+\item Wind
+	\begin{itemize}
+	\item Direction
+	\item Speed
+	\end{itemize}
+\item Air Temperature
+\item Barometric Pressure
+\end{itemize}
+
+The geographical location of the \gls{AWS} is \textbf{N 60º 11' 15.6'' E 024º 50' 14.8''}\footnote{\gls{UTM}: Zone: 35
+Easting: 380076 Northing: 6674276. Municipality of Otaniemi, Espoo, Finland.}. The \gls{AWS} has been connected to a computer, in which the software developed to implement OpenWeather protocol is installed. The \gls{AWS} has been configured following the manufacturer suggestions, emulating a normal installation environment. The digital interface configured in the \gls{AWS} is a  \gls{RS232} port, offering a maximum amount of bit rate of 116 \gls{KBITS}/s.
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/installation.jpg}}
+\caption{\protect \gls{AWS} installed to simulate a real scenario.}
+\end{figure}
+
+The \gls{AWS} is plugged in continually 24 hours and installed on a mast of 2 meters length. The \gls{RS232} port provides the data acquired in the \gls{AWS} to computer a that operates an implementation of OpenWeather protocol.
+
+Thus, the \gls{AWS} used to implement the protocol has not been modified to adapt it to OpenWeather, all the adaptions realized have been made through a software implementation. This fact allows the verification of the adaptability of the protocol to the current technology without no major modifications to the \gls{AWS}.
+
+\subsubsection{Evaluation setup}
+
+The evaluation setup consists four nodes. All of them run a copy of the prototype, thus acting as nodes.
+Nevertheless, only one node is connected to a functional \gls{AWS}, the other three simulate the weather data input\footnote{Generated randomly based on the same patterns as a normal \gls{AWS}.}.
+
+The table \ref{t8.1} shows nodes specifications:
+
+\begin{table}[h]
+\centering
+
+    \begin{tabular}{ | l | l | l | l | l |}
+    \hline
+    \textbf{CPU} & \textbf{Memory} & \textbf{Network connection} & \textbf{Operating  system}  & \textbf{Hostname} \\ \hline
+	2.4GHz & 4GB & 100Mbps & GNU/Linux & Node 1 \\ \hline
+	2.2GHz & 1GB & 100Mbps & GNU/Linux & Node 2  \\ \hline
+	900GHz & 1GB &128Kbps & GNU/Linux & Node 3 \\ \hline
+	1GHz & 1GB & 56Kbps  & GNU/Linux & Node 4 \\ \hline
+
+
+\end{tabular}
+  \caption{Hardware and \protect \gls{OS} specifications of the evaluation setup.}
+  \label{t8.1}
+\end{table}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c8f5.png}}
+\caption{Network topology used in the evaluation setup.}
+\end{figure}
+
+All the nodes posses network visibility among them, with maximum network latency less than \textbf{75 milliseconds}. The bandwidth in node number two and four has been limited (\gls{RTT}) to 128\gls{KBITS}/s and 56\gls{KBITS}/s respectively. These restrictions emulate the network limitations mentioned in chapter three.
+
+The purpose of this setup is to create an environment that simulates common conditions experience during weather data acquisition. All the nodes use OpenWeather protocol to exchange data between them. This environment provides the necessary resources to test and verify the characteristics of the protocol, such data message size, times of response, etc.
+
+\section{Prototype implementation}
+
+In order to verify the feasibility and the functionality of OpenWeather, the author developed a proof of concept of the protocol, to test and verify its feasibility as alternative protocol for weather data transmission. This implementation provides the necessary data to independently evaluate the protocol.
+
+\subsection{Technologies used}
+
+OpenWeather is designed to have an emphasis on the data structures used in the software implementation. In addition, the object hierarchy used to structure the data makes the implementation of the protocol easier by using an object oriented programming language.
+
+Thus, C++ has been chosen as the primary language used in the prototype. The C++ standard library is used to write the intermediary layer (in combination with some Python scripts). Because the target of this protocol can have end users which are not familiar with command-line applications, a functional \gls{GUI} has been implemented. The Qt framework\cite{QT} has been chosen to implement the \gls{GUI}, together with QJson\cite{QSJON} for the data representation.
+
+\subsection{Software Architecture}
+
+The prototype requires to be implemented supporting the functionality described in the \gls{P2P} architecture taxonomies\cite{rfc5694}. Thus, the  nodes should posses the capability to request services, and at the same time, offer services to others nodes. This requirement conditions the node to behave as a client and server at the same time.
+
+To realize this architecture, the concept of \textbf{local peer} is introduced. The local peer refers to the node itself; representing the \gls{AWS} entity in the network; nevertheless, as described in section \ref{5.2.1}, a node without an \gls{AWS} can be part of the network as well.
+
+Because the node behaves as  client and server at the same time, the software implementation is designed to maximize the utilization of the common resources between both modalities. Thus, the implementation of the classes have been done using abstract interfaces, not mattering if the data to process has been received through the client or server module.
+
+\subsubsection{Common implementation}
+
+The prototype implementing OpenWeather protocol has been optimized for the data structures and object hierarchy explained in chapter six. The handling of \gls{JSON} data through \gls{TCP} sockets is the basis of the implementation.
+The prototype focuses its core functionality in to take advance of the most optimal way of sockets management and data manipulation.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.8\textwidth]{images/c8f4.png}}
+\caption{Software prototype conceived.}
+\end{figure}
+
+The prototype is structured in three parts:
+
+\begin{itemize}
+\item The GUI providing access to certain functionalities of OpenWeather protocol.
+\item The network level implementation of OpenWeather protocol.
+\item The intermediary middle layer adapting the WXT520 to OpenWeather protocol.
+\end{itemize}
+
+Despite this modularity in the components, everything is assembled in one application.
+The prototype implements the client and the server modules  internally. Both modules have access to the core implementation of OpenWeather protocol, and at the same time the application is linked with the OpenWeather parser (\emph{libopenweatherparser}). 
+
+The implementation of the protocol has been made based on the objects hierarchy explained in chapter six. Thus, the representation of the OpenWeather data only involves the transformation of \gls{JSON} objects into primitive data types.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c8f1.png}}
+\caption{\protect \gls{UML} diagram of the prototype.}
+\label{tuml}
+\end{figure}
+
+The figure \ref{tuml} shows a general overview of the classes implemented in the prototype in order to make functional the OpenWeather protocol. All the classes developed are able to manage the data in both modes (client and server), being possible to retrieve and delivery data using the same internal software mechanisms, with complete transparency for the end user.
+
+\subsubsection{Client module}
+
+The software implements certain parts fully pertaining to client operations. Client operations are identified those that involve the data request to other nodes. When the software is using OpenWeather to retrieve data from other nodes, we denominate that it is working under client mode.
+
+The client module of the software allows the following operations:
+
+\begin{itemize}
+\item Request session establishment - peer handshake
+\item Request real-time and/or data on demand
+\item Request the service availability in remote node/s
+\end{itemize}
+
+\subsubsection{Server module}
+
+As requirement of the \gls{RFC} 5694\cite{rfc5694}, an application implementing a \gls{P2P} architecture must be able to offer services. To achieve this, the prototype implements one part that provides the server functionality. A socket listening to the \gls{TCP} port used in OpenWeather is created when the prototype software is executed. Thus, the software allows other peers to connect to it, providing exactly the same features that client mode is able to request. Because the OpenWeather protocol is designed to not distinguish between the nodes and the services that they offer, the implementation of the server module is nearly identical to the client mode.
+
+The server module o allows the following operations:
+
+\begin{itemize}
+\item Session establishment
+\item Delivery of real-time and/or on data on demand
+\item Delivery of the service available on the local node
+\end{itemize}
+
+\subsubsection{GUI}
+
+The graphical interface aims to provide the possibility to use the protocol\footnote{A set of screenshots took from the GUI is available in the appendix.}. The GUI allows fully utilization of the \gls{AWS} data interface to check the data received, to connect to OpenWeather, and to perform the operations described in the chapters six (connect to other peers, delivery real-time data samples or retrieve the services available in the remote peers).
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.5\textwidth]{images/c8f3.png}}
+\caption{Prototype use case diagram.}
+\end{figure}
+
+The \gls{GUI} has single instances of the \textbf{ConnectionsManager} and the \textbf{MessagesManager} classes. Both classes provide the functionality required to handle peers and connections. In addition, the library \textbf{\emph{libopenweatherparser}}, provides the middle layer explained in section \ref{5.2}. This library is linked to the \gls{AWS}, providing the RAW data collected from its digital interface, and converting it from the vendor's format to OpenWeather's format.
+
+\subsubsection{Connections manager}
+
+The ConnectionsManager class is in charge of handling the sockets, managing all the connections of the node. 
+In addition, this class controls the socket used to allow remote nodes to connect to the local peer (server module).
+
+All sockets are handled using threads, thus, all the connections are managed independently in a secondary plane, not blocking the \gls{GUI} or not interfering with other connections. This implementation allows the prototype to manage multiple connections with multiple peers without performance issues.
+
+\subsubsection{Peers manager}
+
+The PeersManager class is in charge of the peers. The purpose of this class is to provide a control system of the peers that the node can connect to and their information; at the same time this class manages the local peer and the services that it offers to the remote peers.
+
+This class gets updated information when a the data messages received contain data related with the peers (protocol internal traffic), for instance if some peer updates its metainformation or just confirms the receival of message.
+
+\subsubsection{Messages manager}
+
+The MessagesManager class handles the OpenWeather data messages. This class is able to generate data messages based on the specifications of OpenWeather protocol. Every connection containing a data message is able to access it. This class provides the core functionality of the protocol, being able to understand the protocol codes and based on them, executing the operations needed in order to achieve the expected result.
+
+All data messages are assembled and disassembled in this class, because as OpenWeather requires  \gls{JSON} as its primary data format, this class provides mechanisms to generate and validate the data format of the messages.
+
+\subsubsection{Libopenweatherparser}
+
+This library has been developed in order to create a bridge between the \gls{AWS} and the prototype. The data format used by the vendor in the \gls{AWS} has been implemented in the library, creating the functionality to convert the vendor's format to the OpenWeather data format. This library is thought to normalize the data from one to multiple vendors, offering primitive data types ready to be assembled in \gls{JSON} objects as output.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/c8f6.png}}
+\caption{\protect \gls{UML} diagram of the library.}
+\end{figure}
+
+The library acts as an intermediary layer. Should the vendors choose to implement the OpenWeather format, the requirement of this library will be dropped. However, since the source code the \gls{AWS} operating system is not available, it is not currently possible to implement the OpenWeather protocol integrated with the vendors software without their cooperation.
+
+\section{Testing}
+The prototype provides the capability to perform the operations described on chapter six. The main goal of the testing is to analyze if the implementation of the protocol achieves its purpose and the results that its generates.
+
+The scenario used for the testing is described in the previous section. The following sections explain the utilization of different nodes used to transmit weather data using the OpenWeather protocol.
+
+The methodologies followed to evaluate the behavior of the protocol are based in the analysis of the network traffic between nodes and the verification of the protocol operations. The tool used to capture the data messages is Wireshark\cite{WIRESHARK}. This tool provides enough information to verify the operations of the protocol in the network layer.
+
+The following protocol operations have been implemented in the prototype:
+
+\begin{itemize}
+\item Session establishment - peer handshake
+\item Service discovery
+\item Real-time data retrieval
+\end{itemize}
+
+\subsubsection{Implementation considerations}
+
+Although the chapter six specifies more operations, as data on demand or peer list exchange, they have not be implemented due to their similarity in the architecture and data messages size, with the test cases executed.
+
+The Keep-Alive functionality has not being implemented in the prototype, because this feature is just an extra check performed for OpenWeather to double assure the connectivity and the response of the node in the application layer, and it does not influence the functionality of the prototype.
+
+All nodes have been synchronized according with date-time through \gls{NTP} \cite{rfc1305} with the \textbf{ntp1.funet.fi} server before to execute any operation. This synchronization has been performed in order to guarantee the accuracy of the measurements. Nevertheless, as it is explained in the Timestamp section, it is highly recommended to sync the clock of the nodes to guarantee the quality of the weather data.
+
+The RAW \gls{ASCII} representation of the data messages appears in different order compare to the specifications. This is due to the software re-orders the data elements by alphabetical order (always inside of the objects hierarchy).
+
+All the data messages are keeping similar space constrains between the data elements inside the \gls{JSON} object. This is causing a known additional increase of the data message size, this size can be reduced even more, suppressing theses spaces. In addition, the migration to a binary representation of the data messages using \gls{BSON}\cite{BSON} should be straightforward\footnote{Though will cause conflicts with the endianess.}.
+
+The execution of the test has been done 50 times, extracting the average from it. The times of the sequence are including the execution of the software operations in both sides.
+
+\subsection{Test 1: Handshake between nodes}
+
+The purpose of this test is to validate the operation described in section \ref{7.3.1} \textbf{—Session establishment \& Peer handshake—}. In this test the peers involved are exchanging information about themselves, in order to establish the session.
+
+The \emph{Node 1} will send a handshake data message to the \emph{Node 2}. This data message contains all the MetaInfo data field filled with the data of the \emph{Node 1}, the protocol code used is \textbf{100}.
+
+\subsubsection{Sequence}
+
+The scenario assumes that the \emph{Node 1} knows the \gls{IP} address, \gls{TCP} port and ID of the \emph{Node 2}, because it was obtained from some list of peers received from other nodes.
+
+The following sequence happens in the network layer:
+
+\begin{enumerate}
+
+\item \emph{Node 1} sends a data message  containing all its metainformation to the remote \emph{Node 2}, connected through the port specified and requests session establishment.
+
+\item \emph{Node 2} receives a data message delivery by \emph{Node 1}, containing all its metainformation and requesting the session establishment.
+
+\item \emph{Node 2} sends a data message to \emph{Node 1}, providing all its meta-information and confirming the session establishment with the protocol code \textbf{101}.
+
+\item The session is established between both nodes.
+
+\end{enumerate}
+
+The following sequence happens in the software layer:
+
+\begin{enumerate}
+
+\item The button session-establishment generates the connection sequence to the node chosen (\emph{Node 2}).
+
+\item A thread is created, establishing a \gls{TCP} connection to the chosen node. The messages manager assembles data message with all metainformation of the local node and with the protocol code \textbf{100}.
+
+\item The data message is delivery through the socket managed by the thread.
+
+\item The messages manager in the \emph{Node 2} receives a data message and creates a thread to handle it.
+
+\item The messages manager called by the thread, parses the data message and identifies its protocol code.
+
+\item A response is generated based on the protocol code of the data message, and is deliver to \emph{Node 2}.
+
+\item Because the operation is the session establishment the peers manager gets executed in both sides, updating the peer information (if needed) of the peers.
+\end{enumerate}
+
+
+\subsubsection{Analysis}
+
+\begin{itemize}
+\item The data session captured with Wireshark involves \textbf{7} \gls{TCP} segments. 
+\item The data message (OpenWeather) generated by \textbf{\emph{Node 1}}, has a size of \textbf{375} bytes.
+\item The data message (OpenWeather) generated by \textbf{\emph{Node 2}}, has a size of \textbf{375} bytes.
+\item The total size of the OpenWeather data message is \textbf{750} bytes.
+\item The total size of the sequence (\gls{TCP}/\gls{IP} and OpenWeather) is \textbf{1227} bytes. 
+\end{itemize}
+ 
+The RAW \gls{ASCII} representation of the data message data capture is shown in table \ref{raw1}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline    
+\textbf{\emph{Node 1}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+{ "OpenWeatherMessage" : { "MetaInfo" : { "Bandwidth" : 6, "ID" :
+"33c11957579d1093e931bd540536b40e90339dbded8e2a2ce4e
+64c480c8132bc", "Keep-Alive" : 120000, "Location" : "6672224
+385565 35V", "Peer-IP" : "172.21.25.16", "Peers-Requested" : 
+20, "Port" : 62535, "Timestamp" : "2011-07-20T16:51:29", "Update
+-Interval" : 120000, "Version" : "OpenWeather/1.0" }, "Type" : 100 } 
+}
+
+\end{verbatim}
+\end{minipage} \\
+\hline    
+\textbf{\emph{Node 2}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+{ "OpenWeatherMessage" : { "MetaInfo" : { "Bandwidth" : 6, "ID" : 
+"11f1cb9fb5bc57cf7905dc26c3ef045ae7b54d5ff1c7e233ff2d31be
+4977bd18", "Keep-Alive" : 120000, "Location" : "6672224 385565
+35V", "Peer-IP" : "172.21.25.20", "Peers-Requested" : 20, "Port" 
+: 62535, "Timestamp" : "2011-07-20T16:51:29", "Update-Interval" 
+: 120000, "Version" : "OpenWeather/1.0" }, "Type" : 101 } 
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Data messages transmitted between \emph{Node 1} and \emph{Node 2}.}
+\label{raw1}
+\end{table}
+
+The \gls{TCP} flow between both nodes using OpenWeather is the following:
+
+\begin{table}[H]
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+| 172.21.25.16          172.21.25.20    |               
+|         SYN       |                   |Seq = 0 Ack = 1303623571
+|(39239)  ------------------>  (62535)   |
+|         SYN, ACK  |                   |Seq = 0 Ack = 1
+|(39239)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 1
+|(39239)  ------------------>  (62535)   |
+|         PSH, ACK - Len: 375           |Seq = 1 Ack = 1
+|(39239)  ------------------>  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 376
+|(39239)  <------------------  (62535)   |
+|         PSH, ACK - Len: 375           |Seq = 1 Ack = 376
+|(39239)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 376 Ack = 376
+|(39239)  ------------------>  (62535)   |
+\end{verbatim}
+\end{minipage}
+\caption{\protect \gls{TCP} flow sequence between \emph{Node 1} and \emph{Node 2}.}
+\end{table}
+The time of execution of this \gls{TCP} sequence is \textbf{65 milliseconds} on average.
+
+Both nodes have delivered the data successfully, achieving the session establishment as result of the sequence. 
+
+\subsubsection{Discussion}
+
+The measurements show that OpenWeather requires a small amount of data for the session establishment. In addition, a low response time is needed to complete the operation. It achieves the goal to provide a mechanism to establish session even with really low bandwidth availability. This small size of data can be easily handled by the memory and processor of an \gls{AWS}. As the protocol specification requires, the session establishment provides all the necessary information to both nodes, to proceed requesting other data, after the peer registration happens in the software side.
+
+\subsection{Test 2: Service discovery}
+
+The purpose of this test is to validate the operation described in section \ref{7.3.2} \textbf{—Service discovery—}. In this test the peers involved are exchanging information about service availability, in order to know which services could be requested.
+
+The \emph{Node 3} will send a service discovery data message to \emph{Node 4}. This data message contains all the MetaInfo data field filled with the data of the \emph{Node 3}, in addition the protocol code used is \textbf{102}.
+
+\subsubsection{Sequence}
+
+The scenario assumes that \emph{Node 3} and \emph{Node 4} have established the session, following exactly the same steps than mentioned in section \ref{7.3.1}.
+
+The following sequence happens in the network layer:
+
+\begin{enumerate}
+
+\item \emph{Node 3} sends a data message  containing all its metainformation to the remote host of the \emph {Node 4}, using the session already established between them.
+
+\item \emph{Node 4} receives a data message delivered by \emph{Node 3}, containing all its metainformation and requesting the services available on it.
+
+\item \emph{Node 4} sends a data message to the \emph{Node 3}, providing all its metainformation and delivering a data message with all the services available on it through the protocol code \textbf{103}.
+
+\item \emph{Node 3} receives the list of services available in the \emph{Node 4}.
+
+\end{enumerate}
+
+The following sequence happens in the application layer:
+
+\begin{enumerate}
+
+\item The button services discovery generates the  connection sequence to the node chosen (\emph{Node 4}).
+
+\item The thread previously created by the session, uses the \gls{TCP} connection established  to the chosen node. The messages manager assembles a data message with all the metainformation of the local node and sends through connection with the protocol code \textbf{102}.
+
+\item The data message is delivery through the socket managed by the thread.
+
+\item The connections manager in \emph{Node 3} receives a data message and creates a thread to handle it.
+
+\item The messages manager is called by the thread, parses the data messages and identifies its protocol code.
+
+\item A response is generated based on the protocol code of the data message, and is deliver to the \emph{Node 4}.
+
+\item Due to the operation being service discovery, the peers manager gets executed in \emph{Node 4}, checking the services available on it and providing their information into the data message.
+
+\end{enumerate}
+
+
+\subsubsection{Analysis}
+
+\begin{itemize}
+\item The data session captured with Wireshark involves \textbf{7} \gls{TCP} segments. 
+\item The data message (OpenWeather) generated by the \textbf{\emph{Node 3}}, has a size of \textbf{375} bytes.
+\item The data message (OpenWeather) generated by the \textbf{\emph{Node 4}}, has a size of \textbf{458} bytes.
+\item The total size of the OpenWeather data message is \textbf{833} bytes.
+\item The total size of the sequence (\gls{TCP}/\gls{IP} and OpenWeather) is \textbf{1310} bytes. 
+\end{itemize}
+ 
+The RAW \gls{ASCII} representation of the data message captured is shown table \ref{raw2}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline    
+\textbf{\emph{Node 3}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+{ "OpenWeatherMessage" : { "MetaInfo" : { "Bandwidth" : 1, "ID" :
+"654b7b521acc7549bf6854b1113d44e6433bf94a1b4caf4327e33
+e9bc89b4025", "Keep-Alive" : 120000, "Location" : "6672224 385
+565 35V", "Peer-IP" : "172.21.25.35", "Peers-Requested" : 20, 
+"Port" : 62535, "Timestamp" : "2011-07-24T12:04:09", "Update-
+Interval" : 120000, "Version" : "OpenWeather/1.0" }, "Type" : 102 }
+}
+
+\end{verbatim}
+\end{minipage} \\
+\hline    
+\textbf{\emph{Node 4}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+{ "OpenWeatherMessage" : { "Info" : { "Services" : { "PRECIPITATION"
+: "RO", "PTU" : "RO", "WIND" : "RO" } }, "MetaInfo" : { "Bandwidth" : 
+0, "ID" : "3b1f665e0d622aab7b2e71b29d966dd2a22c5d427f337585
+09d4205720de9d2e", "Keep-Alive" : 120000, "Location" : "6672224 
+385565 35V", "Peer-IP" : "172.21.25.40", "Peers-Requested" : 20, 
+"Port" : 62535, "Timestamp" : "2011-07-24T12:04:09", "Update-
+Interval" : 120000, "Version" : "OpenWeather/1.0" }, "Type" : 103 } 
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Data messages transmitted between \emph{Node 3} and \emph{Node 4}.}
+\label{raw2}
+\end{table}
+
+The \gls{TCP} flow between both nodes using OpenWeather is the following:
+
+\begin{table}[H]
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+| 172.21.25.35             172.21.25.40 |                
+|         SYN       |                   |Seq = 0 Ack = 2259331907
+|(50550)  ------------------>  (62535)   |
+|         SYN, ACK  |                   |Seq = 0 Ack = 1
+|(50550)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 1
+|(50550)  ------------------>  (62535)   |
+|         PSH, ACK - Len: 375           |Seq = 1 Ack = 1
+|(50550)  ------------------>  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 376
+|(50550)  <------------------  (62535)   |
+|         PSH, ACK - Len: 458           |Seq = 1 Ack = 376
+|(50550)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 376 Ack = 459
+|(50550)  ------------------>  (62535)   |
+\end{verbatim}
+\end{minipage}
+\caption{\protect \gls{TCP} flow sequence between \emph{Node 3} and \emph{Node 4}.}
+\end{table}
+The time of execution of this \gls{TCP} sequence is \textbf{84 milliseconds} on average.
+
+Both nodes have delivered the data successfully, achieving the service discovery as the result of the sequence.
+
+\subsubsection{Discussion}
+
+The service discover operation has bigger data message size than the session establishment. Nevertheless, this operation considered fairly small in size, and it fitting to the environment with low bandwidth available. As the session establishment, the service discovery is a common operation inside of the protocol. Its fast delivery is critical, thus, in order to provide the services available as soon as possible to the requester.
+
+\subsection{Test 3: Real-time data retrieval}
+
+The purpose of this test is to validate the operation described in section 7.3.3 \textbf{—Real-time data retrieval—}. In this test the peers involved are exchanging real-time weather data.
+
+The \emph{Node  4} will send a real-time data request to \emph{Node 1}. This data message contains all the MetaInfo data field filled with the data of \emph{Node  4},  in addition the protocol code used is\textbf{200}.
+
+\subsubsection{Sequence}
+
+The scenario assumes that \emph{Node 4} and \emph{Node 1}, have established the session, following exactly the same steps mentioned in section \ref{7.3.1}.
+
+The following sequence happens in the network layer:
+
+\begin{enumerate}
+
+\item \emph{Node 4} sends a data message containing all its meta-information to the remote host of the \emph{Node 1}, using the session already established between them.
+
+\item \emph{Node 1} receives a data message delivered by \emph{Node 4}, containing all its metainformation and requesting real-time data.
+
+\item \emph{Node 1} sends a data message  to \emph{Node 4}, providing all its metainformation and delivering a data message with the latest weather data available on its \gls{AWS}, assigning the protocol code \textbf{201}.
+
+\item \emph{Node 4} receives the latest real-time data sample available in \emph{Node 1}.
+
+\end{enumerate}
+
+The following sequence happens in the application layer:
+
+\begin{enumerate}
+
+\item The button assign to request real-time data, generates the connection sequence to the node chosen (\emph{Node 1}).
+
+\item The thread previously created by the session, uses the \gls{TCP} connection established  to the chosen node. The messages manager assembles a data message with all the metainformation of the local node and assigning the protocol code \textbf{200}.
+
+\item The data message is delivered through the socket managed by the thread.
+
+\item The connections manager in \emph{Node 1} receives a data message and creates a thread to handle it.
+
+\item The messages manager called by the thread, parses the data messages and identifies its protocol code.
+
+\item A response is generated based on the protocol code of the data message. Since this response involves real-time weather data, a call is made to the \textbf{libopenweatherparser}, to obtain the latest real-time data available in the \gls{AWS}. After that, the data is deliver to \emph{Node 4}.
+
+\end{enumerate}
+
+
+\subsubsection{Analysis}
+
+\begin{itemize}
+\item The data session captured with Wireshark involves \textbf{7} \gls{TCP} segments.
+\item The data messages (OpenWeather) generated by \textbf{\emph{Node 4}}, has a size of \textbf{375} bytes.
+\item The data messages (OpenWeather) generated by \textbf{\emph{Node 1}}, has a size of \textbf{814} bytes.
+\item The total size of the OpenWeather data messages is \textbf{1189} bytes.
+\item The total size of the sequence (\gls{TCP}/\gls{IP} and OpenWeather) is \textbf{1666} bytes. 
+\end{itemize}
+ 
+The RAW \gls{ASCII} representation of the data messages is shown in table \ref{raw3}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|p{8cm}|}
+\hline    
+\textbf{\emph{Node 4}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+
+{ "OpenWeatherMessage" : { "MetaInfo" : { "Bandwidth" : 0, 
+"ID" : "3b1f665e0d622aab7b2e71b29d966dd2a22c5d427
+f33758509d4205720de9d2e", "Keep-Alive" : 120000, "
+Location" : "6672224 385565 35V", "Peer-IP" : "172.21.
+25.40", "Peers-Requested" : 20, "Port" : 62535, "Timest
+amp" : "2011-07-25T14:15:35","Update-Interval" : 
+120000, "Version" : "OpenWeather/1.0" },"Type" : 200 } }
+
+\end{verbatim}
+\end{minipage} \\
+\hline    
+\textbf{\emph{Node 1}}\\
+\hline
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+{ "OpenWeatherMessage" : { "Data" : { "PRECIPITATION" : {
+ "Hail" : { "accumulation" : "0", "duration" : "0", "intensity" : "0"
+, "peak" : "0" }, "Rain" : { "accumulation" : "0", "duration" : "0",
+"intensity" : "0", "peak" : "0" } }, "PTU" : { "Air-Pressure" : "10
+14.1", "Air-Temperature" : "19.1", "Relative-Humidity" : "69.4" 
+}, "WIND" : { "Direction" : { "ave" : "160", "max" : "160", "min"
+: "160" }, "Speed" : { "ave" : "1.7", "max" : "1.8", "min" : "1.7"
+} } }, "MetaInfo" : { "Bandwidth" : 6, "ID" :"33c11957579d10
+93e931bd540536b40e90339dbded8e2a2ce4e64c480c8132
+bc", "Keep-Alive" : 120000, "Location" : "6672224 385565 35V
+", "Peer-IP" : "172.21.25.16", "Peers-Requested" : 20, "Port"
+: 62535, "Timestamp" : "2011-07-25T14:15:35", "Update-Inter
+val" : 120000, "Version" : "OpenWeather/1.0" }, "Type" : 300 }
+}
+\end{verbatim}
+\end{minipage} \\
+\hline
+\end{tabular}
+\caption{Data messages sent between \emph{Node 3} and \emph{Node 4}.}
+\label{raw3}
+\end{table}
+
+The \gls{TCP} flow between both nodes using OpenWeather is the following:
+
+\begin{table}[H]
+\begin{minipage}[t]{\linewidth}
+\begin{verbatim}
+| 172.21.25.20             172.21.25.40 |
+|         SYN       |                   |Seq = 0 Ack = 1015394402
+|(49983)  ------------------>  (62535)   |
+|         SYN, ACK  |                   |Seq = 0 Ack = 1
+|(49983)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 1
+|(49983)  ------------------>  (62535)   |
+|         PSH, ACK - Len: 374           |Seq = 1 Ack = 1
+|(49983)  ------------------>  (62535)   |
+|         ACK       |                   |Seq = 1 Ack = 375
+|(49983)  <------------------  (62535)   |
+|         PSH, ACK - Len: 814           |Seq = 1 Ack = 375
+|(49983)  <------------------  (62535)   |
+|         ACK       |                   |Seq = 375 Ack = 8153
+|(49983)  ------------------>  (62535)   |
+\end{verbatim}
+\end{minipage}
+\caption{\protect \gls{TCP} flow sequence between \emph{Node 1} and \emph{Node 2}.}
+\end{table}
+The time of execution of this \gls{TCP} sequence is \textbf{96 milliseconds} on average.
+
+Both nodes have delivered the data successfully, achieving the transmission of a real-time weather sample as result of the sequence.
+
+\subsubsection{Discussion}
+
+Though this real-time data sample does not contain rain or hail data (both are delivered with a 0 value), we can observe how the \gls{PTU} and the wind data (together with the MetaInfo data field) are up to \textbf{1.5} \gls{kB}. 
+Even with this data size, it will fit in the memory available in an \gls{AWS} described in section \ref{3.1.2}. Assuming that an \gls{AWS} has between 32-64 \gls{kB} of volatile memory, and taking half of its memory for internal use of \gls{AWS} operating system, there is still enough memory to handle real-time data samples using the OpenWeather protocol.
+
+\section{Summary}
+
+In this chapter the scenario and software architecture used to evaluate OpenWeather has been introduced.
+We tested three different use cases of the protocol with the prototype developed. 
+
+In all the use cases executed, the protocol is taking advantage of its properties and achieving a successful result. 
+
+Though the prototype implements the partial functionality of the OpenWeather protocol, it shows how the \gls{P2P} can be implemented in applications oriented to weather transmission. In addition, the small sizes of the data messages and the robustness of the data transmission offered by \gls{TCP}, provide enough confidence to confirm that the protocol can be implemented in the environments with low bandwidth availability.
+
+Our goal was to verify a feasible implementation of the OpenWeather protocol and verify its functionality with a real scenario. Both purposes have been achieved.
+
+Finally, the use of a real scenario and the integration of the prototype with it, proves how a modern \gls{AWS} can be adapted to OpenWeather protocol with a few modifications through a software adaption. This fact supports that the current technology can be adapted to new methodologies to transmit the weather data, without a modification in the electronics or industrial design of the \gls{AWS}.
+
+\pagebreak
