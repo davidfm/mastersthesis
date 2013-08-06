@@ -47,6 +47,22 @@ Jerry J. Sellers
 \newblock McGraw-Hill, third edition. United States, 2005.
 \newblock ISBN 978-0-07-340775-3.
 
+\bibitem[NASA (2013)]{NASAOrbits}
+NASA
+\newblock \emph{Catalog of Earth Satellite Orbits}.
+\newblock URL \url{http://earthobservatory.nasa.gov/Features/OrbitsCatalog/}
+\newblock [Online; accessed 2013-04-17].
+
+\bibitem[NASA (2013)]{Kelso}
+T.S. Kelso
+\newblock \emph{Two-Line Element Set Format}.
+\newblock CelesTrak, 2006.
+\newblock URL \url{https://celestrak.com/columns/v04n03/}
+\newblock [Online; accessed 2013-04-17].
+
+
+
+
 
 
 

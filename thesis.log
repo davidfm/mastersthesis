@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  5 AUG 2013 18:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  6 AUG 2013 12:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -910,8 +910,11 @@ Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 52.
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
 less on input line 62.
 
-) (./thesis.aux (./preface-ack.aux) (./alt.aux) (./chapter1.aux)
-(./chapter2.aux))
+) (./thesis.aux (./alt.aux) (./chapter2.aux
+
+LaTeX Warning: Label `2.1' multiply defined.
+
+))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -1029,17 +1032,100 @@ File: english.bdf 2012/01/03 v1.31 babelbib: multilingual bibliographies (HH)
 babelbib extension \bibsenglish added to \extrasenglish
 babelbib extension \btxifchangecaseon added to \extrasenglish
 )
+\openout2 = `cover.aux'.
+
+ (./cover.tex
+LaTeX Font Info:    Try loading font information for T1+phv on input line 13.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+
+ []
+
+
+Overfull \hbox (28.45274pt too wide) in paragraph at lines 32--38
+| $[]$ 
+ []
+
+
+Overfull \hbox (31.06323pt too wide) in paragraph at lines 41--45
+|  $[]$ 
+ []
+
+<images/aaltologothesis.png, id=32, 93.7101pt x 84.315pt>
+File: images/aaltologothesis.png Graphic file (type png)
+
+<use images/aaltologothesis.png>
+Package pdftex.def Info: images/aaltologothesis.png used on input line 53.
+(pdftex.def)             Requested size: 93.70987pt x 84.31477pt.
+) [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/aaltologothesis.p
+ng>]
+\openout2 = `abstract.aux'.
+
+ (./abstract.tex
+Overfull \hbox (9.77548pt too wide) in paragraph at lines 3--14
+[][] 
+ []
+
+
+Overfull \hbox (12.00002pt too wide) in paragraph at lines 15--55
+[][] 
+ []
+
+) [2
+
+
+]
+\openout2 = `license.aux'.
+
+ (./license.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
+[3
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
+
+ []
+
+) [4]
 \openout2 = `preface-ack.aux'.
 
- (./preface-ack.tex [1
+ (./preface-ack.tex [5
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[2] (./thesis.toc)
+] [6] (./thesis.toc)
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
-) [3]
+) [7]
 \openout2 = `alt.aux'.
 
  (./alt.tex
@@ -1047,14 +1133,15 @@ babelbib extension \btxifchangecaseon added to \extrasenglish
 \openout6 = `thesis.glo'.
 
 Package glossaries Info: Writing glossary file thesis.glo on input line 4.
- (./thesis.gls [4
+ (./thesis.gls
+[8
 
 
 \openout3 = `thesis.ist'.
 
 
 
-] [5]) [6] (./thesis.lof
+] [9]) [10] (./thesis.lof
 Overfull \hbox (13.70499pt too wide) detected at line 4
 \T1/cmr/m/n/12 Figure 1.1 
  []
@@ -1074,30 +1161,35 @@ Overfull \hbox (13.70499pt too wide) detected at line 7
 \T1/cmr/m/n/12 Figure 1.4 
  []
 
-
-Overfull \hbox (13.70499pt too wide) detected at line 9
-\T1/cmr/m/n/12 Figure 2.1 
- []
-
-
-Overfull \hbox (13.70499pt too wide) detected at line 10
-\T1/cmr/m/n/12 Figure 2.2 
- []
-
 )
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
- [7] (./thesis.lot
+ [11] (./thesis.lot
+Overfull \hbox (13.70499pt too wide) detected at line 4
+\T1/cmr/m/n/12 Table 1.1 
+ []
+
+
 Overfull \hbox (13.70499pt too wide) detected at line 5
-\T1/cmr/m/n/12 Table 2.1 
+\T1/cmr/m/n/12 Table 1.2 
+ []
+
+
+Overfull \hbox (13.70499pt too wide) detected at line 6
+\T1/cmr/m/n/12 Table 1.3 
+ []
+
+
+Overfull \hbox (13.70499pt too wide) detected at line 7
+\T1/cmr/m/n/12 Table 1.4 
  []
 
 )
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
 
- [8])
+ [12])
 \openout2 = `chapter1.aux'.
 
  (./chapter1.tex
@@ -1113,11 +1205,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
  []
 
 
+LaTeX Warning: Reference `f1.1' on page 1 undefined on input line 12.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-<images/sputnik.jpg, id=564, 263.5446pt x 215.8464pt>
+<images/sputnik.jpg, id=582, 263.5446pt x 215.8464pt>
 File: images/sputnik.jpg Graphic file (type jpg)
  <use images/sputnik.jpg>
 Package pdftex.def Info: images/sputnik.jpg used on input line 15.
@@ -1128,7 +1223,11 @@ Package pdftex.def Info: images/sputnik.jpg used on input line 15.
 
 
 
-] <images/explorer1.jpg, id=571, 517.935pt x 399.4925pt>
+]
+
+LaTeX Warning: Reference `f1.2' on page 2 undefined on input line 20.
+
+<images/explorer1.jpg, id=588, 517.935pt x 399.4925pt>
 File: images/explorer1.jpg Graphic file (type jpg)
 
 <use images/explorer1.jpg>
@@ -1157,11 +1256,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
  []
 
 
+LaTeX Warning: Reference `f1.3' on page 3 undefined on input line 39.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-<images/satclass.png, id=579, 964.60374pt x 521.95pt>
+<images/satclass.png, id=595, 964.60374pt x 521.95pt>
 File: images/satclass.png Graphic file (type png)
 
 <use images/satclass.png>
@@ -1174,7 +1276,10 @@ Package pdftex.def Info: images/satclass.png used on input line 42.
                                                   \fi \fi 
 l.50 
       <./images/satclass.png>]
-<images/aalto1.png, id=590, 1027.84pt x 685.56125pt>
+
+LaTeX Warning: Reference `f1.4' on page 4 undefined on input line 53.
+
+<images/aalto1.png, id=605, 1027.84pt x 685.56125pt>
 File: images/aalto1.png Graphic file (type png)
  <use images/aalto1.png>
 Package pdftex.def Info: images/aalto1.png used on input line 56.
@@ -1199,14 +1304,14 @@ Chapter 2.
 
 
 
-] <images/Ellipse.png, id=611, 344.78813pt x 237.13594pt>
+] <images/Ellipse.png, id=625, 344.78813pt x 237.13594pt>
 File: images/Ellipse.png Graphic file (type png)
 
 <use images/Ellipse.png>
 Package pdftex.def Info: images/Ellipse.png used on input line 32.
 (pdftex.def)             Requested size: 292.77629pt x 201.36385pt.
 
-<images/Eccentricity.png, id=613, 531.9875pt x 481.8pt>
+<images/Eccentricity.png, id=627, 531.9875pt x 481.8pt>
 File: images/Eccentricity.png Graphic file (type png)
 
 <use images/Eccentricity.png>
@@ -1217,52 +1322,170 @@ Package pdftex.def Info: images/Eccentricity.png used on input line 42.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.51 
-     pdfTeX warning (ext4): destination with the same identifier (name{figure.2
-.2}) has been already used, duplicate ignored
+l.50 ... the next Orbital E\section{Kepler's Laws}
+                                                  \label{2.1}lements it is n...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.51 
-      <./images/Ellipse.png> <./images/Eccentricity.png>]
-<images/EquatorialOrbit.png, id=619, 92.345pt x 57.21375pt>
+l.50 ... the next Orbital E\section{Kepler's Laws}
+                                                  \label{2.1}lements it is n...
+ <./images/Ellipse.png> <./images/Eccentricity.png>]
+<images/EquatorialOrbit.png, id=637, 92.345pt x 57.21375pt>
 File: images/EquatorialOrbit.png Graphic file (type png)
 
 <use images/EquatorialOrbit.png>
-Package pdftex.def Info: images/EquatorialOrbit.png used on input line 68.
+Package pdftex.def Info: images/EquatorialOrbit.png used on input line 71.
 (pdftex.def)             Requested size: 46.17238pt x 28.6068pt.
-) [8pdfTeX warning (ext4): destination with the same identifier (name{table.2.1
-}) has been already used, duplicate ignored
+
+<images/PolarOrbit.png, id=638, 117.43875pt x 87.32625pt>
+File: images/PolarOrbit.png Graphic file (type png)
+
+<use images/PolarOrbit.png>
+Package pdftex.def Info: images/PolarOrbit.png used on input line 75.
+(pdftex.def)             Requested size: 58.71922pt x 43.66301pt.
+
+<images/DirectOrbit.png, id=639, 140.525pt x 69.25874pt>
+File: images/DirectOrbit.png Graphic file (type png)
+
+<use images/DirectOrbit.png>
+Package pdftex.def Info: images/DirectOrbit.png used on input line 79.
+(pdftex.def)             Requested size: 70.26231pt x 34.62927pt.
+
+<images/IndirectOrbit.png, id=640, 140.525pt x 66.2475pt>
+File: images/IndirectOrbit.png Graphic file (type png)
+
+<use images/IndirectOrbit.png>
+Package pdftex.def Info: images/IndirectOrbit.png used on input line 83.
+(pdftex.def)             Requested size: 70.26231pt x 33.12366pt.
+
+Overfull \hbox (12.22697pt too wide) in paragraph at lines 95--117
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8pdfTeX warning (ext4): destination with the same identifier (name{table.2.1})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.121 
+       <./images/EquatorialOrbit.png> <./images/PolarOrbit.png> <./images/Direc
+tOrbit.png> <./images/IndirectOrbit.png>]
+<images/COEs.png, id=652, 557.08125pt x 336.50719pt>
+File: images/COEs.png Graphic file (type png)
+ <use images/COEs.png>
+Package pdftex.def Info: images/COEs.png used on input line 129.
+(pdftex.def)             Requested size: 292.77629pt x 176.85376pt.
+
+[9pdfTeX warning (ext4): destination with the same identifier (name{table.2.2})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.134 \section
+              {Ground Tracks}\label{2.3}pdfTeX warning (ext4): destination with
+ the same identifier (name{figure.2.3}) has been already used, duplicate ignore
+d
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.134 \section
+              {Ground Tracks}\label{2.3} <./images/COEs.png>]
+<images/GroundTracks.png, id=660, 1616.0375pt x 760.8425pt>
+File: images/GroundTracks.png Graphic file (type png)
+
+<use images/GroundTracks.png>
+Package pdftex.def Info: images/GroundTracks.png used on input line 139.
+(pdftex.def)             Requested size: 418.25368pt x 196.90884pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.148 \newpage
+               <./images/GroundTracks.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 153.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
+
+ []
+
+
+Overfull \hbox (16.02696pt too wide) in paragraph at lines 157--235
+ [][] 
+ []
+
+) [11pdfTeX warning (ext4): destination with the same identifier (name{table.2.
+3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.26 \include{chapter2}
-                        <./images/EquatorialOrbit.png>] (./thesis.bbl) [9
+                       ] [12pdfTeX warning (ext4): destination with the same id
+entifier (name{table.2.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.26 \include{chapter2}
+                       ] (./thesis.bbl) [13
 
 
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
-
-(./thesis.aux (./preface-ack.aux) (./alt.aux) (./chapter1.aux) (./chapter2.aux)
-)
+ (./thesis.aux (./cover.aux)
+(./abstract.aux) (./license.aux) (./preface-ack.aux) (./alt.aux)
+(./chapter1.aux) (./chapter2.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C9205A8038D433CCE51278EDCF011A39;754.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 4811228EDA4FF6D6CB77C14632BA1705;423
+(rerunfilecheck)             After:  2E094F8F211E3CE580D221357E1E0C7D;950.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 11807 strings out of 493485
- 166945 string characters out of 3143526
- 297355 words of memory out of 3000000
- 14636 multiletter control sequences out of 15000+200000
- 14245 words of font info for 36 fonts, out of 3000000 for 9000
+ 11963 strings out of 493485
+ 169492 string characters out of 3143526
+ 309645 words of memory out of 3000000
+ 14740 multiletter control sequences out of 15000+200000
+ 29651 words of font info for 50 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 44i,14n,45p,1481b,621s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{page.72} has been referenced but does not exist, 
+ 44i,20n,45p,1481b,621s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{table.1.4} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.1.3} has been referenced but does not exist, 
 replaced by a fixed one
+
+pdfTeX warning (dest): name{table.1.2} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{table.1.1} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{page.72} has been referenced but does not exist, re
+placed by a fixed one
 
 pdfTeX warning (dest): name{page.111} has been referenced but does not exist, r
 eplaced by a fixed one
@@ -1396,16 +1619,10 @@ placed by a fixed one
 pdfTeX warning (dest): name{page.34} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{page.12} has been referenced but does not exist, re
-placed by a fixed one
-
 pdfTeX warning (dest): name{page.73} has been referenced but does not exist, re
 placed by a fixed one
 
 pdfTeX warning (dest): name{page.60} has been referenced but does not exist, re
-placed by a fixed one
-
-pdfTeX warning (dest): name{page.13} has been referenced but does not exist, re
 placed by a fixed one
 
 pdfTeX warning (dest): name{page.113} has been referenced but does not exist, r
@@ -1513,9 +1730,6 @@ placed by a fixed one
 pdfTeX warning (dest): name{page.29} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{page.11} has been referenced but does not exist, re
-placed by a fixed one
-
 pdfTeX warning (dest): name{page.48} has been referenced but does not exist, re
 placed by a fixed one
 
@@ -1532,18 +1746,24 @@ pdfTeX warning (dest): name{page.114} has been referenced but does not exist, r
 eplaced by a fixed one
 
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fo
-nts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb>
-</usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fo
-nts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-
-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
-/usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on thesis.pdf (17 pages, 1598847 bytes).
+nts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/en
+c/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+frm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+tt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on thesis.pdf (25 pages, 3204274 bytes).
 PDF statistics:
- 710 PDF objects out of 1000 (max. 8388607)
- 668 compressed objects within 7 object streams
- 207 named destinations out of 1000 (max. 500000)
- 132 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 794 PDF objects out of 1000 (max. 8388607)
+ 729 compressed objects within 8 object streams
+ 226 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
