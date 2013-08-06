@@ -60,8 +60,35 @@ T.S. Kelso
 \newblock URL \url{https://celestrak.com/columns/v04n03/}
 \newblock [Online; accessed 2013-04-17].
 
+\bibitem[Paige (2006)]{Beacon}
+B. Paige
+\newblock \emph{Satellite Beacons}.
+\newblock The Radio Amateur Satellite Corporation, 2006.
+\newblock URL \url{http://www.amsat.org/amsat-new/information/faqs/houston-net/beacons.php}
+\newblock [Online; accessed 2013-04-22].
+
+\bibitem[Masat (2007)]{Masat}
+Masat-1
+\newblock URL \url{http://cubesat.bme.hu/en}
 
 
+\bibitem[Tanenbaum (2010)]{Tanenbaum}
+Andrew S. Tanenbaum.
+\newblock \emph{Computer Networks}.
+\newblock Prentice Hall, fifth edition. United States, 2010.
+\newblock  978-0132126953.
+
+\bibitem[AX25 (1997)]{AX25}
+\newblock \emph{AX.25 Link Access Protocol for Amateur Packet Radio}.
+\newblock Tucson Amateur Packet Radio. 1997.
+\newblock URL \url{ http://www.tapr.org/pdf/AX25.2.2.pdf}
+\newblock [Online; accessed 2013-05-03].
+
+\bibitem[FX25 (2006)]{FX25}
+\newblock \emph{FX.25: Forward Error Correction Extension to AX.25 Link Protocol For Amateur Packet Radio}.
+\newblock Stensat Group, 2006.
+\newblock URL \url{ http://www.stensat.org/Docs/FX-25_01_06.pdf}
+\newblock [Online; accessed 2013-05-06].
 
 
 
