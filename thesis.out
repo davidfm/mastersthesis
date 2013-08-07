@@ -6,18 +6,30 @@
 \BOOKMARK [1][-]{section.1.3}{1.3 Research objectives and scope}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.4}{1.4 Motivations}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.5}{1.5 Outline of the thesis}{chapter.1}% 8
-\BOOKMARK [0][-]{chapter.2}{2 Orbits}{}% 9
-\BOOKMARK [1][-]{section.2.1}{2.1 Kepler's Laws}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.2}{2.2 Classical Orbital Elements}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.3}{2.3 Ground Tracks}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.4}{2.4 Two Line Elements}{chapter.2}% 13
-\BOOKMARK [0][-]{chapter.3}{3 Telecommunications}{}% 14
-\BOOKMARK [1][-]{section.3.1}{3.1 Data}{chapter.3}% 15
-\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Beacon}{section.3.1}% 16
-\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Telemetry}{section.3.1}% 17
-\BOOKMARK [2][-]{subsection.3.1.3}{3.1.3 Telecomands}{section.3.1}% 18
-\BOOKMARK [1][-]{section.3.2}{3.2 Ground Station}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Hardware}{section.3.2}% 20
-\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Software}{section.3.2}% 21
-\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Protocols}{section.3.2}% 22
-\BOOKMARK [0][-]{section*.3}{Bibliography}{}% 23
+\BOOKMARK [0][-]{chapter.2}{2 Satellite Communications}{}% 9
+\BOOKMARK [1][-]{section.2.1}{2.1 Orbits}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Kepler's Laws}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Classical Orbital Elements}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Ground Tracks}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Two Line Elements}{section.2.1}% 14
+\BOOKMARK [1][-]{section.2.2}{2.2 Data}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Beacon}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Telemetry}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Telecomands}{section.2.2}% 18
+\BOOKMARK [1][-]{section.2.3}{2.3 Ground Station}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Hardware}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Software}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 Protocols}{section.2.3}% 22
+\BOOKMARK [0][-]{chapter.3}{3 Hummingbird: the open source platform for monitoring and controlling small satellites}{}% 23
+\BOOKMARK [0][-]{chapter.4}{4 Requirements}{}% 24
+\BOOKMARK [0][-]{chapter.5}{5 Design and Implementation}{}% 25
+\BOOKMARK [1][-]{section.5.1}{5.1 Design}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{5.2 Technologies use for Implementation}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Java}{section.5.2}% 28
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Camel}{section.5.2}% 29
+\BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 ActiveMQ}{section.5.2}% 30
+\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 XStream}{section.5.2}% 31
+\BOOKMARK [2][-]{subsection.5.2.5}{5.2.5 BeanShell}{section.5.2}% 32
+\BOOKMARK [0][-]{chapter.6}{6 Future work}{}% 33
+\BOOKMARK [0][-]{chapter.7}{7 Conclusions}{}% 34
+\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 35

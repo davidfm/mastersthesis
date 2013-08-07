@@ -46,11 +46,11 @@ To counter this trend, the small satellite movement was created by the academic 
 
 \section{Background}\label{1.1}
 
-As it was stated before, this thesis is closely related to two different projects. Aalto-1 and ESTCube. These two projects are based on the most common standard use by universities, CubeSat\cite{CubeSat}. An open standard developed by the California Polytechnic State University and Stanford University.
+As it was stated before, this thesis is closely related to two different projects. Aalto-1 and ESTCube-1. These two projects are based on the most common standard use by universities, CubeSat\cite{CubeSat}. An open standard developed by the California Polytechnic State University and Stanford University.
 
 \subsection{Aalto-1}
 
-Led by Aalto University, Aalto-1 project aims to build a multi-payload remote sensing nanosatellite (Figure \ref{f1.4}). The size of the satellite is approximately 34 cm x 10 cm x 10 cm with a mass of less than 4 kg\cite{AALTO1a}.
+Led by Aalto University, Aalto-1 project aims to build a multi-payload remote sensing nanosatellite (Figure \ref{f1.4}). The size of the satellite is approximately 34 cm x 10 cm x 10 cm with a mass of less than 4 kg\cite{AALTO1a}. Aalto-1 will also be the first Finnish satellite.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/aalto1.png}}
@@ -61,18 +61,21 @@ Led by Aalto University, Aalto-1 project aims to build a multi-payload remote se
 
 There are different institutions cooperating to make this possible. The main payload, the imaging spectrometer, has been designed and built by VTT Technical Research Centre of Finland. The Radiation Monitor (RADMON) has been designed by the Universities of Helsinki and Turku in cooperation with the Finnish Meteorological Institute (FMI). The Plasma Brake has been designed by a consortium including the FMI, the Department of Physics of the University of Helsinki, the Departments of Physics and Astronomy and Information Technology of the University of Turku, the Accelerator laboratory of the University of Jyväskylä, Aboa Space Resarch Oy, Oxford Instruments Oy and other Finnish companies. Meanwhile, Aalto University is responsible for designing and building the satellite platform and the day-to-day operation of the project.\cite{AALTO1b}\\
 \newpage
-Aalto-1's mission is to validate the technologies used by the payloads in space environment and measure their performance. In addition, it is also an educational project. Students are the main workforce towards its success. Being the the first Finnish student satellite mission, it is a good tool to improve Finnish space teaching and also allow students to be in touch with prominent partners, both domestic and international, in the space technology field.
+Aalto-1's mission is to validate the technologies used by the payloads in space environment and measure their performance. In addition, it is also an educational project. Students are the main workforce towards its success. Being the the first Finnish student satellite mission, is a good tool to improve Finnish space teaching and also allow students to be in touch with prominent partners, both domestic and international, in the space technology field.
 
 
 \subsection{ESTCube-1}
 
+ESTCube-1 is a single-unit CubeSat (Figure \ref{f1.5}). The size of the satellite is approximately 10 cm x 10 cm x 10 cm with a maximum mass of 1.33 kg. It has been build by students of the universities of Tartu and Tallinn, in Estonia, and it is the first Estonian satellite \cite{ESTCube}.
+It was launched from the Guaiana Space Centre on May 7, 2013 as one of the three payloads of the Vega VV02 rocket \cite{Arianespace}.\\
 
-%\begin{itemize}
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.7\textwidth]{images/ESTCube.jpg}}
+\caption{ESTCube-1}
+\label{f1.5}
+\end{figure}
 
-%\item Thermometer for measuring air and sea surface temperature
-
-
-%\end{itemize}
+ESTCube-1's main goal is to observe and measure the E-sail effect for the first time. It has been placed into a polar low Earth orbit (LEO) and will deploy a single 10 m long and 9 mm wide tether\cite{ESTCube}. This has relation with Aalto-1's Plasma Brake, which will deploy a 100 m long tether. The require duration of ESTCube-1's mission is a few weeks and it can be extended to about a year.
 
 
 
@@ -80,6 +83,12 @@ Aalto-1's mission is to validate the technologies used by the payloads in space 
 
 
 \section{Research objectives and scope}
+
+The purpose of this thesis is to develop a calibration system for a ground station which will solve the problem mentioned above. In addition, it is necessary to check if the received values are within a expected range, so a different system will be developed for that purpose.\\
+
+Using ESTCube-1 project as a baseline, the author aims to develop such systems which are generic enough to be used by any number of satellite missions. The modules developed will be integrated into \emph{Hummingbird}, an open source platform for monitoring and control which will be explained later in this work. 
+
+
 
 
 
@@ -90,4 +99,4 @@ Aalto-1's mission is to validate the technologies used by the payloads in space 
 \section{Outline of the thesis}
 
 
-\pagebreak
+\newpage

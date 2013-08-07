@@ -36,12 +36,12 @@
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
     % title
-    pdftitle={OpenWeather: A Peer-to-Peer Weather Data Transmission Protocol},    
-    pdfauthor={Adrián Yanes},     % author
-    pdfsubject={OpenWeather},   % subject of the document
-    pdfcreator={Adrián Yanes},   % creator of the document
-    pdfproducer={Adrián Yanes}, % producer of the document
-    pdfkeywords={weather} {networking} {protocol}, % list of keywords
+    pdftitle={Development of calibration and limit checking modules for a satellite's ground control software },    
+    pdfauthor={David Fernández},     % author
+    pdfsubject={Hummingbird},   % subject of the document
+    pdfcreator={David Fernández},   % creator of the document
+    pdfproducer={David Fernández}, % producer of the document
+    pdfkeywords={satellite} {ground station} {calibration} {limits} {Hummingbird}, % list of keywords
     pdfnewwindow=true,      % links in new window
     colorlinks=false,       % false: boxed links; true: colored links
     linkcolor=blue,          % color of internal links
