@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  7 AUG 2013 15:20
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  7 AUG 2013 15:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1057,7 +1057,7 @@ Overfull \hbox (31.06323pt too wide) in paragraph at lines 41--45
 |  $[]$ 
  []
 
-<images/aaltologothesis.png, id=144, 93.7101pt x 84.315pt>
+<images/aaltologothesis.png, id=156, 93.7101pt x 84.315pt>
 File: images/aaltologothesis.png Graphic file (type png)
 
 <use images/aaltologothesis.png>
@@ -1251,7 +1251,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-<images/sputnik.jpg, id=291, 263.5446pt x 215.8464pt>
+<images/sputnik.jpg, id=306, 263.5446pt x 215.8464pt>
 File: images/sputnik.jpg Graphic file (type jpg)
  <use images/sputnik.jpg>
 Package pdftex.def Info: images/sputnik.jpg used on input line 15.
@@ -1262,7 +1262,7 @@ Package pdftex.def Info: images/sputnik.jpg used on input line 15.
 
 
 
-] <images/explorer1.jpg, id=297, 517.935pt x 399.4925pt>
+] <images/explorer1.jpg, id=312, 517.935pt x 399.4925pt>
 File: images/explorer1.jpg Graphic file (type jpg)
 
 <use images/explorer1.jpg>
@@ -1295,7 +1295,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-<images/satclass.png, id=305, 964.60374pt x 521.95pt>
+<images/satclass.png, id=320, 964.60374pt x 521.95pt>
 File: images/satclass.png Graphic file (type png)
 
 <use images/satclass.png>
@@ -1308,7 +1308,7 @@ Package pdftex.def Info: images/satclass.png used on input line 42.
                                                   \fi \fi 
 l.50 
       <./images/satclass.png>]
-<images/aalto1.png, id=316, 1027.84pt x 685.56125pt>
+<images/aalto1.png, id=331, 1027.84pt x 685.56125pt>
 File: images/aalto1.png Graphic file (type png)
  <use images/aalto1.png>
 Package pdftex.def Info: images/aalto1.png used on input line 56.
@@ -1329,7 +1329,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--71
 
  []
 
-<images/ESTCube.jpg, id=329, 2055.68pt x 1268.74pt>
+<images/ESTCube.jpg, id=345, 2055.68pt x 1268.74pt>
 File: images/ESTCube.jpg Graphic file (type jpg)
  <use images/ESTCube.jpg>
 Package pdftex.def Info: images/ESTCube.jpg used on input line 73.
@@ -1354,14 +1354,14 @@ Chapter 2.
 
 
 
-] <images/Ellipse.png, id=350, 344.78813pt x 237.13594pt>
+] <images/Ellipse.png, id=365, 344.78813pt x 237.13594pt>
 File: images/Ellipse.png Graphic file (type png)
 
 <use images/Ellipse.png>
 Package pdftex.def Info: images/Ellipse.png used on input line 32.
 (pdftex.def)             Requested size: 292.77629pt x 201.36385pt.
 
-<images/Eccentricity.png, id=352, 531.9875pt x 481.8pt>
+<images/Eccentricity.png, id=367, 531.9875pt x 481.8pt>
 File: images/Eccentricity.png Graphic file (type png)
 
 <use images/Eccentricity.png>
@@ -1380,28 +1380,28 @@ l.51
                                                   \fi \fi 
 l.51 
       <./images/Ellipse.png> <./images/Eccentricity.png>]
-<images/EquatorialOrbit.png, id=359, 92.345pt x 57.21375pt>
+<images/EquatorialOrbit.png, id=374, 92.345pt x 57.21375pt>
 File: images/EquatorialOrbit.png Graphic file (type png)
 
 <use images/EquatorialOrbit.png>
 Package pdftex.def Info: images/EquatorialOrbit.png used on input line 71.
 (pdftex.def)             Requested size: 46.17238pt x 28.6068pt.
 
-<images/PolarOrbit.png, id=360, 117.43875pt x 87.32625pt>
+<images/PolarOrbit.png, id=375, 117.43875pt x 87.32625pt>
 File: images/PolarOrbit.png Graphic file (type png)
 
 <use images/PolarOrbit.png>
 Package pdftex.def Info: images/PolarOrbit.png used on input line 75.
 (pdftex.def)             Requested size: 58.71922pt x 43.66301pt.
 
-<images/DirectOrbit.png, id=361, 140.525pt x 69.25874pt>
+<images/DirectOrbit.png, id=376, 140.525pt x 69.25874pt>
 File: images/DirectOrbit.png Graphic file (type png)
 
 <use images/DirectOrbit.png>
 Package pdftex.def Info: images/DirectOrbit.png used on input line 79.
 (pdftex.def)             Requested size: 70.26231pt x 34.62927pt.
 
-<images/IndirectOrbit.png, id=362, 140.525pt x 66.2475pt>
+<images/IndirectOrbit.png, id=377, 140.525pt x 66.2475pt>
 File: images/IndirectOrbit.png Graphic file (type png)
 
 <use images/IndirectOrbit.png>
@@ -1426,7 +1426,7 @@ l.121
 l.121 
        <./images/EquatorialOrbit.png> <./images/PolarOrbit.png> <./images/Direc
 tOrbit.png> <./images/IndirectOrbit.png>]
-<images/COEs.png, id=374, 557.08125pt x 336.50719pt>
+<images/COEs.png, id=389, 557.08125pt x 336.50719pt>
 File: images/COEs.png Graphic file (type png)
  <use images/COEs.png>
 Package pdftex.def Info: images/COEs.png used on input line 129.
@@ -1439,7 +1439,7 @@ Package pdftex.def Info: images/COEs.png used on input line 129.
                                                   \fi \fi 
 l.134 \subsection
                  {Ground Tracks}\label{2.3} <./images/COEs.png>]
-<images/GroundTracks.png, id=381, 1616.0375pt x 760.8425pt>
+<images/GroundTracks.png, id=396, 1616.0375pt x 760.8425pt>
 File: images/GroundTracks.png Graphic file (type png)
 
 <use images/GroundTracks.png>
@@ -1478,7 +1478,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 317--318
 
  []
 
-<images/housekeeping.png, id=392, 1032.85875pt x 437.635pt>
+<images/housekeeping.png, id=407, 1032.85875pt x 437.635pt>
 File: images/housekeeping.png Graphic file (type png)
 
 <use images/housekeeping.png>
@@ -1495,7 +1495,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
-<images/masat.jpg, id=399, 321.2pt x 240.9pt>
+<images/masat.jpg, id=414, 321.2pt x 240.9pt>
 File: images/masat.jpg Graphic file (type jpg)
  <use images/masat.jpg>
 Package pdftex.def Info: images/masat.jpg used on input line 332.
@@ -1559,19 +1559,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
-<images/ax25a.png, id=424, 659.46375pt x 88.33pt>
+<images/ax25a.png, id=439, 659.46375pt x 88.33pt>
 File: images/ax25a.png Graphic file (type png)
  <use images/ax25a.png>
 Package pdftex.def Info: images/ax25a.png used on input line 426.
 (pdftex.def)             Requested size: 418.25368pt x 56.02287pt.
 
-<images/ax25b.png, id=426, 653.44125pt x 127.47626pt>
+<images/ax25b.png, id=441, 653.44125pt x 127.47626pt>
 File: images/ax25b.png Graphic file (type png)
  <use images/ax25b.png>
 Package pdftex.def Info: images/ax25b.png used on input line 432.
 (pdftex.def)             Requested size: 418.25368pt x 81.59424pt.
 
-<images/fx25.png, id=428, 608.2725pt x 93.34875pt>
+<images/fx25.png, id=443, 608.2725pt x 93.34875pt>
 File: images/fx25.png Graphic file (type png)
  <use images/fx25.png>
 Package pdftex.def Info: images/fx25.png used on input line 441.
@@ -1666,28 +1666,22 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 29.
 (./chapter7.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 29.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 29.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 9D42C50F9F91CF3CA7F3F00603C0921A;2559.
 
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: EC36BC48D3441561AA8388C0046896B9;2337
-(rerunfilecheck)             After:  402FEA35445CFA91300AAB82569685B1;2338.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 29.
  ) 
 Here is how much of TeX's memory you used:
- 12014 strings out of 493485
- 171310 string characters out of 3143526
- 308673 words of memory out of 3000000
- 14854 multiletter control sequences out of 15000+200000
+ 12020 strings out of 493485
+ 171402 string characters out of 3143526
+ 308677 words of memory out of 3000000
+ 14857 multiletter control sequences out of 15000+200000
  29651 words of font info for 50 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 44i,20n,45p,1481b,677s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,20n,45p,1481b,685s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/
 fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/
 enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
@@ -1704,10 +1698,10 @@ share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 >
-Output written on thesis.pdf (35 pages, 3784313 bytes).
+Output written on thesis.pdf (35 pages, 3786570 bytes).
 PDF statistics:
- 561 PDF objects out of 1000 (max. 8388607)
- 482 compressed objects within 5 object streams
- 108 named destinations out of 1000 (max. 500000)
- 376 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 578 PDF objects out of 1000 (max. 8388607)
+ 499 compressed objects within 5 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 400 words of extra memory for PDF output out of 10000 (max. 10000000)
 
