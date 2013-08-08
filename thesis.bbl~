@@ -41,7 +41,7 @@ P. Janhunen, P.K. Toivanen, J. Polkko, S. Merikallio, P. Salminen, E. Haeggströ
 \newblock Rev. Sci. Instrum., 81, 111301, 2010.
 
 
-\bibitem[Arianespace (2013)]{Arianspace}
+\bibitem[Arianespace (2013)]{Arianespace}
 \newblock \emph{Second Vega launch by Arianespace a success: Proba-V, VNREDSat-1 and ESTCube-1 in orbit}.
 \newblock URL \url{ http://www.arianespace.com/news-press-release/2013/5-7-2013-VV02-launch.asp}.
 \newblock [Online; accessed 2013-08-07].
@@ -84,6 +84,26 @@ B. Paige
 Masat-1
 \newblock URL \url{http://cubesat.bme.hu/en}.
 
+\bibitem[GPredict (2009)]{GPredict}
+GPredict
+\newblock URL \url{http://gpredict.oz9aec.net/}.
+
+\bibitem[Orbitron (2005)]{Orbitron}
+Orbitron
+\newblock URL \url{http://www.stoff.pl/}.
+
+\bibitem[Carpcomm (2012)]{Carpcomm}
+Carpcomm
+\newblock URL \url{http://carpcomm.com/}.
+
+\bibitem[GENSO (2012)]{GENSO}
+GENSO
+\newblock URL \url{http://www.genso.org/}.
+
+\bibitem[CGI (2013)]{CGI}
+\newblock \emph{CGI provides support for the launch of Estonia’s first satellite}.
+\newblock URL \url{http://www.cgi.com/en/CGI-provides-support-launch-Estonia-first-satellite}.
+\newblock [Online; accessed 2013-08-08].
 
 \bibitem[Tanenbaum (2010)]{Tanenbaum}
 Andrew S. Tanenbaum.

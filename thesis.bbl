@@ -84,6 +84,26 @@ B. Paige
 Masat-1
 \newblock URL \url{http://cubesat.bme.hu/en}.
 
+\bibitem[GPredict (2009)]{GPredict}
+GPredict
+\newblock URL \url{http://gpredict.oz9aec.net/}.
+
+\bibitem[Orbitron (2005)]{Orbitron}
+Orbitron
+\newblock URL \url{http://www.stoff.pl/}.
+
+\bibitem[Carpcomm (2012)]{Carpcomm}
+Carpcomm
+\newblock URL \url{http://carpcomm.com/}.
+
+\bibitem[GENSO (2012)]{GENSO}
+GENSO
+\newblock URL \url{http://www.genso.org/}.
+
+\bibitem[CGI (2013)]{CGI}
+\newblock \emph{CGI provides support for the launch of Estonia’s first satellite}.
+\newblock URL \url{http://www.cgi.com/en/CGI-provides-support-launch-Estonia-first-satellite}.
+\newblock [Online; accessed 2013-08-08].
 
 \bibitem[Tanenbaum (2010)]{Tanenbaum}
 Andrew S. Tanenbaum.
