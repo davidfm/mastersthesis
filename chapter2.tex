@@ -2,7 +2,7 @@
 
 \chapter{Satellite Communications}
 
-This chapter covers the topic of how the satellite communicates with Earth and back. One of the most important constraints that needs to be approached when working with ground station is the fact that the satellite is orbiting around Earth, for this reason, the first section of this chapter will cover what orbits are, what elements describe them and how that information can be used by a computer. Following, the different types of data exchanged by the satellite and the ground station will be covered. The last section of the chapter goes through what a ground station is, its hardware and software components and how it communicates with a satellite in space.
+This chapter covers the topic of how the satellite communicates with Earth and back. One of the most important constraints that needs to be approached when working with ground station is the fact that the satellite is orbiting around Earth. To understand this, the first section of this chapter will cover what orbits are, what elements describe them and how that information can be delivered by a computer. Following, the different types of data exchanged by the satellite and the ground station will be covered. The last section of the chapter goes through what a ground station is, its hardware and software components and how it communicates with a satellite in space.
 
 
 \section{Orbits}\label{2.1}
@@ -20,7 +20,7 @@ Planetary movements were first mathematically defined by the German mathematicia
 \item A planet's orbital period is proportional to the mean distance between the Sun and the planet, raised to the power of 3/2.
 \end{itemize} 
 
-These laws apply to every celestial body. When analysing to bodies, if one is much bigger than the other, it conforms the "two-body problem". It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The analysis of hits problem has resulted in six elements that completely define an orbit, which will be explained in the next section.
+These laws generally apply to every celestial body. When analysing to bodies, if one is much bigger than the other, it conforms the "two-body problem". It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The analysis of this problem has resulted in six elements that completely define an orbit, which will be explained in the next section.
 
 
 \subsection{Classical Orbital Elements}\label{2.2}
@@ -47,7 +47,7 @@ The first two elements, the orbit's size and shape are defined based on a 2D rep
 \end{itemize}
 
 
-Before jumping onto the next Orbital Elements it is necessary to point out that the Geocentric-equatorial Coordinate System will be used. It is now a 3D representation, where the fundamental plane is Earth's equatorial plane and the principal direction is in the vernal equinox direction.
+Before jumping onto the next Orbital Elements it is necessary to point out that the Geocentric-equatorial Coordinate System will be used. It is now a 3D representation, where the fundamental plane is Earth's equatorial plane and the principal direction is in the vernal equinox direction (see Figure \ref{f2.3}).
 
 The following orbital elements define the orientation of the orbital plane:
 
@@ -143,7 +143,7 @@ The satellite ground tracks are the projection of its orbit onto Earth. An examp
 Since the orbital plane does not move in inertial space, the satellite's orbit will always be the same. If Earth did not move the representation of the orbit would be a single line, as the ground track would continuously repeat. However, Earth rotates at 1600 km/hr. Thus, even if the orbit does not change, from the Earth-based observer's point of view it appears to shift to the west.
 
 \subsection{Two Line Elements}\label{2.4}
-A two line element set (TLE) is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time.
+A two line element set (TLE) is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time and are usually used by ground stations in order to track them.
 
 The following snippet shows an example of a TLE for the International Space Station.
 
@@ -315,7 +315,7 @@ A \emph{beacon} is a radio signal transmitted continuously or periodically over 
 
 \emph{Telemetry} data is sent from the satellite to the ground station and can also be divided in three sub-categories.\\
 
-The \emph{housekeeping data} provides information abouth the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate on only a few hundres of bits per second is enough to complete the transmission successfully.
+The \emph{housekeeping data} provides information abouth the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate on only a few hundreds of bits per second is enough to complete the transmission successfully.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/housekeeping.png}}
@@ -355,8 +355,8 @@ One integral part of every satellite mission is the ground station. It works as 
 
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=0.7\textwidth]{images/gsdiagram.png}}
-\caption{Block diagram representation of a ground station}
+\centerline{\includegraphics[width=0.7\textwidth]{images/gsdiagram.jpg}}
+\caption{Diagram of a ground station}
 \label{f2.8}
 \end{figure}
 
@@ -431,7 +431,7 @@ The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and
 \pagebreak
 
 \subsubsection{AX.25}
-AX.25 is a data link layer protocol designed for use by amateur radio operators. It occupies the first, second and third layers of the OSI model. However, AX.25 was developed before the model came into action, so its specification was no written to separate into OSI layers.\\
+AX.25 is a data link layer protocol designed for use by amateur radio operators. It occupies the first, second and third layers of the OSI model. However, AX.25 was developed before the model came into action, so its specification was not written to separate into OSI layers.\\
 
 The link-layer packet radio transmission takes place in small blocks of data called frames. Those frames are represented in the Figures \ref{f2.7} and \ref{f2.8}.\\
 

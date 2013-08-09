@@ -1,6 +1,32 @@
+%Listing definition for XML
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={}% list your attributes here
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Design and Implementation}
 \section{Design}
-\section{Technologies use for Implementation}
+
+\section{Technologies used}
 \subsection{Java}
 \subsection{Camel}
 \subsection{ActiveMQ}
@@ -8,8 +34,89 @@
 \subsection{BeanShell}
 \section{User manual}
 \subsection{Calibration module}
-\subsection{Limit checking module}
+This short user manual covers the use of the calibration module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.
 
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.
+
+The XML file has the following format:
+\begin{figure}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id></id>
+		<description></description>
+		<outputId></outputId>
+		<unit></unit>
+		<scriptInfo>
+			<isVector></isVector>
+			<resultVariable></resultVariable>
+			<auxParameters></auxParameters>
+			<script></script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{blablabla}
+\label{f5.3}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{id}: name of the parameter to calibrate.
+\item \textbf{Description}: description of the parameter.
+\item \textbf{outputId}: name of the parameter generated after the calibration. If left blank, it will be the same as \textbf{id}. Please note that all calibrated parameters names end in \textbf{\_cal}.
+\item \textbf{unit}: Units in which the value is represented.
+\item \textbf{isVector}: \textbf{true} if the result of the calibration is a vector with several values (which generates several new parameters) or \textbf{false} if the calibration returns a single value.
+\item \textbf{resultVariable}: variable in the script in which the result will be stored.
+\item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here insted of the original one (See Figure \ref{f23}).
+\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibratioThe process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.n script must be included here, not the parameter name (See Figure \ref{f23}). 
+\end{itemize}
+
+
+
+\subsection{Limit checking module}
+This subsection covers the user manual for the limit checking module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to the limits of every parameter. 
+
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.
+
+The XML file has the following format:
+\begin{figure}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<limitChecking>
+	<entry>
+		<id></id>
+		<limits>
+			<sanityLower></sanityLower>
+			<hardLower></hardLower>
+			<softLower></softLower>
+			<softUpper></softUpper>
+			<hardUpper></hardUpper>
+			<sanityUpper></sanityUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{blablabla}
+\label{f5.3}
+\end{figure}
+\begin{itemize}
+\item \textbf{id}: name of the parameter to calibrate which limits are to be checked.
+\item \textbf{Sanity limits}: Optional. If the value is below the lower limit or above the upper limit it is discarded. 
+\item \textbf{Hard limits}:
+	\begin{itemize}
+	\item If the sanity limits are available anything between these limits and the sanity limits is considered an error.
+	\item If the sanity limits are disabled anything below the lower limit or above the upper limit is considered an error. 
+	\end{itemize}
+\item \textbf{Soft limits}: 
+\begin{itemize}
+\item Anything between the lower and upper soft limits is considered an OK value.
+\item Anything between the soft limits and the hard limits is considered OK, but with a warning.
+\end{itemize}
+
+\end{itemize}
 
 \newpage
 

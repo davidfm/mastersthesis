@@ -24,7 +24,7 @@
 \BOOKMARK [0][-]{chapter.4}{4 Requirements}{}% 24
 \BOOKMARK [0][-]{chapter.5}{5 Design and Implementation}{}% 25
 \BOOKMARK [1][-]{section.5.1}{5.1 Design}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.2}{5.2 Technologies use for Implementation}{chapter.5}% 27
+\BOOKMARK [1][-]{section.5.2}{5.2 Technologies used}{chapter.5}% 27
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Java}{section.5.2}% 28
 \BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Camel}{section.5.2}% 29
 \BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 ActiveMQ}{section.5.2}% 30
