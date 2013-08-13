@@ -23,23 +23,30 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Design and Implementation}
-\section{Design}
+\chapter{Implementation}
 
 \section{Technologies used}
-\subsection{Java}
-\subsection{Camel}
-\subsection{ActiveMQ}
-\subsection{XStream}
-\subsection{BeanShell}
+
+As it has been explained previously, the two modules developed as part of the work for this thesis have been designed to be integrated with the Hummingbird project. To do so, Java\cite{Java} has been chosen as the main programming languge, as it is the language used for the development of Hummingbird. In the same way, Apache Camel\cite{Camel} and ActiveMQ \cite{AMQ} are used for the communication with the rest of the modules. XStream\cite{XStream} has been chosen as the library used to parse the XML files used to specify the scientific information.
+
+The final piece of technology used is BeanShell\citep{BSH}, a Java-like scripting language and interpreter which runs in the Java Runtime Environment. The calibration module has been designed to be generic, adaptable to every mission. Also, the goal was to make the calibration information input easy for the scientists, meaning this no need to any difficult Java programming, compilation and so on. BeanShell integrates with the Java code and allows to run those scripts \textbf{in (under, on????)} runtime.
+
+\section{Implementation of the calibration module}
+
+\section{Implementation of the limit checking module}
+
+
 \section{User manual}
 \subsection{Calibration module}
 This short user manual covers the use of the calibration module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.
 
-There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand. It is advisable that each file is called as the corresponding subsystem.
+
+
+The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
 
 The XML file has the following format:
-\begin{figure}[H]
+\begin{table}[h]
 \lstset{language=XML}
 \begin{lstlisting}
 
@@ -59,8 +66,8 @@ The XML file has the following format:
 </calibration>
 \end{lstlisting}
 \caption{blablabla}
-\label{f5.3}
-\end{figure}
+\label{Table5.1}
+\end{table}
 
 \begin{itemize}
 \item \textbf{id}: name of the parameter to calibrate.
@@ -70,18 +77,102 @@ The XML file has the following format:
 \item \textbf{isVector}: \textbf{true} if the result of the calibration is a vector with several values (which generates several new parameters) or \textbf{false} if the calibration returns a single value.
 \item \textbf{resultVariable}: variable in the script in which the result will be stored.
 \item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here insted of the original one (See Figure \ref{f23}).
-\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibratioThe process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.n script must be included here, not the parameter name (See Figure \ref{f23}). 
+\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration script must be included here, not the parameter name (See Figure \ref{}). 
 \end{itemize}
 
+
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter for
+		 simple calibration</description>
+		<outputId>generatedA</outputId> 
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters></auxParameters>
+			<script>result = (parameterA*779.09823)/3145.2839</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of simple calibration}
+\label{Table5.2}
+\end{table}
+
+Figure \ref{f5.4} represents the simplest example of calibration information. \textbf{parameterA} is the parameter to be calibrated and the user has chosen that the name of the calibrated parameter will be \textbf{generatedA}. The software will automatically append  \_cal, so the final output name will be \textbf{generatedA\_cal}. The information about the calibration script states that the result will not be a vector and the value after the calculations will be stored in a variable called \textbf{result}. There are no extra parameters needed ant the calibration script is $(parameterA*779.09823)/3145.2839$.
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter which depends
+		 on others to be calibrated</description>
+		<outputId></outputId>
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters>parameterB,parameterC</auxParameters>
+			<script>result = (parameterA*(parameterB*2345/37))
+			/3145.2839 + (parameterC*2)</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of calibration depending on other parameters}
+\label{Table5.3}
+\end{table}
+
+Figure \ref{f5.4} shows an example of a parameter which depends on others for calibration. Again, \textbf{parameterA} is the name of the parameter to be calibrated. In this case the user has not selected an output ID, so it will by default be \textbf{parameterA\_cal}. The result of the calibration will not be a vector and it needs \textbf{parameterB} and \textbf{parameterC} to be calibrated. The calibration script can be explained as follows:
+\begin{itemize}
+\item Calibration script for \textbf{parameterA}: $result = ((parameterA*(parameterB\_cal))\\			/3145.2839) + (parameterC\_cal)$
+\item Instead of just stating that \textbf{parameterB\_cal} is needed to carry on the calibration, the user must specify its calibration script: $parameterB*2345/37$
+\item Same thing with \textbf{parameterC\_cal}: $parameterC*2$
+\item The final result is what can be seen in the example: $result = (parameterA*(parameterB*2345/37))/3145.2839 + (parameterC*2)$
+\end{itemize}
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter for simple calibration</description>
+		<outputId>generatedA</outputId>
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters></auxParameters>
+			<script>result = (parameterA*779.09823)/3145.2839</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of simple calibration}
+\label{Table5.4}
+\end{table}
 
 
 \subsection{Limit checking module}
 This subsection covers the user manual for the limit checking module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to the limits of every parameter. 
 
-There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.It is advisable that each file is called as the corresponding subsystem.
+
+The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
 
 The XML file has the following format:
-\begin{figure}[H]
+\begin{table}[H]
 \lstset{language=XML}
 \begin{lstlisting}
 
@@ -100,8 +191,9 @@ The XML file has the following format:
 </limitChecking>
 \end{lstlisting}
 \caption{blablabla}
-\label{f5.3}
-\end{figure}
+\label{Table5.5}
+\end{table}
+
 \begin{itemize}
 \item \textbf{id}: name of the parameter to calibrate which limits are to be checked.
 \item \textbf{Sanity limits}: Optional. If the value is below the lower limit or above the upper limit it is discarded. 
@@ -115,8 +207,50 @@ The XML file has the following format:
 \item Anything between the lower and upper soft limits is considered an OK value.
 \item Anything between the soft limits and the hard limits is considered OK, but with a warning.
 \end{itemize}
-
 \end{itemize}
+
+The following two examples show the two ways in which the limit checking module can be configured:
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+<limitChecking>
+	<entry>
+		<id>parameterA</id>
+		<limits>
+			<sanityLower>-100</sanityLower>
+			<hardLower>-75</hardLower>
+			<softLower>-20</softLower>
+			<softUpper>20</softUpper>
+			<hardUpper>75</hardUpper>
+			<sanityUpper>100</sanityUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{Limit checking with sanity limits available}
+\label{Table5.6}
+\end{table}
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+<limitChecking>
+	<entry>
+		<id>parameterA</id>
+		<limits>
+			<hardLower>-75</hardLower>
+			<softLower>-20</softLower>
+			<softUpper>20</softUpper>
+			<hardUpper>75</hardUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{Limit checking without sanity limits available}
+\label{Table5.7}
+\end{table}
+
 
 \newpage
 
