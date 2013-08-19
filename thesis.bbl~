@@ -127,7 +127,7 @@ Andrew S. Tanenbaum.
 \newblock \emph{Apache License 2.0}.
 \newblock The Apache Software Foundation, 2004.
 \newblock URL \url{http://www.apache.org/licenses/LICENSE-2.0}.
-\newblock [Online; accessed 2013-08-13].
+\newblock [Online; accessed 2013-08-19].
 
 \bibitem[Java (2013)]{Java}
 \newblock \emph{Java}.
@@ -140,6 +140,12 @@ Andrew S. Tanenbaum.
 \newblock The Apache Software Foundation, 2013.
 \newblock URL \url{ http://camel.apache.org/}.
 \newblock [Online; accessed 2013-05-28].
+
+\bibitem[Java Message Service (2013)]{Camel}
+\newblock \emph{Java Message Service}.
+\newblock Oracle, 2013.
+\newblock URL \url{ http://docs.oracle.com/javaee/6/tutorial/doc/bncdq.html}.
+\newblock [Online; accessed 2013-08-19].
 
 \bibitem[ActiveMQ (2013)]{AMQ}
 \newblock \emph{ActiveMQ}.

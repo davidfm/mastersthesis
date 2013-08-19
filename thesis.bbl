@@ -141,6 +141,12 @@ Andrew S. Tanenbaum.
 \newblock URL \url{ http://camel.apache.org/}.
 \newblock [Online; accessed 2013-05-28].
 
+\bibitem[Java Message Service (2013)]{JMS}
+\newblock \emph{Java Message Service}.
+\newblock Oracle, 2013.
+\newblock URL \url{ http://docs.oracle.com/javaee/6/tutorial/doc/bncdq.html}.
+\newblock [Online; accessed 2013-08-19].
+
 \bibitem[ActiveMQ (2013)]{AMQ}
 \newblock \emph{ActiveMQ}.
 \newblock The Apache Software Foundation, 2013.

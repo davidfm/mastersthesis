@@ -4,7 +4,7 @@
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
 
-lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
         {\ensuremath{\rhookswarrow}}}
 \lstset{postbreak=\raisebox{0ex}[0ex][0ex]
         {\ensuremath{\rcurvearrowse\space}}}
@@ -100,12 +100,11 @@ This module is part the Hummingbird project based on the advise and needs dictat
 
 \subsubsection{Software Interfaces}
 
-\textbf{Parameters}
-
+\textbf{\emph{Parameter}}\\
 The module will receive and generate Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
 
 \begin{itemize}
-\item Numeric value (Can be any type).
+\item Numeric value can be any type).
 \item Unit of the value.
 \item Description.
 \item Timestamp: date and time when the parameter was created.
@@ -113,60 +112,97 @@ The module will receive and generate Parameters. The \emph{Parameter} type is pa
 \end{itemize}
 
 
-\textbf{Apache Camel}\citep{Camel}
-Since Hummingbird uses Apache Camel for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
-Table \ref{Table4.1} shows the information received from the Hummingbird team to configure the module and connect to Camel.
-
-\begin{table}[H]
-\lstset{language=Java}
-\begin{lstlisting}
-
- @Override
-    public void configure() throws Exception {
-
-        // @formatter:off
-        from(StandardEndpoints.MONITORING)
-            .filter(header(StandardArguments.CLASS)
-            .isEqualTo(Parameter.class.getSimpleName()))
-            .process(parameterProcessor)
-            .split(body())
-            .process(preparator)
-            .to(StandardEndpoints.MONITORING);
-        
-        BusinessCard card = new BusinessCard(config.getServiceId(), config.getServiceName());
-        card.setPeriod(config.getHeartBeatInterval());
-        card.setDescription(String.format("Calibrator; version: %s", config.getServiceVersion()));
-        from("timer://heartbeat?fixedRate=true&period=" + config.getHeartBeatInterval())
-            .bean(card, "touch")
-            .process(preparator)
-            .to(StandardEndpoints.MONITORING);
-        // @formatter:on
-
-    }
-
-
-\end{lstlisting}
-\caption{Camel routes}
-\label{Table4.1}
-\end{table}
-
-
+\textbf{\emph{Apache Camel}}\citep{Camel}\\
+Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
 
 
 \subsubsection{Communications Interfaces}
 
-\textbf{or Camel here???}
+\textbf{\emph{JMS}}\cite{JMS}\\
+The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
 
+\pagebreak
 
 \subsection{Functional Requirements}
 
-\subsubsection{Requirement 1}
+\subsubsection{Read configuration}
 
-\textbf{Introduction}\\
-\textbf{Inputs}\\
-\textbf{Processing}\\
-\textbf{Outputs}\\
-\textbf{Error Handling}\\
+\textbf{\emph{Introduction}}\\
+The first thing the software should do is parse the configuration files to generate the calibration information.
+
+\textbf{\emph{Inputs}}\\
+
+XML files with calibration information for the different subsystems.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Find XML files in the selected location.
+\item Find calibration information available in each file.
+\item Generate calibration table.
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+
+The process will generate a table with the calibration information for all the different parameters.
+
+\textbf{\emph{Error Handling}}\\
+
+
+
+\subsubsection{Listen to incoming parameters}
+
+\textbf{\emph{Introduction}}\\
+The module will be waiting for new parameters to arrive. When a parameter is ready for calibration it will be sent to the calibrator.
+
+\textbf{\emph{Inputs}}\\
+
+Parameters received through Camel.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Receive a parameter.
+\item If the parameter is ready for calibration send it to the calibrator.
+\item If the parameter needs more parameters to be calibrated wait for those parameters.
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+
+The output will be one or several parameters which will be sent back to the message queue using Camel.
+
+
+\textbf{\emph{Error Handling}}\\
+\begin{itemize}
+\item If no calibrator is found for the parameter log the error and ignore it. No data return to Camel is expected.
+\item If there is a problem with the calibrator log the error do not return any data through camel.
+\end{itemize}
+
+
+\subsubsection{Calibrate}
+
+\textbf{\emph{Introduction}}\\
+
+
+
+\textbf{\emph{Inputs}}\\
+
+Parameter to be calibrated plus all extra parameters needed to do so.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Receive parameter(s) needed for calibration.
+\item Receive all the calibration information.
+\item Use the script to generate the new value
+\item Return the new parameter
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+
+The output will be one or several parameters.
+
+
+\textbf{\emph{Error Handling}}\\
+If there is an error it must be sent upwards.
+
 
 \subsection{Non-Functional Requirements}
 
@@ -186,6 +222,7 @@ XML configuration at startup.
 \textbf{Portability}\\
 Since it is written in Java it should work wherever a JVM is available.
 
+
 \section{Limit checking module}
 
 \subsection{Introduction}
@@ -197,8 +234,9 @@ This software is intended to serve as an independent limit checking module for \
 \subsubsection{Definitions}
 
 \begin{itemize}
-\item \textbf{Parameter}: contains the value 
 \item \textbf{Hummingbird:} see Chapter 3.
+\item \textbf{Parameter}: contains the value .
+\item \textbf{State}: a boolean value reporting the state of the parameter.
 \end{itemize}
 
 \subsection{General Description}
@@ -211,8 +249,8 @@ This module is part the Hummingbird project based on the advise and needs dictat
 \begin{itemize}
 \item Information input
 \begin{itemize}
-\item Allow the user to input the calibration information as an XML file.
-\item Parse the XML configuration to generate the calibration scripts.
+\item Allow the user to input the limit checking information as an XML file.
+\item Parse the XML configuration to generate the limits.
 \end{itemize}
 
 
@@ -223,9 +261,9 @@ This module is part the Hummingbird project based on the advise and needs dictat
 \begin{itemize}
 \item Specialists/Scientists
 \begin{itemize}
-\item Frequency of use: at the moment of inserting the calibration information.
-\item Functions used: XML file to insert the calibration information. Other than that, the process is automated.
-\item Technical expertise: Comfortable with XML and shell scripting. Also with simple Java programming.
+\item Frequency of use: at the moment of inserting the limit checking information.
+\item Functions used: XML file to insert the limit checking information. Other than that, the process is automated.
+\item Technical expertise: Comfortable with XML.
 \end{itemize}
 \end{itemize}
 
@@ -240,20 +278,19 @@ This module is part the Hummingbird project based on the advise and needs dictat
 
 \subsubsection{User Documentation}
 \begin{itemize}
-\item Manual for specialist/scientists who will be writing the calibration scripts. The manual must contain examples of the XML format and the way of representing the calibration scripts.
+\item Manual for specialist/scientists who setting up the limits. The manual must contain examples of the XML format.
 \end{itemize}
 
-\pagebreak
 \subsection{External Interface Requirements}
 
 \subsubsection{Software Interfaces}
 
-\textbf{Parameters}
+\textbf{\emph{Parameters}}
 
-The module will receive and generate Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
+The module will receive Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
 
 \begin{itemize}
-\item Numeric value (Can be any type).
+\item Numeric value (can be any type).
 \item Unit of the value.
 \item Description.
 \item Timestamp: date and time when the parameter was created.
@@ -261,11 +298,25 @@ The module will receive and generate Parameters. The \emph{Parameter} type is pa
 \end{itemize}
 
 
-\textbf{Camel?????}
+\textbf{\emph{State}}
+
+The module will return States. The \emph{State} type is part of Hummingbird and is represented as follows.
+
+\begin{itemize}
+\item value of the state (boolean).
+
+\end{itemize}
+
+\textbf{\emph{Camel}}
+
+See information in the calibration module requirements specification.
+
 
 \subsubsection{Communications Interfaces}
 
-\textbf{or Camel here???}
+\textbf{\emph{JMS}}
+
+See information in the calibration module requirements specification.
 
 
 \subsection{Functional Requirements}
@@ -286,7 +337,6 @@ The module will receive and generate Parameters. The \emph{Parameter} type is pa
 \textbf{Security}\\
 \textbf{Maintainability}\\
 \textbf{Portability}\\
-...
 
 \subsection{Other Requirements}
 
