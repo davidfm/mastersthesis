@@ -1,8 +1,294 @@
+%Listing definition for Java
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
 
+lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\rhookswarrow}}}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\rcurvearrowse\space}}}
+\lstset{breaklines=true, breakatwhitespace=true}
+\lstset{numbers=left, numberstyle=\scriptsize}
+ 
+\lstset{language=Java,
+basicstyle=\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 
 \chapter{Requirements}
 
 
+\section{Calibration module}
+
+\subsection{Introduction}
+
+\subsubsection{Scope}
+
+This software is intended to serve as an independent calibration module for \emph{Hummingbird}. As such, it will receive parameters with raw values, calibrate those values and generate new parameters which will be available for other modules in the system to use. The system must be flexible and allow users to define their own calibration scripts.
+
+\subsubsection{Definitions}
+
+\begin{itemize}
+\item \textbf{Raw values}: values received from the satellite, before going through the calibration process.
+\item \textbf{Engineering values}: result of the calibration process.
+\item \textbf{Hummingbird:} see Chapter 3.
+\end{itemize}
+
+\subsection{General Description}
+\subsubsection{Product Perspective}
+
+This module is part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
+
+\subsubsection{Product Functions}
+
+\begin{itemize}
+\item Information input
+\begin{itemize}
+\item Allow the user to input the calibration information as an XML file.
+\item Parse the XML configuration to generate the calibration scripts.
+\end{itemize}
+\item Calibration process
+\begin{itemize}
+\item Receive one raw parameter and return one calibrated parameter.
+\item Receive one raw parameter and return several calibrated parameters.
+\item Receive several raw parameters and return one calibrated parameter.
+\item Receive several raw parameters and return several calibrated parameters.
+\end{itemize}
+
+\end{itemize}
+
+\subsubsection{User Characteristics}
+
+\begin{itemize}
+\item Specialists/Scientists
+\begin{itemize}
+\item Frequency of use: at the moment of inserting the calibration information.
+\item Functions used: XML file to insert the calibration information. Other than that, the process is automated.
+\item Technical expertise: Comfortable with XML and shell scripting. Also with simple Java programming.
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{General Constraints}
+
+\begin{itemize}
+\item The module must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
+\item The use of open source tools is recommended.
+\item The main programming language must be Java\cite{Java}.
+\end{itemize}
+
+\subsubsection{User Documentation}
+\begin{itemize}
+\item Manual for specialist/scientists who will be writing the calibration scripts. The manual must contain examples of the XML format and the way of representing the calibration scripts.
+\end{itemize}
+
+\pagebreak
+\subsection{External Interface Requirements}
+
+\subsubsection{Software Interfaces}
+
+\textbf{Parameters}
+
+The module will receive and generate Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
+
+\begin{itemize}
+\item Numeric value (Can be any type).
+\item Unit of the value.
+\item Description.
+\item Timestamp: date and time when the parameter was created.
+
+\end{itemize}
+
+
+\textbf{Apache Camel}\citep{Camel}
+Since Hummingbird uses Apache Camel for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
+Table \ref{Table4.1} shows the information received from the Hummingbird team to configure the module and connect to Camel.
+
+\begin{table}[H]
+\lstset{language=Java}
+\begin{lstlisting}
+
+ @Override
+    public void configure() throws Exception {
+
+        // @formatter:off
+        from(StandardEndpoints.MONITORING)
+            .filter(header(StandardArguments.CLASS)
+            .isEqualTo(Parameter.class.getSimpleName()))
+            .process(parameterProcessor)
+            .split(body())
+            .process(preparator)
+            .to(StandardEndpoints.MONITORING);
+        
+        BusinessCard card = new BusinessCard(config.getServiceId(), config.getServiceName());
+        card.setPeriod(config.getHeartBeatInterval());
+        card.setDescription(String.format("Calibrator; version: %s", config.getServiceVersion()));
+        from("timer://heartbeat?fixedRate=true&period=" + config.getHeartBeatInterval())
+            .bean(card, "touch")
+            .process(preparator)
+            .to(StandardEndpoints.MONITORING);
+        // @formatter:on
+
+    }
+
+
+\end{lstlisting}
+\caption{Camel routes}
+\label{Table4.1}
+\end{table}
+
+
+
+
+\subsubsection{Communications Interfaces}
+
+\textbf{or Camel here???}
+
+
+\subsection{Functional Requirements}
+
+\subsubsection{Requirement 1}
+
+\textbf{Introduction}\\
+\textbf{Inputs}\\
+\textbf{Processing}\\
+\textbf{Outputs}\\
+\textbf{Error Handling}\\
+
+\subsection{Non-Functional Requirements}
+
+%\textbf{Performance}\\
+\textbf{Reliability}\\
+The software should handle unexpected values correctly. Eg. the value of the parameter is \emph{null} or \emph{NaN}.
+
+\textbf{Availability}\\
+Hummingbird setup can work without the module. However, it must run for days without problems.
+
+\textbf{Security}\\
+Handled by Hummingbird.
+
+\textbf{Maintainability}\\
+XML configuration at startup.
+
+\textbf{Portability}\\
+Since it is written in Java it should work wherever a JVM is available.
+
+\section{Limit checking module}
+
+\subsection{Introduction}
+
+\subsubsection{Scope}
+
+This software is intended to serve as an independent limit checking module for \emph{Hummingbird}. It will receive a parameter and return information about the state of that parameter in relation to the limits.
+
+\subsubsection{Definitions}
+
+\begin{itemize}
+\item \textbf{Parameter}: contains the value 
+\item \textbf{Hummingbird:} see Chapter 3.
+\end{itemize}
+
+\subsection{General Description}
+\subsubsection{Product Perspective}
+
+This module is part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
+
+\subsubsection{Product Functions}
+
+\begin{itemize}
+\item Information input
+\begin{itemize}
+\item Allow the user to input the calibration information as an XML file.
+\item Parse the XML configuration to generate the calibration scripts.
+\end{itemize}
+
+
+\end{itemize}
+
+\subsubsection{User Characteristics}
+
+\begin{itemize}
+\item Specialists/Scientists
+\begin{itemize}
+\item Frequency of use: at the moment of inserting the calibration information.
+\item Functions used: XML file to insert the calibration information. Other than that, the process is automated.
+\item Technical expertise: Comfortable with XML and shell scripting. Also with simple Java programming.
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{General Constraints}
+
+\begin{itemize}
+\item The module must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
+\item The use of open source tools is recommended.
+\item The main programming language must be Java\cite{Java}.
+\end{itemize}
+
+\subsubsection{User Documentation}
+\begin{itemize}
+\item Manual for specialist/scientists who will be writing the calibration scripts. The manual must contain examples of the XML format and the way of representing the calibration scripts.
+\end{itemize}
+
+\pagebreak
+\subsection{External Interface Requirements}
+
+\subsubsection{Software Interfaces}
+
+\textbf{Parameters}
+
+The module will receive and generate Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
+
+\begin{itemize}
+\item Numeric value (Can be any type).
+\item Unit of the value.
+\item Description.
+\item Timestamp: date and time when the parameter was created.
+
+\end{itemize}
+
+
+\textbf{Camel?????}
+
+\subsubsection{Communications Interfaces}
+
+\textbf{or Camel here???}
+
+
+\subsection{Functional Requirements}
+
+\subsubsection{Requirement 1}
+
+\textbf{Introduction}\\
+\textbf{Inputs}\\
+\textbf{Processing}\\
+\textbf{Outputs}\\
+\textbf{Error Handling}\\
+
+\subsection{Non-Functional Requirements}
+
+\textbf{Performance}\\
+\textbf{Reliability}\\
+\textbf{Availability}\\
+\textbf{Security}\\
+\textbf{Maintainability}\\
+\textbf{Portability}\\
+...
+
+\subsection{Other Requirements}
 
 \newpage
 

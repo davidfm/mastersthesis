@@ -22,12 +22,27 @@
 \BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 Protocols}{section.2.3}% 22
 \BOOKMARK [0][-]{chapter.3}{3 Hummingbird: the open source platform for monitoring and controlling small satellites}{}% 23
 \BOOKMARK [0][-]{chapter.4}{4 Requirements}{}% 24
-\BOOKMARK [0][-]{chapter.5}{5 Implementation}{}% 25
-\BOOKMARK [1][-]{section.5.1}{5.1 Design}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.2}{5.2 Technologies used}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.3}{5.3 User manual}{chapter.5}% 28
-\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Calibration module}{section.5.3}% 29
-\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Limit checking module}{section.5.3}% 30
-\BOOKMARK [0][-]{chapter.6}{6 Future work}{}% 31
-\BOOKMARK [0][-]{chapter.7}{7 Conclusions}{}% 32
-\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 33
+\BOOKMARK [1][-]{section.4.1}{4.1 Calibration module}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Introduction}{section.4.1}% 26
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 General Description}{section.4.1}% 27
+\BOOKMARK [2][-]{subsection.4.1.3}{4.1.3 External Interface Requirements}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.4}{4.1.4 Functional Requirements}{section.4.1}% 29
+\BOOKMARK [2][-]{subsection.4.1.5}{4.1.5 Non-Functional Requirements}{section.4.1}% 30
+\BOOKMARK [1][-]{section.4.2}{4.2 Limit checking module}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 Introduction}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 General Description}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 External Interface Requirements}{section.4.2}% 34
+\BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Functional Requirements}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.5}{4.2.5 Non-Functional Requirements}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 Other Requirements}{section.4.2}% 37
+\BOOKMARK [0][-]{chapter.5}{5 Implementation}{}% 38
+\BOOKMARK [1][-]{section.5.1}{5.1 Technologies used}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.2}{5.2 Implementation of the calibration module}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.3}{5.3 Implementation of the limit checking module}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 43
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 44
+\BOOKMARK [0][-]{chapter.6}{6 Future work}{}% 45
+\BOOKMARK [0][-]{chapter.7}{7 Conclusions}{}% 46
+\BOOKMARK [0][-]{chapter.8}{8 Conclusions}{}% 47
+\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 48

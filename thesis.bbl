@@ -123,6 +123,12 @@ Andrew S. Tanenbaum.
 \newblock URL \url{ http://www.stensat.org/Docs/FX-25_01_06.pdf}.
 \newblock [Online; accessed 2013-05-06].
 
+\bibitem[Apache license (2004)]{AL20}
+\newblock \emph{Apache License 2.0}.
+\newblock The Apache Software Foundation, 2004.
+\newblock URL \url{http://www.apache.org/licenses/LICENSE-2.0}.
+\newblock [Online; accessed 2013-08-19].
+
 \bibitem[Java (2013)]{Java}
 \newblock \emph{Java}.
 \newblock Oracle, 2013.

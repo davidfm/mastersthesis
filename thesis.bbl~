@@ -123,17 +123,17 @@ Andrew S. Tanenbaum.
 \newblock URL \url{ http://www.stensat.org/Docs/FX-25_01_06.pdf}.
 \newblock [Online; accessed 2013-05-06].
 
-\bibitem[Java (2013)]{Java}
-\newblock \emph{Java}.
-\newblock Oracle, 2013.
-\newblock URL \url{ http://www.java.com/en}.
+\bibitem[Apache license (2004)]{AL20}
+\newblock \emph{Apache License 2.0}.
+\newblock The Apache Software Foundation, 2004.
+\newblock URL \url{http://www.apache.org/licenses/LICENSE-2.0}.
 \newblock [Online; accessed 2013-08-13].
 
 \bibitem[Java (2013)]{Java}
 \newblock \emph{Java}.
 \newblock Oracle, 2013.
 \newblock URL \url{ http://www.java.com/en}.
-\newblock [Online; accessed 2013-05-28].
+\newblock [Online; accessed 2013-08-13].
 
 \bibitem[Camel (2013)]{Camel}
 \newblock \emph{Apache Camel}.
@@ -153,7 +153,7 @@ Andrew S. Tanenbaum.
 \newblock [Online; accessed 2013-07-05].
 
 \bibitem[BeanShell (2013)]{BSH}
-Pat Niemeyer
+Pat Niemeyer.
 \newblock \emph{BeanShell}.
 \newblock URL \url{ http://www.beanshell.org/}.
 \newblock [Online; accessed 2013-07-05].
