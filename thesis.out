@@ -34,14 +34,16 @@
 \BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 External Interface Requirements}{section.4.2}% 34
 \BOOKMARK [2][-]{subsection.4.2.4}{4.2.4 Functional Requirements}{section.4.2}% 35
 \BOOKMARK [2][-]{subsection.4.2.5}{4.2.5 Non-Functional Requirements}{section.4.2}% 36
-\BOOKMARK [2][-]{subsection.4.2.6}{4.2.6 Other Requirements}{section.4.2}% 37
-\BOOKMARK [0][-]{chapter.5}{5 Implementation}{}% 38
-\BOOKMARK [1][-]{section.5.1}{5.1 Technologies used}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{5.2 Implementation of the calibration module}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{5.3 Implementation of the limit checking module}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 43
-\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 44
-\BOOKMARK [0][-]{chapter.6}{6 Future work}{}% 45
-\BOOKMARK [0][-]{chapter.7}{7 Conclusions}{}% 46
-\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 47
+\BOOKMARK [0][-]{chapter.5}{5 Implementation}{}% 37
+\BOOKMARK [1][-]{section.5.1}{5.1 Technologies used}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.2}{5.2 Implementation of the calibration module}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.3}{5.3 Implementation of the limit checking module}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 41
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 42
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 43
+\BOOKMARK [0][-]{chapter.6}{6 Future work}{}% 44
+\BOOKMARK [1][-]{section.6.1}{6.1 Unit testing}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.2}{6.2 Test the integration with ESTCube-1's development build}{chapter.6}% 46
+\BOOKMARK [1][-]{section.6.3}{6.3 Integrate with ESTCube-1's live build and with Hummingbird}{chapter.6}% 47
+\BOOKMARK [0][-]{chapter.7}{7 Conclusions}{}% 48
+\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 49

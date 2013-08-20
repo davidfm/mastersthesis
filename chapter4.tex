@@ -26,7 +26,7 @@ showspaces=false,
 showstringspaces=false
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Requirements}
 
@@ -145,7 +145,7 @@ XML files with calibration information for the different subsystems.
 
 The process will generate a table with the calibration information for all the different parameters.
 
-\textbf{\emph{Error Handling}}\\
+%\textbf{\emph{Error Handling}}\\
 
 
 
@@ -173,7 +173,7 @@ The output will be one or several parameters which will be sent back to the mess
 \textbf{\emph{Error Handling}}\\
 \begin{itemize}
 \item If no calibrator is found for the parameter log the error and ignore it. No data return to Camel is expected.
-\item If there is a problem with the calibrator log the error do not return any data through camel.
+\item If there is a problem with the calibrator log the error do not return any data through Camel.
 \end{itemize}
 
 
@@ -235,7 +235,7 @@ This software is intended to serve as an independent limit checking module for \
 
 \begin{itemize}
 \item \textbf{Hummingbird:} see Chapter 3.
-\item \textbf{Parameter}: contains the value .
+\item \textbf{Parameter}: contains the value.
 \item \textbf{State}: a boolean value reporting the state of the parameter.
 \end{itemize}
 
@@ -243,7 +243,7 @@ This software is intended to serve as an independent limit checking module for \
 \subsubsection{Product Perspective}
 
 This module is part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
-
+\pagebreak
 \subsubsection{Product Functions}
 
 \begin{itemize}
@@ -274,6 +274,22 @@ This module is part the Hummingbird project based on the advise and needs dictat
 \item The module must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
 \item The use of open source tools is recommended.
 \item The main programming language must be Java\cite{Java}.
+\item There must be two options.
+\begin{itemize}
+\item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.1}
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/LimitChecking1.png}}
+\caption{Limit Checker with sanity limits available}
+\label{f4.1}
+\end{figure}
+\item Soft limits and hard limits only.
+\begin{figure}[H]
+\centerline{\includegraphics[width=1\textwidth]{images/LimitChecking2.png}}
+\caption{Limit Checker only with soft and hard limits}
+\label{f4.1}
+\end{figure}
+\end{itemize}
+
 \end{itemize}
 
 \subsubsection{User Documentation}
@@ -307,38 +323,113 @@ The module will return States. The \emph{State} type is part of Hummingbird and 
 
 \end{itemize}
 
-\textbf{\emph{Camel}}
-
-See information in the calibration module requirements specification.
+\textbf{\emph{Apache Camel}}\citep{Camel}\\
+Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
 
 
 \subsubsection{Communications Interfaces}
 
-\textbf{\emph{JMS}}
-
-See information in the calibration module requirements specification.
-
+\textbf{\emph{JMS}}\cite{JMS}\\
+The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
 
 \subsection{Functional Requirements}
 
-\subsubsection{Requirement 1}
+\subsubsection{Read configuration}
 
-\textbf{Introduction}\\
-\textbf{Inputs}\\
-\textbf{Processing}\\
-\textbf{Outputs}\\
-\textbf{Error Handling}\\
+\textbf{\emph{Introduction}}\\
+The first thing the software should do is parse the configuration files to generate the calibration information.
+
+\textbf{\emph{Inputs}}\\
+
+XML files with calibration information for the different subsystems.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Find XML files in the selected location.
+\item Find limits information available in each file.
+\item Generate limits table.
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+
+The process will generate a table with the limits information for all the different parameters.
+
+%\textbf{\emph{Error Handling}}\\
+
+
+\subsubsection{Listen to incoming parameters}
+
+\textbf{\emph{Introduction}}\\
+The module will be waiting for new parameters to arrive. Those parameters will be sent to the limit checker.
+
+\textbf{\emph{Inputs}}\\
+
+Parameters received through Camel.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Receive a parameter.
+\item Send parameter to limit checker.
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+
+The output will be a list of State elements which will be sent back to the message queue using Camel.
+
+
+\textbf{\emph{Error Handling}}\\
+\begin{itemize}
+\item If no limit checking information is found for the parameter log the error and ignore it. No data return to Camel is expected.
+\item If there is a problem with the limit checker log the error do not return any data through Camel.
+\end{itemize}
+
+
+\subsubsection{Check limits}
+
+\textbf{\emph{Introduction}}\\
+
+The software must check the limits, depending on the levels of limits chosen (2 or 3) the comparison will be different.
+
+
+\textbf{\emph{Inputs}}\\
+
+Parameter to be calibrated plus all extra parameters needed to do so.
+
+\textbf{\emph{Processing}}\\
+\begin{enumerate}
+\item Receive parameter.
+\item Receive the limit checking information.
+\item Compare the parameter against the limits.
+\item Return the result of the comparison.
+\end{enumerate}
+
+\textbf{\emph{Outputs}}\\
+List of State elements.
+
+
+\textbf{\emph{Error Handling}}\\
+If there is an error it must be sent upwards.
+
 
 \subsection{Non-Functional Requirements}
 
-\textbf{Performance}\\
+%\textbf{Performance}\\
 \textbf{Reliability}\\
-\textbf{Availability}\\
-\textbf{Security}\\
-\textbf{Maintainability}\\
-\textbf{Portability}\\
+The software should handle unexpected values correctly. Eg. the value of the parameter is \emph{null} or \emph{NaN}.
 
-\subsection{Other Requirements}
+\textbf{Availability}\\
+Hummingbird setup can work without the module. However, it must run for days without problems.
+
+\textbf{Security}\\
+Handled by Hummingbird.
+
+\textbf{Maintainability}\\
+XML configuration at startup.
+
+\textbf{Portability}\\
+Since it is written in Java it should work wherever a JVM is available.
+
+
 
 \newpage
 
