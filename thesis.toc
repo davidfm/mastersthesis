@@ -69,14 +69,16 @@
 \contentsline {subsection}{\numberline {4.2.5}Non-Functional Requirements}{32}{subsection.4.2.5}
 \contentsline {chapter}{\numberline {5}Implementation}{33}{chapter.5}
 \contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
-\contentsline {section}{\numberline {5.2}Implementation of the calibration module}{34}{section.5.2}
-\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{34}{section.5.3}
-\contentsline {section}{\numberline {5.4}User manual}{34}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Calibration module}{34}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{37}{subsection.5.4.2}
-\contentsline {chapter}{\numberline {6}Future work}{40}{chapter.6}
-\contentsline {section}{\numberline {6.1}Unit testing}{40}{section.6.1}
-\contentsline {section}{\numberline {6.2}Test the integration with ESTCube-1's development build}{40}{section.6.2}
-\contentsline {section}{\numberline {6.3}Integrate with ESTCube-1's live build and with Hummingbird}{41}{section.6.3}
-\contentsline {chapter}{\numberline {7}Conclusions}{42}{chapter.7}
-\contentsline {chapter}{Bibliography}{43}{section*.1}
+\contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Load the calibration information}{34}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Receive parameters and send them to the calibrator}{35}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{36}{section.5.3}
+\contentsline {section}{\numberline {5.4}User manual}{36}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Calibration module}{36}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{39}{subsection.5.4.2}
+\contentsline {chapter}{\numberline {6}Conclussions}{42}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future work}{43}{chapter.7}
+\contentsline {section}{\numberline {7.1}Unit testing}{43}{section.7.1}
+\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{43}{section.7.2}
+\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{44}{section.7.3}
+\contentsline {chapter}{Bibliography}{45}{section*.1}

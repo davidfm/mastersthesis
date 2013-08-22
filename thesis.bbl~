@@ -164,6 +164,13 @@ Pat Niemeyer.
 \newblock URL \url{ http://www.beanshell.org/}.
 \newblock [Online; accessed 2013-07-05].
 
+\bibitem[HashMap (2013)]{HashMap}
+\newblock \emph{Class HashMap<K,V>}.
+\newblock Oracle, 2013.
+\newblock URL \url{http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html}.
+\newblock [Online; accessed 2013-07-05].
+
+
 \bibitem[JUnit (2013)]{JUnit}
 \newblock \emph{JUnit}.
 \newblock URL \url{ http://www.junit.org/}.
@@ -171,7 +178,7 @@ Pat Niemeyer.
 
 \bibitem[Mockito (2013)]{Mockito}
 \newblock \emph{Mockito}.
-\newblock URL \url{ http://www.junit.org/}.
+\newblock URL \url{ https://code.google.com/p/mockito/}.
 \newblock [Online; accessed 2013-08-20].
 
 
