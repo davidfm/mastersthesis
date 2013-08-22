@@ -150,10 +150,28 @@ The second part - from line 14 and below - contains the heartbeat system.
 \item Algorithm to process the received parameters.
 \end{itemize}
 
+It will fully explained in the next two subsections.
+
+
+\textbf{!!!!REWRITE!!!!!}
+
+\section{Load the calibration information from the XML files}
+This subsection will cover how the calibration information is loaded from the XML files, when that happens and which data structures are used to store that information within the program.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.75\textwidth]{images/InitCalibrationUnitsSequence.png}}
+\caption{Class diagram of XML parsing}
+\label{f2.1}
+\end{figure}
 
 
 
-For each entry in the XML file, one instance of the above data structure is created and then stored in a \textbf{HashMap}. The reason for choosing this data structure is its efficiency. It provides constant-time performance for the input and retrieval of information\cite{HashMap}.
+
+
+
+
+
+For each entry in the XML file, one instance of the above data structure is created and then stored in a \textbf{HashMap}. The reason for choosing a HashMap is its efficiency. It provides constant-time performance for the input and retrieval of information\cite{HashMap}.
 
 
 Figure xx represents the sequence diagram of this part of the software.
