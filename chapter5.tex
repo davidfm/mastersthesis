@@ -183,29 +183,138 @@ Figure \ref{f5.2}, there are several classes involved in this process. They can 
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/LoadInfoClassDiagram.png}}
-\caption{Class diagram. Loading the calibration information.}
+\caption{Diagram of the classes involved in loading the calibration information onto the system.}
 \label{f5.2}
 \end{figure}
 
 
 
 
-The best way to see how these classes interact with each other is by looking at its sequence diagram (Figure \ref{f5.3}). The main class is \emph{ParameterProcessor}, where the calibration information will be stored in the form of a \emph{HashMap} of calibration units. The reason for choosing a HashMap is its efficiency as it provides constant-time performance for the input and retrieval of information\cite{HashMap}. The process begins by \emph{ParameterProcessor} asking \emph{InitCalibrationUnits} to initialize them. To do so the calibration units need the calibration information (calibrators), which is initialized  by \emph{InitCalibrators}. \emph{InitCalibrators} is the class which manages the access to information in the files; first it finds the corresponding XML files to later parse each of them, creating the calibrators. With this calibrators, \emph{InitCalibrationUnits} creates them, and then returns them to the main class where they are ready to receive the incoming parameters.
+The best way to see how these classes interact with each other is by looking at its sequence diagram (Figure \ref{f5.3}). The main class is \emph{ParameterProcessor}, where the calibration information will be stored in the form of a \emph{HashMap} of calibration units. The reason for choosing a this data structure is its efficiency, as it provides constant-time performance for the input and retrieval of information\cite{HashMap}. The process begins by \emph{ParameterProcessor} asking \emph{InitCalibrationUnits} to initialize them. To do so the calibration units need the calibration information (calibrators), which is initialized  by \emph{InitCalibrators}. \emph{InitCalibrators} is the class which manages the access to information in the files; first it finds the corresponding XML files to later parse each of them, creating the calibrators. With this calibrators, \emph{InitCalibrationUnits} creates them, and then returns them to the main class where they are ready to receive the incoming parameters.
 
 There is one class present in the class diagram in Figure \ref{f5.2} which is not present in Figure \ref{f5.3}: \emph{HashMapConverter}. This is because this class is managed by \emph{XStream}, the external library used to simplify XML access and parsing. 
 
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.75\textwidth]{images/InitCalibrationUnitsSequence.png}}
-\caption{Sequence diagram. Loading the calibration information.}
+\caption{Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}
 \label{f5.3}
 \end{figure}
 
 
+The data structure created to represent the calibration information is \emph{InfoContainer} and it is formed by these components:
+
+\begin{itemize}
+
+	\item \textbf{id}
+		\begin{itemize}
+			\item Type: String
+			\item Content: name of the parameter to be calibrated
+		\end{itemize}
+	\item \textbf{outputId}
+		\begin{itemize}
+			\item Type:String
+			\item Content: name of the engineering parameter
+		\end{itemize}
+	\item \textbf{unit}
+		\begin{itemize}
+			\item Type: String
+			\item Content: unit in which the calibrated value is represented
+		\end{itemize}
+	\item \textbf{Description}
+		\begin{itemize}
+			\item Type:String
+			\item Content:description of the parameter
+		\end{itemize}
+	
+	\item \textbf{additionalParameters}
+		\begin{itemize}
+			\item Type: List of Strings
+			\item Content: List with the names of any extra parameters needed for the calibration
+		\end{itemize}
+	\item \textbf{resultIsVector}
+		\begin{itemize}
+			\item Type: boolean
+			\item Content: $true$ if the result of the calibration is a vector, $false$ if the result of the calibration is an individual value 
+		\end{itemize}
+	\item \textbf{scriptResultVariable}
+		\begin{itemize}
+			\item Type: String
+			\item Content: name of the variable which will contain the result in the script
+		\end{itemize}
+	\item \textbf{script}
+		\begin{itemize}
+			\item Type: String
+			\item Content: calibration script
+		\end{itemize}						
+		
+\end{itemize}
+
+This data structure is later stored within another data structure, \emph{CalibrationUnit}. The reason for using this second data structure is the way parameters are received from Camel, one by one. If all the calibrations were just simple one-parameter calibrations that would not be necessary. However, some parameters might need information from others to be calibrated, thus, they need to be sent as a whole unit to the method to the method which will generated the engineering values. \emph{CalibrationUnit} is formed by the following components:
+
+\begin{itemize}
+\item Attributes:
+	\begin{itemize}
+		\item \textbf{id}
+			\begin{itemize}
+				\item Type: String
+				\itme Content: name of the parameter to be calibrated
+			\end{itemize}
+		\item \textbf{main}
+			\begin{itemize}
+				\item Type: Parameter
+				\itme Content: parameter which will be calibrated
+			\end{itemize}				
+		\item \textbf{auxParameters}
+			\begin{itemize}
+				\item Type: HashMap of Parameters
+				\itme Content: extra parameters needed to calibrate the main one
+			\end{itemize}												
+		
+	\end{itemize}
+	
+	\item Amongst others, \emph{CalibrationUnit} can perform the following actions:
+	\begin{itemize}
+		\item \textbf{neededParameters}: returns the parameters listed as necessary for the calibration
+		\item \textbf{needsThisParameter}: checks whether a particular parameter is needed for the current calibration unit
+		\item \textbf{addAuxParameter}: adds an extra parameter when needed
+		\item \textbf{isReadyForCalibration}: checks that all the needed parameters are in place. Only when this check returns true the calibration unit is sent to the calibrator.
+		\item \textbf{clean}: once the calibration unit has been sent to the calibrator, it is cleaned so it can be used for the next time that parameters are received. This means emptying the main and auxiliary parameters.
+	\end{itemize}
+
+\end{itemize}
 
 
+\subsection{Calibration}
+The calibration process can be divided in two parts. The first one is managing the parameters that arrive from other modules, prepare the calibration units and send back the results. The second is the actual calibration. 
+
+Figure \ref{f5.4} represents the class diagram of this part of the software. There are three classes which have been seen in previous sections ---\emph{ParameterProcessor}, \emph{CalibrationUnit} and \emph{InfoContainer}--- and two new ones which are:
+\begin{itemize}
+\item \emph{ParameterCalibrator}: Interface representing the method that the calibrator must contain.
+\item \emph{Calibrate}: Implementation of the previous interface, where the actual calibration is performed. This class is generic class. Its generic type \emph{T} extends from Java Number, which means any the Java Number subtypes can be used when instantiating it. Currently is in the form of a Double, but it can be easily modified if ever needed.
+\end{itemize}
 
 
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.2\textwidth]{images/CalibrationClassDiagram.png}}
+\caption{Diagram representing the classes involved in the calibration process.}
+\label{f5.4}
+\end{figure}
+
+Figure \ref{f5.5} is a flow chart representing the algorithm used to manage the received parameters, in combination with the sequence diagram of Figure \ref{f5.6} they show what the steps in the algorithm are and which parts of the software performs then. As it was previously stated, the main class is \emph{ParameterProcessor}.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.2\textwidth]{images/ReceiveParameterAndCalibrateFlowChart.png}}
+\caption{Flow chart of the algorithm to manage incoming parameters in the calibration module.}
+\label{f5.5}
+\end{figure}
+
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.2\textwidth]{images/ReceiveParameterAndCalibrateSequence.png}}
+\caption{Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}
+\label{f5.6}
+\end{figure}
 
 
 
@@ -252,7 +361,7 @@ The XML file has the following format:
 \item \textbf{unit}: Units in which the value is represented.
 \item \textbf{isVector}: \textbf{true} if the result of the calibration is a vector with several values (which generates several new parameters) or \textbf{false} if the calibration returns a single value.
 \item \textbf{resultVariable}: variable in the script in which the result will be stored.
-\item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here insted of the original one (See Figure \ref{f23}).
+\item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here instead of the original one (See Figure \ref{f23}).
 \item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration script must be included here, not the parameter name (See Figure \ref{}). 
 \end{itemize}
 

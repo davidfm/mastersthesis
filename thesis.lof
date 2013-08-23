@@ -23,7 +23,10 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Limit Checker only with soft and hard limits}}{29}{figure.4.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram of the Camel integration}}{34}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Class diagram. Loading the calibration information.}}{37}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram. Loading the calibration information.}}{38}{figure.5.3}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram of the classes involved in loading the calibration information onto the system.}}{37}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}}{39}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram representing the classes involved in the calibration process.}}{42}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Flow chart of the algorithm to manage incoming parameters in the calibration module.}}{43}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}}{44}{figure.5.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
