@@ -158,6 +158,12 @@ Andrew S. Tanenbaum.
 \newblock URL \url{ http://xstream.codehaus.org/}.
 \newblock [Online; accessed 2013-07-05].
 
+\bibitem[XML (2013)]{XML}
+\newblock \emph{Extensible Markup Language (XML)}.
+\newblock URL \url{ http://www.w3.org/XML/}.
+\newblock [Online; accessed 2013-07-05].
+
+
 \bibitem[BeanShell (2013)]{BSH}
 Pat Niemeyer.
 \newblock \emph{BeanShell}.

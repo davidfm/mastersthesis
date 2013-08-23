@@ -71,14 +71,14 @@
 \contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Camel Integration}{34}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Load the calibration information from the XML files}{36}{section.5.3}
-\contentsline {section}{\numberline {5.4}Implementation of the limit checking module}{38}{section.5.4}
-\contentsline {section}{\numberline {5.5}User manual}{38}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Calibration module}{38}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Limit checking module}{41}{subsection.5.5.2}
-\contentsline {chapter}{\numberline {6}Conclussions}{44}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future work}{45}{chapter.7}
-\contentsline {section}{\numberline {7.1}Unit testing}{45}{section.7.1}
-\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{45}{section.7.2}
-\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{46}{section.7.3}
-\contentsline {chapter}{Bibliography}{47}{section*.1}
+\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{36}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{39}{section.5.3}
+\contentsline {section}{\numberline {5.4}User manual}{39}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Calibration module}{39}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{42}{subsection.5.4.2}
+\contentsline {chapter}{\numberline {6}Conclussions}{45}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future work}{46}{chapter.7}
+\contentsline {section}{\numberline {7.1}Unit testing}{46}{section.7.1}
+\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{46}{section.7.2}
+\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{47}{section.7.3}
+\contentsline {chapter}{Bibliography}{48}{section*.1}

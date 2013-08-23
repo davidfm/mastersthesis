@@ -38,11 +38,11 @@
 \BOOKMARK [1][-]{section.5.1}{5.1 Technologies used}{chapter.5}% 38
 \BOOKMARK [1][-]{section.5.2}{5.2 Implementation of the calibration module}{chapter.5}% 39
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Camel Integration}{section.5.2}% 40
-\BOOKMARK [1][-]{section.5.3}{5.3 Load the calibration information from the XML files}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{5.4 Implementation of the limit checking module}{chapter.5}% 42
-\BOOKMARK [1][-]{section.5.5}{5.5 User manual}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Calibration module}{section.5.5}% 44
-\BOOKMARK [2][-]{subsection.5.5.2}{5.5.2 Limit checking module}{section.5.5}% 45
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Loading the calibration information}{section.5.2}% 41
+\BOOKMARK [1][-]{section.5.3}{5.3 Implementation of the limit checking module}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 44
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 45
 \BOOKMARK [0][-]{chapter.6}{6 Conclussions}{}% 46
 \BOOKMARK [0][-]{chapter.7}{7 Future work}{}% 47
 \BOOKMARK [1][-]{section.7.1}{7.1 Unit testing}{chapter.7}% 48

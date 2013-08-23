@@ -23,6 +23,7 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Limit Checker only with soft and hard limits}}{29}{figure.4.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram of the Camel integration}}{34}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Semimajor Axis}}{37}{figure.5.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Class diagram. Loading the calibration information.}}{37}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram. Loading the calibration information.}}{38}{figure.5.3}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
