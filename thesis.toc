@@ -71,7 +71,7 @@
 \contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Camel Integration}{34}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{36}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{37}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Calibration}{41}{subsection.5.2.3}
 \contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{45}{section.5.3}
 \contentsline {section}{\numberline {5.4}User manual}{45}{section.5.4}
