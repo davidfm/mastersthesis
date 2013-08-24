@@ -89,7 +89,7 @@ The integration with Camel is a crucial part of the module since it is where it 
 
 Amongst the three classes represented in Figure \ref{f5.1} it is important to highlight two of them: \emph{Calibrator} and \emph{ParameterProcessor}.
 
-\emph{Calibrator} is the main class of the module. As it is shown in the class diagram there are two methods, the \textbf{main} method, where everything starts and the \textbf{configure} method. The latter is where the integration with Camel happens, what configures where to get the messages from, what to do with them and where to send them afterwards. In addition, \emph{Hummingbird} utilizes a heartbeat system to check if the modules are working correctly, this is also carried on here. To see a snippet of the code see Table \ref{Table5.1}.
+\emph{Calibrator} is the main class of the module. As it is shown in the class diagram there are two methods, the \textbf{main} method, where everything starts and the \textbf{configure} method. The latter is where the integration with Camel happens, what configures where to get the messages from, what to do with them and where to send them afterwards. In addition, \emph{Hummingbird} utilizes a heartbeat system to check if the modules are working correctly, this is also carried on here. Table \ref{Table5.1} contains a snippet of the code.
 
 \begin{table}[h]
 \lstset{language=Java}
@@ -121,7 +121,7 @@ Amongst the three classes represented in Figure \ref{f5.1} it is important to hi
 
 
 \end{lstlisting}
-\caption{Camel integration Java code}
+\caption{Camel integration Java code for the calibrator}
 \label{Table5.1}
 \end{table}
 
@@ -360,7 +360,7 @@ The part of evaluating the raw parameters using the calibration script is left i
 \end{table}
 
 
-Table \ref{Table5.3} shows the way information is retrieved from the interpreter and how the parameters with the engineering values are created. The actions to be taken change depending on whether the result is a vector.
+Table \ref{Table5.4} shows the way information is retrieved from the interpreter and how the parameters with the engineering values are created. The actions to be taken change depending on whether the result is a vector.
 
 \begin{table}[h]
 \lstset{language=Java}
@@ -382,7 +382,7 @@ Table \ref{Table5.3} shows the way information is retrieved from the interpreter
         }
 \end{lstlisting}
 \caption{Java code used to retrieve the information from the interpreter and generate the new parameters.}
-\label{Table5.3}
+\label{Table5.4}
 \end{table}
 
 
@@ -392,14 +392,59 @@ This module also has a very similar structure to the calibration one. The explan
 
 \begin{itemize}
 \item \textbf{eu.estcube.limitchecking}: provided by the Hummingbird software architect,it contains the Apache Camel integration. It also contains the main class of the module.
-\item \textbf{eu.estcube.limitchecking.checklimits}:
-\item \textbf{eu.estcube.limitchecking.constants}:
-\item \textbf{eu.estcube.limitchecking.domain}:
-\item \textbf{eu.estcube.limitchecking.processors}:
-\item \textbf{eu.estcube.limitchecking.utils}:
-\item \textbf{eu.estcube.limitchecking.xmlparser}:
-
+\item \textbf{eu.estcube.limitchecking.checklimits}: contains the classes where the limit checking is performed.
+\item \textbf{eu.estcube.limitchecking.constants}: contains several constants which are used throughout the module.
+\item \textbf{eu.estcube.limitchecking.domain}: contains the data structure used to represent the limits information.
+\item \textbf{eu.estcube.limitchecking.processors}: contains the main algorithm for receiving, checking the limits and sending the results back. Also, the interface implemented by the limit checker can be found here.
+\item \textbf{eu.estcube.limitchecking.utils}: contains additional utilities. In this case, the tools to manage finding and reading files.
+\item \textbf{eu.estcube.limitchecking.xmlparser}: contains the tools to parse the information contained in XML format into data which can be used in the module.
 \end{itemize}
+\subsection{Camel integration}
+
+The integration with camel is done in the exact same way as in the calibration module. Figure \ref{f5.7} contains a diagram of the classes involved in this process. The classes change their name (\emph{Calibrator} to \emph{LimitChecking} and \emph{CalibratorConfig} to \emph{LimitCheckingConfig}) and a the \textbf{split} option is removed (compare Tables \ref{Table5.1} and\ref{Table5.5}, as there is no need to split results received from \emph{ParameterProcessor}. There are also some minor changes in the latter, but those are related to the limit checking and not to the Camel integration. For more information about the integration please see the correspondent section in the calibration module.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.75\textwidth]{images/LimitCheckingCamelClassDiagram.png}}
+\caption{Class diagram of the Camel integration}
+\label{f5.7}
+\end{figure}
+
+\begin{table}[h]
+\lstset{language=Java}
+\begin{lstlisting}
+
+    @Override
+    public void configure() throws Exception {
+
+        // @formatter:off
+        from(StandardEndpoints.MONITORING)
+            .filter(header(StandardArguments.CLASS)
+            .isEqualTo(Parameter.class.getSimpleName()))
+            .process(parameterProcessor)
+            .process(preparator)
+            .to(StandardEndpoints.MONITORING);
+        
+        BusinessCard card = new BusinessCard(config.getServiceId(), config.getServiceName());
+        card.setPeriod(config.getHeartBeatInterval());
+        card.setDescription(String.format("Calibrator; version: %s", config.getServiceVersion()));
+        from("timer://heartbeat?fixedRate=true&period=" + config.getHeartBeatInterval())
+            .bean(card, "touch")
+            .process(preparator)
+            .to(StandardEndpoints.MONITORING);
+        // @formatter:on
+
+    }
+
+
+
+\end{lstlisting}
+\caption{Camel integration Java code for the limit checker.}
+\label{Table5.5}
+\end{table}
+
+
+
+
 
 
 

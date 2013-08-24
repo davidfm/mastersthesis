@@ -41,12 +41,13 @@
 \BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Loading the calibration information}{section.5.2}% 41
 \BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Calibration}{section.5.2}% 42
 \BOOKMARK [1][-]{section.5.3}{5.3 Implementation of the limit checking module}{chapter.5}% 43
-\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 44
-\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 45
-\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 46
-\BOOKMARK [0][-]{chapter.6}{6 Conclussions}{}% 47
-\BOOKMARK [0][-]{chapter.7}{7 Future work}{}% 48
-\BOOKMARK [1][-]{section.7.1}{7.1 Unit testing}{chapter.7}% 49
-\BOOKMARK [1][-]{section.7.2}{7.2 Test the integration with ESTCube-1's development build}{chapter.7}% 50
-\BOOKMARK [1][-]{section.7.3}{7.3 Integrate with ESTCube-1's live build and with Hummingbird}{chapter.7}% 51
-\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 52
+\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Camel integration}{section.5.3}% 44
+\BOOKMARK [1][-]{section.5.4}{5.4 User manual}{chapter.5}% 45
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Calibration module}{section.5.4}% 46
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Limit checking module}{section.5.4}% 47
+\BOOKMARK [0][-]{chapter.6}{6 Conclussions}{}% 48
+\BOOKMARK [0][-]{chapter.7}{7 Future work}{}% 49
+\BOOKMARK [1][-]{section.7.1}{7.1 Unit testing}{chapter.7}% 50
+\BOOKMARK [1][-]{section.7.2}{7.2 Test the integration with ESTCube-1's development build}{chapter.7}% 51
+\BOOKMARK [1][-]{section.7.3}{7.3 Integrate with ESTCube-1's live build and with Hummingbird}{chapter.7}% 52
+\BOOKMARK [0][-]{section*.1}{Bibliography}{}% 53

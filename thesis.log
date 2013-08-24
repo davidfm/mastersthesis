@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  24 AUG 2013 17:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  24 AUG 2013 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1358,6 +1358,11 @@ Overfull \hbox (13.70499pt too wide) detected at line 30
 \T1/cmr/m/n/12 Figure 5.6 
  []
 
+
+Overfull \hbox (13.70499pt too wide) detected at line 31
+\T1/cmr/m/n/12 Figure 5.7 
+ []
+
 )
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
@@ -1452,6 +1457,11 @@ Overfull \hbox (19.57855pt too wide) detected at line 24
 \T1/cmr/m/n/12 Table 5.11 
  []
 
+
+Overfull \hbox (19.57855pt too wide) detected at line 25
+\T1/cmr/m/n/12 Table 5.12 
+ []
+
 )
 \tf@lot=\write8
 \openout8 = `thesis.lot'.
@@ -1476,7 +1486,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-<images/sputnik.jpg, id=426, 263.5446pt x 215.8464pt>
+<images/sputnik.jpg, id=430, 263.5446pt x 215.8464pt>
 File: images/sputnik.jpg Graphic file (type jpg)
  <use images/sputnik.jpg>
 Package pdftex.def Info: images/sputnik.jpg used on input line 15.
@@ -1487,7 +1497,7 @@ Package pdftex.def Info: images/sputnik.jpg used on input line 15.
 
 
 
-] <images/explorer1.jpg, id=432, 517.935pt x 399.4925pt>
+] <images/explorer1.jpg, id=436, 517.935pt x 399.4925pt>
 File: images/explorer1.jpg Graphic file (type jpg)
 
 <use images/explorer1.jpg>
@@ -1520,7 +1530,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-<images/satclass.png, id=440, 964.60374pt x 521.95pt>
+<images/satclass.png, id=444, 964.60374pt x 521.95pt>
 File: images/satclass.png Graphic file (type png)
 
 <use images/satclass.png>
@@ -1533,7 +1543,7 @@ Package pdftex.def Info: images/satclass.png used on input line 42.
                                                   \fi \fi 
 l.50 
       <./images/satclass.png>]
-<images/aalto1.png, id=451, 1027.84pt x 685.56125pt>
+<images/aalto1.png, id=455, 1027.84pt x 685.56125pt>
 File: images/aalto1.png Graphic file (type png)
  <use images/aalto1.png>
 Package pdftex.def Info: images/aalto1.png used on input line 56.
@@ -1554,7 +1564,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 69--71
 
  []
 
-<images/ESTCube.jpg, id=464, 2055.68pt x 1268.74pt>
+<images/ESTCube.jpg, id=468, 2055.68pt x 1268.74pt>
 File: images/ESTCube.jpg Graphic file (type jpg)
  <use images/ESTCube.jpg>
 Package pdftex.def Info: images/ESTCube.jpg used on input line 73.
@@ -1579,14 +1589,14 @@ Chapter 2.
 
 
 
-] <images/Ellipse.png, id=484, 344.78813pt x 237.13594pt>
+] <images/Ellipse.png, id=489, 344.78813pt x 237.13594pt>
 File: images/Ellipse.png Graphic file (type png)
 
 <use images/Ellipse.png>
 Package pdftex.def Info: images/Ellipse.png used on input line 32.
 (pdftex.def)             Requested size: 292.77629pt x 201.36385pt.
 
-<images/Eccentricity.png, id=486, 531.9875pt x 481.8pt>
+<images/Eccentricity.png, id=491, 531.9875pt x 481.8pt>
 File: images/Eccentricity.png Graphic file (type png)
 
 <use images/Eccentricity.png>
@@ -1599,28 +1609,28 @@ Package pdftex.def Info: images/Eccentricity.png used on input line 42.
                                                   \fi \fi 
 l.46 
       <./images/Ellipse.png>]
-<images/EquatorialOrbit.png, id=495, 92.345pt x 57.21375pt>
+<images/EquatorialOrbit.png, id=499, 92.345pt x 57.21375pt>
 File: images/EquatorialOrbit.png Graphic file (type png)
 
 <use images/EquatorialOrbit.png>
 Package pdftex.def Info: images/EquatorialOrbit.png used on input line 71.
 (pdftex.def)             Requested size: 46.17238pt x 28.6068pt.
 
-<images/PolarOrbit.png, id=496, 117.43875pt x 87.32625pt>
+<images/PolarOrbit.png, id=500, 117.43875pt x 87.32625pt>
 File: images/PolarOrbit.png Graphic file (type png)
 
 <use images/PolarOrbit.png>
 Package pdftex.def Info: images/PolarOrbit.png used on input line 75.
 (pdftex.def)             Requested size: 58.71922pt x 43.66301pt.
 
-<images/DirectOrbit.png, id=497, 140.525pt x 69.25874pt>
+<images/DirectOrbit.png, id=501, 140.525pt x 69.25874pt>
 File: images/DirectOrbit.png Graphic file (type png)
 
 <use images/DirectOrbit.png>
 Package pdftex.def Info: images/DirectOrbit.png used on input line 79.
 (pdftex.def)             Requested size: 70.26231pt x 34.62927pt.
 
-<images/IndirectOrbit.png, id=498, 140.525pt x 66.2475pt>
+<images/IndirectOrbit.png, id=502, 140.525pt x 66.2475pt>
 File: images/IndirectOrbit.png Graphic file (type png)
 
 <use images/IndirectOrbit.png>
@@ -1644,13 +1654,13 @@ Overfull \hbox (4.8501pt too wide) in paragraph at lines 95--117
  [][] 
  []
 
-<images/COEs.png, id=510, 557.08125pt x 336.50719pt>
+<images/COEs.png, id=514, 557.08125pt x 336.50719pt>
 File: images/COEs.png Graphic file (type png)
  <use images/COEs.png>
 Package pdftex.def Info: images/COEs.png used on input line 128.
 (pdftex.def)             Requested size: 292.77629pt x 176.85376pt.
 
-<images/GroundTracks.png, id=513, 1616.0375pt x 760.8425pt>
+<images/GroundTracks.png, id=517, 1616.0375pt x 760.8425pt>
 File: images/GroundTracks.png Graphic file (type png)
 
 <use images/GroundTracks.png>
@@ -1710,7 +1720,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
 
-<images/housekeeping.png, id=528, 1032.85875pt x 437.635pt>
+<images/housekeeping.png, id=532, 1032.85875pt x 437.635pt>
 File: images/housekeeping.png Graphic file (type png)
 
 <use images/housekeeping.png>
@@ -1728,7 +1738,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 326--327
                                                   \fi \fi 
 l.328 \emph{Payload data}
                           changes with every mission and needs to be conside...
- <./images/housekeeping.png>] <images/masat.jpg, id=535, 321.2pt x 240.9pt>
+ <./images/housekeeping.png>] <images/masat.jpg, id=539, 321.2pt x 240.9pt>
 File: images/masat.jpg Graphic file (type jpg)
 
 <use images/masat.jpg>
@@ -1741,7 +1751,7 @@ Package pdftex.def Info: images/masat.jpg used on input line 331.
                                                   \fi \fi 
 l.346 
        <./images/masat.jpg>]
-<images/gsdiagram.jpg, id=542, 506.89375pt x 742.775pt>
+<images/gsdiagram.jpg, id=546, 506.89375pt x 742.775pt>
 File: images/gsdiagram.jpg Graphic file (type jpg)
 
 <use images/gsdiagram.jpg>
@@ -1802,13 +1812,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 436--437
 
  []
 
-<images/ax25a.png, id=572, 659.46375pt x 88.33pt>
+<images/ax25a.png, id=576, 659.46375pt x 88.33pt>
 File: images/ax25a.png Graphic file (type png)
  <use images/ax25a.png>
 Package pdftex.def Info: images/ax25a.png used on input line 439.
 (pdftex.def)             Requested size: 418.25368pt x 56.02287pt.
 
-<images/ax25b.png, id=574, 653.44125pt x 127.47626pt>
+<images/ax25b.png, id=578, 653.44125pt x 127.47626pt>
 File: images/ax25b.png Graphic file (type png)
  <use images/ax25b.png>
 Package pdftex.def Info: images/ax25b.png used on input line 445.
@@ -1827,7 +1837,7 @@ l.449
                                                   \fi \fi 
 l.449 
        <./images/ax25a.png>]
-<images/fx25.png, id=580, 608.2725pt x 93.34875pt>
+<images/fx25.png, id=584, 608.2725pt x 93.34875pt>
 File: images/fx25.png Graphic file (type png)
  <use images/fx25.png>
 Package pdftex.def Info: images/fx25.png used on input line 454.
@@ -1921,14 +1931,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
-[25] [26] <images/LimitChecking1.png, id=639, 796.47563pt x 597.73312pt>
+[25] [26] <images/LimitChecking1.png, id=643, 796.47563pt x 597.73312pt>
 File: images/LimitChecking1.png Graphic file (type png)
 
 <use images/LimitChecking1.png>
 Package pdftex.def Info: images/LimitChecking1.png used on input line 281.
 (pdftex.def)             Requested size: 418.25368pt x 313.88756pt.
  [27]
-<images/LimitChecking2.png, id=645, 796.47563pt x 597.73312pt>
+<images/LimitChecking2.png, id=649, 796.47563pt x 597.73312pt>
 File: images/LimitChecking2.png Graphic file (type png)
 
 <use images/LimitChecking2.png>
@@ -2019,7 +2029,7 @@ Overfull \hbox (8.7002pt too wide) in paragraph at lines 73--74
 v-eral con-stants used through-
  []
 
-<images/CalibratorCamelClassDiagram.png, id=693, 641.39626pt x 500.87125pt>
+<images/CalibratorCamelClassDiagram.png, id=697, 641.39626pt x 500.87125pt>
 File: images/CalibratorCamelClassDiagram.png Graphic file (type png)
 
 <use images/CalibratorCamelClassDiagram.png>
@@ -2066,7 +2076,7 @@ pro-cess(preparator)
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.182 
-      ] <images/LoadInfoClassDiagram.png, id=753, 1122.1925pt x 632.3625pt>
+      ] <images/LoadInfoClassDiagram.png, id=757, 1122.1925pt x 632.3625pt>
 File: images/LoadInfoClassDiagram.png Graphic file (type png)
 
 <use images/LoadInfoClassDiagram.png>
@@ -2074,7 +2084,7 @@ Package pdftex.def Info: images/LoadInfoClassDiagram.png used on input line 206
 .
 (pdftex.def)             Requested size: 543.73105pt x 306.39632pt.
  [37]
-<images/InitCalibrationUnitsSequence.png, id=762, 479.7925pt x 949.5475pt>
+<images/InitCalibrationUnitsSequence.png, id=766, 479.7925pt x 949.5475pt>
 File: images/InitCalibrationUnitsSequence.png Graphic file (type png)
 
 <use images/InitCalibrationUnitsSequence.png>
@@ -2103,7 +2113,7 @@ Overfull \hbox (5.82085pt too wide) in paragraph at lines 300--301
 -lar pa-ram-e-ter is needed
  []
 
-[41] <images/CalibrationClassDiagram.png, id=782, 1049.9225pt x 635.37375pt>
+[41] <images/CalibrationClassDiagram.png, id=786, 1049.9225pt x 635.37375pt>
 File: images/CalibrationClassDiagram.png Graphic file (type png)
 
 <use images/CalibrationClassDiagram.png>
@@ -2111,7 +2121,7 @@ Package pdftex.def Info: images/CalibrationClassDiagram.png used on input line
 320.
 (pdftex.def)             Requested size: 501.90312pt x 303.73497pt.
 
-<images/ReceiveParameterAndCalibrateFlowChart.png, id=785, 956.57375pt x 957.57
+<images/ReceiveParameterAndCalibrateFlowChart.png, id=789, 956.57375pt x 957.57
 75pt>
 File: images/ReceiveParameterAndCalibrateFlowChart.png Graphic file (type png)
  <use images/ReceiveParameterAndCalibrateFlowChart.png>
@@ -2125,7 +2135,7 @@ on input line 336.
                                                   \fi \fi 
 l.339 \end{figure}
                    <./images/CalibrationClassDiagram.png>]
-<images/ReceiveParameterAndCalibrateSequence.png, id=794, 808.01875pt x 542.025
+<images/ReceiveParameterAndCalibrateSequence.png, id=798, 808.01875pt x 542.025
 pt>
 File: images/ReceiveParameterAndCalibrateSequence.png Graphic file (type png)
  <use images/ReceiveParameterAndCalibrateSequence.png>
@@ -2160,78 +2170,103 @@ used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.405 
+l.400 \item \textbf
+                   {eu.estcube.limitchecking.xmlparser}: contains the tools ...
+] <images/LimitCheckingCamelClassDiagram.png, id=837, 619.31375pt x 505.89pt>
+File: images/LimitCheckingCamelClassDiagram.png Graphic file (type png)
+
+<use images/LimitCheckingCamelClassDiagram.png>
+Package pdftex.def Info: images/LimitCheckingCamelClassDiagram.png used on inpu
+t line 407.
+(pdftex.def)             Requested size: 313.69025pt x 256.2482pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46pdfTeX warning (ext4): destination with the same identifier (name{figure.5.7
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.454 
+       <./images/LimitCheckingCamelClassDiagram.png>] [47pdfTeX warning (ext4):
+ destination with the same identifier (name{table.5.5}) has been already used, 
+duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.483 
       ]
 
-LaTeX Warning: Reference `f23' on page 46 undefined on input line 440.
+LaTeX Warning: Reference `f23' on page 48 undefined on input line 491.
 
 
-LaTeX Warning: Reference `' on page 46 undefined on input line 441.
+LaTeX Warning: Reference `' on page 48 undefined on input line 492.
 
-[46pdfTeX warning (ext4): destination with the same identifier (name{table.5.5}
+[48pdfTeX warning (ext4): destination with the same identifier (name{table.5.6}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.442 \end{itemize}
-                   ]
+l.520 
+      ]
 
-LaTeX Warning: Reference `f5.x' on page 47 undefined on input line 470.
+LaTeX Warning: Reference `f5.x' on page 49 undefined on input line 521.
 
-[47pdfTeX warning (ext4): destination with the same identifier (name{table.5.6}
+[49pdfTeX warning (ext4): destination with the same identifier (name{table.5.7}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.496 
+l.547 
       ]
 
-LaTeX Warning: Reference `f5.x' on page 48 undefined on input line 497.
+LaTeX Warning: Reference `f5.x' on page 50 undefined on input line 548.
 
 
-Overfull \hbox (24.75378pt too wide) in paragraph at lines 499--500
+Overfull \hbox (24.75378pt too wide) in paragraph at lines 550--551
 []\T1/cmr/m/n/12 Calibration script for \T1/cmr/bx/n/12 pa-ram-e-terA\T1/cmr/m/
 n/12 : $\OML/cmm/m/it/12 result \U/MnSymbolD/m/n/12 ^^@ \OMX/MnSymbolE/m/n/12 ˆ
 ˆ\OML/cmm/m/it/12 parameterA \U/MnSymbolC/m/n/12 ‡ \OMX/MnSymbolE/m/n/12 ˆ\OML/
 cmm/m/it/12 parameterB[]cal\OMX/MnSymbolE/m/n/12 [] 
  []
 
-[48pdfTeX warning (ext4): destination with the same identifier (name{table.5.7}
+[50pdfTeX warning (ext4): destination with the same identifier (name{table.5.8}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.526 
-      ] [49pdfTeX warning (ext4): destination with the same identifier (name{ta
-ble.5.8}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.557 
-      ] [50pdfTeX warning (ext4): destination with the same identifier (name{ta
+l.577 
+      ] [51pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.5.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.595 
-      ] [51pdfTeX warning (ext4): destination with the same identifier (name{ta
+l.608 
+      ] [52pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.5.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.616 \newpage
-              pdfTeX warning (ext4): destination with the same identifier (name
-{table.5.11}) has been already used, duplicate ignored
+l.646 
+      ] [53pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.5.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.616 \newpage
+l.667 \newpage
+              pdfTeX warning (ext4): destination with the same identifier (name
+{table.5.12}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.667 \newpage
               ])
 \openout2 = `chapter6.aux'.
 
  (./chapter6.tex
 Chapter 6.
-) [52
+) [54
 
 
 
@@ -2245,11 +2280,11 @@ Overfull \hbox (2.16731pt too wide) in paragraph at lines 17--17
  |[]\T1/cmr/bx/n/17.28 Integrate with ESTCube-1's live build and with
  []
 
-[53
+[55
 
 
 
-] [54]) (./thesis.bbl
+] [56]) (./thesis.bbl
 Underfull \hbox (badness 5417) in paragraph at lines 45--48
 \T1/cmr/m/it/12 1 and ESTCube-1 in or-bit\T1/cmr/m/n/12 .  URL []$\T1/cmtt/m/n/
 12 http : / / www . arianespace . com /
@@ -2261,7 +2296,7 @@ Underfull \hbox (badness 1052) in paragraph at lines 77--82
  The Ra-dio Am-a-teur Satel-lite Cor-po-ra-
  []
 
-[55
+[57
 
 
 
@@ -2282,7 +2317,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 $[]\T1/cmr/m/n/12 .  [On-line;
  []
 
-[56]) [57]
+[58]) [59]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 33.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 33.
  (./thesis.aux (./cover.aux) (./abstract.aux) (./license.aux)
@@ -2291,9 +2326,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 33.
 (./chapter7.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 33.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 33.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D61750F7D0401B0D629DD385388F58D7;3812.
 
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: D61750F7D0401B0D629DD385388F58D7;3812
+(rerunfilecheck)             After:  5F7BFEBA8ADCBCF58492728A97ED3308;3889.
 
 LaTeX Warning: There were undefined references.
 
@@ -2303,10 +2344,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 33.
  ) 
 Here is how much of TeX's memory you used:
- 15643 strings out of 493485
- 218961 string characters out of 3143526
- 368797 words of memory out of 3000000
- 18159 multiletter control sequences out of 15000+200000
+ 15680 strings out of 493485
+ 219611 string characters out of 3143526
+ 371938 words of memory out of 3000000
+ 18167 multiletter control sequences out of 15000+200000
  35999 words of font info for 65 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,20n,74p,1481b,1342s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2331,10 +2372,10 @@ super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
 ts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-s
 uper/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb>
-Output written on thesis.pdf (67 pages, 4222473 bytes).
+Output written on thesis.pdf (69 pages, 4248929 bytes).
 PDF statistics:
- 1185 PDF objects out of 1200 (max. 8388607)
- 1057 compressed objects within 11 object streams
- 382 named destinations out of 1000 (max. 500000)
- 557 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1231 PDF objects out of 1440 (max. 8388607)
+ 1100 compressed objects within 11 object streams
+ 410 named destinations out of 1000 (max. 500000)
+ 562 words of extra memory for PDF output out of 10000 (max. 10000000)
 
