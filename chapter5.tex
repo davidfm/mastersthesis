@@ -180,7 +180,7 @@ The code corresponding to the Camel integration is shown in table \ref{Table5.2}
 
 The first action point when the module is initiated is loading the calibration information. This will read the information from the configuration files written by the specialists and will create a series of calibration units which will later be used to calibrate the incoming parameters.
 
-Figure \ref{f5.2}, there are several classes involved in this process. They can be organised as follows:
+Figure \ref{f5.2} shows the different classes involved in this process. They can be organised as follows:
 \begin{itemize}
 \item Main class: \emph{ParameterProcessor}
 \item Data structures:
@@ -401,15 +401,15 @@ This module also has a very similar structure to the calibration one. The explan
 \end{itemize}
 \subsection{Camel integration}
 
-The integration with camel is done in the exact same way as in the calibration module. Figure \ref{f5.7} contains a diagram of the classes involved in this process. The classes change their name (\emph{Calibrator} to \emph{LimitChecking} and \emph{CalibratorConfig} to \emph{LimitCheckingConfig}) and a the \textbf{split} option is removed (compare Tables \ref{Table5.1} and\ref{Table5.5}, as there is no need to split results received from \emph{ParameterProcessor}. There are also some minor changes in the latter, but those are related to the limit checking and not to the Camel integration. For more information about the integration please see the correspondent section in the calibration module.
+The integration with camel is done in the exact same way as in the calibration module. Figure \ref{f5.7} contains a diagram of the classes involved in this process. The classes change their name (\emph{Calibrator} to \emph{LimitChecking} and \emph{CalibratorConfig} to \emph{LimitCheckingConfig}) and a the \textbf{split} option is removed (compare Tables \ref{Table5.1} and\ref{Table5.5}, as there is no need to split results received from \emph{ParameterProcessor}. There are also some minor changes in the latter, but those are related to the limit checking and not to the Camel integration. For more information please see the correspondent section in the calibration module.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.75\textwidth]{images/LimitCheckingCamelClassDiagram.png}}
 \caption{Class diagram of the Camel integration}
 \label{f5.7}
 \end{figure}
-
-\begin{table}[h]
+\pagebreak
+\begin{table}[H]
 \lstset{language=Java}
 \begin{lstlisting}
 
@@ -442,12 +442,42 @@ The integration with camel is done in the exact same way as in the calibration m
 \label{Table5.5}
 \end{table}
 
+\pagebreak
+
+\subsection{Loading the limits information}
+This is also done in the same way as it is performed in the calibration module. The first thing done when the module is initiated is loading the limits information. This means reading the information from the configuration files and creating the limits which will be later used to compare against the incoming parameters.
+Figure \ref{f5.8} shows the different classes involved in this process. They can be organised as follows:
+\begin{itemize}
+\item Main class: \emph{ParameterProcessor}
+\item Data structure: \emph{InfoContainer}
+\item Utils:
+	\begin{itemize}
+		\item \emph{InitLimits}
+		\item \emph{FileManager}
+	\end{itemize}
+\item Parser:
+	\begin{itemize}
+		\item \emph{Parser}
+		\item \emph{HashMapConverter}
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.1\textwidth]{images/LoadLimitsClassDiagram.png}}
+\caption{Diagram of the classes involved in loading the limits information onto the system.}
+\label{f5.8}
+\end{figure}
+\pagebreak
 
 
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.75\textwidth]{images/InitLimitsSequence.png}}
+\caption{Sequence diagram which represents the interactions between the different classes present when loading the limits information.}
+\label{f5.8}
+\end{figure}
 
 
-
-
+\pagebreak
 \section{User manual}
 \subsection{Calibration module}
 This short user manual covers the use of the calibration module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.
