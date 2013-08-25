@@ -176,6 +176,11 @@ Pat Niemeyer.
 \newblock URL \url{http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html}.
 \newblock [Online; accessed 2013-07-05].
 
+\bibitem[BigDecimal (2013)]{BigDecimal}
+\newblock \emph{Class BigDecimal}.
+\newblock Oracle, 2013.
+\newblock URL \url{http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html}.
+\newblock [Online; accessed 2013-07-05].
 
 \bibitem[JUnit (2013)]{JUnit}
 \newblock \emph{JUnit}.

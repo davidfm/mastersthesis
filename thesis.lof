@@ -31,5 +31,8 @@
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Class diagram of the Camel integration}}{46}{figure.5.7}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram of the classes involved in loading the limits information onto the system.}}{48}{figure.5.8}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the limits information.}}{49}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{51}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{52}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{53}{figure.5.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
