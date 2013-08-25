@@ -71,18 +71,25 @@
 \contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Camel Integration}{34}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{37}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{36}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Calibration}{41}{subsection.5.2.3}
 \contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{45}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Camel integration}{46}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Loading the limits information}{48}{subsection.5.3.2}
 \contentsline {subsection}{\numberline {5.3.3}Limit checking}{51}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}User manual}{54}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Calibration module}{54}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{57}{subsection.5.4.2}
-\contentsline {chapter}{\numberline {6}Conclussions}{60}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future work}{61}{chapter.7}
-\contentsline {section}{\numberline {7.1}Unit testing}{61}{section.7.1}
-\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{61}{section.7.2}
-\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{62}{section.7.3}
-\contentsline {chapter}{Bibliography}{63}{section*.1}
+\contentsline {section}{\numberline {5.4}User manual}{53}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Calibration module}{53}{subsection.5.4.1}
+\contentsline {subsubsection}{Structure of the XML file}{54}{subsection.5.4.1}
+\contentsline {subsubsection}{Example of simple calibration}{55}{table.5.6}
+\contentsline {subsubsection}{Example of calibration dependent on other parameters}{56}{table.5.7}
+\contentsline {subsubsection}{Example of calibration dependent on other parameters which are dependent on others}{57}{table.5.8}
+\contentsline {subsubsection}{Example of the result of the calibration being a vector}{58}{table.5.9}
+\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{58}{subsection.5.4.2}
+\contentsline {subsubsection}{Example of configuration with sanity limits}{60}{table.5.11}
+\contentsline {subsubsection}{Example of configuration without sanity limits}{60}{table.5.12}
+\contentsline {chapter}{\numberline {6}Conclussions}{61}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future work}{62}{chapter.7}
+\contentsline {section}{\numberline {7.1}Unit testing}{62}{section.7.1}
+\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{62}{section.7.2}
+\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{63}{section.7.3}
+\contentsline {chapter}{Bibliography}{64}{section*.1}
