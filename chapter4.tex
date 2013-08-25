@@ -30,6 +30,62 @@ showstringspaces=false
 
 \chapter{Requirements}
 
+\section{Common information for both modules}
+
+\subsection{General Description}
+\subsubsection{Product Perspective}
+The modules are part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
+
+\subsubsection{General Constraints}
+
+\begin{itemize}
+\item The modules must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
+\item The use of open source tools is recommended.
+\item The main programming language must be Java\cite{Java}.
+\end{itemize}
+
+\subsection{External Interface Requirements}
+
+\subsubsection{Software Interfaces}
+
+\textbf{\emph{Parameter}}\\
+The modules will receive Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
+
+\begin{itemize}
+\item Numeric value (can be any type).
+\item Unit of the value.
+\item Description.
+\item Timestamp: date and time when the parameter was created.
+
+\end{itemize}
+
+
+\textbf{\emph{Apache Camel}}\citep{Camel}\\
+Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
+
+
+\subsubsection{Communications Interfaces}
+
+\textbf{\emph{JMS}}\cite{JMS}\\
+The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
+
+\subsection{Non-Functional Requirements}
+
+%\textbf{Performance}\\
+\textbf{Reliability}\\
+The software should handle unexpected values correctly. Eg. the value of the parameter is \emph{null} or \emph{NaN}.
+
+\textbf{Availability}\\
+Hummingbird setup can work without the modules. However, they must run for days without problems.
+
+\textbf{Security}\\
+Handled by Hummingbird.
+
+\textbf{Maintainability}\\
+XML configuration at startup.
+
+\textbf{Portability}\\
+Since it is written in Java it should work wherever a JVM is available.
 
 \section{Calibration module}
 
@@ -42,15 +98,15 @@ This software is intended to serve as an independent calibration module for \emp
 \subsubsection{Definitions}
 
 \begin{itemize}
-\item \textbf{Raw values}: values received from the satellite, before going through the calibration process.
 \item \textbf{Engineering values}: result of the calibration process.
+\item \textbf{Raw values}: values received from the satellite, before going through the calibration process.
 \item \textbf{Hummingbird:} see Chapter 3.
 \end{itemize}
 
 \subsection{General Description}
 \subsubsection{Product Perspective}
 
-This module is part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
+Common to both modules. Please see the corresponding section.
 
 \subsubsection{Product Functions}
 
@@ -84,42 +140,23 @@ This module is part the Hummingbird project based on the advise and needs dictat
 
 \subsubsection{General Constraints}
 
-\begin{itemize}
-\item The module must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
-\item The use of open source tools is recommended.
-\item The main programming language must be Java\cite{Java}.
-\end{itemize}
+Common to both modules. Please, see the corresponding section.
 
 \subsubsection{User Documentation}
 \begin{itemize}
 \item Manual for specialist/scientists who will be writing the calibration scripts. The manual must contain examples of the XML format and the way of representing the calibration scripts.
 \end{itemize}
 
-\pagebreak
 \subsection{External Interface Requirements}
 
 \subsubsection{Software Interfaces}
 
-\textbf{\emph{Parameter}}\\
-The module will receive and generate Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
-
-\begin{itemize}
-\item Numeric value can be any type).
-\item Unit of the value.
-\item Description.
-\item Timestamp: date and time when the parameter was created.
-
-\end{itemize}
-
-
-\textbf{\emph{Apache Camel}}\citep{Camel}\\
-Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
+In addition to receiving Parameters this module also generates and sends them. For more information see the corresponding section as the interface is common for both modules.
 
 
 \subsubsection{Communications Interfaces}
 
-\textbf{\emph{JMS}}\cite{JMS}\\
-The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
+Common to both modules. Please see t corresponding section.
 
 \pagebreak
 
@@ -164,7 +201,7 @@ Parameters received through Camel.
 \item If the parameter is ready for calibration send it to the calibrator.
 \item If the parameter needs more parameters to be calibrated wait for those parameters.
 \end{enumerate}
-
+\pagebreak
 \textbf{\emph{Outputs}}\\
 
 The output will be one or several parameters which will be sent back to the message queue using Camel.
@@ -181,7 +218,7 @@ The output will be one or several parameters which will be sent back to the mess
 
 \textbf{\emph{Introduction}}\\
 
-
+When the a parameter is ready for calibration it must be sent to the calibrator, including any extra parameters needed for the calibration and also the calibration information.
 
 \textbf{\emph{Inputs}}\\
 
@@ -203,25 +240,10 @@ The output will be one or several parameters.
 \textbf{\emph{Error Handling}}\\
 If there is an error it must be sent upwards.
 
-
+\pagebreak
 \subsection{Non-Functional Requirements}
 
-%\textbf{Performance}\\
-\textbf{Reliability}\\
-The software should handle unexpected values correctly. Eg. the value of the parameter is \emph{null} or \emph{NaN}.
-
-\textbf{Availability}\\
-Hummingbird setup can work without the module. However, it must run for days without problems.
-
-\textbf{Security}\\
-Handled by Hummingbird.
-
-\textbf{Maintainability}\\
-XML configuration at startup.
-
-\textbf{Portability}\\
-Since it is written in Java it should work wherever a JVM is available.
-
+Common to both modules. Please see the corresponding section.
 
 \section{Limit checking module}
 
@@ -242,8 +264,8 @@ This software is intended to serve as an independent limit checking module for \
 \subsection{General Description}
 \subsubsection{Product Perspective}
 
-This module is part the Hummingbird project based on the advise and needs dictated by the ESTCube-1 team members. For more information about Hummingbird see Chapter 3 and for more information about ESTCube-1 see Chapter 1. 
-\pagebreak
+Common to both modules, please see the corresponding section.
+
 \subsubsection{Product Functions}
 
 \begin{itemize}
@@ -270,49 +292,34 @@ This module is part the Hummingbird project based on the advise and needs dictat
 
 \subsubsection{General Constraints}
 
-\begin{itemize}
-\item The module must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
-\item The use of open source tools is recommended.
-\item The main programming language must be Java\cite{Java}.
-\item There must be two options.
-\begin{itemize}
-\item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.1}
-\begin{figure}[H]
-\centerline{\includegraphics[width=1\textwidth]{images/LimitChecking1.png}}
-\caption{Limit Checker with sanity limits available}
-\label{f4.1}
-\end{figure}
-\item Soft limits and hard limits only.
-\begin{figure}[H]
-\centerline{\includegraphics[width=1\textwidth]{images/LimitChecking2.png}}
-\caption{Limit Checker only with soft and hard limits}
-\label{f4.1}
-\end{figure}
-\end{itemize}
+In addition to the constraints which are common to both modules there must be two options:
 
+\begin{itemize}
+\item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.2})
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.2\textwidth]{images/LimitChecking1.png}}
+\caption{Limit Checker with sanity limits available}
+\label{f4.2}
+\end{figure}
+\pagebreak
+\item Soft limits and hard limits only (Figure \ref{f4.3}.
+\begin{figure}[H]
+\centerline{\includegraphics[width=1.2\textwidth]{images/LimitChecking2.png}}
+\caption{Limit Checker only with soft and hard limits}
+\label{f4.3}
+\end{figure}
 \end{itemize}
 
 \subsubsection{User Documentation}
 \begin{itemize}
 \item Manual for specialist/scientists who setting up the limits. The manual must contain examples of the XML format.
 \end{itemize}
-
+\pagebreak
 \subsection{External Interface Requirements}
 
 \subsubsection{Software Interfaces}
 
-\textbf{\emph{Parameters}}
-
-The module will receive Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
-
-\begin{itemize}
-\item Numeric value (can be any type).
-\item Unit of the value.
-\item Description.
-\item Timestamp: date and time when the parameter was created.
-
-\end{itemize}
-
+In addition to the common software interfaces for both modules there is one more software interface to be taken into account.
 
 \textbf{\emph{State}}
 
@@ -323,14 +330,10 @@ The module will return States. The \emph{State} type is part of Hummingbird and 
 
 \end{itemize}
 
-\textbf{\emph{Apache Camel}}\citep{Camel}\\
-Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
-
 
 \subsubsection{Communications Interfaces}
 
-\textbf{\emph{JMS}}\cite{JMS}\\
-The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
+Common for both modules. Please see the corresponding section.
 
 \subsection{Functional Requirements}
 
@@ -413,21 +416,7 @@ If there is an error it must be sent upwards.
 
 \subsection{Non-Functional Requirements}
 
-%\textbf{Performance}\\
-\textbf{Reliability}\\
-The software should handle unexpected values correctly. Eg. the value of the parameter is \emph{null} or \emph{NaN}.
-
-\textbf{Availability}\\
-Hummingbird setup can work without the module. However, it must run for days without problems.
-
-\textbf{Security}\\
-Handled by Hummingbird.
-
-\textbf{Maintainability}\\
-XML configuration at startup.
-
-\textbf{Portability}\\
-Since it is written in Java it should work wherever a JVM is available.
+Common for both modules. Please see the corresponding section.
 
 
 

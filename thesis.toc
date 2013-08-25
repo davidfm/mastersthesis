@@ -31,42 +31,50 @@
 \contentsline {subsubsection}{FX.25}{19}{figure.2.9}
 \contentsline {chapter}{\numberline {3}Hummingbird: the open source platform for monitoring and controlling small satellites}{20}{chapter.3}
 \contentsline {chapter}{\numberline {4}Requirements}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Calibration module}{21}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Introduction}{21}{subsection.4.1.1}
-\contentsline {subsubsection}{Scope}{21}{subsection.4.1.1}
-\contentsline {subsubsection}{Definitions}{21}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}General Description}{21}{subsection.4.1.2}
-\contentsline {subsubsection}{Product Perspective}{21}{subsection.4.1.2}
-\contentsline {subsubsection}{Product Functions}{22}{subsection.4.1.2}
-\contentsline {subsubsection}{User Characteristics}{22}{subsection.4.1.2}
-\contentsline {subsubsection}{General Constraints}{22}{subsection.4.1.2}
-\contentsline {subsubsection}{User Documentation}{22}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}External Interface Requirements}{23}{subsection.4.1.3}
-\contentsline {subsubsection}{Software Interfaces}{23}{subsection.4.1.3}
-\contentsline {subsubsection}{Communications Interfaces}{23}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}Functional Requirements}{24}{subsection.4.1.4}
-\contentsline {subsubsection}{Read configuration}{24}{subsection.4.1.4}
-\contentsline {subsubsection}{Listen to incoming parameters}{24}{Item.3}
-\contentsline {subsubsection}{Calibrate}{25}{Item.6}
-\contentsline {subsection}{\numberline {4.1.5}Non-Functional Requirements}{25}{subsection.4.1.5}
-\contentsline {section}{\numberline {4.2}Limit checking module}{26}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Introduction}{26}{subsection.4.2.1}
-\contentsline {subsubsection}{Scope}{26}{subsection.4.2.1}
-\contentsline {subsubsection}{Definitions}{26}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}General Description}{26}{subsection.4.2.2}
-\contentsline {subsubsection}{Product Perspective}{26}{subsection.4.2.2}
-\contentsline {subsubsection}{Product Functions}{27}{subsection.4.2.2}
-\contentsline {subsubsection}{User Characteristics}{27}{subsection.4.2.2}
-\contentsline {subsubsection}{General Constraints}{27}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.1}Common information for both modules}{21}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}General Description}{21}{subsection.4.1.1}
+\contentsline {subsubsection}{Product Perspective}{21}{subsection.4.1.1}
+\contentsline {subsubsection}{General Constraints}{21}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}External Interface Requirements}{21}{subsection.4.1.2}
+\contentsline {subsubsection}{Software Interfaces}{21}{subsection.4.1.2}
+\contentsline {subsubsection}{Communications Interfaces}{22}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Non-Functional Requirements}{22}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Calibration module}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Introduction}{23}{subsection.4.2.1}
+\contentsline {subsubsection}{Scope}{23}{subsection.4.2.1}
+\contentsline {subsubsection}{Definitions}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}General Description}{23}{subsection.4.2.2}
+\contentsline {subsubsection}{Product Perspective}{23}{subsection.4.2.2}
+\contentsline {subsubsection}{Product Functions}{23}{subsection.4.2.2}
+\contentsline {subsubsection}{User Characteristics}{24}{subsection.4.2.2}
+\contentsline {subsubsection}{General Constraints}{24}{subsection.4.2.2}
+\contentsline {subsubsection}{User Documentation}{24}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}External Interface Requirements}{24}{subsection.4.2.3}
+\contentsline {subsubsection}{Software Interfaces}{24}{subsection.4.2.3}
+\contentsline {subsubsection}{Communications Interfaces}{24}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Functional Requirements}{25}{subsection.4.2.4}
+\contentsline {subsubsection}{Read configuration}{25}{subsection.4.2.4}
+\contentsline {subsubsection}{Listen to incoming parameters}{25}{Item.3}
+\contentsline {subsubsection}{Calibrate}{26}{Item.6}
+\contentsline {subsection}{\numberline {4.2.5}Non-Functional Requirements}{27}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Limit checking module}{27}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Introduction}{27}{subsection.4.3.1}
+\contentsline {subsubsection}{Scope}{27}{subsection.4.3.1}
+\contentsline {subsubsection}{Definitions}{27}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}General Description}{27}{subsection.4.3.2}
+\contentsline {subsubsection}{Product Perspective}{27}{subsection.4.3.2}
+\contentsline {subsubsection}{Product Functions}{27}{subsection.4.3.2}
+\contentsline {subsubsection}{User Characteristics}{27}{subsection.4.3.2}
+\contentsline {subsubsection}{General Constraints}{28}{subsection.4.3.2}
 \contentsline {subsubsection}{User Documentation}{29}{figure.4.2}
-\contentsline {subsection}{\numberline {4.2.3}External Interface Requirements}{29}{subsection.4.2.3}
-\contentsline {subsubsection}{Software Interfaces}{29}{subsection.4.2.3}
-\contentsline {subsubsection}{Communications Interfaces}{30}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Functional Requirements}{30}{subsection.4.2.4}
-\contentsline {subsubsection}{Read configuration}{30}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.3.3}External Interface Requirements}{30}{subsection.4.3.3}
+\contentsline {subsubsection}{Software Interfaces}{30}{subsection.4.3.3}
+\contentsline {subsubsection}{Communications Interfaces}{30}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Functional Requirements}{30}{subsection.4.3.4}
+\contentsline {subsubsection}{Read configuration}{30}{subsection.4.3.4}
 \contentsline {subsubsection}{Listen to incoming parameters}{31}{Item.13}
 \contentsline {subsubsection}{Check limits}{31}{Item.15}
-\contentsline {subsection}{\numberline {4.2.5}Non-Functional Requirements}{32}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.3.5}Non-Functional Requirements}{32}{subsection.4.3.5}
 \contentsline {chapter}{\numberline {5}Implementation}{33}{chapter.5}
 \contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
