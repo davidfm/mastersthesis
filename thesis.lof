@@ -19,20 +19,20 @@
 \contentsline {figure}{\numberline {2.10}{\ignorespaces FX.25 frame structure \cite {FX25}}}{20}{figure.2.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Limit Checker with sanity limits available}}{29}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Limit Checker only with soft and hard limits}}{30}{figure.4.2}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Limit Checker with sanity limits available}}{30}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Limit Checker only with soft and hard limits}}{31}{figure.4.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram of the Camel integration}}{35}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram of the classes involved in loading the calibration information onto the system.}}{39}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}}{40}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram representing the classes involved in the calibration process.}}{43}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Flow chart of the algorithm to manage incoming parameters in the calibration module.}}{44}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}}{45}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Class diagram of the Camel integration}}{47}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram of the classes involved in loading the limits information onto the system.}}{49}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the limits information.}}{50}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{52}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{53}{figure.5.11}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{54}{figure.5.12}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram of the Camel integration}}{36}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram of the classes involved in loading the calibration information onto the system.}}{40}{figure.5.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}}{41}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram representing the classes involved in the calibration process.}}{44}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Flow chart of the algorithm to manage incoming parameters in the calibration module.}}{45}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}}{46}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Class diagram of the Camel integration}}{48}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram of the classes involved in loading the limits information onto the system.}}{50}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the limits information.}}{51}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{53}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{54}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{55}{figure.5.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
