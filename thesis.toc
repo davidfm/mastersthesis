@@ -8,96 +8,96 @@
 \contentsline {subsection}{\numberline {1.1.2}ESTCube-1}{5}{subsection.1.1.2}
 \contentsline {section}{\numberline {1.2}Problem statement}{6}{section.1.2}
 \contentsline {section}{\numberline {1.3}Research objectives and scope}{6}{section.1.3}
-\contentsline {section}{\numberline {1.4}Motivations}{6}{section.1.4}
-\contentsline {section}{\numberline {1.5}Outline of the thesis}{6}{section.1.5}
-\contentsline {chapter}{\numberline {2}Satellite Communications}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}Orbits}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Kepler's Laws}{7}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Classical Orbital Elements}{8}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Ground Tracks}{10}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Two Line Elements}{11}{subsection.2.1.4}
-\contentsline {section}{\numberline {2.2}Data}{13}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Beacon}{13}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Telemetry}{13}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Telecomands}{14}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}Ground Station}{15}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Hardware}{16}{subsection.2.3.1}
-\contentsline {subsubsection}{Antennas}{16}{subsection.2.3.1}
-\contentsline {subsubsection}{Transceiver}{16}{table.2.5}
-\contentsline {subsection}{\numberline {2.3.2}Software}{16}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Protocols}{17}{subsection.2.3.3}
-\contentsline {subsubsection}{The OSI Reference Model}{17}{subsection.2.3.3}
-\contentsline {subsubsection}{AX.25}{18}{table.2.6}
-\contentsline {subsubsection}{FX.25}{19}{figure.2.9}
-\contentsline {chapter}{\numberline {3}Hummingbird: the open source platform for monitoring and controlling small satellites}{20}{chapter.3}
-\contentsline {chapter}{\numberline {4}Requirements}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Common information for both modules}{21}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}General Description}{21}{subsection.4.1.1}
-\contentsline {subsubsection}{Product Perspective}{21}{subsection.4.1.1}
-\contentsline {subsubsection}{General Constraints}{21}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}External Interface Requirements}{21}{subsection.4.1.2}
-\contentsline {subsubsection}{Software Interfaces}{21}{subsection.4.1.2}
-\contentsline {subsubsection}{Communications Interfaces}{22}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Non-Functional Requirements}{22}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Calibration module}{23}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Introduction}{23}{subsection.4.2.1}
-\contentsline {subsubsection}{Scope}{23}{subsection.4.2.1}
-\contentsline {subsubsection}{Definitions}{23}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}General Description}{23}{subsection.4.2.2}
-\contentsline {subsubsection}{Product Perspective}{23}{subsection.4.2.2}
-\contentsline {subsubsection}{Product Functions}{23}{subsection.4.2.2}
-\contentsline {subsubsection}{User Characteristics}{24}{subsection.4.2.2}
-\contentsline {subsubsection}{General Constraints}{24}{subsection.4.2.2}
-\contentsline {subsubsection}{User Documentation}{24}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}External Interface Requirements}{24}{subsection.4.2.3}
-\contentsline {subsubsection}{Software Interfaces}{24}{subsection.4.2.3}
-\contentsline {subsubsection}{Communications Interfaces}{24}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Functional Requirements}{25}{subsection.4.2.4}
-\contentsline {subsubsection}{Read configuration}{25}{subsection.4.2.4}
-\contentsline {subsubsection}{Listen to incoming parameters}{25}{Item.3}
-\contentsline {subsubsection}{Calibrate}{26}{Item.6}
-\contentsline {subsection}{\numberline {4.2.5}Non-Functional Requirements}{27}{subsection.4.2.5}
-\contentsline {section}{\numberline {4.3}Limit checking module}{27}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Introduction}{27}{subsection.4.3.1}
-\contentsline {subsubsection}{Scope}{27}{subsection.4.3.1}
-\contentsline {subsubsection}{Definitions}{27}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}General Description}{27}{subsection.4.3.2}
-\contentsline {subsubsection}{Product Perspective}{27}{subsection.4.3.2}
-\contentsline {subsubsection}{Product Functions}{27}{subsection.4.3.2}
-\contentsline {subsubsection}{User Characteristics}{27}{subsection.4.3.2}
-\contentsline {subsubsection}{General Constraints}{28}{subsection.4.3.2}
-\contentsline {subsubsection}{User Documentation}{29}{figure.4.2}
-\contentsline {subsection}{\numberline {4.3.3}External Interface Requirements}{30}{subsection.4.3.3}
-\contentsline {subsubsection}{Software Interfaces}{30}{subsection.4.3.3}
-\contentsline {subsubsection}{Communications Interfaces}{30}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Functional Requirements}{30}{subsection.4.3.4}
-\contentsline {subsubsection}{Read configuration}{30}{subsection.4.3.4}
-\contentsline {subsubsection}{Listen to incoming parameters}{31}{Item.13}
-\contentsline {subsubsection}{Check limits}{31}{Item.15}
-\contentsline {subsection}{\numberline {4.3.5}Non-Functional Requirements}{32}{subsection.4.3.5}
-\contentsline {chapter}{\numberline {5}Implementation}{33}{chapter.5}
-\contentsline {section}{\numberline {5.1}Technologies used}{33}{section.5.1}
-\contentsline {section}{\numberline {5.2}Implementation of the calibration module}{33}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Camel Integration}{34}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{36}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Calibration}{41}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{45}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Camel integration}{46}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Loading the limits information}{48}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Limit checking}{51}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}User manual}{53}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Calibration module}{53}{subsection.5.4.1}
-\contentsline {subsubsection}{Structure of the XML file}{54}{subsection.5.4.1}
-\contentsline {subsubsection}{Example of simple calibration}{55}{table.5.6}
-\contentsline {subsubsection}{Example of calibration dependent on other parameters}{56}{table.5.7}
-\contentsline {subsubsection}{Example of calibration dependent on other parameters which are dependent on others}{57}{table.5.8}
-\contentsline {subsubsection}{Example of the result of the calibration being a vector}{58}{table.5.9}
-\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{58}{subsection.5.4.2}
-\contentsline {subsubsection}{Example of configuration with sanity limits}{60}{table.5.11}
-\contentsline {subsubsection}{Example of configuration without sanity limits}{60}{table.5.12}
-\contentsline {chapter}{\numberline {6}Conclussions}{61}{chapter.6}
-\contentsline {chapter}{\numberline {7}Future work}{62}{chapter.7}
-\contentsline {section}{\numberline {7.1}Unit testing}{62}{section.7.1}
-\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{62}{section.7.2}
-\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{63}{section.7.3}
-\contentsline {chapter}{Bibliography}{64}{section*.1}
+\contentsline {section}{\numberline {1.4}Motivations}{7}{section.1.4}
+\contentsline {section}{\numberline {1.5}Outline of the thesis}{7}{section.1.5}
+\contentsline {chapter}{\numberline {2}Satellite Communications}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Orbits}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Kepler's Laws}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Classical Orbital Elements}{9}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Ground Tracks}{11}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Two Line Elements}{12}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Data}{14}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Beacon}{14}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Telemetry}{14}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Telecomands}{15}{subsection.2.2.3}
+\contentsline {section}{\numberline {2.3}Ground Station}{16}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Hardware}{17}{subsection.2.3.1}
+\contentsline {subsubsection}{Antennas}{17}{subsection.2.3.1}
+\contentsline {subsubsection}{Transceiver}{17}{table.2.5}
+\contentsline {subsection}{\numberline {2.3.2}Software}{17}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Protocols}{18}{subsection.2.3.3}
+\contentsline {subsubsection}{The OSI Reference Model}{18}{subsection.2.3.3}
+\contentsline {subsubsection}{AX.25}{19}{table.2.6}
+\contentsline {subsubsection}{FX.25}{20}{figure.2.9}
+\contentsline {chapter}{\numberline {3}Hummingbird: the open source platform for monitoring and controlling small satellites}{21}{chapter.3}
+\contentsline {chapter}{\numberline {4}Requirements}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Common information for both modules}{22}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}General Description}{22}{subsection.4.1.1}
+\contentsline {subsubsection}{Product Perspective}{22}{subsection.4.1.1}
+\contentsline {subsubsection}{General Constraints}{22}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}External Interface Requirements}{22}{subsection.4.1.2}
+\contentsline {subsubsection}{Software Interfaces}{22}{subsection.4.1.2}
+\contentsline {subsubsection}{Communications Interfaces}{23}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Non-Functional Requirements}{23}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Calibration module}{24}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Introduction}{24}{subsection.4.2.1}
+\contentsline {subsubsection}{Scope}{24}{subsection.4.2.1}
+\contentsline {subsubsection}{Definitions}{24}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}General Description}{24}{subsection.4.2.2}
+\contentsline {subsubsection}{Product Perspective}{24}{subsection.4.2.2}
+\contentsline {subsubsection}{Product Functions}{24}{subsection.4.2.2}
+\contentsline {subsubsection}{User Characteristics}{25}{subsection.4.2.2}
+\contentsline {subsubsection}{General Constraints}{25}{subsection.4.2.2}
+\contentsline {subsubsection}{User Documentation}{25}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}External Interface Requirements}{25}{subsection.4.2.3}
+\contentsline {subsubsection}{Software Interfaces}{25}{subsection.4.2.3}
+\contentsline {subsubsection}{Communications Interfaces}{25}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Functional Requirements}{26}{subsection.4.2.4}
+\contentsline {subsubsection}{Read configuration}{26}{subsection.4.2.4}
+\contentsline {subsubsection}{Listen to incoming parameters}{26}{Item.3}
+\contentsline {subsubsection}{Calibrate}{27}{Item.6}
+\contentsline {subsection}{\numberline {4.2.5}Non-Functional Requirements}{28}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Limit checking module}{28}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Introduction}{28}{subsection.4.3.1}
+\contentsline {subsubsection}{Scope}{28}{subsection.4.3.1}
+\contentsline {subsubsection}{Definitions}{28}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}General Description}{28}{subsection.4.3.2}
+\contentsline {subsubsection}{Product Perspective}{28}{subsection.4.3.2}
+\contentsline {subsubsection}{Product Functions}{28}{subsection.4.3.2}
+\contentsline {subsubsection}{User Characteristics}{28}{subsection.4.3.2}
+\contentsline {subsubsection}{General Constraints}{29}{subsection.4.3.2}
+\contentsline {subsubsection}{User Documentation}{30}{figure.4.2}
+\contentsline {subsection}{\numberline {4.3.3}External Interface Requirements}{31}{subsection.4.3.3}
+\contentsline {subsubsection}{Software Interfaces}{31}{subsection.4.3.3}
+\contentsline {subsubsection}{Communications Interfaces}{31}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Functional Requirements}{31}{subsection.4.3.4}
+\contentsline {subsubsection}{Read configuration}{31}{subsection.4.3.4}
+\contentsline {subsubsection}{Listen to incoming parameters}{32}{Item.13}
+\contentsline {subsubsection}{Check limits}{32}{Item.15}
+\contentsline {subsection}{\numberline {4.3.5}Non-Functional Requirements}{33}{subsection.4.3.5}
+\contentsline {chapter}{\numberline {5}Implementation}{34}{chapter.5}
+\contentsline {section}{\numberline {5.1}Technologies used}{34}{section.5.1}
+\contentsline {section}{\numberline {5.2}Implementation of the calibration module}{34}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Camel Integration}{35}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{37}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Calibration}{42}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{46}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Camel integration}{47}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Loading the limits information}{49}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Limit checking}{52}{subsection.5.3.3}
+\contentsline {section}{\numberline {5.4}User manual}{54}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Calibration module}{54}{subsection.5.4.1}
+\contentsline {subsubsection}{Structure of the XML file}{55}{subsection.5.4.1}
+\contentsline {subsubsection}{Example of simple calibration}{56}{table.5.6}
+\contentsline {subsubsection}{Example of calibration dependent on other parameters}{57}{table.5.7}
+\contentsline {subsubsection}{Example of calibration dependent on other parameters which are dependent on others}{58}{table.5.8}
+\contentsline {subsubsection}{Example of the result of the calibration being a vector}{59}{table.5.9}
+\contentsline {subsection}{\numberline {5.4.2}Limit checking module}{59}{subsection.5.4.2}
+\contentsline {subsubsection}{Example of configuration with sanity limits}{61}{table.5.11}
+\contentsline {subsubsection}{Example of configuration without sanity limits}{61}{table.5.12}
+\contentsline {chapter}{\numberline {6}Conclussions}{62}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future work}{63}{chapter.7}
+\contentsline {section}{\numberline {7.1}Unit testing}{63}{section.7.1}
+\contentsline {section}{\numberline {7.2}Test the integration with ESTCube-1's development build}{63}{section.7.2}
+\contentsline {section}{\numberline {7.3}Integrate with ESTCube-1's live build and with Hummingbird}{64}{section.7.3}
+\contentsline {chapter}{Bibliography}{65}{section*.1}
