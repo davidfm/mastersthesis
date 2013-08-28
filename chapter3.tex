@@ -1,17 +1,17 @@
 
 \chapter{Hummingbird: the open source platform for monitoring and controlling remote assets}\label{chapter3}
 
-The continuous growth of the popularity of small satellites has been accompanied by an increased interest in creating more a better solutions for the ground segments of the missions. These missions are more complex every time and the use of software oriented for amateurs is starting to prove insufficient. For this reason there are nowadays several projects to build professional-like software and ground station networks to control small satellites. This chapter introduces one of them, \emph{Hummingbird}\citep{HBird} the project into which the work carried on in this thesis will be integrated. 
+The continuous growth of the popularity of small satellites has been accompanied by an increased interest in creating more a better solutions for controlling the satellites from Earth. The missions are more complex every time and the use of software oriented for amateurs is starting to prove insufficient. For this reason, nowadays, there are  several projects to build professional-like software and ground station networks to control small satellites. This chapter introduces one of them, \emph{Hummingbird} \citep{HBird} the project into which the work carried on in this thesis will be integrated. 
 
 \section{Main principles} 
 
 \emph{Hummingbird} is an open source project aiming to create a professional like infrastructure for monitoring and controlling remote assets. It is meant to be highly adaptable, easy scalable and be a baseline so anyone can easily build their own solutions based on this. 
 
-It is mainly written in Java\cite{Java} and takes advantage to modern software development tools such as Apache Camel\cite{Camel} and ActiveMQ\cite{AMQ}. 
+It is mainly written in Java \cite{Java} and takes advantage to modern software development tools such as Apache Camel \cite{Camel} and ActiveMQ \cite{AMQ}. 
 \pagebreak
 \section{Functionalities}
 
-The different modules of the system provide the following functionalities:\cite{Elo}
+The different modules of the system provide the following functionalities: \cite{Elo}
 
 \begin{itemize}
 \item Telemetry limit checking and calibration.
@@ -30,9 +30,9 @@ The different modules of the system provide the following functionalities:\cite{
 
 \section{Architecture}
 
-\emph{Hummingbird} is a distributed, component based service-oriented system. It is divided in three tire: transport, business and presentation.
+\emph{Hummingbird} is a distributed, component based service-oriented system. It is divided in three tiers: transport, business and presentation.
 
-The transport tire is based on Apache Camel and ActiveMQ. It transports messages between different components  and is a black box from the business and presentation tiers point of view.\\
+The transport tier is based on Apache Camel and ActiveMQ. It transports messages between different components  and is a black box from the business and presentation tiers point of view.\\
 
 The business tier contains the business logic of the system. Command creation, limit checking, calibration, scheduling and all other business operations are carried on here. This tier does not care about the protocols used to broker the messages, it sends and receives them from a message bus, the transport tier.\\
 

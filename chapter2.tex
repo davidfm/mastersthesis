@@ -2,16 +2,16 @@
 
 \chapter{Satellite Communications}
 
-This chapter covers the topic of how the satellite communicates with Earth and back. One of the most important constraints that needs to be approached when working with ground station is the fact that the satellite is orbiting around Earth. To understand this, the first section of this chapter will cover what orbits are, what elements describe them and how that information can be delivered by a computer. Following, the different types of data exchanged by the satellite and the ground station will be covered. The last section of the chapter goes through what a ground station is, its hardware and software components and how it communicates with a satellite in space.
+In order to understand how  the satellites communicate with Earth, the very basics of satellite communications are covered in this chapter. The first section describes what orbits are, what elements describe them and how that information can be delivered by a computer. Afterwards, the different types of data exchanged by the satellite and the ground station will be covered. The last section of the chapter presents what a ground station is, its hardware and software components and how it communicates with a satellite in space.
 
 
-\section{Orbits}\label{2.1}
+\section{Orbits}
 An orbit is the \textbf{gravitationally curved path of an object around a center of mass}. Examples of orbits can be the Earth around the Sun or artificial satellites around the Earth.
 
 %This subsection will cover the elements that describe and define an orbit, how it is represented on a map and in which way the elements that define a particular orbit can be delivered so they can be used by a computer.
 
 
-\subsection{Kepler's Laws}\label{2.1}
+\subsection{Kepler's Laws}
 Planetary movements were first mathematically defined by the German mathematician, astronomer and astrologer Johannes Kepler in the 17th century. He concentrated his observations into three simple laws\citep{SSEng}:
 \begin{itemize}
 
@@ -20,34 +20,34 @@ Planetary movements were first mathematically defined by the German mathematicia
 \item A planet's orbital period is proportional to the mean distance between the Sun and the planet, raised to the power of 3/2.
 \end{itemize} 
 
-These laws generally apply to every celestial body. When analysing to bodies, if one is much bigger than the other, it conforms the "two-body problem". It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The analysis of this problem has resulted in six elements that completely define an orbit, which will be explained in the next section.
+These laws generally apply to every celestial body. When analysing the movement of two bodies, if one is much bigger than the other, an approximation known as the two-body problem can be used to . It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The solution of the two body problem states that the smaller body orbits around the bigger one in an elliptical orbit which can be described by six parameters. These parameters will be explained in detail in the next section.
 
 
-\subsection{Classical Orbital Elements}\label{2.2}
-The Classical Orbital Elements are six parameters which uniquely identify an orbit. They also can be used to predict future positions of the satellite.\cite{IntAstr}
+\subsection{Classical Orbital Elements}
+The Classical Orbital Elements (COEs) are six parameters which uniquely define the orbit and location of the body. They also can be used to predict future positions of the satellite. \cite{IntAstr}
 
 The first two elements, the orbit's size and shape are defined based on a 2D representation on an ellipse (Figure \ref{f2.1}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/Ellipse.png}}
-\caption{Semimajor Axis}
+\caption{Semimajor axis on an ellipse}
 \label{f2.1}
 \end{figure}
 
 \begin{itemize}
 \item The \emph{semimajor axis} ($a$) is one half the distance across the long axis of the orbit, and it represents the orbit's size.
-\item The \emph{eccentricity} represents the shape of the orbit. It describes how much the ellipse is elongated compared to a circle. Based on the latter, the orbit can have the following shapes, as shown in Figure \ref{f2.2}
+\item The \emph{eccentricity} represents the shape of the orbit. It describes how much the ellipse is elongated compared to a circle. Based on the latter, the orbit can have different shapes, as shown in Figure \ref{f2.2}
 
 \begin{figure}[H]
 \centerline{\includegraphics[scale=0.35]{images/Eccentricity.png}}
-\caption{Eccentricity}
+\caption{Shapes of an orbit based on its eccentricity}
 \label{f2.2}
 \end{figure}
 
 \end{itemize}
 
 
-Before jumping onto the next Orbital Elements it is necessary to point out that the Geocentric-equatorial Coordinate System will be used. It is now a 3D representation, where the fundamental plane is Earth's equatorial plane and the principal direction is in the vernal equinox direction (see Figure \ref{f2.3}).
+Before jumping onto the next orbital elements it is necessary to point out that the Geocentric-equatorial coordinate system will be used. It is now a 3D representation, where the reference plane is Earth's equatorial plane and the principal direction is in the vernal equinox direction (see Figure \ref{f2.3}).
 
 The following orbital elements define the orientation of the orbital plane:
 
@@ -56,7 +56,20 @@ The following orbital elements define the orientation of the orbital plane:
 \item The right ascension of the ascending node ($\Omega$) represents the angle between the principal direction and the point where the orbital plane crosses the reference plane from south to north measured eastward. 
 \end{itemize}
 
-Based on this two elements, the orbits can be classified as shown in Table \ref{Table2.1}
+
+It is now time to go through the last two COEs:
+\begin{itemize}
+\item The argument of perigee ($\omega$) is the angle between the ascending node and the perigee, measured in the direction of the satellite's motion.
+\item The true anomaly ($\upsilon$) specifies the location of the satellite within the orbit. Amongst all the CEOs, this is te only one which changes over time. It is the angle between the perigee and the satellite's position vector measured in the direction of its motion.
+\end{itemize}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=0.7\textwidth]{images/COEs.png}}
+\caption{Classical Orbital Elements \cite{IntAstr}}
+\label{f2.3}
+\end{figure}
+
+Based on the COEs, the orbits can be classified as shown in Table \ref{Table2.1}
 
 \begin{table}[h]
 \centering
@@ -87,7 +100,7 @@ Based on this two elements, the orbits can be classified as shown in Table \ref{
   \label{Table2.1}
 \end{table}
 
-
+\pagebreak
 Although it is not part of the COEs, orbits can also be sorted by their altitude. NASA's classification divides orbits in three groups (Table \ref{Table2.2}).
 
 \begin{table}[h]
@@ -118,21 +131,10 @@ Geosynchronous (GSO)\end{tabular} &
   \label{Table2.2}
 \end{table}
 
-It is now time to go through the last two COEs:
-\begin{itemize}
-\item The argument of perigee ($\omega$) is the angle between the ascending node and the perigee, measured in the direction of the satellite's motion.
-\item The true anomaly ($\upsilon$) specifies the location of the satellite within the orbit. Amongst all the CEOs, this is te only one which changes over time. It is the angle between the perigee and the satellite's position vector measured in the direction of its motion.
-\end{itemize}
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=0.7\textwidth]{images/COEs.png}}
-\caption{Classical Orbital Elements \cite{IntAstr}}
-\label{f2.3}
-\end{figure}
+\subsection{Ground Tracks}
 
-\subsection{Ground Tracks}\label{2.3}
-
-The satellite ground tracks are the projection of its orbit onto Earth. An example of this can be Figure \ref{f2.4}.
+The satellite ground tracks are the projection of its orbit onto Earth, they are used to clearly explain how the satellites move in reference to an observer on the ground. An example of this can be Figure \ref{f2.4}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/GroundTracks.png}}
@@ -140,12 +142,15 @@ The satellite ground tracks are the projection of its orbit onto Earth. An examp
 \label{f2.4}
 \end{figure}
 
-Since the orbital plane does not move in inertial space, the satellite's orbit will always be the same. If Earth did not move the representation of the orbit would be a single line, as the ground track would continuously repeat. However, Earth rotates at 1600 km/hr. Thus, even if the orbit does not change, from the Earth-based observer's point of view it appears to shift to the west.
+Since the orbital plane does not move in inertial space, the satellite's orbit will always be the same \citep{BARN}. If Earth did not move the representation of the orbit would be a single line, as the ground track would continuously repeat. However, Earth rotates at 1600 km/hr. Thus, even if the orbit does not change, from the Earth-based observer's point of view it appears to shift to the west.
+
+This poses a challenge to the communication with the satellite. Since it is visible, as a fast moving object, from a certain location on the ground for very short periods of time the communications antenna needs track the satellite in order to handle the communication. The ground tracks for this matter and are generated based on two line element sets, which will be covered in the next section.
+
 
 \subsection{Two Line Elements}\label{2.4}
-A two line element set (TLE) is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time and are usually used by ground stations in order to track them.
+A two line element (TLE) set is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time and are usually used by ground stations in order to track them.
 
-The following snippet shows an example of a TLE for the International Space Station.
+The following snippet shows an example of a TLE for the International Space Station. The meaning of its different parts is explained in Tables \ref{Table2.3} and \ref{Table2.4}.
 
 \noindent \texttt{\footnotesize ISS (ZARYA)\newline
 1 25544U 98067A   13166.62319444  .00005748  00000-0  10556-3 0   120\newline
@@ -313,27 +318,25 @@ A \emph{beacon} is a radio signal transmitted continuously or periodically over 
 
 \subsection{Telemetry}
 
-\emph{Telemetry} data is sent from the satellite to the ground station and can also be divided in three sub-categories.\\
+\emph{Telemetry} is the data generated by the payloads and the different sensors of the satellite which then sent to the ground station. It can be divided in two sub-categories.\\
 
-The \emph{housekeeping data} provides information abouth the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate on only a few hundreds of bits per second is enough to complete the transmission successfully.
+The \emph{housekeeping data} provides information about the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate on only a few hundreds of bits per second is enough to complete the transmission successfully.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/housekeeping.png}}
-\caption{Housekeeping data of the satellite Masat-1}
+\caption{Telemetry user interface of the ground station software of the satellite Masat-1.}
 \label{f2.5}
 \end{figure}
 
-\emph{Attitude data} is generated by different sensors, such as magnetometers, gyroscopes, accelerometers and Sun, Earth and star sensors.\\
-
-\emph{Payload data} changes with every mission and needs to be considered individually. Scientific or Earth-observing mission normally generate very large data volumes, specially in the form of images. An example of this can be Figure \ref{f2.6}, the first picture taken by the Hungarian nanosatellite Masat-1\cite{Masat}.
+As its name states the emph{payload data} is generated by the satellites payloads, which are the reason why the satellite has been developed in the first place. The payload data changes with every mission and needs to be considered individually. For example, scientific or Earth-observing missions normally generate very large data volumes, specially in the form of images, as it can be seen in Figure \ref{f2.6}, the first picture taken by the Hungarian nanosatellite Masat-1 \cite{Masat}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/masat.jpg}}
-\caption{Picture of South Africa taken from the nanosatellite Masat-1}
+\caption{Picture of South Africa taken from the nanosatellite Masat-1.}
 \label{f2.6}
 \end{figure}
 
-
+\pagebreak
 \subsection{Telecomands}
 The telecommands are sent from the ground station to the satellite. They are used to remotely control its functions and are divided in three basic types \cite{SSEng}:
 \begin{itemize}
@@ -342,10 +345,10 @@ The telecommands are sent from the ground station to the satellite. They are use
 \item \emph{Proportional commands}. Digital words. Used for purposes such as reprogramming memory locations on the on-board computer or setting up registers in the attitude control subsystem.
 
 \end{itemize}
-\pagebreak
+
 
 \section{Ground Station}
-One integral part of every satellite mission is the ground station. It works as the first and final piece of the communication link. Its main functions are the following:
+One integral part of every satellite mission is the ground station (Figure \ref{f2.7}). It works as the first and final piece of the communication link. Its main functions are the following:
 \begin{itemize}
 \item Tracking the satellite to determine its position in orbit.
 \item Gather data to keep track of the satellite's data and status.
@@ -357,12 +360,12 @@ One integral part of every satellite mission is the ground station. It works as 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/gsdiagram.jpg}}
 \caption{Diagram of a ground station}
-\label{f2.8}
+\label{f2.7}
 \end{figure}
 
 
 It is important to remember that university satellites are usually classified as amateur satellites. This means that they use amateur radio frequencies and the usage of the ground station is bound to each country's amateur radio regulations.
-
+\pagebreak
 \subsection{Hardware}
 
 The main components of a ground station are the antenna, the transceiver, the data recorders and the computers and their peripherals.
@@ -413,13 +416,13 @@ The real-time software comes into operation when the satellite is visible from t
 Once the satellite is not visible any more the post-pass software comes into play. The data received during the pass is now processed and stored so the specialists can analyse it.
 
 
-There are many different kinds of software oriented towards its use by amateur satellite missions. Examples of this are \textbf{GPredict}\cite{GPredict} and \textbf{Orbitron}\cite{Orbitron}, which are used for tracking and prediction, or \textbf{Carpcomm}\cite{Carpcomm}, which amongst other functionalities aims to build a network of ground stations.\\
+There are many different kinds of software oriented towards its use by amateur satellite missions. Examples of this are \textbf{GPredict} \cite{GPredict} and \textbf{Orbitron} \cite{Orbitron}, which are used for tracking and prediction, or \textbf{Carpcomm} \cite{Carpcomm}, which amongst other functionalities aims to build a network of ground stations.\\
 
-There is also professional software in use aiming to build ground station networks. One example is \textbf{GENSO}, a project of the European Space Agency (ESA) coordinated by its Education Office. The University of Vigo in Spain hosts the European Operations Node and coordinates the access to the network\cite{GENSO}. At the same time, and as a cooperation with the ESTCube-1 project, CGI is supervising the development of similar solution, \textbf{Hummingbird}\cite{CGI}, which will be explained more deeply in the following chapters, as this thesis is part of the mention project.
+There is also professional software in use aiming to build ground station networks. One example is \textbf{GENSO}, a project of the European Space Agency (ESA) coordinated by its Education Office. The University of Vigo in Spain hosts the European Operations Node and coordinates the access to the network \cite{GENSO}. At the same time, and as a cooperation with the ESTCube-1 project, CGI Group Inc. is supervising the development of similar solution, \textbf{Hummingbird} \cite{CGI}, which will be explained more deeply in the following chapters, as this thesis is part of the mentioned project.
 
 
 \subsection{Protocols}
-A protocol is an agreement between the communicating parties on how communication is to proceed\cite{Tanenbaum}. This section will be focused on the OSI Reference model as well as on some of the most popular protocols for amateur radio communications.
+A protocol is an agreement between the communicating parties on how communication is to proceed \cite{Tanenbaum}. This section will be focused on the OSI Reference model as well as on some of the most popular protocols for amateur satellite communications.
 
 \subsubsection{The OSI Reference Model}
 The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and revised in 1995. This model deals with connecting systems that are open for communication with other systems. It consists on seven layers which are explained in Table \ref{Table2.6}.\\
@@ -447,7 +450,7 @@ The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and
 & Bit & 1.Physical & \begin{tabular}[x]{@{}l@{}}Media, signal and\\binary transmission\end{tabular}\\
 \hline
 \end{tabular}
-\caption{OSI Model\cite{Tanenbaum}.}
+\caption{OSI Model \cite{Tanenbaum}.}
   \label{Table2.6}
 \end{table}
 
@@ -456,18 +459,18 @@ The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and
 \subsubsection{AX.25}
 AX.25 is a data link layer protocol designed for use by amateur radio operators. It occupies the first, second and third layers of the OSI model. However, AX.25 was developed before the model came into action, so its specification was not written to separate into OSI layers.\\
 
-The link-layer packet radio transmission takes place in small blocks of data called frames. Those frames are represented in the Figures \ref{f2.7} and \ref{f2.8}.\\
+The link-layer packet radio transmission takes place in small blocks of data called frames. Those frames are represented in the Figures \ref{f2.8} and \ref{f2.9}.\\
 
  \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/ax25a.png}}
-\caption{Supervisory and Unnumbered frames \cite{AX25}}
-\label{f2.7}
+\caption{AX.25 Supervisory and Unnumbered frames \cite{AX25}}
+\label{f2.8}
 \end{figure}
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/ax25b.png}}
 \caption{AX.25 Information frame \cite{AX25}}
-\label{f2.8}
+\label{f2.9}
 \end{figure}
 
 \subsubsection{FX.25}
@@ -476,7 +479,7 @@ FX.25 is an extension to the AX.25 protocol. It has been created to complement t
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/fx25.png}}
 \caption{FX.25 frame structure \cite{FX25}}
-\label{f3.5}
+\label{f2.10}
 \end{figure}
 
 \newpage

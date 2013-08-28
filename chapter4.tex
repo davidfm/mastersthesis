@@ -30,6 +30,9 @@ showstringspaces=false
 
 \chapter{Requirements}
 
+This chapter covers the software requirements for the two modules this thesis is composed of. They are based on the recommendations provided by the scientists working on the ESTCube-1 project. The chapter is organised in three sections, the first one being the requirements which are common to both modules whereas the following two  go through each module's requirements more in depth.
+
+
 \section{Common information for both modules}
 
 \subsection{General Description}
@@ -39,9 +42,9 @@ The modules are part the Hummingbird project based on the advise and needs dicta
 \subsubsection{General Constraints}
 
 \begin{itemize}
-\item The modules must be licenced under \textbf{Apache License v2.0}\cite{AL20}.
+\item The modules must be licenced under \textbf{Apache License v2.0} \cite{AL20}.
 \item The use of open source tools is recommended.
-\item The main programming language must be Java\cite{Java}.
+\item The main programming language must be Java \cite{Java}.
 \end{itemize}
 
 \subsection{External Interface Requirements}
@@ -60,13 +63,13 @@ The modules will receive Parameters. The \emph{Parameter} type is part of Hummin
 \end{itemize}
 
 
-\textbf{\emph{Apache Camel}}\citep{Camel}\\
+\textbf{\emph{Apache Camel}} \citep{Camel}\\
 Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
 
 
 \subsubsection{Communications Interfaces}
 
-\textbf{\emph{JMS}}\cite{JMS}\\
+\textbf{\emph{JMS}} \cite{JMS}\\
 The communication interface with the other components in the system is the Java Message Service using Apache Camel. The module is a \textbf{JMS client} in a \textbf{publish/subscribe model}.
 
 \subsection{Non-Functional Requirements}
@@ -106,7 +109,7 @@ This software is intended to serve as an independent calibration module for \emp
 \subsection{General Description}
 \subsubsection{Product Perspective}
 
-Common to both modules. Please see the corresponding section.
+Common to both modules. Please see the section 4.1.1.
 
 \subsubsection{Product Functions}
 
@@ -140,7 +143,7 @@ Common to both modules. Please see the corresponding section.
 
 \subsubsection{General Constraints}
 
-Common to both modules. Please, see the corresponding section.
+Common to both modules. Please, see section 4.1.1.
 
 \subsubsection{User Documentation}
 \begin{itemize}
@@ -151,12 +154,12 @@ Common to both modules. Please, see the corresponding section.
 
 \subsubsection{Software Interfaces}
 
-In addition to receiving Parameters this module also generates and sends them. For more information see the corresponding section as the interface is common for both modules.
+In addition to receiving Parameters this module also generates and sends them. For more information see the section 4.1.2 as the interface is common for both modules.
 
 
 \subsubsection{Communications Interfaces}
 
-Common to both modules. Please see t corresponding section.
+Common to both modules. Please see section 4.1.2
 
 \pagebreak
 
@@ -243,7 +246,7 @@ If there is an error it must be sent upwards.
 \pagebreak
 \subsection{Non-Functional Requirements}
 
-Common to both modules. Please see the corresponding section.
+Common to both modules. Please see section 4.1.3.
 
 \section{Limit checking module}
 
@@ -264,7 +267,7 @@ This software is intended to serve as an independent limit checking module for \
 \subsection{General Description}
 \subsubsection{Product Perspective}
 
-Common to both modules, please see the corresponding section.
+Common to both modules, please see the section 4.1.1.
 
 \subsubsection{Product Functions}
 
@@ -292,7 +295,7 @@ Common to both modules, please see the corresponding section.
 
 \subsubsection{General Constraints}
 
-In addition to the constraints which are common to both modules there must be two options:
+In addition to the constraints common to both modules (see section 4.1.1) there must be two options:
 
 \begin{itemize}
 \item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.2})
@@ -319,7 +322,7 @@ In addition to the constraints which are common to both modules there must be tw
 
 \subsubsection{Software Interfaces}
 
-In addition to the common software interfaces for both modules there is one more software interface to be taken into account.
+In addition to the common software interfaces for both modules (see section 4.1.2) there is one more software interface to be taken into account.
 
 \textbf{\emph{State}}
 
@@ -333,7 +336,7 @@ The module will return States. The \emph{State} type is part of Hummingbird and 
 
 \subsubsection{Communications Interfaces}
 
-Common for both modules. Please see the corresponding section.
+Common for both modules. Please see the section 4.1.2.
 
 \subsection{Functional Requirements}
 
@@ -416,7 +419,7 @@ If there is an error it must be sent upwards.
 
 \subsection{Non-Functional Requirements}
 
-Common for both modules. Please see the corresponding section.
+Common for both modules. Please see section 4.1.3.
 
 
 

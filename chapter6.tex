@@ -1,13 +1,281 @@
-\chapter{Conclussions}
+\chapter{User manual}
+\section{Calibration module}
+This short user manual covers the use of the calibration module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to all the parameters which need to be calibrated.
 
-This thesis has presented the increased popularity of small satellites have been presented, examples of this are Aalto-1 and ESTCube-1, and the difficulties found when trying to find suitable software for a ground station. From the very beginning, each mission has created their own applications, with no cooperation between them.\\
+There should be one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand. It is advisable that each file is called as the corresponding subsystem.
 
-Understanding satellite-Earth communications is crucial when designing a solution for a ground station. As the satellite is moving at high speed around Earth, orbits affect these communications. It is also important to understand how they are represented on a map and how their information is delivered so they can be processed by computers. In addition, the different types of data exchanged between the satellite and the ground station have been covered, including the beacon, and telemetry, where its values are usually useless for the scientists, so they need to be calibrated. The telemetry also includes the housekeeping data, which values needs to be checked against limits to assert the well being of the satellite. To complete the study of satellite-Earth communications the different parts of a ground station have been presented, including hardware and software. Finally, the most common protocols for amateur satellite communications where listed.\\
 
-\emph{Hummingbird} is an open source project aiming to create software which can be easily adaptable for any kind of mission as well as creating a network of ground stations. It is being developed by CGI in cooperation with the University of Tartu and some external collaborators, such as the author of this thesis.\\ 
+The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
+\pagebreak
+\subsection{Structure of the XML file}
 
-As part of this collaboration two \emph{Hummingbird} modules have been designed and implemented. The first one being the telemetry calibration module and the second one the limit checker. 
+The XML file follows the format of Table \ref{Table5.6}
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
 
-The most challenging parts of this work have been related to the calibration module. As an algorithm which adapted to the way modules communicate in \emph{Hummingbird} had to be design. The other challenge was finding a way to allow scientists to input calibration information without the need of changing the Java code; the solution chosen was to use an embedded  interpreter, so anyone with knowledge of scripting would be able to create their own calibration scripts.\\
+<calibration>
+	<entry>
+		<id></id>
+		<description></description>
+		<outputId></outputId>
+		<unit></unit>
+		<scriptInfo>
+			<isVector></isVector>
+			<resultVariable></resultVariable>
+			<auxParameters></auxParameters>
+			<script></script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Structure of the XML file used to configure the calibrators.}
+\label{Table5.6}
+\end{table}
 
-The result has been two fully configurable and adaptable modules, which allow to calibrate and check the limits of the parameters received from the satellite. If there are changes in the mission, only the configuration files need to be changed, making this much easier than recoding and recompiling.\\
+\begin{itemize}
+\item \textbf{id}: name of the parameter to calibrate.
+\item \textbf{Description}: description of the parameter.
+\item \textbf{outputId}: name of the parameter generated after the calibration. If left blank, it will be the same as \textbf{id}.
+\item \textbf{unit}: Units in which the value is represented.
+\item \textbf{isVector}: \textbf{true} if the result of the calibration is a vector with several values (which generates several new parameters) or \textbf{false} if the calibration returns a single value.
+\item \textbf{resultVariable}: variable in the script in which the result will be stored.
+\item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here in addition to the original one.
+\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration script must be included here, not the parameter name. 
+\end{itemize}
+
+\subsection{Example of simple calibration}
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter for
+		 simple calibration</description>
+		<outputId>generatedA</outputId> 
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters></auxParameters>
+			<script>result = (parameterA*779.098)/35.28</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of simple calibration.}
+\label{Table5.7}
+\end{table}
+
+Table \ref{f5.7} represents the simplest example of calibration information. \textbf{parameterA} is the parameter to be calibrated and the user has chosen that the name of the calibrated parameter will be \textbf{generatedA}. The information about the calibration script states that the result will not be a vector and the value after the calculations will be stored in a variable called \textbf{result}. There are no extra parameters needed for the process to be carried on.
+
+\subsection{Example of calibration dependent on other parameters}
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter which depends
+		 on others to be calibrated</description>
+		<outputId></outputId>
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters>parameterB,parameterC</auxParameters>
+			<script>result = (parameterA*(parameterB*2345/37))
+			/3145.2839 + (parameterC*2)</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of calibration dependent on other parameters.}
+\label{Table5.8}
+\end{table}
+
+Table \ref{f5.8} shows an example of a parameter which depends on others for calibration. Again, \textbf{parameterA} is the name of the parameter to be calibrated. In this case the user has not selected an output ID, so it will by default be the same as the input. The result of the calibration will not be a vector and it needs \textbf{parameterB} and \textbf{parameterC} to be calibrated. The calibration script can be explained as follows:
+\begin{itemize}
+\item Calibration script for \textbf{parameterA}: $result = ((parameterA*(parameterB))\\			/3145.2839) + (parameterC)$
+\item The user must specify \textbf{parameterB}'s calibration script: $parameterB*2345/37$
+\item Same thing with \textbf{parameterC}: $parameterC*2$
+\item The final result is what can be seen in the example: $result = (parameterA*(parameterB*2345/37))/3145.2839 + (parameterC*2)$
+\end{itemize}
+\pagebreak
+
+\subsection{Example of calibration dependent on other parameters which are dependent on others}
+
+
+%The supposition in this example is the following:
+
+%\begin{itemize}
+%\item \textbf{parameterA} is to be calibrated and depends on \textbf{parameterB}.
+%\item \textbf{parameterB} depends on \textbf{parameterC} and \textbf{parameterD}.
+%\item \textbf{paramterC} does not need other parameters to be calibrated.
+%\item \textbf{parameterD} does not need other parameters to be calibrated.
+%\end{itemize}
+
+ \begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter which depends
+		 on others to be calibrated. Those other depend on others.</description>
+		<outputId></outputId>
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>false</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters>parameterB,parameterC,parameterD</auxParameters>
+			<script>result = (parameterA*2)/((parameterB*4) + 5*parameterC - parameterD/4))</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of calibration dependent on other parameters which also depend on others.} 
+\label{Table5.9}
+\end{table}
+
+Table \ref{Table5.9}, which illustrates this example can be explained as:
+\begin{itemize}
+\item Parameter to be calibrated: \textbf{parameterA}
+\item Auxiliary parameters:
+	\begin{itemize}
+		\item parameterA's dependency: \textbf{parameterB}
+		\item parameterB's dependency: \textbf{parameterC} and \textbf{parameterD}
+		\item Calibration script for parameterC: $5*parameterC$
+		\item Calibration script for parameterD: $parameterD/4$
+		\item Calibration script for parameterB: $((parameterB*4) + 5*parameterC - parameterD/4))$
+		\item Calibration script for parameterA: $(parameterA*2)/((parameterB*4) + 5*parameterC - parameterD/4))$
+	\end{itemize}
+\end{itemize}
+
+
+
+\subsection{Example of the result of the calibration being a vector}
+
+ \begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<calibration>
+	<entry>
+		<id>parameterA</id>
+		<description>Example of parameter whose calibration returns a vector</description>
+		<outputId></outputId>
+		<unit>E</unit>
+		<scriptInfo>
+			<isVector>true</isVector>
+			<resultVariable>result</resultVariable>
+			<auxParameters></auxParameters>
+			<script>int[] result = {parameterA*2, parameterA*3, parameterA*4};</script>
+		</scriptInfo>
+	</entry>
+</calibration>
+\end{lstlisting}
+\caption{Example of calibration which returns a vector as result.} 
+\label{Table5.10}
+\end{table}
+
+The module supports the interpretation of Java code and shell scripts. This example shows a short piece of Java code which will return a vector of Integer elements. Also, it is needed to state that the result will be a vector.
+
+
+
+
+\section{Limit checking module}
+This subsection covers the user manual for the limit checking module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to the limits of every parameter. 
+
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.It is advisable that each file is called as the corresponding subsystem.
+
+The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
+\pagebreak
+
+The format of the XML file is represented in Table \ref{Table5.11}.
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+
+<limitChecking>
+	<entry>
+		<id></id>
+		<limits>
+			<sanityLower></sanityLower>
+			<hardLower></hardLower>
+			<softLower></softLower>
+			<softUpper></softUpper>
+			<hardUpper></hardUpper>
+			<sanityUpper></sanityUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{Structure of the XML file used to configure the limits}
+\label{Table5.11}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id}: name of the parameter to calibrate which limits are to be checked.
+\item \textbf{Sanity limits}: \underline{optional}. If the value is below the lower limit or above the upper limit it is discarded. 
+\item \textbf{Hard limits}:
+	\begin{itemize}
+	\item If the sanity limits are available anything between these limits and the sanity limits is considered an error.
+	\item If the sanity limits are disabled anything below the lower limit or above the upper limit is considered an error. 
+	\end{itemize}
+\item \textbf{Soft limits}: 
+\begin{itemize}
+\item Anything between the lower and upper soft limits is considered an OK value.
+\item Anything between the soft limits and the hard limits is considered OK, but with a warning.
+\end{itemize}
+\end{itemize}
+
+\subsection{Example of configuration with sanity limits}
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+<limitChecking>
+	<entry>
+		<id>parameterA</id>
+		<limits>
+			<sanityLower>-100</sanityLower>
+			<hardLower>-75</hardLower>
+			<softLower>-20</softLower>
+			<softUpper>20</softUpper>
+			<hardUpper>75</hardUpper>
+			<sanityUpper>100</sanityUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{Limit checking with sanity limits.}
+\label{Table5.12}
+\end{table}
+
+\subsection{Example of configuration without sanity limits}
+
+\begin{table}[H]
+\lstset{language=XML}
+\begin{lstlisting}
+<limitChecking>
+	<entry>
+		<id>parameterA</id>
+		<limits>
+			<hardLower>-75</hardLower>
+			<softLower>-20</softLower>
+			<softUpper>20</softUpper>
+			<hardUpper>75</hardUpper>
+		</limits>
+	</entry>
+</limitChecking>
+\end{lstlisting}
+\caption{Limit checking without sanity limits.}
+\label{Table5.13}
+\end{table}

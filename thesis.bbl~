@@ -5,6 +5,10 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Singer (1941)]{Singer}
+C. Singer.
+\newblock \emph{A Short History of Science To The Ninteeth Century} p. 217.
+\newblock Clarendon Press, United Kingdom, 1941.
 
 \bibitem[Welti (2012)]{SBFE}
 C.~Robert Welti.
@@ -46,6 +50,10 @@ P. Janhunen, P.K. Toivanen, J. Polkko, S. Merikallio, P. Salminen, E. Haeggströ
 \newblock URL \url{ http://www.arianespace.com/news-press-release/2013/5-7-2013-VV02-launch.asp}.
 \newblock [Online; accessed 2013-08-07].
 
+\bibitem[ESA (2013)]{ESA}
+\newblock \emph{Earthnet Online - Ground Segment}.
+\newblock URL \url{http://earth.esa.int/envisat/m-s/ground/}.
+\newblock [Online; accessed 2013-08-28].
 
 \bibitem[Fortescue (2003)]{SSEng}
 P. Fortescue, J. Startk, G. Swinerd. 
@@ -123,7 +131,7 @@ Andrew S. Tanenbaum.
 \newblock URL \url{ http://www.stensat.org/Docs/FX-25_01_06.pdf}.
 \newblock [Online; accessed 2013-05-06].
 
-\bibitem[Hummingbird (2013)]{Java}
+\bibitem[Hummingbird (2013)]{HBird}
 \newblock \emph{Hummingbird. The open platform for monitoring and controll. }.
 \newblock Hummingbird, 2013.
 \newblock URL \url{ http://www.hbird.de}.

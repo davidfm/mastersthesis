@@ -1,24 +1,18 @@
-\chapter{Future work}
+\chapter{Conclussions}
 
-This chapter describes the next steps to be taken towards full integration of the two modules developed in this work with the rest of the system. The process is described here. The future work will be carried out by the author and also by the ESTCube-1 team.
-
-
-\section{Unit testing}
-Even though the software has been fully tested by the author it is intended to also implement unit tests to cover every possible scenario. This will be done with two different tools:
-\begin{itemize}
-\item JUnit\cite{JUnit}
-\item Mockito\cite{Mockito}
-\end{itemize}
+This thesis has presented the increased popularity of small satellites have been presented, examples of this are Aalto-1 and ESTCube-1. The ground control software chosen by these two satellite missions is \emph{Hummingbird}, an open source project aiming to create software which can be easily adaptable for any kind of mission as well as creating a network of ground stations. It is being developed by CGI in cooperation with the University of Tartu and some external collaborators, such as the author of this thesis.\\ 
 
 
-\section{Test the integration with ESTCube-1's development build}
-The Camel code for the modules to be connected with the rest of the system has already been implemented. However, there has been no tests involving the whole system with the two modules working. This work should be carried out before going on any further.
+As part of this collaboration two \emph{Hummingbird} modules have been designed and implemented. The first one being the telemetry calibration module and the second one the limit checker. 
 
-\section{Integrate with ESTCube-1's live build and with Hummingbird}
-After the modules have been fully tested in the development environment and have been approved by the people responsible of ESTCube-1's ground segment development they should be integrated into the live build, where they will work with real parameters received from ESTCube-1. In addition, it should also be integrated into Hummingbird when the people in charge of the project considers it convenient.
+The most challenging parts of this work have been related to the calibration module. As an algorithm which adapted to the way modules communicate in \emph{Hummingbird} had to be design. The other challenge was finding a way to allow scientists to input calibration information without the need of changing the Java code; the solution chosen was to use an embedded  interpreter, so anyone with knowledge of scripting would be able to create their own calibration scripts.\\
 
+The result has been two fully configurable and adaptable modules, which allow to calibrate and check the limits of the parameters received from the satellite. If there are changes in the mission, only the configuration files need to be changed, making this much easier than recoding and recompiling.\\
 
+To support this process the basics of satellite to Earth have been presented. Including what orbits are and how affect those transmissions, what kinds of data are transmitted, the different hardware and software components of a ground station and which protocols are most commonly used in amateur satellite communications.\\
+
+\pagebreak
+Once the developed modules have been integrated into \emph{Hummingbird}, the software package will provide missions with an effective software which will, not only allow tracking and controlling the satellite, but generating useful scientific data and monitoring the results automatically.\\
 
 
 \newpage
-
