@@ -4,8 +4,8 @@
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Sputnik 1, first artificial satellite launched by the Soviet Union in 1957 (National Aeronautics and Space Administration - Public Domain)}}{2}{figure.1.1}
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Explorer 1, first artificial satellite launched by the United States in 1958 (National Aeronautics and Space Administration - Public Domain)}}{2}{figure.1.2}
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Satellite Mass and Cost Classification \cite {BARN}}}{4}{figure.1.3}
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Aalto-1}}{4}{figure.1.4}
-\contentsline {figure}{\numberline {1.5}{\ignorespaces ESTCube-1}}{5}{figure.1.5}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Artist's view of the Aalto-1 satellite}}{4}{figure.1.4}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Artist's view of the ESTCube-1 satellite}}{5}{figure.1.5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Semimajor axis on an ellipse}}{10}{figure.2.1}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Shapes of an orbit based on its eccentricity}}{11}{figure.2.2}
@@ -24,16 +24,16 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram of the Camel integration}}{39}{figure.5.1}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagram of the classes involved in loading the calibration information onto the system.}}{42}{figure.5.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}}{43}{figure.5.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram representing the classes involved in the calibration process.}}{46}{figure.5.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Flow chart of the algorithm to manage incoming parameters in the calibration module.}}{47}{figure.5.5}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}}{48}{figure.5.6}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Class diagram of the Camel integration}}{50}{figure.5.7}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram of the classes involved in loading the limits information onto the system.}}{52}{figure.5.8}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the limits information.}}{53}{figure.5.9}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{55}{figure.5.10}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{56}{figure.5.11}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{56}{figure.5.12}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the calibration information.}}{44}{figure.5.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagram representing the classes involved in the calibration process.}}{47}{figure.5.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Flow chart of the algorithm to manage incoming parameters in the calibration module.}}{48}{figure.5.5}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Sequence diagram describing the interactions between the different classes when managing incoming parameters in the calibration module.}}{49}{figure.5.6}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Class diagram of the Camel integration}}{51}{figure.5.7}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagram of the classes involved in loading the limits information onto the system.}}{53}{figure.5.8}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Sequence diagram which represents the interactions between the different classes present when loading the limits information.}}{54}{figure.5.9}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{56}{figure.5.10}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{57}{figure.5.11}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Diagram representing the classes involved in the limit checking process.}}{57}{figure.5.12}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

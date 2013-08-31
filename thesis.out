@@ -17,11 +17,11 @@
 \BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Telemetry}{section.2.2}% 17
 \BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Telecomands}{section.2.2}% 18
 \BOOKMARK [1][-]{section.2.3}{2.3 Ground Station}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Hardware}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Ground station hardware}{section.2.3}% 20
 \BOOKMARK [2][-]{subsection.2.3.2}{2.3.2 Software}{section.2.3}% 21
 \BOOKMARK [2][-]{subsection.2.3.3}{2.3.3 Protocols}{section.2.3}% 22
 \BOOKMARK [0][-]{chapter.3}{3 Hummingbird: the open source platform for monitoring and controlling remote assets}{}% 23
-\BOOKMARK [1][-]{section.3.1}{3.1 Main principles}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.1}{3.1 Overview}{chapter.3}% 24
 \BOOKMARK [1][-]{section.3.2}{3.2 Functionalities}{chapter.3}% 25
 \BOOKMARK [1][-]{section.3.3}{3.3 Architecture}{chapter.3}% 26
 \BOOKMARK [0][-]{chapter.4}{4 Requirements}{}% 27

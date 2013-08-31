@@ -1,15 +1,15 @@
 \chapter{Conclussions}
 
-This thesis has presented the increased popularity of small satellites have been presented, examples of this are Aalto-1 and ESTCube-1. The ground control software chosen by these two satellite missions is \emph{Hummingbird}, an open source project aiming to create software which can be easily adaptable for any kind of mission as well as creating a network of ground stations. It is being developed by CGI in cooperation with the University of Tartu and some external collaborators, such as the author of this thesis.\\ 
+This thesis has presented the development of a ground control software for Aalto-1 and ESTCube. Satellites belonging to the increasingly popular nanosatellite family. The ground control software chosen by these two satellite missions is \emph{Hummingbird}, an open source project aiming to create software which can be easily adaptable for any kind of mission as well as creating a network of ground stations. It is being developed by CGI Group Inc. in cooperation with the University of Tartu and some external collaborators, such as the author of this thesis.\\ 
 
 
-As part of this collaboration two \emph{Hummingbird} modules have been designed and implemented. The first one being the telemetry calibration module and the second one the limit checker. 
+As part of this collaboration, two \emph{Hummingbird} modules have been designed and implemented. The first one being the telemetry calibration module and the second one the limit checker. 
 
-The most challenging parts of this work have been related to the calibration module. As an algorithm which adapted to the way modules communicate in \emph{Hummingbird} had to be design. The other challenge was finding a way to allow scientists to input calibration information without the need of changing the Java code; the solution chosen was to use an embedded  interpreter, so anyone with knowledge of scripting would be able to create their own calibration scripts.\\
+The most challenging parts of this work have been related to the calibration module. As an algorithm which adapted to the way modules communicate in \emph{Hummingbird} had to be designed. The other challenge was finding a way to allow scientists to input calibration information without the need of changing the Java code; the solution chosen was to use an embedded  interpreter, so anyone with knowledge of scripting would be able to create their own calibration scripts.\\
 
 The result has been two fully configurable and adaptable modules, which allow to calibrate and check the limits of the parameters received from the satellite. If there are changes in the mission, only the configuration files need to be changed, making this much easier than recoding and recompiling.\\
 
-To support this process the basics of satellite to Earth have been presented. Including what orbits are and how affect those transmissions, what kinds of data are transmitted, the different hardware and software components of a ground station and which protocols are most commonly used in amateur satellite communications.\\
+To support this process the basics of satellite to Earth communication have been presented. Including orbits and how they affect those transmissions, the various kinds of data transmitted, the different hardware and software components of a ground station and the most commonly used protocols in amateur satellite communications.\\
 
 \pagebreak
 Once the developed modules have been integrated into \emph{Hummingbird}, the software package will provide missions with an effective software which will, not only allow tracking and controlling the satellite, but generating useful scientific data and monitoring the results automatically.\\

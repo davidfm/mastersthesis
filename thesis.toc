@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {2.2.2}Telemetry}{15}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Telecomands}{17}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Ground Station}{17}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Hardware}{19}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Ground station hardware}{19}{subsection.2.3.1}
 \contentsline {subsubsection}{Antennas}{19}{subsection.2.3.1}
 \contentsline {subsubsection}{Transceiver}{19}{table.2.5}
 \contentsline {subsection}{\numberline {2.3.2}Software}{19}{subsection.2.3.2}
@@ -31,7 +31,7 @@
 \contentsline {subsubsection}{AX.25}{21}{table.2.6}
 \contentsline {subsubsection}{FX.25}{22}{figure.2.9}
 \contentsline {chapter}{\numberline {3}Hummingbird: the open source platform for monitoring and controlling remote assets}{23}{chapter.3}
-\contentsline {section}{\numberline {3.1}Main principles}{23}{section.3.1}
+\contentsline {section}{\numberline {3.1}Overview}{23}{section.3.1}
 \contentsline {section}{\numberline {3.2}Functionalities}{24}{section.3.2}
 \contentsline {section}{\numberline {3.3}Architecture}{24}{section.3.3}
 \contentsline {chapter}{\numberline {4}Requirements}{25}{chapter.4}
@@ -84,21 +84,21 @@
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{38}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Camel Integration}{38}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{41}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Calibration}{45}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{49}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Camel integration}{50}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Loading the limits information}{52}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Limit checking}{55}{subsection.5.3.3}
-\contentsline {chapter}{\numberline {6}User manual}{57}{chapter.6}
-\contentsline {section}{\numberline {6.1}Calibration module}{57}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Structure of the XML file}{58}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Example of simple calibration}{59}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Example of calibration dependent on other parameters}{60}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Example of calibration dependent on other parameters which are dependent on others}{61}{subsection.6.1.4}
-\contentsline {subsection}{\numberline {6.1.5}Example of the result of the calibration being a vector}{62}{subsection.6.1.5}
-\contentsline {section}{\numberline {6.2}Limit checking module}{62}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Example of configuration with sanity limits}{64}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Example of configuration without sanity limits}{64}{subsection.6.2.2}
-\contentsline {chapter}{\numberline {7}Conclussions}{65}{chapter.7}
-\contentsline {chapter}{\numberline {8}Future work}{67}{chapter.8}
-\contentsline {chapter}{Bibliography}{68}{section*.1}
+\contentsline {subsection}{\numberline {5.2.3}Calibration}{46}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{50}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Camel integration}{51}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Loading the limits information}{53}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Limit checking}{56}{subsection.5.3.3}
+\contentsline {chapter}{\numberline {6}User manual}{58}{chapter.6}
+\contentsline {section}{\numberline {6.1}Calibration module}{58}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Structure of the XML file}{59}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Example of simple calibration}{60}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Example of calibration dependent on other parameters}{61}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Example of calibration dependent on other parameters which are dependent on others}{62}{subsection.6.1.4}
+\contentsline {subsection}{\numberline {6.1.5}Example of the result of the calibration being a vector}{63}{subsection.6.1.5}
+\contentsline {section}{\numberline {6.2}Limit checking module}{63}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Example of configuration with sanity limits}{65}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Example of configuration without sanity limits}{65}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {7}Conclussions}{66}{chapter.7}
+\contentsline {chapter}{\numberline {8}Future work}{68}{chapter.8}
+\contentsline {chapter}{Bibliography}{69}{section*.1}
