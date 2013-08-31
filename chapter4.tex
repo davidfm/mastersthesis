@@ -57,14 +57,14 @@ The modules will receive Parameters. The \emph{Parameter} type is part of Hummin
 \begin{itemize}
 \item Numeric value (can be any type).
 \item Unit of the value.
-\item Description.
+\item Description: additional information about the parameter.
 \item Timestamp: date and time when the parameter was created.
 
 \end{itemize}
 
 
 \textbf{\emph{Apache Camel}} \citep{Camel}\\
-Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly.It is necessary to configure the module so it sends and receives messages through Camel.
+Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly. It is necessary to configure the module so it sends and receives messages through Camel.
 
 
 \subsubsection{Communications Interfaces}
@@ -168,22 +168,22 @@ Common to both modules. Please see section 4.1.2
 \subsubsection{Read configuration}
 
 \textbf{\emph{Introduction}}\\
-The first thing the software should do is parse the configuration files to generate the calibration information.
+The first thing the software should do is parse the configuration files to generate the calibration information.\\
 
-\textbf{\emph{Inputs}}\\
+\textbf{\emph{Inputs}} \linebreak
+XML files with calibration information for the different subsystems.\\
 
-XML files with calibration information for the different subsystems.
-
-\textbf{\emph{Processing}}\\
+\textbf{\emph{Processing}}\linebreak
 \begin{enumerate}
 \item Find XML files in the selected location.
 \item Find calibration information available in each file.
 \item Generate calibration table.
 \end{enumerate}
+\vspace*{1\baselineskip}
 
-\textbf{\emph{Outputs}}\\
 
-The process will generate a table with the calibration information for all the different parameters.
+\textbf{\emph{Outputs}}\linebreak
+The process will generate a table with the calibration information for all the different parameters.\\
 
 %\textbf{\emph{Error Handling}}\\
 
@@ -191,57 +191,52 @@ The process will generate a table with the calibration information for all the d
 
 \subsubsection{Listen to incoming parameters}
 
-\textbf{\emph{Introduction}}\\
-The module will be waiting for new parameters to arrive. When a parameter is ready for calibration it will be sent to the calibrator.
+\textbf{\emph{Introduction}}\linebreak
+The module will be waiting for new parameters to arrive. When a parameter is ready for calibration it will be sent to the calibrator.\\
 
-\textbf{\emph{Inputs}}\\
+\textbf{\emph{Inputs}}\linebreak
+Parameters received through \emph{Apache Camel}.\\
 
-Parameters received through Camel.
-
-\textbf{\emph{Processing}}\\
+\textbf{\emph{Processing}}\linebreak
 \begin{enumerate}
 \item Receive a parameter.
 \item If the parameter is ready for calibration send it to the calibrator.
 \item If the parameter needs more parameters to be calibrated wait for those parameters.
 \end{enumerate}
 \pagebreak
-\textbf{\emph{Outputs}}\\
-
-The output will be one or several parameters which will be sent back to the message queue using Camel.
+\textbf{\emph{Outputs}}\linebreak
+The output will be one or several parameters which will be sent back to the message queue using \emph{Apache Camel}.\\
 
 
 \textbf{\emph{Error Handling}}\\
 \begin{itemize}
-\item If no calibrator is found for the parameter log the error and ignore it. No data return to Camel is expected.
-\item If there is a problem with the calibrator log the error do not return any data through Camel.
+\item If no calibrator is found for the parameter log the error and ignore it. No data return to \emph{Apache Camel} is expected.
+\item If there is a problem with the calibrator log the error and do not return any data through \emph{Apache Camel}.
 \end{itemize}
 
-
+\vspace*{1\baselineskip}
 \subsubsection{Calibrate}
 
-\textbf{\emph{Introduction}}\\
+\textbf{\emph{Introduction}}\linebreak
+When a parameter is ready for calibration it must be sent to the calibrator, including any extra parameters needed for the calibration and also the calibration information.\\
 
-When the a parameter is ready for calibration it must be sent to the calibrator, including any extra parameters needed for the calibration and also the calibration information.
+\textbf{\emph{Inputs}}\linebreak
+Parameter to be calibrated plus all extra parameters needed to do so.\\
 
-\textbf{\emph{Inputs}}\\
-
-Parameter to be calibrated plus all extra parameters needed to do so.
-
-\textbf{\emph{Processing}}\\
+\textbf{\emph{Processing}}\linebreak
 \begin{enumerate}
 \item Receive parameter(s) needed for calibration.
 \item Receive all the calibration information.
-\item Use the script to generate the new value
-\item Return the new parameter
+\item Use the script to generate the new value.
+\item Return the new parameter.
 \end{enumerate}
-
-\textbf{\emph{Outputs}}\\
-
-The output will be one or several parameters.
+\vspace*{1\baselineskip}
+\textbf{\emph{Outputs}}\linebreak
+The output will be one or several parameters.\\
 
 
 \textbf{\emph{Error Handling}}\\
-If there is an error it must be sent upwards.
+If there is an error it must be sent upwards.\\
 
 \pagebreak
 \subsection{Non-Functional Requirements}
@@ -298,17 +293,17 @@ Common to both modules, please see the section 4.1.1.
 In addition to the constraints common to both modules (see section 4.1.1) there must be two options:
 
 \begin{itemize}
-\item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.2})
+\item Sanity limits, soft limits and hard limits. (See Figure \ref{f4.2}).
 \begin{figure}[H]
 \centerline{\includegraphics[width=1.2\textwidth]{images/LimitChecking1.png}}
-\caption{Limit Checker with sanity limits available}
+\caption{Limit checker with sanity limits available}
 \label{f4.2}
 \end{figure}
 \pagebreak
 \item Soft limits and hard limits only (Figure \ref{f4.3}).
 \begin{figure}[H]
 \centerline{\includegraphics[width=1.2\textwidth]{images/LimitChecking2.png}}
-\caption{Limit Checker only with soft and hard limits}
+\caption{Limit checker only with soft and hard limits}
 \label{f4.3}
 \end{figure}
 \end{itemize}
@@ -343,11 +338,10 @@ Common for both modules. Please see the section 4.1.2.
 \subsubsection{Read configuration}
 
 \textbf{\emph{Introduction}}\\
-The first thing the software should do is parse the configuration files to generate the calibration information.
+The first thing the software should do is parse the configuration files to generate the limit checking information.\\
 
 \textbf{\emph{Inputs}}\\
-
-XML files with calibration information for the different subsystems.
+XML files with calibration information for the different subsystems.\\
 
 \textbf{\emph{Processing}}\\
 \begin{enumerate}
@@ -355,10 +349,9 @@ XML files with calibration information for the different subsystems.
 \item Find limits information available in each file.
 \item Generate limits table.
 \end{enumerate}
-
+\vspace*{1\baselineskip}
 \textbf{\emph{Outputs}}\\
-
-The process will generate a table with the limits information for all the different parameters.
+The process will generate a table with the limits information for all the different parameters.\\
 
 %\textbf{\emph{Error Handling}}\\
 
@@ -366,41 +359,37 @@ The process will generate a table with the limits information for all the differ
 \subsubsection{Listen to incoming parameters}
 
 \textbf{\emph{Introduction}}\\
-The module will be waiting for new parameters to arrive. Those parameters will be sent to the limit checker.
+The module will be waiting for new parameters to arrive. Those parameters will be sent to the limit checker.\\
 
 \textbf{\emph{Inputs}}\\
-
-Parameters received through Camel.
+Parameters received through \emph{Apache Camel}.\\
 
 \textbf{\emph{Processing}}\\
 \begin{enumerate}
 \item Receive a parameter.
 \item Send parameter to limit checker.
 \end{enumerate}
-
+\vspace*{1\baselineskip}
 \textbf{\emph{Outputs}}\\
-
-The output will be a list of State elements which will be sent back to the message queue using Camel.
+The output will be a list of \emph{State} elements which will be sent back to the message queue using \emph{Apache Camel}.\\
 
 
 \textbf{\emph{Error Handling}}\\
 \begin{itemize}
-\item If no limit checking information is found for the parameter log the error and ignore it. No data return to Camel is expected.
-\item If there is a problem with the limit checker log the error do not return any data through Camel.
+\item If no limit checking information is found for the parameter log the error and ignore it. No data return to \emph{Apache Camel} is expected.
+\item If there is a problem with the limit checker log the error and do not return any data through \emph{Apache Camel}.
 \end{itemize}
 
 
 \subsubsection{Check limits}
 
 \textbf{\emph{Introduction}}\\
-
-The software must check the limits, depending on the levels of limits chosen (2 or 3) the comparison will be different.
+The software must check the limits, depending on the levels of limits chosen (2 or 3) the comparison will be different.\\
 
 
 \textbf{\emph{Inputs}}\\
-
-Parameter to be calibrated plus all extra parameters needed to do so.
-
+Parameter to be calibrated plus all extra parameters needed to do so.\\
+\newpage
 \textbf{\emph{Processing}}\\
 \begin{enumerate}
 \item Receive parameter.
@@ -408,9 +397,9 @@ Parameter to be calibrated plus all extra parameters needed to do so.
 \item Compare the parameter against the limits.
 \item Return the result of the comparison.
 \end{enumerate}
-
+\vspace*{1\baselineskip}
 \textbf{\emph{Outputs}}\\
-List of State elements.
+List of State elements.\\
 
 
 \textbf{\emph{Error Handling}}\\

@@ -38,10 +38,10 @@ The XML file follows the format of Table \ref{Table5.6}
 \item \textbf{Description}: description of the parameter.
 \item \textbf{outputId}: name of the parameter generated after the calibration. If left blank, it will be the same as \textbf{id}.
 \item \textbf{unit}: Units in which the value is represented.
-\item \textbf{isVector}: \textbf{true} if the result of the calibration is a vector with several values (which generates several new parameters) or \textbf{false} if the calibration returns a single value.
+\item \textbf{isVector}: $true$ if the result of the calibration is a vector with several values (which generates several new parameters) or $false$ if the calibration returns a single value.
 \item \textbf{resultVariable}: variable in the script in which the result will be stored.
-\item \textbf{auxParameters}: if the are extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also needs to be calibrated the parameters needed for its calibration also must be included here in addition to the original one.
-\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration script must be included here, not the parameter name. 
+\item \textbf{auxParameters}: if the are any extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also need to be calibrated the parameters needed for their calibration must also be included here in addition to the original ones.
+\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration scripts must be included here, not the parameter name. 
 \end{itemize}
 
 \subsection{Example of simple calibration}
@@ -193,11 +193,10 @@ The module supports the interpretation of Java code and shell scripts. This exam
 \section{Limit checking module}
 This subsection covers the user manual for the limit checking module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to the limits of every parameter. 
 
-There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand.It is advisable that each file is called as the corresponding subsystem.
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand. It is advisable that each file is called as the corresponding subsystem.
 
 The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
-\pagebreak
-
+\newpage
 The format of the XML file is represented in Table \ref{Table5.11}.
 \begin{table}[H]
 \lstset{language=XML}

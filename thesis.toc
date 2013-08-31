@@ -20,7 +20,7 @@
 \contentsline {section}{\numberline {2.2}Data}{15}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Beacon}{15}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Telemetry}{15}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Telecomands}{17}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.3}Telecommands}{17}{subsection.2.2.3}
 \contentsline {section}{\numberline {2.3}Ground Station}{17}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Ground station hardware}{19}{subsection.2.3.1}
 \contentsline {subsubsection}{Antennas}{19}{subsection.2.3.1}
@@ -83,7 +83,7 @@
 \contentsline {section}{\numberline {5.1}Technologies used}{37}{section.5.1}
 \contentsline {section}{\numberline {5.2}Implementation of the calibration module}{38}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Camel Integration}{38}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{41}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.2}Loading the calibration information}{42}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Calibration}{46}{subsection.5.2.3}
 \contentsline {section}{\numberline {5.3}Implementation of the limit checking module}{50}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Camel integration}{51}{subsection.5.3.1}

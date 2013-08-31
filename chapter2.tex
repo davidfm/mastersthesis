@@ -20,7 +20,7 @@ Planetary movements were first mathematically defined by the German mathematicia
 \item A planet's orbital period is proportional to the mean distance between the Sun and the planet, raised to the power of 3/2.
 \end{itemize} 
 
-These laws generally apply to every celestial body. When analysing the movement of two bodies, if one is much bigger than the other, an approximation known as the two-body problem can be used to . It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The solution of the two body problem states that the smaller body orbits around the bigger one in an elliptical orbit which can be described by six parameters. These parameters will be explained in detail in the next section.
+These laws generally apply to every celestial body. When analysing the movement of two bodies, if one is much bigger than the other, an approximation known as the two-body problem can be used. It assumes that both bodies are spherical and they are modelled as if they were point particles. This means that influences from any third body are discarded. The solution of the two-body problem states that the smaller body orbits around the bigger one in an elliptical orbit which can be described by six parameters. These parameters will be explained in detail in the next section.
 
 
 \subsection{Classical Orbital Elements}
@@ -36,7 +36,7 @@ The first two elements, the orbit's size and shape are defined based on a 2D rep
 
 \begin{itemize}
 \item The \emph{semimajor axis} ($a$) is one half the distance across the long axis of the orbit, and it represents the orbit's size.
-\item The \emph{eccentricity} represents the shape of the orbit. It describes how much the ellipse is elongated compared to a circle. Based on the latter, the orbit can have different shapes, as shown in Figure \ref{f2.2}
+\item The \emph{eccentricity} ($e$) represents the shape of the orbit. It describes how much the ellipse is elongated compared to a circle. Based on the latter, the orbit can have different shapes, as shown in Figure \ref{f2.2}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[scale=0.35]{images/Eccentricity.png}}
@@ -52,7 +52,7 @@ Before jumping onto the next orbital elements it is necessary to point out that 
 The following orbital elements define the orientation of the orbital plane:
 
 \begin{itemize}
-\item The inclination ($i$) describes the tilt of the orbital plane with respect to the reference plane. It is measured at the ascending node. This is, where the orbit crosses with the reference plain when moving upwards.
+\item The inclination ($i$) describes the tilt of the orbital plane with respect to the reference plane. It is measured at the ascending node. This is, where the orbit crosses with the reference plane when moving upwards.
 \item The right ascension of the ascending node ($\Omega$) represents the angle between the principal direction and the point where the orbital plane crosses the reference plane from south to north measured eastward. 
 \end{itemize}
 
@@ -60,7 +60,7 @@ The following orbital elements define the orientation of the orbital plane:
 It is now time to go through the last two COEs:
 \begin{itemize}
 \item The argument of perigee ($\omega$) is the angle between the ascending node and the perigee, measured in the direction of the satellite's motion.
-\item The true anomaly ($\upsilon$) specifies the location of the satellite within the orbit. Amongst all the CEOs, this is te only one which changes over time. It is the angle between the perigee and the satellite's position vector measured in the direction of its motion.
+\item The true anomaly ($\upsilon$) specifies the location of the satellite within the orbit. Amongst all the COEs, this is the only one which changes over time. It is the angle between the perigee and the satellite's position vector measured in the direction of its motion.
 \end{itemize}
 
 \begin{figure}[H]
@@ -69,7 +69,7 @@ It is now time to go through the last two COEs:
 \label{f2.3}
 \end{figure}
 
-Based on the COEs, the orbits can be classified as shown in Table \ref{Table2.1}
+Based on the COEs, the orbits can be classified as shown in Table \ref{Table2.1}.
 
 \begin{table}[h]
 \centering
@@ -315,13 +315,13 @@ The data exchanged between a satellite and the ground stations on Earth can be d
 
 \subsection{Beacon}
 
-A \emph{beacon} is a radio signal transmitted continuously or periodically over a specified radio frequency. It provides a small amount of information such as identification or location, but it can have more applications. Examples of these are: adjust the power of the ground station signal based on the beacon's strength or tune the ground station to compensate the doppler shift.
+A \emph{beacon} is a radio signal transmitted continuously or periodically over a specified radio frequency. It provides a small amount of information such as identification or location, but it can have more applications. Examples of these are: adjust the power of the ground station signal based on the beacon's strength or tune the ground station to compensate the Doppler shift.
 
 \subsection{Telemetry}
 
-\emph{Telemetry} is the data generated by the payloads and the different sensors of the satellite which then sent to the ground station. It can be divided in two sub-categories.\\
+\emph{Telemetry} is the data generated by the payloads and the different sensors of the satellite which is then sent to the ground station. It can be divided into two sub-categories.\\
 
-The \emph{housekeeping data} provides information about the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate on only a few hundreds of bits per second is enough to complete the transmission successfully.
+The \emph{housekeeping data} provides information about the health and operating status of the satellite. Examples of this data can be pressure, voltages and currents, or also bits representing the operational status of all the components as it is shown in Figure \ref{f2.5}. The size of this data is usually quite small, so a bit rate of only a few hundreds of bits per second is enough to complete the transmission successfully.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/housekeeping.png}}
@@ -333,16 +333,16 @@ As its name states the \emph{payload data} is generated by the satellites payloa
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/masat.jpg}}
-\caption{Picture of South Africa taken from the nanosatellite MaSat-1.}
+\caption{Picture of South Africa taken from the nanosatellite MaSat-1}
 \label{f2.6}
 \end{figure}
 
 \pagebreak
-\subsection{Telecomands}
-The telecommands are sent from the ground station to the satellite. They are used to remotely control its functions and are divided in three basic types \cite{SSEng}:
+\subsection{Telecommands}
+The telecommands are sent from the ground station to the satellite. They are used to remotely control its functions and are divided into three basic types \cite{SSEng}:
 \begin{itemize}
 \item \emph{Low-level on-off commands}. These are logic-level pulses used to set or reset log flip-flops.
-\item \emph{High-level on-off commands}. Higher-powered pulses, capable of operating a latching relay or RF waveguide switch direcly.
+\item \emph{High-level on-off commands}. Higher-powered pulses, capable of operating a latching relay or RF waveguide switch directly.
 \item \emph{Proportional commands}. Digital words. Used for purposes such as reprogramming memory locations on the on-board computer or setting up registers in the attitude control subsystem.
 
 \end{itemize}
@@ -426,7 +426,7 @@ There is also professional software aiming to build ground station networks. One
 A protocol is an agreement between the communicating parties on how communication is to proceed \cite{Tanenbaum}. This section will be focused on the OSI Reference model as well as on some of the most popular protocols for amateur satellite communications.
 
 \subsubsection{The OSI Reference Model}
-The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and revised in 1995. This model deals with connecting systems that are open for communication with other systems. It consists on seven layers which are explained in Table \ref{Table2.6}.\\
+The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and revised in 1995. This model deals with connecting systems that are open for communication with other systems. It consists of seven layers which are explained in Table \ref{Table2.6}.\\
 
 \begin{table}[h]
 \centering

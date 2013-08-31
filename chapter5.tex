@@ -63,13 +63,13 @@ This chapter covers the implementation of the two software modules according to 
 
 As it has been explained previously, the two modules developed as part of the work for this thesis have been designed to be integrated with the Hummingbird project. To do so, Java \cite{Java} has been chosen as the main programming language, as it is the language used for the development of Hummingbird. In the same way, Apache Camel \cite{Camel} and ActiveMQ \cite{AMQ} are used for the communication with the rest of the modules. XStream \cite{XStream} has been chosen as the library used to parse the XML \cite{XML} files used to specify the scientific information.
 
-The final piece of technology used is BeanShell \citep{BSH}, a Java-like scripting language and interpreter which runs in the Java Runtime Environment. The calibration module has been designed to be generic, adaptable to every mission. Also, the goal was to make the calibration information input easy for the scientists, meaning this no need to any difficult Java programming, compilation and so on. BeanShell integrates with the Java code and allows to run those scripts at runtime.
+The final piece of technology used is BeanShell \citep{BSH}, a Java-like scripting language and interpreter which runs in the Java Runtime Environment. The calibration module has been designed to be generic, adaptable to every mission. Also, the goal was to make the calibration information input easy for the scientists, meaning there is no need for any difficult Java programming, compilation and so on. BeanShell integrates with the Java code and allows to run those scripts at runtime.
 \pagebreak
 \section{Implementation of the calibration module}
 
 For the sake of clarity, the approach to the explanation will be in small pieces. However, before jumping onto every small piece, it is interesting to look at the package organization of the module.
 
-The software is divided into several Java packages being those the following:
+The software is divided into the following several Java packages:
 \begin{itemize}
 \item \textbf{eu.estcube.calibration}: contains the Apache Camel integration. It also contains the main class of the module.
 \item \textbf{eu.estcube.calibration.calibrate}: contains the implementation of the calibrator.
@@ -94,7 +94,7 @@ Amongst the three classes represented in Figure \ref{f5.1} it is important to hi
 
 \emph{Calibrator} is the main class of the module. As it is shown in the class diagram there are two methods, the \textbf{main} method, where everything starts and the \textbf{configure} method. The latter is where the integration with Camel happens, what configures where to get the messages from, what to do with them and where to send them afterwards. In addition, \emph{Hummingbird} utilizes a heartbeat system to check if the modules are working correctly, this is also carried on here. Table \ref{Table5.1} contains a snippet of the code.
 
-\begin{table}[h]
+\begin{table}[H]
 \lstset{language=Java}
 \begin{lstlisting}
 
@@ -127,8 +127,7 @@ Amongst the three classes represented in Figure \ref{f5.1} it is important to hi
 \caption{Camel integration Java code for the calibrator}
 \label{Table5.1}
 \end{table}
-\_cal
-\pagebreak
+
 Focusing on the part where the module receives and sends the parameters we can see that:
 
 \begin{itemize}
@@ -141,7 +140,7 @@ Focusing on the part where the module receives and sends the parameters we can s
             \emph{.to(StandardEndpoints.MONITORING);}
 
 \end{itemize}
-
+\pagebreak
 
 The second part - from line 14 and below - contains the heartbeat system.
 
@@ -155,7 +154,7 @@ The second part - from line 14 and below - contains the heartbeat system.
 
 The code corresponding to the Camel integration is shown in table \ref{Table5.2}. The other two parts will be explained in the following subsections.
 
-\begin{table}[h]
+\begin{table}[H]
 \lstset{language=Java}
 \begin{lstlisting}
 
@@ -178,7 +177,7 @@ The code corresponding to the Camel integration is shown in table \ref{Table5.2}
 \caption{Java code showing the Camel integration of \emph{ParameterProcessor} }
 \label{Table5.2}
 \end{table}
-
+\pagebreak
 \subsection{Loading the calibration information}
 
 The first action point when the module is initiated is loading the calibration information. This will read the information from the configuration files written by the specialists and will create a series of calibration units which will later be used to calibrate the incoming parameters.
@@ -214,7 +213,7 @@ Figure \ref{f5.2} shows the different classes involved in this process. They can
 
 
 
-The best way to see how these classes interact with each other is by looking at its sequence diagram (Figure \ref{f5.3}). The main class is \emph{ParameterProcessor}, where the calibration information will be stored in the form of a \emph{HashMap} of calibration units. The reason for choosing a this data structure is its efficiency, as it provides constant-time performance for the input and retrieval of information\cite{HashMap}. The process begins by \emph{ParameterProcessor} asking \emph{InitCalibrationUnits} to initialize them. To do so the calibration units need the calibration information (calibrators), which is initialized  by \emph{InitCalibrators}. \emph{InitCalibrators} is the class which manages the access to information in the files; first it finds the corresponding XML files to later parse each of them, creating the calibrators. With this calibrators, \emph{InitCalibrationUnits} creates them, and then returns them to the main class where they are ready to receive the incoming parameters.
+The best way to see how these classes interact with each other is by looking at its sequence diagram (Figure \ref{f5.3}). The main class is \emph{ParameterProcessor}, where the calibration information will be stored in the form of a \emph{HashMap} of calibration units. The reason for choosing this data structure is its efficiency, as it provides constant-time performance for the input and retrieval of information \cite{HashMap}. The process begins by \emph{ParameterProcessor} asking \emph{InitCalibrationUnits} to initialize them. To do so the calibration units need the calibration information (calibrators), which is initialized  by \emph{InitCalibrators}. \emph{InitCalibrators} is the class which manages the access to information in the files; first it finds the corresponding XML files to later parse each of them, creating the calibrators. With this calibrators, \emph{InitCalibrationUnits} creates them, and then returns them to the main class where they are ready to receive the incoming parameters.
 
 There is one class present in the class diagram in Figure \ref{f5.2} which is not present in Figure \ref{f5.3}: \emph{HashMapConverter}. This is because this class is managed by \emph{XStream}, the external library used to simplify XML access and parsing. 
 
@@ -237,7 +236,7 @@ The data structure created to represent the calibration information is \emph{Inf
 		\end{itemize}
 	\item \textbf{outputId}
 		\begin{itemize}
-			\item Type:String
+			\item Type: String
 			\item Content: name of the engineering parameter
 		\end{itemize}
 	\item \textbf{unit}
@@ -247,8 +246,8 @@ The data structure created to represent the calibration information is \emph{Inf
 		\end{itemize}
 	\item \textbf{Description}
 		\begin{itemize}
-			\item Type:String
-			\item Content:description of the parameter
+			\item Type: String
+			\item Content: description of the parameter
 		\end{itemize}
 	
 	\item \textbf{additionalParameters}
@@ -266,7 +265,7 @@ The data structure created to represent the calibration information is \emph{Inf
 			\item Type: String
 			\item Content: name of the variable which will contain the result in the script
 		\end{itemize}
-	\item \textbf{script}\_cal
+	\item \textbf{script}
 		\begin{itemize}
 			\item Type: String
 			\item Content: calibration script
@@ -274,7 +273,7 @@ The data structure created to represent the calibration information is \emph{Inf
 		
 \end{itemize}
 
-This data structure is later stored within another data structure, \emph{CalibrationUnit}. The reason for using this second data structure is the way parameters are received from Camel, one by one. If all the calibrations were just simple one-parameter calibrations that would not be necessary. However, some parameters might need information from others to be calibrated, thus, they need to be sent as a whole unit to the method to the method which will generated the engineering values. \emph{CalibrationUnit} is formed by the following components:
+This data structure is later stored within another data structure, \emph{CalibrationUnit}. The reason for using this second data structure is the way parameters are received from Camel, one by one. If all the calibrations were just simple one-parameter calibrations that would not be necessary. However, some parameters might need information from others to be calibrated. Thus, they need to be sent as a whole unit to the method which will generate the engineering values. \emph{CalibrationUnit} is formed by the following components:
 
 \begin{itemize}
 \item Attributes:
@@ -299,10 +298,10 @@ This data structure is later stored within another data structure, \emph{Calibra
 	
 	\item Amongst others, \emph{CalibrationUnit} can perform the following actions:
 	\begin{itemize}
-		\item \textbf{neededParameters}: returns the parameters listed as necessary for the calibration
-		\item \textbf{needsThisParameter}: checks whether or not a particular parameter is needed for the current calibration unit
-		\item \textbf{addAuxParameter}: adds an extra parameter when needed
-		\item \textbf{isReadyForCalibration}: checks that all the needed parameters are in place. Only when this check returns true the calibration unit is sent to the calibrator.
+		\item \textbf{neededParameters}: returns the parameters listed as necessary for the calibration.
+		\item \textbf{needsThisParameter}: checks whether or not a particular parameter is needed for the current calibration unit.
+		\item \textbf{addAuxParameter}: adds an extra parameter when needed.
+		\item \textbf{isReadyForCalibration}: checks that all the needed parameters are in place. Only when this check returns $true$ the calibration unit is sent to the calibrator.
 		\item \textbf{clean}: once the calibration unit has been sent to the calibrator, it is cleaned so it can be used for the next time that parameters are received. This means emptying the main and auxiliary parameters.
 	\end{itemize}
 
@@ -310,12 +309,12 @@ This data structure is later stored within another data structure, \emph{Calibra
 
 
 \subsection{Calibration}
-The calibration process can be divided in two parts. The first one is managing the parameters that arrive from other modules, prepare the calibration units and send back the results. The second is the actual calibration. 
+The calibration process can be divided in two parts. The first one is managing the parameters that arrive from other modules, prepare the calibration units and send back the results. The second one is the actual calibration. 
 
 Figure \ref{f5.4} represents the class diagram of this part of the software. There are three classes which have been seen in previous sections ---\emph{ParameterProcessor}, \emph{CalibrationUnit} and \emph{InfoContainer}--- and two new ones which are:
 \begin{itemize}
 \item \emph{ParameterCalibrator}: Interface representing the method that the calibrator must contain.
-\item \emph{Calibrate}: Implementation of the previous interface, where the actual calibration is performed. This class is generic class. Its generic type \emph{T} extends from Java Number, which means any the Java Number subtypes can be used when instantiating it. Currently is in the form of a Double, but it can be easily modified if ever needed.
+\item \emph{Calibrate}: Implementation of the previous interface, where the actual calibration is performed. This class is generic class. Its generic type \emph{T} extends from Java Number, which means any of the Java Number subtypes can be used when instantiating it. It currently is in the form of a Double, but it can be easily modified if ever needed.
 \end{itemize}
 
 
@@ -325,7 +324,7 @@ Figure \ref{f5.4} represents the class diagram of this part of the software. The
 \label{f5.4}
 \end{figure}
 
-Figure \ref{f5.5} is a flow chart representing the algorithm used to manage the received parameters, in combination with the sequence diagram of Figure \ref{f5.6} they show what the steps in the algorithm are and which parts of the software performs then. As it was previously stated, the main class is \emph{ParameterProcessor}, where the calibration units have already been created. When a parameter is received, if its corresponding calibration unit is available it is included as its main part (if it is not present, the process ends with an error log message). Afterwards, the algorithm goes through every calibration unit doing the following:
+Figure \ref{f5.5} is a flow chart representing the algorithm used to manage the received parameters, in combination with the sequence diagram of Figure \ref{f5.6} they show what the steps in the algorithm are and which parts of the software performs then. As it was previously stated, the main class is \emph{ParameterProcessor}, where the calibration units have already been created. When a parameter is received, if its corresponding calibration unit is available it is included as its main part (if it is not present, the process ends and the error is logged). Afterwards, the algorithm goes through every calibration unit doing the following:
 \begin{enumerate}
 \item Check if the parameter is needed for the calibration unit.
 \item If 1 is true, add the parameter as an auxiliary parameter for the calibration.
@@ -333,7 +332,7 @@ Figure \ref{f5.5} is a flow chart representing the algorithm used to manage the 
 \item If 3 is true, calibrate and save the results in a list. Finally, clean the calibration unit.
 \end{enumerate}
 
-After the whole process is completed the results are sent back to Camel so make them available for the rest of the system.
+After the whole process is completed the results are sent back to Apache Camel to make them available for the rest of the system.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/ReceiveParameterAndCalibrateFlowChart.png}}
@@ -349,7 +348,7 @@ After the whole process is completed the results are sent back to Camel so make 
 \end{figure}
 
 
-The part of evaluating the raw parameters using the calibration script is left in the hands of \emph{BeanShell}. The way to evaluate a script with this library is very simple as it can be seen in Table \ref{Table5.3}. 
+The part of evaluating the raw parameters using the calibration script is left in the hands of BeanShell. The way to evaluate a script with this library is very simple as it can be seen in Table \ref{Table5.3}. 
 
 
 \begin{table}[h]
@@ -403,10 +402,10 @@ This module also has a very similar structure to the calibration one. The explan
 \end{itemize}
 \subsection{Camel integration}
 
-The integration with camel is done in the exact same way as in the calibration module. Figure \ref{f5.7} contains a diagram of the classes involved in this process. The classes change their name (\emph{Calibrator} to \emph{LimitChecking} and \emph{CalibratorConfig} to \emph{LimitCheckingConfig}) and a the \textbf{split} option is removed (compare Tables \ref{Table5.1} and\ref{Table5.5}, as there is no need to split results received from \emph{ParameterProcessor}. There are also some minor changes in the latter, but those are related to the limit checking and not to the Camel integration. For more information please see the correspondent section in the calibration module.
+The integration with camel is done in the exact same way as in the calibration module. Figure \ref{f5.7} contains a diagram of the classes involved in this process. The classes change their name (\emph{Calibrator} to \emph{LimitChecking} and \emph{CalibratorConfig} to \emph{LimitCheckingConfig}) and the \textbf{split} option is removed (compare to Tables \ref{Table5.1} and \ref{Table5.5}), as there is no need to split results received from \emph{ParameterProcessor}. There are also some minor changes in the latter, but those are related to the limit checking and not to the Camel integration. For more information please see section 5.2.1.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=0.75\textwidth]{images/LimitCheckingCamelClassDiagram.png}}
+\centerline{\includegraphics[width=1\textwidth]{images/LimitCheckingCamelClassDiagram.png}}
 \caption{Class diagram of the Camel integration}
 \label{f5.7}
 \end{figure}
@@ -491,7 +490,7 @@ The data structure used to represent the limits information is, as it was in the
 		\end{itemize}
 	\item \textbf{sanityLimits}
 		\begin{itemize}
-			\item Type: Array of $BigDecimal$\cite{BigDecimal}. This number format has been chosen as it provides high precision, avoiding rounding errors from other types, such as $double$.
+			\item Type: Array of $BigDecimal$ \cite{BigDecimal}. This number format has been chosen as it provides high precision, avoiding rounding errors from other types, such as $double$.
 			\item Content: lower limit in the first position and and upper limit in the second. This limits are optional, if enabled, four regions are available (discard, error, warning and OK). Any values below the lower or above the upper limits are discarded.
 		\end{itemize}
 	\item \textbf{hardLimits}
@@ -532,8 +531,9 @@ The different classes involved in this  part are represented in the class diagra
 \label{f5.10}
 \end{figure}
 
-The flow of the process can be seen in Figure \ref{f5.11} whereas Figure \ref{f5.12} shows the sequence diagram with the messages between the classes. For the sake of clarity, \emph{CheckLimits} should be interpreted as \emph{CheckLimitsThreeLevels} or \emph{CheckLimitsFourLevels}, depending on the case. This algorithm is much simpler than the one used for the calibration; the main class is \emph{ParameterProcessor}, where the limits information is stored. When a parameter is received, the first thing the algorithm does is check for its limits. If they are not present the process will end with and log error message. If everything goes correctly, the parameter will be sent to either \emph{CheckLimitsThreeLevels} or \emph{CheckLimitsFourLevels}.
-Per request from the \emph{Hummingbird} architect, the result is returned as a list of $State$. The list has for elements, being:
+The flow of the process can be seen in Figure \ref{f5.11} whereas Figure \ref{f5.12} shows the sequence diagram with the messages between the classes. For the sake of clarity, \emph{CheckLimits} should be interpreted as \emph{CheckLimitsThreeLevels} or \emph{CheckLimitsFourLevels}, depending on the case. This algorithm is much simpler than the one used for the calibration; the main class is \emph{ParameterProcessor}, where the limits information is stored. When a parameter is received, the first thing the algorithm does is check for its limits. If they are not present the process will end and error will be logged. If everything goes correctly, the parameter will be sent to either \emph{CheckLimitsThreeLevels} or \emph{CheckLimitsFourLevels}.
+\newpage
+Per request from the \emph{Hummingbird} architect, the result is returned as a list of $State$. The list has four elements, being:
 \begin{itemize}
 \item Discard region (if the sanity limits are disabled this state is automatically set to false).
 \item Error region
@@ -543,14 +543,14 @@ Per request from the \emph{Hummingbird} architect, the result is returned as a l
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/LimitCheckingFlowChart.png}}
-\caption{Diagram representing the classes involved in the limit checking process.}
+\caption{Diagram representing the classes involved in the limit checking process}
 \label{f5.11}
 \end{figure}
 
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.75\textwidth]{images/CheckLimitsSequence.png}}
-\caption{Diagram representing the classes involved in the limit checking process.}
+\caption{Diagram representing the classes involved in the limit checking process}
 \label{f5.12}
 \end{figure}
 \newpage

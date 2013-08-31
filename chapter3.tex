@@ -1,7 +1,7 @@
 
 \chapter{Hummingbird: the open source platform for monitoring and controlling remote assets}\label{chapter3}
 
-The continuous growth of the popularity of small satellites has been accompanied by an increased interest in creating more a better solutions for controlling the satellites from Earth. The missions are growing more complex and the use of software oriented for amateurs is starting to prove insufficient. For this reason, nowadays, there are  several projects to build professional-like software and ground station networks to control small satellites. This chapter introduces one of them, \emph{Hummingbird} \citep{HBird} the project into which the work carried on in this thesis will be integrated. 
+The continuous growth of the popularity of small satellites has been accompanied by an increased interest in creating better solutions for controlling the satellites from Earth. The missions are growing more complex and the use of software oriented for amateurs is starting to prove insufficient. For this reason, nowadays, there are  several projects to build professional-like software and ground station networks to control small satellites. This chapter introduces one of them, \emph{Hummingbird} \citep{HBird} the project into which the work carried on in this thesis will be integrated. 
 
 \section{Overview} 
 
@@ -36,7 +36,7 @@ The transport tier is based on Apache Camel and ActiveMQ. It transports messages
 
 The business tier contains the business logic of the system. Command creation, limit checking, calibration, scheduling and all other business operations are carried on here. This tier does not care about the protocols used to broker the messages, it sends and receives them from a message bus, the transport tier.\\
 
-The presentation tier is where the data is displayed. There are a number of GUIs available, such as webguis, OpenGL based GUIs and OSGI GUIs. Apache Camel is not used of their implementation and are they are very independent from the \emph{Hummingbird} infrastructure.
+The presentation tier is where the data is displayed. There are a number of GUIs available, such as web GUIs, OpenGL based GUIs and OSGI GUIs. Apache Camel is not used for their implementation and they are very independent from the \emph{Hummingbird} infrastructure.
 
  
 
