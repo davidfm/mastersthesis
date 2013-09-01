@@ -1,8 +1,226 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Singer (1941)]{Singer}
+C. Singer.
+\newblock \emph{A Short History of Science To The Ninteeth Century} p. 217.
+\newblock Clarendon Press, United Kingdom, 1941.
+
+\bibitem[Welti (2012)]{SBFE}
+C.~Robert Welti.
+\newblock \emph{Satellite Basics for Everyone}.
+\newblock iUniverse, first edition. United States, 2012.
+\newblock ISBN 978-1-4759-2593-7.
+
+\bibitem[Barnhart (2008)]{BARN}
+D.J. Barnhart.
+\newblock \emph{Very Small Satellite Design for Space Sensor Networks}.
+\newblock Ph.D. thesis. Faculty of Engineering and Physical Sciences, University of Surrey. United Kingdom, 2008.
+
+
+\bibitem[CubeSat Design Specification (2009)]{CubeSat}
+\newblock \emph{CubeSat Design Specification}.
+\newblock Revision 12, Cal Poly. United States, 2009.
+
+
+\bibitem[Praks et al. (2011)]{AALTO1a}
+J. Praks. A.Kestilä, M. Hallikainen, H. Saari, J. Antila, P. Janhunen, V. Rami.
+\newblock \emph{Aalto-1 - An experimental nanosatellite for hyperspectral remote sensing}.
+\newblock In Geoscience and Remote Symposium (IGARS). IEEE International, 2011.
+
+
+\bibitem[Näsila et al. (2011)]{AALTO1b}
+A. Näsila, A. Hakkarainen, J. Praks, A. Kestilä, K. Nordling, R. Modrzewski, H. Saari, J. Antila, R. Mannila, P. Janhunen, R. Vainio, M. Hallikainen.
+\newblock \emph{Aalto-1 - A Hyperspectral Earth Observing Nanosatellite}.
+\newblock 2011.
+
+
+\bibitem[ESail (2013)]{ESail}
+P. Janhunen.
+\newblock \emph{Electric Solar Wind Sail}.
+\newblock URL \url{http://www.electric-sailing.fi/}.
+\newblock [Online; accessed 2013-08-28].
+
+
+\bibitem[Janhunen et al. (2010)]{ESTCube}
+P. Janhunen, P.K. Toivanen, J. Polkko, S. Merikallio, P. Salminen, E. Haeggström, H. Seppänen, R. Kurppa, J. Ukkonen, S. Kiprich, G. Thornell, H. Kratz, L. Richter, O. Krömer, R. Rosta, M. Noorma, J. Envall, S. Lätt, G. Mengali, A.A. Quarta, H. Koivisto, O. Tarvainen, T. Kalvas, J. Kauppinen, A. Nuottajärvi, A. Obraztsov
+\newblock \emph{Electric solar wind sail: Towards test missions (Invited article)}.
+\newblock Rev. Sci. Instrum., 81, 111301, 2010.
+
+
+\bibitem[Arianespace (2013)]{Arianespace}
+\newblock \emph{Second Vega launch by Arianespace a success: Proba-V, VNREDSat-1 and ESTCube-1 in orbit}.
+\newblock URL \url{ http://www.arianespace.com/news-press-release/2013/5-7-2013-VV02-launch.asp}.
+\newblock [Online; accessed 2013-08-07].
+
+\bibitem[ESA (2013)]{ESA}
+European Space Agency.
+\newblock \emph{Earthnet Online - Ground Segment}.
+\newblock URL \url{http://earth.esa.int/envisat/m-s/ground/}.
+\newblock [Online; accessed 2013-08-28].
+
+\bibitem[Fortescue (2003)]{SSEng}
+P. Fortescue, J. Startk, G. Swinerd. 
+\newblock \emph{Spacecraft Systems Engineering}.
+\newblock Wiley, third edition. United Kingdom, 2003.
+\newblock ISBN 0-470-85102-3
+
+
+\bibitem[Sellers (2005)]{IntAstr}
+Jerry J. Sellers 
+\newblock \emph{Understanding Space, An Introduction to Astronautics}.
+\newblock McGraw-Hill, third edition. United States, 2005.
+\newblock ISBN 978-0-07-340775-3.
+
+\bibitem[NASA (2013)]{NASAOrbits}
+NASA
+\newblock \emph{Catalog of Earth Satellite Orbits}.
+\newblock URL \url{http://earthobservatory.nasa.gov/Features/OrbitsCatalog/}.
+\newblock [Online; accessed 2013-04-17].
+
+\bibitem[NASA (2013)]{Kelso}
+T.S. Kelso
+\newblock \emph{Two-Line Element Set Format}.
+\newblock CelesTrak, 2006.
+\newblock URL \url{https://celestrak.com/columns/v04n03/}.
+\newblock [Online; accessed 2013-04-17].
+
+\bibitem[Paige (2006)]{Beacon}
+B. Paige
+\newblock \emph{Satellite Beacons}.
+\newblock The Radio Amateur Satellite Corporation, 2006.
+\newblock URL \url{http://www.amsat.org/amsat-new/information/faqs/houston-net/beacons.php}.
+\newblock [Online; accessed 2013-04-22].
+
+\bibitem[Masat (2007)]{Masat}
+Masat-1
+\newblock URL \url{http://cubesat.bme.hu/en}.
+
+\bibitem[GPredict (2009)]{GPredict}
+GPredict
+\newblock URL \url{http://gpredict.oz9aec.net/}.
+
+\bibitem[Orbitron (2005)]{Orbitron}
+Orbitron
+\newblock URL \url{http://www.stoff.pl/}.
+
+\bibitem[Carpcomm (2012)]{Carpcomm}
+Carpcomm
+\newblock URL \url{http://carpcomm.com/}.
+
+\bibitem[GENSO (2012)]{GENSO}
+GENSO
+\newblock URL \url{http://www.genso.org/}.
+
+\bibitem[CGI (2013)]{CGI}
+\newblock \emph{CGI provides support for the launch of Estonia’s first satellite}.
+\newblock URL \url{http://www.cgi.com/en/CGI-provides-support-launch-Estonia-first-satellite}.
+\newblock [Online; accessed 2013-08-08].
+
+\bibitem[Tanenbaum (2010)]{Tanenbaum}
+Andrew S. Tanenbaum.
+\newblock \emph{Computer Networks}.
+\newblock Prentice Hall, fifth edition. United States, 2010.
+\newblock  978-0132126953.
+
+\bibitem[AX25 (1997)]{AX25}
+\newblock \emph{AX.25 Link Access Protocol for Amateur Packet Radio}.
+\newblock Tucson Amateur Packet Radio. 1997.
+\newblock URL \url{ http://www.tapr.org/pdf/AX25.2.2.pdf}.
+\newblock [Online; accessed 2013-05-03].
+
+\bibitem[FX25 (2006)]{FX25}
+\newblock \emph{FX.25: Forward Error Correction Extension to AX.25 Link Protocol For Amateur Packet Radio}.
+\newblock Stensat Group, 2006.
+\newblock URL \url{ http://www.stensat.org/Docs/FX-25_01_06.pdf}.
+\newblock [Online; accessed 2013-05-06].
+
+\bibitem[Hummingbird (2013)]{HBird}
+\newblock \emph{Hummingbird. The open platform for monitoring and controll. }.
+\newblock Hummingbird, 2013.
+\newblock URL \url{ http://www.hbird.de}.
+\newblock [Online; accessed 2013-06-20].
+
+\bibitem[Java (2013)]{Java}
+\newblock \emph{Java}.
+\newblock Oracle, 2013.
+\newblock URL \url{ http://www.java.com/en}.
+\newblock [Online; accessed 2013-08-13].
+
+\bibitem[Camel (2013)]{Camel}
+\newblock \emph{Apache Camel}.
+\newblock The Apache Software Foundation, 2013.
+\newblock URL \url{ http://camel.apache.org/}.
+\newblock [Online; accessed 2013-05-28].
+
+\bibitem[ActiveMQ (2013)]{AMQ}
+\newblock \emph{ActiveMQ}.
+\newblock The Apache Software Foundation, 2013.
+\newblock URL \url{ http://activemq.apache.org/}.
+\newblock [Online; accessed 2013-05-28].
+
+\bibitem[Eilonen (2013)]{Elo}
+E. Eilonen, U. Kvell, L. Kimmel, G. Villemos
+\newblock \emph{Improving and Accelerating Small Missions through Mission Operations Software}.
+\newblock 5th European Cubesat Symposium, 2013.
+
+
+\bibitem[Java Message Service (2013)]{JMS}
+\newblock \emph{Java Message Service}.
+\newblock Oracle, 2013.
+\newblock URL \url{ http://docs.oracle.com/javaee/6/tutorial/doc/bncdq.html}.
+\newblock [Online; accessed 2013-08-19].
+
+
+\bibitem[Apache license (2004)]{AL20}
+\newblock \emph{Apache License 2.0}.
+\newblock The Apache Software Foundation, 2004.
+\newblock URL \url{http://www.apache.org/licenses/LICENSE-2.0}.
+\newblock [Online; accessed 2013-08-19].
+
+
+\bibitem[XStream (2013)]{XStream}
+\newblock \emph{XStream}.
+\newblock URL \url{ http://xstream.codehaus.org/}.
+\newblock [Online; accessed 2013-07-05].
+
+\bibitem[XML (2013)]{XML}
+\newblock \emph{Extensible Markup Language (XML)}.
+\newblock URL \url{ http://www.w3.org/XML/}.
+\newblock [Online; accessed 2013-07-05].
+
+
+\bibitem[BeanShell (2013)]{BSH}
+Pat Niemeyer.
+\newblock \emph{BeanShell}.
+\newblock URL \url{ http://www.beanshell.org/}.
+\newblock [Online; accessed 2013-07-05].
+
+\bibitem[HashMap (2013)]{HashMap}
+\newblock \emph{Class HashMap<K,V>}.
+\newblock Oracle, 2013.
+\newblock URL \url{http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html}.
+\newblock [Online; accessed 2013-07-05].
+
+\bibitem[BigDecimal (2013)]{BigDecimal}
+\newblock \emph{Class BigDecimal}.
+\newblock Oracle, 2013.
+\newblock URL \url{http://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html}.
+\newblock [Online; accessed 2013-07-05].
+
+\bibitem[JUnit (2013)]{JUnit}
+\newblock \emph{JUnit}.
+\newblock URL \url{ http://www.junit.org/}.
+\newblock [Online; accessed 2013-08-20].
+
+\bibitem[Mockito (2013)]{Mockito}
+\newblock \emph{Mockito}.
+\newblock URL \url{ https://code.google.com/p/mockito/}.
+\newblock [Online; accessed 2013-08-20].
+
 
 \end{thebibliography}

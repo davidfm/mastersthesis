@@ -52,7 +52,7 @@ The modules are part the Hummingbird project based on the advise and needs dicta
 \subsubsection{Software Interfaces}
 
 \textbf{\emph{Parameter}}\\
-The modules will receive Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows.
+The modules will receive Parameters. The \emph{Parameter} type is part of Hummingbird and is represented as follows:
 
 \begin{itemize}
 \item Numeric value (can be any type).
@@ -62,9 +62,9 @@ The modules will receive Parameters. The \emph{Parameter} type is part of Hummin
 
 \end{itemize}
 
-
+\vspace*{1\baselineskip}
 \textbf{\emph{Apache Camel}} \citep{Camel}\\
-Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly. It is necessary to configure the module so it sends and receives messages through Camel.
+Since Hummingbird uses \emph{Apache Camel} for the communication between modules, the parameters for calibration are received and sent back using this system. In addition, Hummingbird has a heartbeat service to check if the module is responding properly. It is necessary to configure the module so it sends and receives messages through Apache Camel.
 
 
 \subsubsection{Communications Interfaces}
@@ -159,7 +159,7 @@ In addition to receiving Parameters this module also generates and sends them. F
 
 \subsubsection{Communications Interfaces}
 
-Common to both modules. Please see section 4.1.2
+Common to both modules. Please, see section 4.1.2.
 
 \pagebreak
 
@@ -168,7 +168,7 @@ Common to both modules. Please see section 4.1.2
 \subsubsection{Read configuration}
 
 \textbf{\emph{Introduction}}\\
-The first thing the software should do is parse the configuration files to generate the calibration information.\\
+The first thing the software should do is parsing the configuration files to generate the calibration information.\\
 
 \textbf{\emph{Inputs}} \linebreak
 XML files with calibration information for the different subsystems.\\

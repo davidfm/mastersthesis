@@ -5,7 +5,7 @@
 
 %% Leave first page empty \thispagestyle{empty}
 \chapter{Introduction} 
-The relationship between human beings and space has existed since the beginning of time. Space has always been a source of mystery, something we want to understand. More than 4000 years ago, the Egyptians and the Babylonians based on the movements of the sun and the planets and developed calendars for growing their crops. Later, the ancient Greeks introduced the concept of \emph{astronomy}, the science of the heavens. Other examples are philosophers such as Nicolaus Copernicus, Johannes Kepler, who explained the motion of the planets, and Galileo Galilei, who has been called the "father of modern observational astronomy" \cite{Singer}. In the 17th century, Sir Isaac Newton invented calculus, developed his law of gravitation and performed important experiments in optics.\\
+The relationship between human beings and space has existed since the beginning of time. Space has always been a source of mystery, something we want to understand. More than 4000 years ago, the Egyptians and the Babylonians based on the movements of the Sun and the planets developed calendars for growing their crops. Later, the ancient Greeks introduced the concept of \emph{astronomy}, the science of the heavens. Other examples are philosophers such as Nicolaus Copernicus, Johannes Kepler, who explained the motion of the planets, and Galileo Galilei, who has been called the "father of modern observational astronomy" \cite{Singer}. In the 17th century, Sir Isaac Newton invented calculus, developed his law of gravitation and performed important experiments in optics.\\
 
 The technological advancements of the 20th century, specially accelerated by the World War II, made physical exploration of space become possible. This exploration is mainly carried out by the use of satellites. A \emph{satellite} is a natural or artificial object moving around a celestial body. This motion is described as an orbit, defined by the dominant force of gravity from the bigger body. In early 1945, the United States started the Vanguard Rocket development to launch a satellite. However, after several failed launches, it was the Soviet Union who took the advantage by launching the Sputnik-1 (Figure \ref{f1.1}) on October 4, 1957. Finally, on January 31, 1958 the United States managed to launch their first artificial satellite, the Explorer-1 (Figure \ref{f1.2}). During the Cold War, the space race between the two superpowers was a hard fight which made space technology advance quite rapidly.
 
@@ -44,12 +44,12 @@ To counter this trend, the small satellite movement was created by the academic 
 
 \section{Background}\label{1.1}
 
-This thesis is closely related to two different university based nanosatellite projects, Aalto-1 and ESTCube-1. These two projects are based on the most common standard used by university satellites: CubeSat\cite{CubeSat}, an open standard developed by the California Polytechnic State University and Stanford University.
+This thesis is closely related to two different university based nanosatellite projects, Aalto-1 and ESTCube-1. These two projects are based on the most common standard used by university satellites: CubeSat \cite{CubeSat}, an open standard developed by the California Polytechnic State University and Stanford University.
 
 
 \subsection{Aalto-1}
 
-Led by Aalto University, Aalto-1 project aims to build a multi-payload remote sensing nanosatellite (Figure \ref{f1.4}). The size of the satellite is approximately 34 cm x 10 cm x 10 cm with a mass of less than 4 kg\cite{AALTO1a}. Aalto-1 also intents to be the first Finnish satellite.
+Led by Aalto University, Aalto-1 project aims to build a multi-payload remote sensing nanosatellite (Figure \ref{f1.4}). The size of the satellite is approximately 34 cm x 10 cm x 10 cm with a mass of less than 4 kg \cite{AALTO1a}. Aalto-1 also intents to be the first Finnish satellite.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=0.7\textwidth]{images/aalto1.png}}
@@ -74,7 +74,7 @@ It was launched from the Guaiana Space Centre on May 7, 2013 as one of the three
 \label{f1.5}
 \end{figure}
 
-ESTCube-1's main goal is to observe and measure the E-sail effect for the first time. It has been placed into a polar low Earth orbit (LEO) and will deploy a single 10 m long and 9 mm wide tether \cite{ESTCube}. This is related to Aalto-1's Plasma Brake, which will deploy a 100 m long tether. The required duration of ESTCube-1's mission is a few weeks and it can be extended to about a year.
+ESTCube-1's main goal is to observe and measure the E-sail \cite{ESail} effect for the first time. It has been placed into a polar low Earth orbit (LEO) and will deploy a single 10 m long and 9 mm wide tether \cite{ESTCube}. This is related to Aalto-1's Plasma Brake, which will deploy a 100 m long tether. The required duration of ESTCube-1's mission is a few weeks and it can be extended to about a year.
 
 
 \section{Problem statement}\label{1.2}
@@ -102,7 +102,7 @@ The received values also need to be checked to see if they are within the specif
 
 The purpose of this thesis is to develop a calibration and a limit checking module for a ground control software which will solve the problems mentioned earlier.\\
 
-Using ESTCube-1 project as a baseline, the author aims to develop such systems which are generic enough to be used by any number of satellite missions. The modules developed will be integrated into \emph{Hummingbird}, an open source platform for monitoring and control remote assets, which will be explained later in this work.\\ 
+Using ESTCube-1 project as a baseline, the author aims to develop such systems which are generic enough to be used by any number of satellite missions. The modules developed will be integrated into \emph{Hummingbird}, an open source platform for monitoring and controlling remote assets, which will be explained later in this work.\\ 
 The following items support this purpose:
 \begin{itemize}
 	\item Research about satellite orbits and how they affect satellite-Earth communications.
@@ -119,6 +119,6 @@ The development of this product will not only benefit both, Aalto University and
 
 \pagebreak
 \section{Outline of the thesis}
-This thesis is structured as follows: the second chapter gives a general overview about satellite communications, how orbits affect these, what data is transmitted and what are the different protocols, hardware and software components to do so. The third chapter explains briefly what Hummingbird is and what is behind it. The fourth chapter goes through the requirements set for the software project whereas the fifth one focuses on the design and implementation. Chapter six comprises a short user manual. Chapter seven summarizes the conclusions of this thesis. Finally, chapter eight explains what the next steps in the project are.
+This thesis is structured as follows: the second chapter gives a general overview about satellite communications, how orbits affect them, what data is transmitted, what the different protocols are and which hardware and software components are used to carry out those communications. The third chapter explains briefly what Hummingbird is and what is behind it. The fourth chapter goes through the requirements set for the software project whereas the fifth one focuses on the design and implementation. Chapter six comprises a short user manual. Chapter seven summarizes the conclusions of this thesis. Finally, chapter eight explains what the next steps in the project are.
 
 \newpage

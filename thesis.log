@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  31 AUG 2013 21:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.2.18)  1 SEP 2013 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1618,14 +1618,14 @@ Chapter 2.
 
 
 
-] <images/Ellipse.png, id=611, 344.78813pt x 237.13594pt>
+] <images/Ellipse.png, id=613, 344.78813pt x 237.13594pt>
 File: images/Ellipse.png Graphic file (type png)
 
 <use images/Ellipse.png>
 Package pdftex.def Info: images/Ellipse.png used on input line 32.
 (pdftex.def)             Requested size: 292.77629pt x 201.36385pt.
 
-<images/Eccentricity.png, id=613, 531.9875pt x 481.8pt>
+<images/Eccentricity.png, id=615, 531.9875pt x 481.8pt>
 File: images/Eccentricity.png Graphic file (type png)
 
 <use images/Eccentricity.png>
@@ -1638,7 +1638,7 @@ Package pdftex.def Info: images/Eccentricity.png used on input line 42.
                                                   \fi \fi 
 l.46 
       <./images/Ellipse.png>]
-<images/COEs.png, id=619, 557.08125pt x 336.50719pt>
+<images/COEs.png, id=621, 557.08125pt x 336.50719pt>
 File: images/COEs.png Graphic file (type png)
  <use images/COEs.png>
 Package pdftex.def Info: images/COEs.png used on input line 67.
@@ -1651,28 +1651,28 @@ Package pdftex.def Info: images/COEs.png used on input line 67.
                                                   \fi \fi 
 l.71 
       <./images/Eccentricity.png>]
-<images/EquatorialOrbit.png, id=626, 92.345pt x 57.21375pt>
+<images/EquatorialOrbit.png, id=628, 92.345pt x 57.21375pt>
 File: images/EquatorialOrbit.png Graphic file (type png)
 
 <use images/EquatorialOrbit.png>
 Package pdftex.def Info: images/EquatorialOrbit.png used on input line 84.
 (pdftex.def)             Requested size: 46.17238pt x 28.6068pt.
 
-<images/PolarOrbit.png, id=627, 117.43875pt x 87.32625pt>
+<images/PolarOrbit.png, id=629, 117.43875pt x 87.32625pt>
 File: images/PolarOrbit.png Graphic file (type png)
 
 <use images/PolarOrbit.png>
 Package pdftex.def Info: images/PolarOrbit.png used on input line 88.
 (pdftex.def)             Requested size: 58.71922pt x 43.66301pt.
 
-<images/DirectOrbit.png, id=628, 140.525pt x 69.25874pt>
+<images/DirectOrbit.png, id=630, 140.525pt x 69.25874pt>
 File: images/DirectOrbit.png Graphic file (type png)
 
 <use images/DirectOrbit.png>
 Package pdftex.def Info: images/DirectOrbit.png used on input line 92.
 (pdftex.def)             Requested size: 70.26231pt x 34.62927pt.
 
-<images/IndirectOrbit.png, id=629, 140.525pt x 66.2475pt>
+<images/IndirectOrbit.png, id=631, 140.525pt x 66.2475pt>
 File: images/IndirectOrbit.png Graphic file (type png)
 
 <use images/IndirectOrbit.png>
@@ -1698,7 +1698,7 @@ Overfull \hbox (4.8501pt too wide) in paragraph at lines 108--130
  [][] 
  []
 
-<images/GroundTracks.png, id=641, 1616.0375pt x 760.8425pt>
+<images/GroundTracks.png, id=644, 1616.0375pt x 760.8425pt>
 File: images/GroundTracks.png Graphic file (type png)
 
 <use images/GroundTracks.png>
@@ -1709,14 +1709,14 @@ Package pdftex.def Info: images/GroundTracks.png used on input line 140.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.151 \subsection{Two Line Elements}
+l.151 \subsection{Two-Line Elements}
                                     \label{2.4}pdfTeX warning (ext4): destinati
 on with the same identifier (name{figure.2.4}) has been already used, duplicate
  ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.151 \subsection{Two Line Elements}
+l.151 \subsection{Two-Line Elements}
                                     \label{2.4} <./images/GroundTracks.png>]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 158.
 
@@ -1744,7 +1744,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 322--323
 
  []
 
-<images/housekeeping.png, id=655, 1032.85875pt x 437.635pt>
+<images/housekeeping.png, id=657, 1032.85875pt x 437.635pt>
 File: images/housekeeping.png Graphic file (type png)
 
 <use images/housekeeping.png>
@@ -1756,7 +1756,7 @@ Package pdftex.def Info: images/housekeeping.png used on input line 327.
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.331 
-      ] <images/masat.jpg, id=662, 321.2pt x 240.9pt>
+      ] <images/masat.jpg, id=664, 321.2pt x 240.9pt>
 File: images/masat.jpg Graphic file (type jpg)
  <use images/masat.jpg>
 Package pdftex.def Info: images/masat.jpg used on input line 335.
@@ -1775,7 +1775,7 @@ l.341 \subsection
                                                   \fi \fi 
 l.341 \subsection
                  {Telecommands} <./images/housekeeping.png> <./images/masat.jpg
->] <images/gsdiagram.jpg, id=670, 506.89375pt x 742.775pt>
+>] <images/gsdiagram.jpg, id=672, 506.89375pt x 742.775pt>
 File: images/gsdiagram.jpg Graphic file (type jpg)
 
 <use images/gsdiagram.jpg>
@@ -1836,13 +1836,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
-<images/ax25a.png, id=704, 659.46375pt x 88.33pt>
+<images/ax25a.png, id=706, 659.46375pt x 88.33pt>
 File: images/ax25a.png Graphic file (type png)
  <use images/ax25a.png>
 Package pdftex.def Info: images/ax25a.png used on input line 466.
 (pdftex.def)             Requested size: 418.25368pt x 56.02287pt.
 
-<images/ax25b.png, id=706, 653.44125pt x 127.47626pt>
+<images/ax25b.png, id=708, 653.44125pt x 127.47626pt>
 File: images/ax25b.png Graphic file (type png)
  <use images/ax25b.png>
 Package pdftex.def Info: images/ax25b.png used on input line 472.
@@ -1861,7 +1861,7 @@ l.476
                                                   \fi \fi 
 l.476 
        <./images/ax25a.png>]
-<images/fx25.png, id=712, 608.2725pt x 93.34875pt>
+<images/fx25.png, id=714, 608.2725pt x 93.34875pt>
 File: images/fx25.png Graphic file (type png)
  <use images/fx25.png>
 Package pdftex.def Info: images/fx25.png used on input line 481.
@@ -2047,7 +2047,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--240
 
  []
 
-[30] [31] <images/LimitChecking1.png, id=786, 796.47563pt x 597.73312pt>
+[30] [31] <images/LimitChecking1.png, id=788, 796.47563pt x 597.73312pt>
 File: images/LimitChecking1.png Graphic file (type png)
 
 <use images/LimitChecking1.png>
@@ -2061,7 +2061,7 @@ Package pdftex.def Info: images/LimitChecking1.png used on input line 298.
 l.303 \item
             Soft limits and hard limits only (Figure \ref{f4.3}). <./images/Lim
 itChecking1.png>]
-<images/LimitChecking2.png, id=792, 796.47563pt x 597.73312pt>
+<images/LimitChecking2.png, id=794, 796.47563pt x 597.73312pt>
 File: images/LimitChecking2.png Graphic file (type png)
 
 <use images/LimitChecking2.png>
@@ -2160,7 +2160,7 @@ Overfull \hbox (8.7002pt too wide) in paragraph at lines 76--77
 v-eral con-stants used through-
  []
 
-<images/CalibratorCamelClassDiagram.png, id=833, 753.81625pt x 519.9425pt>
+<images/CalibratorCamelClassDiagram.png, id=835, 753.81625pt x 519.9425pt>
 File: images/CalibratorCamelClassDiagram.png Graphic file (type png)
 
 <use images/CalibratorCamelClassDiagram.png>
@@ -2207,7 +2207,7 @@ ble.5.2}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.181 \subsection
                  {Loading the calibration information}]
-<images/LoadInfoClassDiagram.png, id=897, 1005.7575pt x 727.71875pt>
+<images/LoadInfoClassDiagram.png, id=899, 1005.7575pt x 727.71875pt>
 File: images/LoadInfoClassDiagram.png Graphic file (type png)
 
 <use images/LoadInfoClassDiagram.png>
@@ -2215,7 +2215,7 @@ Package pdftex.def Info: images/LoadInfoClassDiagram.png used on input line 208
 .
 (pdftex.def)             Requested size: 418.25368pt x 302.61948pt.
  [42]
-<images/InitCalibrationUnitsSequence.png, id=907, 479.7925pt x 949.5475pt>
+<images/InitCalibrationUnitsSequence.png, id=909, 479.7925pt x 949.5475pt>
 File: images/InitCalibrationUnitsSequence.png Graphic file (type png)
 
 <use images/InitCalibrationUnitsSequence.png>
@@ -2239,7 +2239,7 @@ Overfull \vbox (3.87161pt too high) has occurred while \output is active []
                                                   \fi \fi 
 l.226 
        <./images/InitCalibrationUnitsSequence.png>] [45] [46]
-<images/CalibrationClassDiagram.png, id=926, 1177.39874pt x 723.70375pt>
+<images/CalibrationClassDiagram.png, id=928, 1177.39874pt x 723.70375pt>
 File: images/CalibrationClassDiagram.png Graphic file (type png)
 
 <use images/CalibrationClassDiagram.png>
@@ -2247,7 +2247,7 @@ Package pdftex.def Info: images/CalibrationClassDiagram.png used on input line
 322.
 (pdftex.def)             Requested size: 418.25368pt x 257.08778pt.
 
-<images/ReceiveParameterAndCalibrateFlowChart.png, id=929, 956.57375pt x 957.57
+<images/ReceiveParameterAndCalibrateFlowChart.png, id=931, 956.57375pt x 957.57
 75pt>
 File: images/ReceiveParameterAndCalibrateFlowChart.png Graphic file (type png)
  <use images/ReceiveParameterAndCalibrateFlowChart.png>
@@ -2261,7 +2261,7 @@ on input line 338.
                                                   \fi \fi 
 l.342 
        <./images/CalibrationClassDiagram.png>]
-<images/ReceiveParameterAndCalibrateSequence.png, id=938, 808.01875pt x 542.025
+<images/ReceiveParameterAndCalibrateSequence.png, id=940, 808.01875pt x 542.025
 pt>
 File: images/ReceiveParameterAndCalibrateSequence.png Graphic file (type png)
  <use images/ReceiveParameterAndCalibrateSequence.png>
@@ -2295,7 +2295,7 @@ used, duplicate ignored
                                                   \fi \fi 
 l.401 \item \textbf
                    {eu.estcube.limitchecking.xmlparser}: contains the tools ...
-] <images/LimitCheckingCamelClassDiagram.png, id=976, 855.195pt x 525.965pt>
+] <images/LimitCheckingCamelClassDiagram.png, id=978, 855.195pt x 525.965pt>
 File: images/LimitCheckingCamelClassDiagram.png Graphic file (type png)
 
 <use images/LimitCheckingCamelClassDiagram.png>
@@ -2315,7 +2315,7 @@ n already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.447 
-      ] <images/LoadLimitsClassDiagram.png, id=1009, 1054.94125pt x 465.74pt>
+      ] <images/LoadLimitsClassDiagram.png, id=1011, 1054.94125pt x 465.74pt>
 File: images/LoadLimitsClassDiagram.png Graphic file (type png)
 
 <use images/LoadLimitsClassDiagram.png>
@@ -2329,7 +2329,7 @@ Package pdftex.def Info: images/LoadLimitsClassDiagram.png used on input line 4
                                                   \fi \fi 
 l.472 
        <./images/LoadLimitsClassDiagram.png>]
-<images/InitLimitsSequence.png, id=1015, 483.8075pt x 679.53876pt>
+<images/InitLimitsSequence.png, id=1017, 483.8075pt x 679.53876pt>
 File: images/InitLimitsSequence.png Graphic file (type png)
 
 <use images/InitLimitsSequence.png>
@@ -2343,7 +2343,7 @@ Package pdftex.def Info: images/InitLimitsSequence.png used on input line 478.
 l.483 T
        he data structure used to represent the limits information is, as it ...
  <./images/InitLimitsSequence.png>] [55]
-<images/CheckLimitsClassDiagram.png, id=1028, 1355.0625pt x 624.3325pt>
+<images/CheckLimitsClassDiagram.png, id=1030, 1355.0625pt x 624.3325pt>
 File: images/CheckLimitsClassDiagram.png Graphic file (type png)
 
 <use images/CheckLimitsClassDiagram.png>
@@ -2357,7 +2357,7 @@ Package pdftex.def Info: images/CheckLimitsClassDiagram.png used on input line
                                                   \fi \fi 
 l.535 \newpage
                <./images/CheckLimitsClassDiagram.png>]
-<images/LimitCheckingFlowChart.png, id=1035, 739.76375pt x 410.53375pt>
+<images/LimitCheckingFlowChart.png, id=1037, 739.76375pt x 410.53375pt>
 File: images/LimitCheckingFlowChart.png Graphic file (type png)
 
 <use images/LimitCheckingFlowChart.png>
@@ -2365,7 +2365,7 @@ Package pdftex.def Info: images/LimitCheckingFlowChart.png used on input line 5
 45.
 (pdftex.def)             Requested size: 418.25368pt x 232.1086pt.
 
-<images/CheckLimitsSequence.png, id=1036, 469.755pt x 203.76125pt>
+<images/CheckLimitsSequence.png, id=1038, 469.755pt x 203.76125pt>
 File: images/CheckLimitsSequence.png Graphic file (type png)
 
 <use images/CheckLimitsSequence.png>
@@ -2519,7 +2519,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
 
 ]) (./thesis.bbl
-Underfull \hbox (badness 5417) in paragraph at lines 49--52
+Underfull \hbox (badness 10000) in paragraph at lines 43--47
+[]\T1/cmr/m/n/12 P. Jan-hunen.  \T1/cmr/m/it/12 Elec-tric So-lar Wind Sail\T1/c
+mr/m/n/12 .  URL []$\T1/cmtt/m/n/12 http : / / www .
+ []
+
+
+Underfull \hbox (badness 5417) in paragraph at lines 56--59
 \T1/cmr/m/it/12 1 and ESTCube-1 in or-bit\T1/cmr/m/n/12 .  URL []$\T1/cmtt/m/n/
 12 http : / / www . arianespace . com /
  []
@@ -2529,24 +2535,24 @@ Underfull \hbox (badness 5417) in paragraph at lines 49--52
 
 
 ]
-Underfull \hbox (badness 1052) in paragraph at lines 86--91
+Underfull \hbox (badness 1052) in paragraph at lines 93--98
 []\T1/cmr/m/n/12 B. Paige  \T1/cmr/m/it/12 Satel-lite Bea-cons\T1/cmr/m/n/12 . 
  The Ra-dio Am-a-teur Satel-lite Cor-po-ra-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--116
+Underfull \hbox (badness 10000) in paragraph at lines 120--123
 [] \T1/cmr/m/it/12 CGI pro-vides sup-port for the launch of Es-to-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--116
+Underfull \hbox (badness 10000) in paragraph at lines 120--123
 \T1/cmr/m/it/12 nia's first satel-lite\T1/cmr/m/n/12 .  URL []$\T1/cmtt/m/n/12 
 http : / / www . cgi . com / en /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--116
+Underfull \hbox (badness 10000) in paragraph at lines 120--123
 \T1/cmtt/m/n/12 CGI-[]provides-[]support-[]launch-[]Estonia-[]first-[]satellite
 $[]\T1/cmr/m/n/12 .  [On-line;
  []
@@ -2569,14 +2575,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 34.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 34.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 34.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 43BCAA5515296F61EC62C68E2A2D4E77;5040.
+(rerunfilecheck)             Checksum: 3B6F20D105921FAAA4807791C62890E4;5040.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 34.
  ) 
 Here is how much of TeX's memory you used:
- 15808 strings out of 493485
- 221782 string characters out of 3143526
- 381285 words of memory out of 3000000
- 18234 multiletter control sequences out of 15000+200000
+ 15812 strings out of 493485
+ 221831 string characters out of 3143526
+ 381312 words of memory out of 3000000
+ 18237 multiletter control sequences out of 15000+200000
  35235 words of font info for 64 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  44i,20n,74p,1481b,1338s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2601,10 +2607,10 @@ super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb><
 ts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-s
 uper/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb>
-Output written on thesis.pdf (84 pages, 4502367 bytes).
+Output written on thesis.pdf (84 pages, 4503531 bytes).
 PDF statistics:
- 1450 PDF objects out of 1728 (max. 8388607)
- 1297 compressed objects within 13 object streams
- 465 named destinations out of 1000 (max. 500000)
+ 1455 PDF objects out of 1728 (max. 8388607)
+ 1301 compressed objects within 14 object streams
+ 466 named destinations out of 1000 (max. 500000)
  699 words of extra memory for PDF output out of 10000 (max. 10000000)
 

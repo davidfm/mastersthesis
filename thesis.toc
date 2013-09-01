@@ -16,7 +16,7 @@
 \contentsline {subsection}{\numberline {2.1.1}Kepler's Laws}{9}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Classical Orbital Elements}{10}{subsection.2.1.2}
 \contentsline {subsection}{\numberline {2.1.3}Ground Tracks}{13}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Two Line Elements}{14}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.4}Two-Line Elements}{14}{subsection.2.1.4}
 \contentsline {section}{\numberline {2.2}Data}{15}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Beacon}{15}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Telemetry}{15}{subsection.2.2.2}

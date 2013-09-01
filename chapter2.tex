@@ -12,7 +12,7 @@ An orbit is the \textbf{gravitationally curved path of an object around a center
 
 
 \subsection{Kepler's Laws}
-Planetary movements were first mathematically defined by the German mathematician, astronomer and astrologer Johannes Kepler in the 17th century. He concentrated his observations into three simple laws\citep{SSEng}:
+Planetary movements were first mathematically defined by the German mathematician, astronomer and astrologer Johannes Kepler in the 17th century. He concentrated his observations into three simple laws \citep{SSEng}:
 \begin{itemize}
 
 \item The orbit of each planet is an ellipse with the Sun occupying one focus.
@@ -96,7 +96,7 @@ Based on the COEs, the orbits can be classified as shown in Table \ref{Table2.1}
 \begin{tabular}[x]{@{}c@{}}\raisebox{-\totalheight}{\includegraphics[scale=0.5]{images/IndirectOrbit.png}}\end{tabular}\\
 \hline
 \end{tabular}
- \caption{Types of Orbits and Their Inclination \cite{IntAstr}.}
+ \caption{Types of orbits and their inclination \cite{IntAstr}}
   \label{Table2.1}
 \end{table}
 
@@ -127,7 +127,7 @@ Geosynchronous (GSO)\end{tabular} &
 \end{tabular}\\
 \hline
 \end{tabular}
- \caption{NASA's classification of orbits. \cite{NASAOrbits}}
+ \caption{NASA's classification of orbits \cite{NASAOrbits}}
   \label{Table2.2}
 \end{table}
 
@@ -148,8 +148,8 @@ If Earth did not move the representation of a satellite's orbit would be a singl
 This poses a challenge to the communication with the satellite. It is visible, as a fast moving object in the sky, from a certain location on the ground for very short periods of time. Thus, the communications antenna needs to track the satellite in order to handle the communication. The tracking is based on two line element sets, which will be covered in the next section.
 
 
-\subsection{Two Line Elements}\label{2.4}
-A two line element (TLE) set is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time and are usually used by ground stations in order to track them.
+\subsection{Two-Line Elements}\label{2.4}
+A Two-Line Element (TLE) set is a data format created by the North American Aerospace Defense Command (NORAD) and NASA to transport sets of orbital elements describing satellite orbits around Earth. These TLEs can be later processed by a computer to calculate the position of a satellite at a particular time and are usually used by ground stations in order to track them.
 
 The following snippet shows an example of a TLE for the International Space Station. The meaning of its different parts is explained in Tables \ref{Table2.3} and \ref{Table2.4}.
 
@@ -237,7 +237,7 @@ The following snippet shows an example of a TLE for the International Space Stat
 \begin{tabular}[x]{@{}c@{}}7\end{tabular}\\
 \hline
 \end{tabular}
- \caption{Two-Line Element Set Format Definition, Line 1} 
+ \caption{Two-Line Element set format definition, Line 1} 
   \label{Table2.3}
 \end{table}
 \pagebreak
@@ -302,7 +302,7 @@ The following snippet shows an example of a TLE for the International Space Stat
 \begin{tabular}[x]{@{}c@{}}00000-0\end{tabular}\\
 \hline
 \end{tabular}
- \caption{Two-Line Element Set Format Definition, Line 2} 
+ \caption{Two-Line Element set format definition, Line 2} 
   \label{Table2.4}
 \end{table}
 
@@ -408,7 +408,7 @@ The frequencies most commonly used for amateur satellites are shown in Table \re
 A transceiver is a hardware unit containing both a transmitter and a receiver. It acts as an intermediary between the antenna and a computer, changing the radio frequency into bytes and viceversa.
 
 \subsection{Software}
-The activity in the ground station does not start when the satellite is passing over it and does not end once it is gone. There are certain tasks that need to be done before, during and after the pass.\\
+The activity in the ground station does not start when the satellite is passing over it and does not end once the satellite is gone. There are certain tasks that need to be done before, during and after the pass.\\
 
 Before the satellite arrives it is necessary to determine and predict its orbit. Based on this prediction the software will schedule future passes and generate the command list which will be sent during the pass.\\
 
@@ -451,7 +451,7 @@ The Open Systems Interconnection (OSI) Reference Model was developed in 1983 and
 & Bit & 1.Physical & \begin{tabular}[x]{@{}l@{}}Media, signal and\\binary transmission\end{tabular}\\
 \hline
 \end{tabular}
-\caption{OSI Model \cite{Tanenbaum}.}
+\caption{OSI Model \cite{Tanenbaum}}
   \label{Table2.6}
 \end{table}
 
