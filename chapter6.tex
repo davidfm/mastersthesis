@@ -29,7 +29,7 @@ The XML file follows the format of Table \ref{Table5.6}
 	</entry>
 </calibration>
 \end{lstlisting}
-\caption{Structure of the XML file used to configure the calibrators.}
+\caption{Structure of the XML file used to configure the calibrators}
 \label{Table5.6}
 \end{table}
 
@@ -40,8 +40,8 @@ The XML file follows the format of Table \ref{Table5.6}
 \item \textbf{unit}: Units in which the value is represented.
 \item \textbf{isVector}: $true$ if the result of the calibration is a vector with several values (which generates several new parameters) or $false$ if the calibration returns a single value.
 \item \textbf{resultVariable}: variable in the script in which the result will be stored.
-\item \textbf{auxParameters}: if the are any extra parameters needed for the calibration process it is necessary to list them here separated by commas (','). Please note that if the extra parameters also need to be calibrated the parameters needed for their calibration must also be included here in addition to the original ones.
-\item \textbf{script}: script to generate the calibrated value. Please note that if extra parameters are needed, their calibration scripts must be included here, not the parameter name. 
+\item \textbf{auxParameters}: if the are any extra parameters needed for the calibration process it is necessary to list them here separated by commas. Please note that if the extra parameters also need to be calibrated the parameters needed for their calibration must also be included here in addition to the original ones.
+\item \textbf{script}: script to generate the calibrated value. Note that if extra parameters are needed, their calibration scripts must be included here, not the parameter name. 
 \end{itemize}
 
 \subsection{Example of simple calibration}
@@ -66,7 +66,7 @@ The XML file follows the format of Table \ref{Table5.6}
 	</entry>
 </calibration>
 \end{lstlisting}
-\caption{Example of simple calibration.}
+\caption{Example of simple calibration}
 \label{Table5.7}
 \end{table}
 
@@ -95,7 +95,7 @@ Table \ref{f5.7} represents the simplest example of calibration information. \te
 	</entry>
 </calibration>
 \end{lstlisting}
-\caption{Example of calibration dependent on other parameters.}
+\caption{Example of calibration dependent on other parameters}
 \label{Table5.8}
 \end{table}
 
@@ -140,7 +140,7 @@ Table \ref{f5.8} shows an example of a parameter which depends on others for cal
 	</entry>
 </calibration>
 \end{lstlisting}
-\caption{Example of calibration dependent on other parameters which also depend on others.} 
+\caption{Example of calibration dependent on other parameters which also depend on others} 
 \label{Table5.9}
 \end{table}
 
@@ -181,7 +181,7 @@ Table \ref{Table5.9}, which illustrates this example can be explained as:
 	</entry>
 </calibration>
 \end{lstlisting}
-\caption{Example of calibration which returns a vector as result.} 
+\caption{Example of calibration which returns a vector as result} 
 \label{Table5.10}
 \end{table}
 
@@ -193,7 +193,7 @@ The module supports the interpretation of Java code and shell scripts. This exam
 \section{Limit checking module}
 This subsection covers the user manual for the limit checking module. The process is fully automated, so the user only needs to configure the pertinent XML file containing the information related to the limits of every parameter. 
 
-There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the person who is making the changes will not have to be worried about modifying some other parts they do not understand. It is advisable that each file is called as the corresponding subsystem.
+There can be as many files as needed, although it is recommended to have one file per subsystem. This way, the user will not have to be worried about modifying some other parts they do not understand. It is advisable that each file is called as the corresponding subsystem.
 
 The location of the folder where the XML files are stored is fully configurable by a system property. It can be set like this: \textbf{-Dpath="/path/to/the/folder"}.
 \newpage
@@ -222,7 +222,7 @@ The format of the XML file is represented in Table \ref{Table5.11}.
 
 \begin{itemize}
 \item \textbf{id}: name of the parameter to calibrate which limits are to be checked.
-\item \textbf{Sanity limits}: \underline{optional}. If the value is below the lower limit or above the upper limit it is discarded. 
+\item \textbf{Sanity limits} (optional): if the value is below the lower limit or above the upper limit it is discarded. 
 \item \textbf{Hard limits}:
 	\begin{itemize}
 	\item If the sanity limits are available anything between these limits and the sanity limits is considered an error.
@@ -254,7 +254,7 @@ The format of the XML file is represented in Table \ref{Table5.11}.
 	</entry>
 </limitChecking>
 \end{lstlisting}
-\caption{Limit checking with sanity limits.}
+\caption{Limit checking with sanity limits}
 \label{Table5.12}
 \end{table}
 
@@ -275,6 +275,6 @@ The format of the XML file is represented in Table \ref{Table5.11}.
 	</entry>
 </limitChecking>
 \end{lstlisting}
-\caption{Limit checking without sanity limits.}
+\caption{Limit checking without sanity limits}
 \label{Table5.13}
 \end{table}
