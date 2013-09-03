@@ -2,7 +2,7 @@
 
 \chapter{Satellite Communications}
 
-In order to understand how  the satellites communicate with Earth, the very basics of satellite communications are covered in this chapter. The first section describes what orbits are, how they are described and how that information can be delivered by a computer. Afterwards, the different types of data exchanged by the satellite and the ground station will be covered. The last section of the chapter presents what a ground station is, its hardware and software components and how it communicates with a satellite in space.
+In order to understand how  the satellites communicate with Earth, the very basics of satellite communications are covered in this chapter. The first section describes what orbits are, how they are described and how that information can be delivered by a computer. Afterwards, the types of different data exchanged by the satellite and the ground station will be covered. The last section of the chapter presents what a ground station is, its hardware and software components and how it communicates with a satellite in space.
 
 
 \section{Orbits}
@@ -143,9 +143,9 @@ The satellite ground tracks are the projection of its orbit onto Earth, they are
 \end{figure}
 
 %Since the orbital plane does not move in inertial space, the satellite's orbit will always be the same \citep{BARN}.
-If Earth did not move the representation of a satellite's orbit would be a single line, as the ground track would continuously repeat. However, Earth rotates at 1600 km/hr. Thus, even if the orbit does not change, from the Earth-based observer's point of view it appears to shift to the west.
+In an ideal two-body solution and if Earth did not rotate, the representation of a satellite's orbit would be a single line, as the ground track would continuously repeat. However, Earth rotates at 1600 km/hr. Thus, even if the orbit does not change, from the Earth-based observer's point of view it appears to shift to the west.
 
-This poses a challenge to the communication with the satellite. It is visible, as a fast moving object in the sky, from a certain location on the ground for very short periods of time. Thus, the communications antenna needs to track the satellite in order to handle the communication. The tracking is based on two line element sets, which will be covered in the next section.
+This poses a challenge to the communication with the satellite. It is visible, as a fast moving object in the sky, from a certain location on the ground for very short periods of time. Thus, the communications antenna needs to track the satellite in order to handle the communication. The tracking is based on two-line element sets, which will be covered in the next section.
 
 
 \subsection{Two-Line Elements}\label{2.4}
@@ -325,7 +325,7 @@ The \emph{housekeeping data} provides information about the health and operating
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=1\textwidth]{images/housekeeping.png}}
-\caption{Telemetry user interface of the ground station software of the satellite MaSat-1.}
+\caption{Telemetry user interface of the ground station software of the satellite MaSat-1}
 \label{f2.5}
 \end{figure}
 
@@ -401,7 +401,7 @@ The frequencies most commonly used for amateur satellites are shown in Table \re
 \begin{tabular}[x]{@{}c@{}}37.5 to 25 mm\end{tabular}\\
 \hline
 \end{tabular}
-\caption{Common radio frequencies used for amateur satellite communications.}
+\caption{Common radio frequencies used for amateur satellite communications}
   \label{Table2.5}
 \end{table}
 \subsubsection{Transceiver}
